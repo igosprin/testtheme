@@ -80,7 +80,7 @@
             {% if items.currentPage < items.lastPage -1 %} 
             <!-- if page value is less than totalpages by -2 then show the (...) before last page -->
               {% if items.currentPage < items.lastPage -2 and round|round(0, 'ceil' )> 4 %} 
-              <li class="list-inline-item g-rounded-5 d-flex align-items-end border g-brd-gray-light-v4 g-mr-20 g-mb-20">
+              <li class="list-inline-item d-flex align-items-end g-mr-20 g-mb-20">
                 <p class="d-flex align-items-center justify-content-center g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-rounded-5 g-color-black u-pagination-v1__item g-width-45 g-height-45"> ...</p>
               </li>
               {% endif %}

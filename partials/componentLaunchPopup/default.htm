@@ -1,30 +1,34 @@
 ==
 {% if show %}
-    <div id="popup">
-        <div class="g-bg-white rounded g-pa-50">
-            <form data-request="{{ genericForm }}::onFormSubmit" class="g-py-15" data-request-success="$('#popup form').trigger('reset');$.ocpopup_close()">
-                {{ form_token() }}
-                <div id="{{ genericForm }}_forms_flash"></div>
-                {{ content|raw }}
-                <div style="clear:both;"></div>
-                <input type="hidden" name="type" value="pop-up">
-                <input type="hidden" name="url" value="{{ ''| page }}">
-                <input type="hidden" name="campaign" value="{{ campaign }}">
-                <input type="hidden" name="abtest" value="{{ abtest }}">
-            </form>
-            <footer class="text-center">
-                <a href="#!" onclick="$.ocpopup_close()" class="align-self-center g-color-gray-dark-v5 mx-4">В другой раз</a>
-            </footer>
-        </div>
+<div class="popup" id="popup">
+    <div class="popup_close" onclick="$.ocpopup_close()">
+        <i class="material-icons g-color-gray-dark-v1">close</i>
     </div>
-    <script>
-        $(document).ready(function() {
-            $.ocpopup({
-                fadespeed:{{ speed }}, open:{{ open }}, layer:'#popup'{{ param }},
-                onleave:function() {
-                    $.post('{{ staturl }}?campaign={{ campaign }}&abtest={{ abtest }}', function(data, status) {});
-                }
-            });
+    <div class="popup_content">
+        <form data-request="{{ genericForm }}::onFormSubmit" data-request-success="$.ocpopup_close();"
+            data-request-validate>
+            {{ form_token() }}
+            <input type="hidden" name="type" value="pop-up">
+            <input type="hidden" name="url" value="{{ ''| page }}">
+            {% if itemDirectory.name %}
+            <input type="hidden" name="broker" value="{{ itemDirectory.name}}" id="organization">
+            {% endif %}
+            {{ content|raw }}
+            <div style="clear:both;"></div>
+            <input type="hidden" name="campaign" value="{{ campaign }}">
+            <input type="hidden" name="abtest" value="{{ abtest }}">
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $.ocpopup({
+            fadespeed: {{ speed }}, open: {{ open }}, layer: '#popup'{{ param }},
+        onleave: function () {
+            $.post('{{ staturl }}?campaign={{ campaign }}&abtest={{ abtest }}', function (data, status) { });
+        }
         });
-    </script>
+    });
+</script>
 {% endif %}

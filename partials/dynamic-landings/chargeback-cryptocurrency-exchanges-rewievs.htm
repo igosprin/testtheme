@@ -1,0 +1,68 @@
+[viewBag]
+==
+<!-- reviews section -->
+{% set reviews =  itemDirectory.getApprovedReviewsPaginated(5) %}
+{% if reviews.total > 0 %}
+<section class="g-py-50 g-py-70--lg g-bg-gray-light-v5">
+    <div class="container">
+
+        <div id="carousel-1"
+        class="js-carousel g-pb-40--lg"
+        data-infinite="true"
+        data-autoplay="true"
+        data-speed="7000"
+        data-lazy-load="progressive"
+        data-slides-show="3"
+        data-pagi-classes="u-carousel-indicators-v1 g-absolute-centered--x g-bottom-0 text-center"
+        data-responsive='[{
+          "breakpoint": 1200,
+          "settings": {
+            "slidesToShow": 3
+          }
+        }, {
+          "breakpoint": 992,
+          "settings": {
+            "slidesToShow": 2
+          }
+        }, {
+          "breakpoint": 768,
+          "settings": {
+            "slidesToShow": 2
+          }
+        }, {
+          "breakpoint": 576,
+          "settings": {
+            "slidesToShow": 1
+          }
+        }]'>
+
+            {% for review in reviews %}
+            <div class="js-slide g-px-15--md g-mb-20" itemprop="review" itemscope itemtype="https://schema.org/Review">
+                <div class="u-shadow-v39 g-bg-white g-brd-around g-brd-gray-light-v5 g-rounded-10 g-py-30 g-px-20">
+                    <div class="d-flex flex-column align-items-between justify-content-between">
+                        <div>
+                            <h4 class="g-color-gray-dark-v3 g-font-weight-400 g-font-size-14 g-mb-2" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                                <span itemprop="name">{{ review.name }}</span></h4>
+                            <div class="js-rating g-font-size-16 g-letter-spacing-0 g-line-height-1 g-color-yellow mb-0" data-rating="{{ review.rating }}"></div>
+                        </div>
+                        <blockquote class="g-color-gray-dark-v3 g-font-size-14 g-line-height-1_5 g-mt-15" itemprop="reviewBody">
+                          {{ str_limit(review.content|tgwz|raw, 100) }}
+                          {% for item in itemDirectory.itemsSection %}
+                          <a href="{{ 'directory/company-profile'|page({section_slug: item.section.slug, item_slug: itemDirectory.slug}) }}#company-reviews" class="g-font-size-14 g-color-gray-dark-v5">Читать далее...</a>
+                          {% endfor %}
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+     <!-- Aggregate Rating SchemaOrg -->
+     <span class="d-none" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        <meta itemprop="ratingValue" content="{{ itemDirectory.display_rating }}">
+        <meta itemprop="reviewCount" content="{{ itemDirectory.getApprovedReviews.count }}">
+        <meta itemprop="bestRating" content="5">
+        <meta itemprop="worstRating" content="1">
+    </span>
+</section>
+{% endif %}

@@ -125,10 +125,10 @@ function onEnd()
     </div>
     {% elseif otherItem.section.slug == "brokers" %}
     <div class="g-mb-20 g-hidden-sm-down">
-      {% partial 'banners/chargeback-broker' %}
+      {% partial 'banners/refund' %}
     </div>
     <div class="g-mb-20 g-hidden-md-up">
-      {% partial 'banners/chargeback-broker-tablet' %}
+      {% partial 'banners/refund-tablet' %}
     </div>
     {% endif %}
     {% endfor %}
@@ -144,7 +144,7 @@ function onEnd()
             <div class="d-flex flex-column align-items-center g-pt-30 g-pb-20 g-px-20 g-brd-bottom g-brd-gray-light-v4">
               <img src="{{ itemDirectory.logo|resize(220, auto, { mode: 'crop' }) }}" class="fb-img-contain g-mb-15"
                 width="220" height="70" alt="{{ itemDirectory.name }}" itemprop="image">
-              <h3 class="g-font-size-26 g-font-weight-700 g-line-height-1_3 g-color-black g-mb-5" itemprop="name">
+              <h3 class="text-center g-font-size-26 g-font-weight-700 g-line-height-1_3 g-color-black g-mb-5" itemprop="name">
                 {{ itemDirectory.name }}
               </h3>
               <div class="js-rating align-self-center g-color-yellow g-font-size-24 g-line-height-1 g-mb-5"

@@ -24,8 +24,12 @@
             class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
             alt="{{ item.itemDirectory.name }}"
           >
-          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
-            {{ item.itemDirectory.name }}
+          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-5 g-overflow-hidden" itemprop="name" style="max-height:56px;">
+            {% if (item.itemDirectory.name|length < 25) %}
+              {{ item.itemDirectory.name }}
+            {% else %}
+              {{ item.itemDirectory.name |slice(0, 25) }}...
+            {% endif %} 
           </h3>
           <div
             class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
@@ -74,8 +78,12 @@
             class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
             alt="{{ item.itemDirectory.name }}"
           >
-          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
-            {{ item.itemDirectory.name }}
+          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-5 g-overflow-hidden" itemprop="name" style="max-height:56px;">
+              {% if (item.itemDirectory.name|length < 25) %}
+                {{ item.itemDirectory.name }}
+              {% else %}
+                {{ item.itemDirectory.name |slice(0, 25) }}...
+              {% endif %} 
           </h3>
           <div
             class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
@@ -124,8 +132,12 @@
             class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
             alt="{{ item.itemDirectory.name }}"
           >
-          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
-            {{ item.itemDirectory.name }}
+          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-5 g-overflow-hidden" itemprop="name" style="max-height:56px;">
+              {% if (item.itemDirectory.name|length < 25) %}
+                {{ item.itemDirectory.name }}
+              {% else %}
+                {{ item.itemDirectory.name |slice(0, 25) }}...
+              {% endif %} 
           </h3>
           <div
             class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
@@ -173,8 +185,12 @@
             class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
             alt="{{ item.itemDirectory.name }}"
           >
-          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
-            {{ item.itemDirectory.name }}
+          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-5 g-overflow-hidden" itemprop="name" style="max-height:56px;">
+              {% if (item.itemDirectory.name|length < 25) %}
+                {{ item.itemDirectory.name }}
+              {% else %}
+                {{ item.itemDirectory.name |slice(0, 25) }}...
+              {% endif %} 
           </h3>
           <div
             class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
@@ -222,8 +238,12 @@
             class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
             alt="{{ item.itemDirectory.name }}"
           >
-          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
-            {{ item.itemDirectory.name }}
+          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-5 g-overflow-hidden" itemprop="name" style="max-height:56px;">
+              {% if (item.itemDirectory.name|length < 25) %}
+                {{ item.itemDirectory.name }}
+              {% else %}
+                {{ item.itemDirectory.name |slice(0, 25) }}...
+              {% endif %} 
           </h3>
           <div
             class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
@@ -261,8 +281,12 @@
             class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
             alt="{{ item.itemDirectory.name }}"
           >
-          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
-            {{ item.itemDirectory.name }}
+          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-5 g-overflow-hidden" itemprop="name" style="max-height:56px;">
+              {% if (item.itemDirectory.name|length < 25) %}
+                {{ item.itemDirectory.name }}
+              {% else %}
+                {{ item.itemDirectory.name |slice(0, 25) }}...
+              {% endif %} 
           </h3>
           <div
             class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"

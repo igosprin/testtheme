@@ -51,7 +51,11 @@ orderDirection = "desc"
                     href="{{ 'directory/company-profile'|page({section_slug: item.section.slug, item_slug: review.itemDirectory.slug}) }}"
                     class="g-color-blue"
                   >
+                  {% if (review.itemDirectory.name|length < 25) %}
                     {{ review.itemDirectory.name }}
+                  {% else %}
+                    {{ review.itemDirectory.name |slice(0, 25) }}...
+                  {% endif %} 
                   </a>
                   {% endfor %}
                 </span>

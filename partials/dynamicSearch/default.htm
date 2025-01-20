@@ -2,6 +2,9 @@
 listId = "search"
 limit = 4
 ==
+
+{% set searchLastQuery = searchLastQuery.getDirectoryItems %}
+
 <form
   action="{{ 'search' | page }}?q={{ query | url_encode(true) }}"
   method="get"
@@ -42,16 +45,19 @@ limit = 4
           </div> -->
         </div>
         <div class="g-pt-15">
+          {% if searchLastQuery|length > 1 %}
           <span class="g-font-size-16--md g-color-gray-dark-v5 g-pr-10">Популярно:</span>
-          {% set searchLastQuery = searchLastQuery.getItemDirectoryListItems %}
-          {% for search in searchLastQuery %}
+          
+          {% for item in searchLastQuery %}
+         
             <a
-              href="{{ 'search'| page }}?q={{ search.itemDirectory.name }}"
+              href="{{ 'search'| page }}?q={{ item.name }}"
               class="d-inline-block g-mr-15 g-brd-bottom--dashed g-font-size-14 g-line-height-1_2 g-color-gray-dark-v2 g-brd-gray-dark-v2 u-link-v5 g-brd-blue--hover g-color-blue--hover g-transition-0_5"
             >
-              {{search.itemDirectory.name}}
+              {{ item.name }}
             </a>
           {% endfor %}
+          {% endif %}
         </div>
     </div>
   </div>

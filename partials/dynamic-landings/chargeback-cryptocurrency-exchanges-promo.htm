@@ -1,0 +1,91 @@
+==
+<!--PROMO-->
+<section>
+    <div  class="g-bg-img-hero g-py-60 g-py-80--lg" style="background-image: url({{ 'assets/build/img/dinamic-landings/chargeback-cryptocurrency/bg.webp'|theme }});">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8 g-mb-20">
+                    <h1 class="g-font-size-24 g-font-size-48--md g-line-height-1_2 g-color-white g-font-weight-700 text-center g-mb-20">Вы являетесь клиентом биржи <span itemprop="name">{{ itemDirectory.name }}</span> и не можете вернуть деньги?</h1>
+                </div>
+                <div class="col-12 col-lg-10">
+                    <div class="g-color-white-opacity-0_8 g-font-size-14 g-font-size-18--md g-font-weight-400 g-line-height-1_4 text-center g-mb-20">
+                        <p>Торговля на криптовалютной бирже с хорошей репутацией и полным пакетом юридических документов — крайне перспективный способ заработка. Однако биржа {{ itemDirectory.name }} не относится к надежным платформам для торговых операций. </p>
+                        <p>Поэтому, чтобы провести возврат денег с личного счета на сайте компании {{ itemDirectory.name }}, придется воспользоваться услугами чарджбэк-компании.</p>
+                        <p class="g-mb-0">Не тратьте время на попытки оформить возврат средств самостоятельно. Мошенники всегда будут на шаг впереди. Но только не тогда, когда клиент заручился поддержкой экспертов!</p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <a class="d-flex align-items-center justify-content-center g-color-teal u-link-v5" href="#consult">
+                        Узнать детали
+                        <svg class="g-ml-8" width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M29.3346 16C29.3346 23.0879 23.5892 28.8334 16.5013 28.8334C9.41344 28.8334 3.66797 23.0879 3.66797 16C3.66797 8.91216 9.41344 3.16669 16.5013 3.16669C23.5892 3.16669 29.3346 8.91216 29.3346 16Z" stroke="#18BA9B" stroke-linejoin="round" />
+                            <path d="M13 16H21M21 16L17 12M21 16L17 20" stroke="#18BA9B" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+<section class="g-py-60 g-py-80--lg" id="consult">
+    <div class="container">
+        <div class="g-rounded-10 g-brd-around g-brd-gray-light-v4 g-py-40 g-px-20 g-pa-60--lg" style="box-shadow: 2px 12px 32px 0 rgba(0, 0, 0, 0.06);">
+            <div class="g-color-gray-dark-v2 g-font-size-20 g-font-size-24--md g-font-weight-700 g-mb-8 text-center">
+                Бесплатная консультация эксперта по возвратам
+            </div>
+            <div class="g-color-gray-dark-v2 g-font-size-14 g-font-weight-400 text-center g-mb-40">Внесите данные о себе, чтобы подать заявку на обратную связь</div>
+            <form class="w-100" 
+            data-request="{{ genericForm }}::onFormSubmit">
+            {{ form_token() }}
+            <div id="{{ genericForm }}_forms_flash"></div>
+            <input name="type" type="hidden" value="promo">
+            <input name="url" type="hidden" value="{{ ''| page }}">
+                <div class="row">
+                    <div class="col-12 col-lg-4">
+                        <input
+                        class="w-100 form-control rounded-0 g-brd-around g-bg-white g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20"
+                        type="text" placeholder="Ваше имя" name="name">
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="g-mb-20">
+                            <input type="tel" name="iti_phone"
+                                class="iti_phone w-100 form-control rounded-0 g-brd-around g-bg-white g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20 g-pl-95"
+                                required>
+                            <small class="iti_error-msg hide form-control-feedback"></small>
+                            <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <input
+                        class="w-100 form-control rounded-0 g-brd-around g-bg-white g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20"
+                        type="email" placeholder="Электронная почта" name="email" required="">
+                    </div>
+                </div>
+               
+                <div class="form-group g-mb-40 d-flex justify-content-center">
+                    <label for="check-end" class="form-check-inline u-check g-pl-35 mb-0 g-mr-0 d-flex flex-wrap g-line-height-1_3 g-font-size-12">
+                        <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="check-end" id="check-end" type="checkbox" value="1" checked>
+                        <div class="u-check-icon-checkbox-v4 g-rounded-0 g-brd-teal g-bg-teal g-color-white g-absolute-centered--y g-left-0 g-width-25 g-height-25">
+                        <i class="fa g-font-size-14" data-check-icon=""></i>
+                        </div>
+                        <span class="g-color-gray-dark-v2 g-mr-5">
+                            Я даю согласие на
+                        <a href="{{ 'misc/privacy'|page }}" class="g-color-gray-dark-v2 g-brd-gray-dark-v2 g-brd-bottom--dashed u-link-v5">обработку персональных данных</a>
+                        </span>
+                    </label>
+                </div>
+                <button
+                    class="d-block btn g-font-size-14 g-font-size-16--md g-font-weight-400 rounded-0 u-btn-teal g-line-height-1 g-color-white text-uppercase g-py-18 g-px-30 mx-auto"
+                    type="submit" data-attach-loading> Отправить форму
+                </button>
+            </form>
+        </div>
+        <div class="col-12">
+           
+        </div>
+        <div class="row justify-content-center">
+           
+        </div>
+    </div>
+</section>

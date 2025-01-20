@@ -1,8 +1,8 @@
 ==
 <!-- money back banner mobile version -->
 <a
-  href="{% if itemDirectory.name is defined %}{{ 'dynamic-landings/refund'| page({ item_slug: itemDirectory.slug }) }}{% else %}#consult{% endif %}"
-  {% if itemDirectory.name is not defined %} data-modal-target="#consult" data-modal-effect="fadein" {% endif %}
+  href="{% if itemDirectory.name is defined %}{{ 'dynamic-landings/chargeback-broker'|page({ item_slug: itemDirectory.slug }) }}{% else %}#law-aid{% endif %}"
+  {% if itemDirectory.name is not defined %} data-modal-target="#law-aid" data-modal-effect="fadein" {% endif %}
   class="d-flex flex-column justify-content-center align-items-center g-bg-img-hero g-height-220 g-rounded-10 g-pa-20 u-link-v5"
   style="background-image: url({{ 'assets/build/img/banners/refund-mobile-bg.svg'|theme }});"
 >

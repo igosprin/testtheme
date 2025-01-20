@@ -11,7 +11,6 @@ orderDirection = "desc"
 <div class="g-font-size-18 g-font-size-30--md g-font-weight-700 g-color-black g-line-height-1_3 g-mb-20 g-mt-30">Последние добавленные компании</div>
 <div class="row g-px-10">
     {% for item in items %}
-    
     <div class="col-6 col-md-4 col-lg-2 g-mb-10 g-px-5">
       <a
         href="{{ 'directory/company-profile'|page({section_slug: section.slug, item_slug: item.slug}) }}"
@@ -24,8 +23,12 @@ orderDirection = "desc"
             alt="{{ item.itemDirectory.name }}"
           >
           <div class="d-flex flex-column align-items-center">
-            <h3 class="g-font-size-14 g-font-size-16--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
+            <h3 class="g-font-size-14 g-font-size-16--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-5 g-overflow-hidden" itemprop="name" style="max-height:40px;">
+            {% if (item.itemDirectory.name|length < 25) %}
               {{ item.itemDirectory.name }}
+            {% else %}
+              {{ item.itemDirectory.name |slice(0, 25) }}...
+            {% endif %} 
             </h3>
             <div
               class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"

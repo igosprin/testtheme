@@ -1,0 +1,80 @@
+==
+
+<!--PROMO-->
+<section>
+    <div  class="g-pt-60 g-pt-80--lg" style="background-image: url({{ 'assets/build/img/dinamic-landings/chargeback-cryptocurrency/bg-promo.webp'|theme }});">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8 g-mb-20">
+                    <h1 class="g-font-size-24 g-font-size-48--md g-line-height-1_2 g-color-white g-font-weight-700 text-center g-mb-20">Возможен ли возврат денег с кошелька <span itemprop="name">{{ itemDirectory.name }}</span></h1>
+                </div>
+                <div class="col-12 col-lg-10">
+                    <div class="g-color-white-opacity-0_8 g-font-size-14 g-font-size-18--md g-font-weight-400 g-line-height-1_4 text-center g-mb-60 g-px-60--lg">
+                        В случаях, когда криптовалютный сервис отказывает выводить клиентские средства, трейдеру необходимо позаботиться об этом самостоятельно. В таких случаях наиболее разумным решением будет заручиться поддержкой чарджбэк-специалистов
+                    </div>
+                </div>
+                <div class="col-12 col-lg-10">
+                    <div class="g-bg-pink g-pa-30">
+                        <div class="g-max-width-540 text-center mx-auto">
+                            <div class="g-color-white g-font-size-20 g-font-size-24--md g-font-weight-700 g-mb-8">
+                                Получите консультацию специалиста, заполнив форму обратной связи
+                            </div>
+                            <div class="g-color-white-opacity-0_8 g-font-size-14 g-font-weight-400">Внесите свои контактные данные в форму, и с вами свяжется специалист</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <form class="col-12 col-lg-10" 
+                data-request="{{ genericForm }}::onFormSubmit">
+                {{ form_token() }}
+                <div id="{{ genericForm }}_forms_flash"></div>
+                <input name="type" type="hidden" value="promo">
+                <input name="url" type="hidden" value="{{ ''| page }}">
+                <div class="g-bg-white rounded-0 g-pa-30 g-pa-60--lg g-pt-40" style="box-shadow: 2px 12px 32px 0 rgba(0, 0, 0, 0.06);">
+                    <div class="row">
+                        <div class="col-12 col-lg-4">
+                            <input
+                            class="w-100 form-control rounded-0 g-brd-around g-bg-gray-light-v5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20"
+                            type="text" placeholder="Ваше имя" name="name">
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="g-mb-20">
+                                <input type="tel" name="iti_phone"
+                                    class="iti_phone w-100 form-control rounded-0 g-brd-around g-bg-gray-light-v5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20 g-pl-80"
+                                    required>
+                                <small class="iti_error-msg hide form-control-feedback"></small>
+                                <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <input
+                            class="w-100 form-control rounded-0 g-brd-around g-bg-gray-light-v5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20"
+                            type="email" placeholder="Электронная почта" name="email" required="">
+                        </div>
+                    </div>
+                   
+                    <div class="form-group g-mb-40 d-flex justify-content-center">
+                        <label for="check-end" class="form-check-inline u-check g-pl-35 mb-0 g-mr-0 d-flex flex-wrap g-line-height-1_3 g-font-size-12">
+                            <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="check-end" id="check-end" type="checkbox" value="1" checked>
+                            <div class="u-check-icon-checkbox-v4 g-rounded-0 g-brd-pink g-bg-pink g-color-white g-absolute-centered--y g-left-0 g-width-25 g-height-25">
+                            <i class="fa g-font-size-14" data-check-icon=""></i>
+                            </div>
+                            <span class="g-color-gray-dark-v2 g-mr-5">
+                                Я даю согласие на
+                            <a href="{{ 'misc/privacy'|page }}" class="g-color-gray-dark-v2 g-brd-gray-dark-v2 g-brd-bottom--dashed u-link-v5">обработку персональных данных</a>
+                            </span>
+                        </label>
+                    </div>
+                    <button
+                        class="d-block btn g-font-size-14 g-font-size-16--md g-font-weight-400 rounded-0 u-btn-pink g-line-height-1 g-color-white text-uppercase g-py-18 g-px-30 mx-auto"
+                        type="submit" data-attach-loading> Отправить форму
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
