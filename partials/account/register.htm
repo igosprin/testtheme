@@ -1,0 +1,112 @@
+{% if canRegister %}
+{{ form_ajax('onRegister', {'data-request-validate': true }) }}
+<!-- Form -->
+<div>
+  <div data-validate-for="message" class="alert alert-danger"></div>
+  <div class="g-mb-16">
+    <div class="form-group g-mb-0">
+      <input
+        class="form-control g-brd-around g-rounded-10 g-brd-gray-dark-v5 g-brd-blue--hover g-color-gray-dark-v5 g-transition-0_3 g-pa-15 g-pa-20--md"
+        name="name"
+        type="text"
+        id="registerName"
+        placeholder="Имя"
+        required
+      >
+    </div>
+    <div data-validate-for="name" class="alert alert-danger"></div>
+  </div>
+
+  <div class="g-mb-16">
+    <div class="form-group g-mb-0">
+      <input
+        class="form-control g-brd-around g-rounded-10 g-brd-gray-dark-v5 g-brd-blue--hover g-color-gray-dark-v5 g-transition-0_3 g-pa-15 g-pa-20--md"
+        name="email"
+        type="email"
+        id="registerEmail"
+        placeholder="{{ loginAttributeLabel|capitalize }}"
+        required
+      >
+    </div>
+    <div data-validate-for="email" class="alert alert-danger"></div>
+  </div>
+
+  {% if loginAttribute == "username" %}
+  <div class="g-mb-16">
+    <div class="form-group g-mb-0">
+      <input
+        class="form-control g-brd-around g-rounded-10 g-brd-gray-dark-v5 g-brd-blue--hover g-color-gray-dark-v5 g-transition-0_3 g-pa-15 g-pa-20--md"
+        name="username"
+        type="text"
+        id="registerUsername"
+        placeholder="Никнейм"
+      >
+    </div>
+    <div data-validate-for="username" class="alert alert-danger"></div>
+  </div>
+  {% endif %}
+
+  <div class="g-mb-16">
+    <div class="form-group g-mb-0">
+      <input
+        class="form-control g-brd-around g-rounded-10 g-brd-gray-dark-v5 g-brd-blue--hover g-color-gray-dark-v5 g-transition-0_3 g-pa-15 g-pa-20--md"
+        name="password"
+        type="password"
+        id="registerPassword"
+        placeholder="Пароль"
+        required
+      >
+    </div>
+    <div data-validate-for="password" class="alert alert-danger"></div>
+  </div>
+
+  <div class="g-mb-16">
+    {# if rememberLoginMode == 'ask' #}
+    <label class="form-check-inline u-check g-color-gray-dark-v2 g-pl-25 mb-0" for="remember">
+      <input
+        class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0"
+        name="remember"
+        id="remember"
+        type="checkbox"
+        value="1"
+      >
+      <div class="u-check-icon-checkbox-v4 g-brd-around g-brd-gray-dark-v2 g-rounded-5 g-color-gray-dark-v2 g-absolute-centered--y g-left-0">
+        <i class="fa" data-check-icon=""></i>
+      </div>
+      Запомнить меня
+    </label>
+    {# endif #}
+  </div>
+
+  <button
+    class="btn w-100 u-btn-blue g-rounded-10 g-color-white g-font-weight-700 text-uppercase g-py-15 g-py-20--md g-mb-16"
+    type="submit"
+    data-attach-loading
+  >
+    Зарегистрироваться
+  </button>
+
+  <div class="g-color-gray-dark-v2 text-center g-mb-20 g-mb-30--md">
+    или войдите через соц. сети
+  </div>
+
+  <div class="row g-mb-25 g-mb-40--md">
+    <div class="col-6 g-pr-8">
+      <a href="/flynsarmy/sociallogin/Facebook" class="btn g-brd-around g-brd-gray-light-v4 g-rounded-10 w-100 text-uppercase g-py-10 g-py-14--md">
+        <img src="{{ 'assets/build/img/account/icons/fb-icon.svg'|theme }}" alt="facebook">
+        <span class="g-color-gray-dark-v2 g-font-weight-500 g-line-height-1 g-ml-10 g-hidden-xs-down">facebook</span>
+      </a>
+    </div>
+    <div class="col-6 g-pl-8">
+      <a href="/flynsarmy/sociallogin/Google" class="btn g-brd-around g-brd-gray-light-v4 g-rounded-10 w-100 text-uppercase g-py-10 g-py-14--md">
+        <img src="{{ 'assets/build/img/account/icons/g-plus-icon.svg'|theme }}" alt="google-plus">
+        <span class="g-color-gray-dark-v2 g-font-weight-500 g-line-height-1 g-ml-10 g-hidden-xs-down">google</span>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- End Form -->
+{% else %}
+<!-- Registration is disabled. -->
+<h5>Регистрация запрещена.</h5>
+{% endif %}

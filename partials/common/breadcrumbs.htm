@@ -1,0 +1,25 @@
+==
+<!-- breadcrumbs -->
+<section class="g-py-20">
+  <ul class="u-list-inline" itemscope itemtype="http://schema.org/BreadcrumbList">
+    {% for title, url in breadcrumbs %}
+    <li class="list-inline-item g-mr-0" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+
+      {% if loop.last %}
+        <a class="g-font-size-12 g-font-size-default--md u-link-v5 g-color-gray-dark-v2" itemprop="item" itemscope itemtype="http://schema.org/Thing">
+          <span itemprop="name">{{ title }}</span>
+        </a>
+      {% else %}
+        <a class="g-font-size-12 g-font-size-default--md u-link-v5 g-color-gray-dark-v5" itemprop="item" itemscope itemtype="http://schema.org/Thing" href="{{ url }}" id="{{ url }}">
+          <span itemprop="name">{{ title }}</span>
+        </a>
+      {% endif %}
+        <meta itemprop="position" content="{{ loop.index }}" />
+      {% if not loop.last %}
+        <i class="fa fa-angle-right g-color-gray-dark-v5 g-mx-5"></i>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+<!-- end breadcrumbs -->

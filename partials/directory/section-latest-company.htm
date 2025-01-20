@@ -1,0 +1,45 @@
+[sectionItemsDirectory latestCompanies]
+directorySlug = "companies"
+sectionSlug   = "{{ :section_slug }}"
+itemsPerPage = 12
+orderBy = "created_at"
+orderDirection = "desc"
+
+==
+{% set items = latestCompanies.getItemsSectionPaginated %}
+
+<div class="g-font-size-18 g-font-size-30--md g-font-weight-700 g-color-black g-line-height-1_3 g-mb-20 g-mt-30">Последние добавленные компании</div>
+<div class="row g-px-10">
+    {% for item in items %}
+    
+    <div class="col-6 col-md-4 col-lg-2 g-mb-10 g-px-5">
+      <a
+        href="{{ 'directory/company-profile'|page({section_slug: section.slug, item_slug: item.slug}) }}"
+        class="d-flex flex-column justify-content-between g-height-100x g-bg-white g-rounded-10 u-link-v5 u-shadow-v1-6--hover g-brd-around g-brd-gray-light-v4"
+      >
+        <div class="d-flex flex-column align-items-center g-height-100x justify-content-between g-pt-15 g-pt-30--sm g-pb-8 g-pb-15--sm g-px-8 g-px-15--sm" itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+          <img
+            src="{{ item.itemDirectory.logo|resize(120, 50, { mode: 'fit' }) }}"
+            class="fb-img-contain g-mb-15 g-width-120 g-height-35 g-height-50--md"
+            alt="{{ item.itemDirectory.name }}"
+          >
+          <div class="d-flex flex-column align-items-center">
+            <h3 class="g-font-size-14 g-font-size-16--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
+              {{ item.itemDirectory.name }}
+            </h3>
+            <div
+              class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
+              data-rating="{{ item.itemDirectory.display_rating }}"
+            ></div>
+            <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+              <meta itemprop="ratingValue" content="{{ item.itemDirectory.display_rating }}">
+              <meta itemprop="reviewCount" content="{{ item.itemDirectory.getApprovedReviews.count }}">
+              <meta itemprop="bestRating" content="5">
+              <meta itemprop="worstRating" content="0">
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+</div>

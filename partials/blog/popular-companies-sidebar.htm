@@ -1,0 +1,41 @@
+
+[itemsList]
+itemsPerPage = 5
+orderBy = "created_at"
+orderDirection = "asc"
+
+==
+
+{% set items = itemsList.getItems() %}
+<h3 class="g-font-size-18 g-font-size-25--sm g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-black g-mb-15 g-mb-30--md g-hidden-lg-up">
+  Популярные компании
+</h3>
+<div class="g-rounded-10 g-bg-white g-pt-40 g-pb-25 g-px-20 g-mb-30">
+  <h3 class="g-font-size-18 g-font-size-20--md g-font-weight-700 g-color-black g-mb-5 g-hidden-md-down">
+    Популярные компании
+  </h3>
+  {% for item in items %}
+  <div class="d-flex align-items-center g-py-15 {% if loop.last %} g-brd-none {% else %} g-brd-bottom {% endif %} g-brd-gray-light-v4">
+    <div class="g-mr-15">
+      <a href="{{ 'directory/company-profile'|page({item_slug: item.slug}) }}">
+        <img
+          src="{{ item.logo|resize(170, auto, { mode: 'portrait' }) }}"
+          alt="{{ item.name }}"
+          class="fb-img-contain g-width-85 g-height-30"
+        >
+      </a>
+    </div>
+    <div>
+      <a href="{{ 'directory/company-profile'|page({item_slug: item.slug}) }}" class="d-block g-font-size-16 g-color-black g-color-blue--hover g-transition-0_4 g-line-height-1_4 u-link-v5 g-mb-5">
+        {{ item.name }}
+      </a>
+      <a
+        href="{{ 'blog/post'|page({slug: item.overview.slug }) }}"
+        class="d-inline-block g-color-gray-dark-v5 g-brd-bottom--dashed g-brd-transparent--hover g-transition-0_4 g-brd-gray-dark-v5 u-link-v5"
+      >
+        Читать обзор
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>

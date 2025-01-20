@@ -1,0 +1,75 @@
+title = "Блог"
+url = "/blog/:page?"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[session]
+security = "all"
+
+[postList]
+listId = "blog-page"
+limit = 5
+
+[genericForm]
+group = "blog-page"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 36
+noPostsMessage = "Нет записей"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
+
+[popularPosts popularBlogPosts] 
+category = "{{ :category }}"
+postsLimit = 12
+noPostsMessage = "No posts found"
+postPage = "blog/post"
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 1
+categoryPage = "blog/category"
+==
+
+{% put blogcriticalcss %}
+    {% partial 'layouts/blogcriticalcss' %}
+{% endput %}
+
+{% set posts = blogPosts.posts %}
+
+{% partial 'blog/blog-categories-menu' %}
+
+{% if posts.currentPage <= 1 %}
+
+
+{% partial 'blog/pinned-posts' %}
+{% partial 'blog/popular-posts' %}
+{% partial 'blog/latest-posts' %}
+
+{% else %}
+
+{% partial 'blog/latest-posts-page' %}
+
+{% endif %}
+
+{% partial 'modals/law-aid' %}
+
+{% partial 'modals/free-consultation' id="refund-banner" type="refund-banner" %}
+{% partial 'modals/choose-broker' %}
+{% partial 'modals/become-author' %}
+{% partial 'modals/consultation-modal' %}
+

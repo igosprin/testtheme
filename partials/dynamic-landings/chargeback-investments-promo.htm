@@ -1,0 +1,31 @@
+==
+{% set itemDirectory = dynamicLanding.getItem %}
+ 
+<section class="g-bg-white g-py-60 g-py-70--md g-overflow-x-hidden">
+  <div class="container">
+    <div class="row d-flex align-items-center">
+      <div class="col-12 col-lg-6 order-2 order-lg-1">
+        <div class="d-flex flex-column align-items-start">
+          <h1 class="g-font-size-28 g-font-size-45--md g-font-weight-700 g-line-height-1_3 g-color-black g-mb-25">
+            Как вернуть деньги из инвесткомпании <span itemprop="name">{{ itemDirectory.name }}</span>
+          </h1>
+          <p class="g-font-size-16 g-font-size-18--md g-color-gray-dark-v2 g-line-height-1_4 g-mb-25">
+            Проект перестал платить, однако не спешите прощаться со всеми сделанными вложениями. Добровольно администрация {{ itemDirectory.name }}  ничего не отдаст, но существуют <b>законные механизмы принудительного возврата.</b>
+          </p>
+          <a
+            href="#chargeback-consultation"
+            data-modal-target="#chargeback-consultation"
+            data-modal-effect="fadein"
+            class="js-go-to btn g-brd-around g-brd-teal g-bg-teal g-brd-teal--hover g-bg-transparent--hover g-rounded-10 g-color-white g-color-teal--hover g-transition-0_4 g-font-size-16 g-px-50 g-py-16 text-uppercase"
+          >
+            Узнать больше
+          </a>
+        </div>
+
+      </div>
+      <div class="col-12 col-lg-6 order-1 order-lg-2 g-mb-50 g-mb-0--lg">
+        <img class="w-100" src="{{ 'assets/build/img/landings/chargeback/ill.svg'|theme }}" alt="">
+      </div>
+    </div>
+  </div>
+</section>

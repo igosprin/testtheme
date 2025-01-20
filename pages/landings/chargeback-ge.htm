@@ -1,0 +1,185 @@
+title = "Chargeback - becommen sie geld auf ihre karte zurück"
+url = "/chargeback-ge"
+layout = "financebar"
+is_hidden = 0
+
+[genericForm]
+group = "landing-chargeback-ge"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/chargeback-ge"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+==
+{% partial 'landing-chargeback/promo'
+    h1Promo       = 'CHARGEBACK - BEKOMMEN Sie GELD AUF IHRE KARTE ZURÜCK'
+    h5PromoFirst  = 'Falls Sie Geld an einen unehrlichen Dienst- oder Produktanbieter überwiesen haben, ist das kein Problem.'
+    h5PromoSecond = 'Sie können den <span class="g-font-weight-600">GANZEN</span> Betrag legal zurückbekommen. Starten Sie eine Rückbuchung! Und innerhalb von 1-2 Monaten erhalten Sie die ersehnte SMS von der Bank.'
+    h2Form        = '<span class="g-color-teal">KOSTENLOSE </span> BERATUNG BEANTRAGEN'
+    btnMore       = 'Mehr darüber'
+    inputName     = 'Ihre Name'
+    inputEmail    = 'Ihre E-Mail (für die Anweisungen)'
+    btnSubmit     = 'fertig'
+%}
+
+{% partial 'landing-chargeback/legal-analysis'
+    h2AnalysisFirst   = 'ERHALTEN SIE EINE <span class="g-color-teal">RECHTLICHE</span>'
+    h2AnalysisSecond  = '<span class="g-color-teal">ANALYSE </span> IHRES FALLES'
+    h5AnalysisSecond  = 'Sie erkennen die Chancen einer Rückerstattung'
+    btnAnalysisSecond = 'Info bekommen'
+%}
+
+{% partial 'landing-chargeback/about'
+    h2Chargeback       = 'RÜCKBUCHUNG<span class="g-color-teal">?</span>'
+    pChargebackFirst   = 'Chargeback ist ein Verfahren, mit dem eine Transaktion rückgängig gemacht werden kann. Man kann sowohl Bankrückbuchungen als auch Rückbuchungen von Kryptowährungen durchgeführt werden.'
+    pChargebackSecond  = 'Rückbuchungen können mit speziellen Kryptowährungs-Wallets durchgeführt werden. Wenn Ihnen Geld in Rechnung gestellt wurde, aber die Leistung nicht erbracht oder die Ware nicht versendet wurde, lösen Sie eine Rückbuchung aus.'
+%}
+{% partial 'landing-chargeback/opportunities'
+    h2Opportunities         = '<span class="g-color-teal">RÜCKBUCHUNGSMÖGLICHKEITEN</span>'
+    h5Opportunities         = 'Wählen Sie, mit welchem System Sie zusammengearbeitet haben'
+    h4OpportunitiesFirst    = 'Forex-Makler'
+    h4OpportunitiesSecond   = 'Kasino'
+    h4OpportunitiesThird    = 'Kryptowährungen'
+    h4OpportunitiesFourth   = 'Geldautomat'
+    h4OpportunitiesFifth    = 'Binäre Optionen Broker'
+    h4OpportunitiesSixth    = 'Buchhalter'
+    h4OpportunitiesSeventh  = 'Investmentbetrug'
+    h4OpportunitiesEighth   = 'Online-schopping'
+    pOpportunitiesFirst     = 'Der Broker hat die Einzahlung verloren, liefert falsche Handelssignale oder Sie haben die  Schwierigkeiten mit Gewinnauszahlung.'
+    p4OpportunitiesSecond   = 'Sie haben es nicht geschafft, Geld zu "sammeln", weil das Spiel "gezwickt" ist. Bei Ihnen verschwindet regelmäßig die Taste "Zurückziehen".'
+    p4OpportunitiesThird    = 'Der Kryptowährungstauscher hat Fiat angenommen, aber Ihre BTC sind nie angekommen. Sie haben in ein ICO investiert, aber es war eine Blase.'
+    p4OpportunitiesFourth   = 'Der Geldautomat hat Geld abgebucht, aber nicht herausgegeben. Oder Sie haben einen Betrag eingegeben und er hat ihn teilweise ausgegeben.'
+    p4OpportunitiesFifth    = 'Ihnen wurde ein Gewinn von 80 % versprochen, aber Sie bekommen nur 20 %. Der Mindesteinsatz wurde von $20 bis $1.000 erhöht.'
+    p4OpportunitiesSixth    = 'Ihre Wetten wurden angenommen, als Sie noch verloren haben. Und dann haben Sie gewonnen und Ihr Konto wurde gesperrt.'
+    p4OpportunitiesSeventh  = 'Sie haben sich von Cashburry, Startcom.pro oder einem anderen MMM verzaubern lassen. Sie haben Ihre Einzahlungs- und Empfehlungsboni verloren.'
+    p4OpportunitiesEighth   = 'Sie haben einen Artikel bei einer Instagram-Boutique gekauft, aber er kam fehlerhaft oder gar nicht an. Der Verkäufer ist von der Bildfläche verschwunden.'
+%}
+
+{% partial 'landing-chargeback/120-days'
+    h2Days         = 'DIE WAHRSCHEINLICHKEIT EINER RÜCKBUCHUNG IST HÖHER, WENN INNERHALB VON <span class="g-color-teal">120 TAGEN </span> NACH DEM ZAHLUNGSDATUM INVESTIERT WIRD'
+    h5Days         = 'Die Zeit läuft gegen Sie! Hinterlassen Sie einen Antrag und machen Sie den ersten Schritt, um Ihr Geld zurückzubekommen.'
+    inputNameDays  = 'Ihre name'
+    inputEmailDays = 'Ihre email'
+    inputPhoneDays = 'Telefonnummer'
+    btnSubmitDays  = 'Fertig'
+%}
+
+{% partial 'landing-chargeback/difficulties'
+    h2Difficult        = 'WELCHE <span class="g-color-teal"> SCHWIERIGKEITEN </span> AUFTRETEN KÖNNEN, WENN SIE IHRE EIGENE RÜCKBUCHUNG VORNEHMEN'
+    h3DifficultFirst   = 'STUDIE ÜBER DIE REGELUNGEN DES ZAHLUNGSSYSTEMS'
+    h3DifficultSecond  = 'VERFASSEN EINES ANTRAGS AN DIE BANK'
+    h3DifficultThird   = 'ÜBERSETZUNG INS ENGLISCHE'
+    h3DifficultFourth  = 'KOMMUNIKATION MIT DER BANK'
+    h3DifficultFifth   = 'KASTENKONTROLLE'
+    h3DifficultSixth   = 'BANKSTORNIERUNG'
+    pDifficultFirst    = 'Der Vergütungsleitfaden von Visa ist 70 Seiten lang. Und die von MasterCard ist ungefähr... 438. Diese Dokumente liegen nicht in russischer Übersetzung vor.'
+    pDifficultSecond   = 'Eine Vorlage im Internet zu finden, ist nicht genug. Weil die Bank eine Vorlage für die Ablehnung bereithält. Der Text der Anwendung muss streng individuell sein.'
+    pDifficultThird    = 'Es ist obligatorisch, die Bewerbung ins Englische zu übersetzen. Die Regelungen der Zahlungssysteme Visa und MasterCard sehen die Einreichung von russischsprachigen Werken nicht vor.'
+    pDifficultFourth   = 'Zunächst werden Ihnen die Mitarbeiter sagen, dass sie noch nie etwas von einer Rückbuchung gehört haben. Dann wird man Ihnen das ausreden. Und dann wird man Sie verhören.'
+    pDifficultFifth    = 'Die Bank ist nicht daran interessiert, eine Rückbuchung durchzuführen. Sie müssen wissen, wie Sie auf Anfragen und formale Ablehnungen reagieren können. Sie müssen auch die Notwendigkeit des Verfahrens nachweisen.'
+    pDifficultSixth    = 'Die Ablehnung ist nicht endgültig. Die Abfuhr sollte analysiert und der Streit darauf basierend fortgesetzt werden. Das Ziel ist es, den Fall wieder in Gang zu bringen.'
+%}
+{% partial 'landing-chargeback/escort'
+    h2Escort         = 'LADEBACKEN-BEGLEITUNG <span class="g-color-teal"> BUCHEN</span>'
+    h4EscortFirst    = 'Teamarbeit'
+    h4EscortSecond   = 'Einhaltung von Regeln und Vorschriften'
+    h4EscortThird    = 'Beratungen 24/7'
+    h4EscortFourth   = 'Unterstützung in allen Stufen'
+    h4EscortFifth    = 'Qualitätssicherung'
+    pEscortFirst     = 'Jeder Fall wird von Anwälten mit Erfahrung in der Anfechtung von Überweisungen beurteilt.'
+    pEscortSecond    = 'Führen Sie eine Rückbuchung nicht unter Umgehung des Gesetzes durch und minimieren Sie die Wahrscheinlichkeit, dass Sie sich erneut an die Bank wenden müssen.'
+    pEscortThird     = 'Sie können jederzeit Fragen per Telefon, E-Mail, soziale Netzwerke und Messenger stellen.'
+    pEscortFourth    = 'Wir untersuchen Ihren Fall, wählen eine Anfechtungsstrategie, stellen eine Liste von Dokumenten zusammen, koordinieren Ihre Aktionen.'
+    pEscortFifth     = 'Ein rechtlich einwandfreies Vorgehen zu 100 % macht die Bankmitarbeiter aufgeschlossener und hilfsbereiter.'
+%}
+
+{% partial 'landing-chargeback/works'
+    h2Works         = 'WIE <span class="g-color-teal"> RÜCKBUCHUNG </span> FUNKTIONIERT'
+    h4WorksFirst    = 'SIE SENDEN EINE BEWERBUNG'
+    h4WorksSecond   = 'ÄNDERUNGSBEWERTUNG'
+    h4WorksThird    = 'ERSTE SCHRITTE'
+    h4WorksFourth   = 'EINSENDUNG VON BEWERBUNGEN'
+    h4WorksFifth    = 'ERGEBNIS'
+    pWorksFirst     = 'Beschreiben Sie die Situation im Detail.'
+    pWorksSecond    = 'Ein Anwalt prüft die Berufung und prognostiziert den Ausgang des Falles.'
+    pWorksThird     = 'Sie erhalten eine Liste von Dokumenten und einen Fahrplan.'
+    pWorksFourth    = 'Sie senden die vorbereiteten Dokumente an die Bank.'
+    pWorksFifth     = 'Sie erhalten die Entscheidung der Bank und eine SMS über die Erstattung.'
+%}
+
+{% partial 'landing-chargeback/support'
+    h2Support         = '<span class="g-color-teal">JE FRÜHER SIE UNTERSTÜTZUNG BEANTRAGEN</span>, DESTO GERINGER IST DIE WAHRSCHEINLICHKEIT, DASS SIE EINE NEGATIVE ANTWORT VON DER BANK ERHALTEN'
+    inputNameSupport  = 'Ihre name'
+    inputPhoneSupport = 'Telefonnummer'
+    btnSupport        = 'Rückanruf'
+    %}
+
+{% partial 'landing-chargeback/return'
+    h2Return = '<span class="g-color-teal">DAS GELD VON DIESEN </span> "FINANZIERUNGSGESELLSCHAFTEN" ZURÜCKGEFORDERT WERDEN KANN'
+%}
+
+{% partial 'landing-chargeback/caution'
+    h2Caution          = ' <span class="g-color-teal">WARNUNG! </span> ES GIBT RÜCKGABEMETHODEN, DIE DEFINITIV <span class="g-color-teal"> NICHT FUNKTIONIEREN</span>'
+    h3FirstCaution     = 'Zahlungen spiegeln'
+    h3SecondCaution    = 'Artikel schreiben'
+    h3ThirdCaution     = 'Kostenlose Rückerstattung'
+    pFirstCautionOne   = 'Sie helfen bei der Rückgabe in keiner Weise.'
+    pFirstCautionTwo   = 'Die Zahlung kann nirgendwo hängen bleiben.'
+    pSecondCautionOne  = 'Bestellen Sie diesen Dienst nicht.'
+    pSecondCautionTwo  = 'Artikel werden Ihnen nicht helfen, Ihr Geld zurückzubekommen!'
+    pThirdCautionOne   = 'So etwas gibt es nicht.'
+    pThirdCautionTwo   = 'Betrüger gewinnen Vertrauen'
+    pThirdCautionThree = 'und Daten über AnyDesk zu stehlen.'
+%}
+
+{% partial 'landing-chargeback/return-now'
+    h2FormReturn    = 'BERATUNG BUCHEN'
+    inputNameCall   = 'der Name'
+    inputPhoneCall  = 'Telefonnummer'
+    inputEmailCall  = 'Ihre email'
+    inputBtnSubmit  = 'Rückanruf'
+    h2ReturnNow     = 'ERHALTEN SIE JETZT <span class="g-color-teal"> IHR GELD </span> ZURÜCK'
+    h5ReturnNow     = 'Hinterlassen Sie eine Bewerbung und Sie erhalten:'
+    liNowFirst      = 'Beurteilung des Falles durch einen Finanzanwalt.'
+    liNowSecond     = 'Personalisierte Rückerstattungsanweisungen.'
+    liNowThird      = 'Liste der Dokumente zum Einleiten eines Rückbuchungsverfahrens.'
+%}
+
+{% partial 'landing-chargeback/faq'
+    h2FAQ           = '<span class="g-color-teal">FAQS</span>'
+    LinkFirstFAQ    = 'Gibt es eine Chance, Gelder von einem betrügerischen Broker, Casino und Wettbüro zurückzubekommen?'
+    LinkSecondFAQ   = 'Gibt es einen Sinn, zur Polizei zu gehen und Telefon- oder Online-Betrüger zu verklagen?'
+    LinkThirdFAQ    = 'Wie lauten die Bedingungen für die Rückerstattung?'
+    LinkFourthFAQ   = 'Wie kann man das Geld zurückgeben, das über E-Wallet oder Exchanger gesendet wurde?'
+    LinkFifthAQ     = 'Ist es realistisch, Ihr Geld auf eigene Faust zurückzubekommen?'
+    BlockFirstFAQ   = 'Ja. Aber die Wahrscheinlichkeit einer Rückerstattung wird individuell bestimmt. Wenn Ihr Geld vor zwei Jahren "hängengeblieben" ist, ist dies ein erschwerender Umstand. Aber auch in diesem Fall können Sie mit einer Rückerstattung rechnen.'
+    BlockSecondFAQ  = 'Aber leider ermitteln die Strafverfolgungsbehörden der RF nur selten gegen Finanzbetrug. Sie führen verschiedene Gründe an. Und Gerichtsverfahren wiederum gelten für Organisationen, deren betrügerische Aktivitäten polizeilich nachgewiesen werden. Darüber hinaus hat ein Gerichtsverfahren seine Tücken.   <p class="g-color-gray-dark-v3 g-my-5">1. Um ein Strafverfahren einzuleiten, müssen Sie einen Antrag am Sitz des Unternehmens stellen.</p> <p class="g-color-gray-dark-v3 g-mb-5">2. Die Gesellschaft kann in einer Offshore-Jurisdiktion registriert sein.</p> <p class="g-color-gray-dark-v3 g-mb-0">3. um die Betrüger zu bestrafen, müssen eine Reihe von Bedingungen eingehalten werden. In Zypern muss man zum Beispiel persönlich anwesend sein, damit die Strafverfolgungsbehörden ein Verfahren einleiten können.</p>'
+    BlockThirdFAQ   = 'Im Durchschnitt wird das Geld innerhalb von 1-3 Monaten auf die Karte zurückgebucht. Die Laufzeit ist eine individuelle Größe, die von vielen Faktoren und der konsequenten Einhaltung der Strategie abhängt.'
+    BlockFourthFAQ  = 'Die Zahlungssysteme MasterCard, Visa, Mir, Maestro fallen unter die Regeln des Chargeback-Verfahrens. Wie Sie sehen können, sind in dieser Liste Swift-Überweisungen, Zahlungen über elektronische Geldbörsen sowie die Dienste von Yandex.Money und Qiwi nicht enthalten.'
+    BlockFifthFAQ   = 'Sie können sich selbst um dieses Problem kümmern. Aber es gibt bürokratische Hürden und Fallstricke auf dem Weg zu einer Rückerstattung. Eine der Schwierigkeiten ist es, zur Bank durchzukommen.'
+%}
+
+{% partial 'landing-chargeback/modal'
+    h3ModalProfile          = 'Füllen Sie einen kurzen Fragebogen aus, den ein <span class = "g-color-teal"> Finanzanwalt </ span> erhalten wird'
+    inputModalProfileFirst  = 'Name des betrügerischen Unternehmens'
+    inputModalProfileSecond = 'Schadensbetrag'
+    inputModalProfileThird  = 'Kartenzahlungssystem'
+    inputModalProfileFourth = 'Zahlungsbegrenzungsfrist'
+    btnModalProfile         = 'Nächster'
+    inputProfileFormName    = 'Ihren Namen'
+    inputProfileFormPhone   = 'Telefonnummer'
+    btnProfileForm          = 'Fertig'
+    h2BasicForm             = 'Base'
+    h5BasicForm             = 'Schadensbetrag von <span class="g-font-weight-600">250</span> dollar'
+    inputMailBasicForm      = 'Ihren email'
+    btnBasicForm            = 'Wählen'
+    h2MaxForm               = 'Maximal'
+    h5MaxForm               = 'Schadensbetrag von <span class="g-font-weight-600">650</span> dollar'
+    h2AdvancedForm          = 'ERWEITERT'
+    h5AdvancedForm          = 'Schadensbetrag von <span class="g-font-weight-600">1 500</span> dollar'
+%}

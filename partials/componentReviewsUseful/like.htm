@@ -1,0 +1,7 @@
+<button class="btn g-brd-none g-bg-transparent g-pa-0 g-underline-0 d-flex align-items-center"
+  data-request="{{ __SELF__ }}::onUsefulChange"
+  data-request-data="id: {{ review.id }}"
+>
+  <i class="{{ isUseful ? 'fa fa-thumbs-o-up g-color-green' : 'fa fa-thumbs-o-up g-color-gray-dark-v5' }}"></i>
+  <span class="g-color-gray-dark-v5 g-line-height-1 g-ml-8">{{ review.useful }}</span>
+</button>

@@ -1,0 +1,18 @@
+==
+<!-- refund banner -->
+<a
+  href="{% if itemDirectory.name is defined %}{{ 'dynamic-landings/refund'| page({ item_slug: itemDirectory.slug }) }}{% else %}#consult{% endif %}"
+  {% if itemDirectory.name is not defined %} data-modal-target="#consult" data-modal-effect="fadein" {% endif %}
+  class="d-flex justify-content-between align-items-center g-bg-img-hero g-rounded-10 g-px-20 g-px-30--md g-py-30 u-link-v5"
+  style="background-image: url({{ 'assets/build/img/banners/refund-bg.svg'|theme }});"
+>
+  <div class="d-flex align-items-center">
+    <img src="{{ 'assets/build/img/banners/bag.svg'|theme }}" alt="money-bag" class="g-width-80 g-mr-30">
+    <h4 class="g-font-size-18 g-font-size-20--md g-font-weight-700 g-color-white g-line-height-1_4 text-uppercase g-mb-0">
+      Успешный кейс вывода денег со счета {{ itemDirectory.name }}
+    </h4>
+  </div>
+  <button class="btn g-rounded-10 g-bg-yellow g-font-size-16 g-color-black g-py-13 g-px-35 g-hidden-lg-down">
+    Заказать вывод
+  </button>
+</a>

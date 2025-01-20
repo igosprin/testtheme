@@ -1,0 +1,292 @@
+==
+<div class="row g-px-10 g-mb-20">
+    {% for item in items %}
+    {% if loop.index == 7 %}
+    <div class="col-12 col-md-6 col-lg-3 g-mb-10 g-px-0 g-hidden-sm-down">
+      <div class="g-mx-5 g-height-100x">
+        {% partial 'banners/law-aid-mobile' %}
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 g-mb-10 g-px-0 g-hidden-md-up">
+      <div class="g-mx-5">
+        {% partial 'banners/law-aid-tablet' %}
+      </div>
+    </div>
+
+    <div class="col-6 col-lg-3 g-mb-10 g-px-0">
+      <a
+        href="{{ 'directory/company-profile'|page({section_slug: section.slug, item_slug: item.slug}) }}"
+        class="d-flex flex-column justify-content-between g-height-100x g-bg-white g-rounded-10 u-link-v5 u-shadow-v1-6--hover g-mx-5"
+      >
+        <div class="d-flex flex-column align-items-center g-pt-15 g-pt-30--sm g-pb-8 g-pb-15--sm g-px-8 g-px-15--sm" itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+          <img
+            src="{{ item.itemDirectory.logo|resize(170, 55, { mode: 'fit' }) }}"
+            class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
+            alt="{{ item.itemDirectory.name }}"
+          >
+          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
+            {{ item.itemDirectory.name }}
+          </h3>
+          <div
+            class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
+            data-rating="{{ item.itemDirectory.display_rating }}"
+          ></div>
+          <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+            <meta itemprop="ratingValue" content="{{ item.itemDirectory.display_rating }}">
+            <meta itemprop="reviewCount" content="{{ item.itemDirectory.getApprovedReviews.count }}">
+            <meta itemprop="bestRating" content="5">
+            <meta itemprop="worstRating" content="0">
+          </span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center g-brd-top g-brd-gray-light-v4 g-pt-8 g-pt-15--sm g-px-8 g-px-15--sm g-pb-15">
+          <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+            <i class="icon-speech g-mr-5"></i>
+            <span>{{ item.itemDirectory.getApprovedReviews.count }}</span>
+          </div>
+          <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+            <i class="icon-eye g-mr-5"></i>
+            <span>{{ item.itemDirectory.views }}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    {% elseif loop.index == 13 %}
+    <div class="col-12 col-md-6 col-lg-3 g-mb-10 g-px-0 g-hidden-sm-down">
+      <div class="g-mx-5">
+        {% partial 'banners/choose-broker-mobile' %}
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 g-mb-10 g-px-0 g-hidden-md-up">
+      <div class="g-mx-5">
+        {% partial 'banners/choose-broker-tablet' %}
+      </div>
+    </div>
+
+    <div class="col-6 col-lg-3 g-mb-10 g-px-0">
+      <a
+        href="{{ 'directory/company-profile'|page({section_slug: section.slug, item_slug: item.slug}) }}"
+        class="d-flex flex-column justify-content-between g-height-100x g-bg-white g-rounded-10 u-link-v5 u-shadow-v1-6--hover g-mx-5"
+      >
+        <div class="d-flex flex-column align-items-center g-pt-15 g-pt-30--sm g-pb-8 g-pb-15--sm g-px-8 g-px-15--sm" itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+          <img
+            src="{{ item.itemDirectory.logo|resize(170, 55, { mode: 'fit' }) }}"
+            class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
+            alt="{{ item.itemDirectory.name }}"
+          >
+          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
+            {{ item.itemDirectory.name }}
+          </h3>
+          <div
+            class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
+            data-rating="{{ item.itemDirectory.display_rating }}"
+          ></div>
+          <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+            <meta itemprop="ratingValue" content="{{ item.itemDirectory.display_rating }}">
+            <meta itemprop="reviewCount" content="{{ item.itemDirectory.getApprovedReviews.count }}">
+            <meta itemprop="bestRating" content="5">
+            <meta itemprop="worstRating" content="0">
+          </span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center g-brd-top g-brd-gray-light-v4 g-pt-8 g-pt-15--sm g-px-8 g-px-15--sm g-pb-15">
+          <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+            <i class="icon-speech g-mr-5"></i>
+            <span>{{ item.itemDirectory.getApprovedReviews.count }}</span>
+          </div>
+          <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+            <i class="icon-eye g-mr-5"></i>
+            <span>{{ item.itemDirectory.views }}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    {% elseif loop.index == 19 %}
+    <div class="col-12 col-md-6 col-lg-3 g-mb-10 g-px-0 g-hidden-sm-down">
+      <div class="g-mx-5">
+        {% partial 'banners/refund-mobile' %}
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 g-mb-10 g-px-0 g-hidden-md-up">
+      <div class="g-mx-5">
+        {% partial 'banners/refund-tablet' %}
+      </div>
+    </div>
+
+    <div class="col-6 col-lg-3 g-mb-10 g-px-0">
+      <a
+        href="{{ 'directory/company-profile'|page({section_slug: section.slug, item_slug: item.slug}) }}"
+        class="d-flex flex-column justify-content-between g-height-100x g-bg-white g-rounded-10 u-link-v5 u-shadow-v1-6--hover g-mx-5"
+      >
+        <div class="d-flex flex-column align-items-center g-pt-15 g-pt-30--sm g-pb-8 g-pb-15--sm g-px-8 g-px-15--sm" itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+          <img
+            src="{{ item.itemDirectory.logo|resize(170, 55, { mode: 'fit' }) }}"
+            class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
+            alt="{{ item.itemDirectory.name }}"
+          >
+          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
+            {{ item.itemDirectory.name }}
+          </h3>
+          <div
+            class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
+            data-rating="{{ item.itemDirectory.display_rating }}"
+          ></div>
+          <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+            <meta itemprop="ratingValue" content="{{ item.itemDirectory.display_rating }}">
+            <meta itemprop="reviewCount" content="{{ item.itemDirectory.getApprovedReviews.count }}">
+            <meta itemprop="bestRating" content="5">
+            <meta itemprop="worstRating" content="0">
+          </span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center g-brd-top g-brd-gray-light-v4 g-pt-8 g-pt-15--sm g-px-8 g-px-15--sm g-pb-15">
+          <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+            <i class="icon-speech g-mr-5"></i>
+            <span>{{ item.itemDirectory.getApprovedReviews.count }}</span>
+          </div>
+          <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+            <i class="icon-eye g-mr-5"></i>
+            <span>{{ item.itemDirectory.views }}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% elseif loop.index == 25 %}
+    <div class="col-12 col-md-6 col-lg-3 g-mb-10 g-px-0 g-hidden-sm-down">
+      <div class="g-mx-5">
+        {% partial 'banners/check-broker-mobile' %}
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 g-mb-10 g-px-0 g-hidden-md-up">
+      <div class="g-mx-5">
+        {% partial 'banners/check-broker-tablet' %}
+      </div>
+    </div>
+
+    <div class="col-6 col-lg-3 g-mb-10 g-px-0">
+      <a
+        href="{{ 'directory/company-profile'|page({section_slug: section.slug, item_slug: item.slug}) }}"
+        class="d-flex flex-column justify-content-between g-height-100x g-bg-white g-rounded-10 u-link-v5 u-shadow-v1-6--hover g-mx-5"
+      >
+        <div class="d-flex flex-column align-items-center g-pt-15 g-pt-30--sm g-pb-8 g-pb-15--sm g-px-8 g-px-15--sm" itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+          <img
+            src="{{ item.itemDirectory.logo|resize(170, 55, { mode: 'fit' }) }}"
+            class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
+            alt="{{ item.itemDirectory.name }}"
+          >
+          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
+            {{ item.itemDirectory.name }}
+          </h3>
+          <div
+            class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
+            data-rating="{{ item.itemDirectory.display_rating }}"
+          ></div>
+          <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+            <meta itemprop="ratingValue" content="{{ item.itemDirectory.display_rating }}">
+            <meta itemprop="reviewCount" content="{{ item.itemDirectory.getApprovedReviews.count }}">
+            <meta itemprop="bestRating" content="5">
+            <meta itemprop="worstRating" content="0">
+          </span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center g-brd-top g-brd-gray-light-v4 g-pt-8 g-pt-15--sm g-px-8 g-px-15--sm g-pb-15">
+          <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+            <i class="icon-speech g-mr-5"></i>
+            <span>{{ item.itemDirectory.getApprovedReviews.count }}</span>
+          </div>
+          <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+            <i class="icon-eye g-mr-5"></i>
+            <span>{{ item.itemDirectory.views }}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% elseif loop.index == 31 %}
+    <div class="col-12 col-md-6 col-lg-3 g-mb-10 g-px-0 g-hidden-sm-down">
+      <div class="g-mx-5">
+        {% partial 'banners/chargeback-mobile' %}
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 g-mb-10 g-px-0 g-hidden-md-up">
+      <div class="g-mx-5">
+        {% partial 'banners/chargeback-tablet' %}
+      </div>
+    </div>
+
+    <div class="col-6 col-lg-3 g-mb-10 g-px-0">
+      <a
+        href="{{ 'directory/company-profile'|page({section_slug: section.slug, item_slug: item.slug}) }}"
+        class="d-flex flex-column justify-content-between g-height-100x g-bg-white g-rounded-10 u-link-v5 u-shadow-v1-6--hover g-mx-5"
+      >
+        <div class="d-flex flex-column align-items-center g-pt-15 g-pt-30--sm g-pb-8 g-pb-15--sm g-px-8 g-px-15--sm" itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+          <img
+            src="{{ item.itemDirectory.logo|resize(170, 55, { mode: 'fit' }) }}"
+            class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
+            alt="{{ item.itemDirectory.name }}"
+          >
+          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
+            {{ item.itemDirectory.name }}
+          </h3>
+          <div
+            class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
+            data-rating="{{ item.itemDirectory.display_rating }}"
+          ></div>
+          <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+            <meta itemprop="ratingValue" content="{{ item.itemDirectory.display_rating }}">
+            <meta itemprop="reviewCount" content="{{ item.itemDirectory.getApprovedReviews.count }}">
+            <meta itemprop="bestRating" content="5">
+            <meta itemprop="worstRating" content="0">
+          </span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center g-brd-top g-brd-gray-light-v4 g-pt-8 g-pt-15--sm g-px-8 g-px-15--sm g-pb-15">
+          <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+            <i class="icon-speech g-mr-5"></i>
+            <span>{{ item.itemDirectory.getApprovedReviews.count }}</span>
+          </div>
+          <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+            <i class="icon-eye g-mr-5"></i>
+            <span>{{ item.itemDirectory.views }}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    {% else %}
+    <div class="col-6 col-lg-3 g-mb-10 g-px-0">
+      <a
+        href="{{ 'directory/company-profile'|page({section_slug: section.slug, item_slug: item.slug}) }}"
+        class="d-flex flex-column justify-content-between g-height-100x g-bg-white g-rounded-10 u-link-v5 u-shadow-v1-6--hover g-mx-5"
+      >
+        <div class="d-flex flex-column align-items-center g-pt-15 g-pt-30--sm g-pb-8 g-pb-15--sm g-px-8 g-px-15--sm" itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+          <img
+            src="{{ item.itemDirectory.logo|resize(170, 55, { mode: 'fit' }) }}"
+            class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
+            alt="{{ item.itemDirectory.name }}"
+          >
+          <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0" itemprop="name">
+            {{ item.itemDirectory.name }}
+          </h3>
+          <div
+            class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
+            data-rating="{{ item.itemDirectory.display_rating }}"
+          ></div>
+          <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+            <meta itemprop="ratingValue" content="{{ item.itemDirectory.display_rating }}">
+            <meta itemprop="reviewCount" content="{{ item.itemDirectory.getApprovedReviews.count }}">
+            <meta itemprop="bestRating" content="5">
+            <meta itemprop="worstRating" content="0">
+          </span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center g-brd-top g-brd-gray-light-v4 g-pt-8 g-pt-15--sm g-px-8 g-px-15--sm g-pb-15">
+          <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+            <i class="icon-speech g-mr-5"></i>
+            <span>{{ item.itemDirectory.getApprovedReviews.count }}</span>
+          </div>
+          <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+            <i class="icon-eye g-mr-5"></i>
+            <span>{{ item.itemDirectory.views }}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>

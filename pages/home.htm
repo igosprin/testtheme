@@ -1,0 +1,56 @@
+title = "Рейтинг инвестиционных компаний | Financebar"
+url = "/"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+meta_title = "Отзывы и мнения о компаниях"
+meta_description = "Цель Financebar — сделать информацию доступной, распространить правду и помочь другим потребителям избежать ошибок."
+
+[session]
+security = "all"
+
+[popularPosts popularBlogPosts]
+category = "{{ :category }}"
+postsLimit = 12
+noPostsMessage = "No posts found"
+postPage = "blog/post"
+
+[dynamicSearch]
+maxNumberOfResults = 6
+useAutoComplete = 1
+autoCompleteResultCount = 5
+showProviderBadge = 1
+
+[lastItems]
+itemsPerPage = 12
+
+[genericForm]
+group = "home-page"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+
+[session]
+security = "all"
+==
+{% put indexcritical %}
+    {% partial 'layouts/indexcritical' %}
+{% endput %}
+
+{% partial 'home/promo' %}
+{% partial 'home/categories' %}
+{% partial 'home/new-companies' %}
+{% partial 'home/reviews' %}
+{% partial 'home/advantages' %}
+{% partial 'home/popular-posts' %}
+{% partial 'home/about-platform' %}
+
+{% partial 'modals/become-author' %}

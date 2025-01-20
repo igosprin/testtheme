@@ -1,0 +1,22 @@
+==
+<!-- refund banner -->
+<a
+  href="{{ 'dynamic-landings/chargeback-investments'|page({ item_slug: itemDirectory.slug }) }}"
+  {% if itemDirectory.name is not defined %} data-modal-target="#consult" data-modal-effect="fadein" {% endif %}
+  class="d-block text-center g-rounded-10 u-link-v5"
+  style="background-color:#03314B;"
+>
+  <div class="text-center">
+    <div class="g-mb-16 g-pt-30 g-brd-bottom g-brd-gray-dark-v5">
+      <img src="{{ 'assets/build/img/banners/banner-dinamic-chargeback.svg'|theme }}" alt="money-bag" class="g-width-80 g-mr-30">
+    </div>
+    <h4 class="g-font-size-24 g-font-weight-700 g-color-white g-line-height-1_4  g-mb-16 g-px-20">
+      {{ itemDirectory.name }} не выводит деньги? <br> Верните свое!
+    </h4>
+  </div>
+  <div class="g-pa-20 g-pb-45">
+    <button class="d-block btn g-brd-around g-brd-teal g-bg-teal g-bg-transparent--hover g-rounded-10 g-font-size-16 g-color-white g-color-teal--hover g-transition-0_4 text-uppercase g-py-15 g-px-40 mx-auto">
+      вернуть деньги
+    </button>
+  </div>
+</a>

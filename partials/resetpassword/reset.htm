@@ -1,0 +1,50 @@
+<p class="lead">
+    Пожалуйста проверьте Ваш email на наличие кода активации.
+</p>
+
+<form
+    data-request="{{ __SELF__ }}::onResetPassword"
+    data-request-update="'{{ __SELF__ }}::complete': '#partialUserResetForm'"
+    data-request-validate>
+
+    <div class="mb-4">
+        <div class="input-group g-brd-primary--focus">
+            <div class="input-group-prepend">
+                    <span class="input-group-text g-width-45 g-brd-right-none g-brd-gray-light-v4 g-color-gray-dark-v5">
+                        <i class="icon-media-065 u-line-icon-pro"></i>
+                    </span>
+            </div>
+            <input
+                class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-py-15 g-px-15"
+                name="code"
+                type="text"
+                id="resetCode"
+                placeholder="Введите код активации"
+                value="{{ __SELF__.code }}"
+                required
+            >
+        </div>
+        <div data-validate-for="code" class="alert alert-danger"></div>
+    </div>
+
+    <div class="mb-4">
+        <div class="input-group g-brd-primary--focus">
+            <div class="input-group-prepend">
+                    <span class="input-group-text g-width-45 g-brd-right-none g-brd-gray-light-v4 g-color-gray-dark-v5">
+                        <i class="icon-media-094 u-line-icon-pro"></i>
+                    </span>
+            </div>
+            <input
+                class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-py-15 g-px-15"
+                name="password"
+                type="password"
+                id="resetPassword"
+                placeholder="Введите новый пароль"
+                required
+            >
+        </div>
+        <div data-validate-for="password" class="alert alert-danger"></div>
+    </div>
+
+    <button type="submit" class="btn btn-md btn-block u-btn-primary g-py-13" data-attach-loading>Сбросить пароль</button>
+</form>

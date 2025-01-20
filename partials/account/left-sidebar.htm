@@ -1,0 +1,55 @@
+<!-- Profile Sidebar -->
+
+    <!-- User Image -->
+    <div class="u-block-hover g-pos-rel">
+        <figure class="g-pos-rel text-center">
+            <span class="g-width-100 g-height-30 d-flex justify-content-center align-items-center g-color-white g-font-size-13 g-pos-abs g-bg-primary g-left-0 g-top-20">{{ user.name }}</span>
+            <img class="img-fluid w-100 g-max-width-300"
+                 src="{{ user.avatar.thumb(auto, auto)|default('assets/build/img/account/default-user-avatar.png'|theme) }}"
+                 alt="User avatar">
+        </figure>
+
+    </div>
+    <!-- User Image -->
+
+    <!-- Sidebar Navigation -->
+    <div class="list-group list-group-border-0 g-mb-40">
+
+        <!-- Profile -->
+        <a href="{{ 'account/profile'|page }}"
+           class="list-group-item list-group-item-action d-flex align-items-center  g-bg-primary--active g-bg-primary--hover g-color-white--hover">
+            <i class="fa fa-user g-mr-8"></i>
+            <span>Профиль</span>
+        </a>
+        <!-- End Profile -->
+
+        <!-- My Projects -->
+        <a href="{{ 'account/my-companies'|page }}"
+           class="list-group-item list-group-item-action d-flex align-items-center  g-bg-primary--active g-bg-primary--hover g-color-white--hover g-pos-rel">
+            <i class="icon-finance-011 g-pos-rel g-top-1 g-mr-8"></i>
+            <span> Мои компании</span>
+            <span class="g-width-30 d-flex justify-content-center align-items-center g-color-white g-font-size-13 g-pos-abs g-bg-primary g-rounded-50 g-right-30"> {{ user.organizations.count }} </span>
+            <span class="u-label g-font-size-11 g-bg-primary g-rounded-20 g-px-10"></span>
+        </a>
+        <!-- End My Projects -->
+
+        <!-- My Reviews -->
+        <a href="{{ 'account/my-reviews'|page }}"
+           class="list-group-item list-group-item-action d-flex align-items-center  g-bg-primary--active g-bg-primary--hover g-color-white--hover g-pos-rel">
+            <i class="icon-finance-023 g-pos-rel g-top-1 g-mr-8"></i>
+            <span>Мои отзывы</span>
+            <span class="g-width-30 d-flex justify-content-center align-items-center g-color-white g-font-size-13 g-pos-abs g-bg-primary g-rounded-50 g-right-30">{{ user.getReviews.count }}</span>
+            <span class="u-label g-font-size-11 g-bg-primary g-rounded-20 g-px-10"></span>
+        </a>
+        <!-- End My Reviews -->
+
+        <a data-request="onLogout" data-request-data="redirect: '/'"
+           class="list-group-item list-group-item-action justify-content-between g-cursor-pointer g-bg-primary--active g-bg-primary--hover g-color-white--hover">
+            <span><i class="icon-cursor g-pos-rel g-top-1 g-mr-8"></i> Выйти</span>
+        </a>
+
+    </div>
+    <!-- End Sidebar Navigation -->
+
+
+<!-- End Profile Sidebar -->

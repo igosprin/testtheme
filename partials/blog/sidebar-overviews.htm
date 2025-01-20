@@ -1,0 +1,34 @@
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 5
+categoryFilter = {{filter}}
+noPostsMessage = "Нет записей"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
+==
+{% set posts = blogPosts.posts %}
+<h3 class="g-font-size-18 g-font-size-25--sm g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-black g-mb-15 g-mb-30--md g-hidden-lg-up">
+  Читаемые обзоры
+</h3>
+<div class="g-bg-white g-rounded-10 g-px-20 g-py-40">
+  <h3 class="g-font-size-18 g-font-size-20--md g-font-weight-700 g-color-black g-mb-20 g-hidden-md-down">
+    Читаемые обзоры
+  </h3>
+  {% for post in posts %}
+  <div class="g-py-15 g-brd-bottom g-brd-gray-light-v4">
+    <a href="{{ post.url }}" class="d-block g-font-size-16--md g-line-height-1_3 g-color-black g-color-blue--hover g-mb-5 u-link-v5">
+      {{ post.title }}
+    </a>
+    <div class="d-flex align-items-center g-color-gray-dark-v4 g-font-size-12 g-line-height-1">
+      <span>{{ post.published_at|date("d M") }}</span>
+      <span class="g-mx-5">|</span>
+      <span class="d-flex align-items-center"><i class="icon-eye g-mr-5"></i>{{ post.views }}</span>
+    </div>
+  </div>
+  {% endfor %}
+
+  <a href="{{ 'blog/index'|page }}" class="d-block g-color-blue g-mt-15">
+    Смотреть все статьи&nbsp;&#8594;
+  </a>
+</div>

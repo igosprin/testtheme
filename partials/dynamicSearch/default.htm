@@ -1,0 +1,58 @@
+[itemDirectoryList searchLastQuery]
+listId = "search"
+limit = 4
+==
+<form
+  action="{{ 'search' | page }}?q={{ query | url_encode(true) }}"
+  method="get"
+  class="g-pos-abs g-left-15 g-right-15"
+  style="bottom: -90px;"
+  id="dynamicsearch"
+>
+  <div class="row justify-content-center g-mb-0">
+      <div class="col-12">
+        <div id="form-icon-magnifier" class="input-group d-flex align-items-center">
+          <input
+            name="q"
+            type="search"
+            style="z-index: 4!important;"
+            data-toggle="collapse"
+            data-target="#dropdownResults"
+            value="{{ __SELF__.query }}"
+            autocomplete="off"
+            data-track-input
+            data-request="{{ __SELF__ }}::onType"
+            data-request-before-update="document.getElementById('dropdownResults').classList.add('ss-search-form__results--visible')"
+            data-request-update="'{{ __SELF__ }}::dropdown': '#dropdownResults'"
+            placeholder="Введите название организации"
+            aria-label="Введите название организации" aria-describedby="form-icon-magnifier"
+            class="g-pr-100 g-pr-150--md form-control g-brd-none g-font-size-10 g-font-size-16--md g-color-gray-dark-v5 g-rounded-10 g-pl-15 g-pl-30--md g-py-30 g-py-40--md"
+          >
+  
+          <button
+            class="btn g-rounded-10 g-font-size-12 g-font-size-16--md g-color-white text-uppercase g-bg-primary g-bg-gray-dark-v2--hover g-transition-0_5 g-px-15 g-px-30--md g-py-10 g-py-18--md g-pos-abs g-right-20 g-z-index-4"
+            type="submit"
+          >
+            Найти
+          </button>
+
+          <!-- <div class="ss-search-form__results collapse position-absolute g-z-index-3 w-100 g-top-65 g-top-91--lg" id="dropdownResults"
+                style="filter: drop-shadow(0px 23px 45px rgba(0, 0, 0, 0.08));">
+              {# partial __SELF__ ~ '::dropdown' #}
+          </div> -->
+        </div>
+        <div class="g-pt-15">
+          <span class="g-font-size-16--md g-color-gray-dark-v5 g-pr-10">Популярно:</span>
+          {% set searchLastQuery = searchLastQuery.getItemDirectoryListItems %}
+          {% for search in searchLastQuery %}
+            <a
+              href="{{ 'search'| page }}?q={{ search.itemDirectory.name }}"
+              class="d-inline-block g-mr-15 g-brd-bottom--dashed g-font-size-14 g-line-height-1_2 g-color-gray-dark-v2 g-brd-gray-dark-v2 u-link-v5 g-brd-blue--hover g-color-blue--hover g-transition-0_5"
+            >
+              {{search.itemDirectory.name}}
+            </a>
+          {% endfor %}
+        </div>
+    </div>
+  </div>
+</form>

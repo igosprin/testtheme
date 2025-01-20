@@ -1,0 +1,40 @@
+[viewBag]
+==
+<!--120 DAYS-->
+<section class="g-pt-80--md g-pb-60--md g-py-50 g-bg-bluegray-lineargradient">
+    <div class="container">
+        <h2
+            class="col-lg-10 mx-auto g-color-white text-center text-uppercase g-mb-30 g-font-size-32--md g-font-size-25 g-font-weight-500 mx-auto">
+            {{ h2Days | raw }}</h2>
+        <h5 class="g-color-white g-font-size-22 text-center g-mb-50">{{ h5Days | raw }}</h5>
+        <form class="row mx-auto justify-content-lg-between justify-content-center"
+            data-request="{{ genericForm }}::onFormSubmit">
+            {{ form_token() }}
+            <div id="{{ genericForm }}_forms_flash"></div>
+            <input name="type" type="hidden" value="call to action">
+            <input name="url" type="hidden" value="{{ ''| page }}">
+            <div class="col-lg-3 col-md-6">
+                <input
+                    class="g-bg-white form-control g-width-300 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-px-20 g-py-17 g-mb-20"
+                    type="text" placeholder="{{ inputNameDays | raw }}" name="name" required>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <input
+                    class="g-bg-white form-control g-width-300 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-px-20 g-py-17 g-mb-20"
+                    type="email" placeholder="{{ inputEmailDays | raw }}" name="email">
+            </div>
+            <div class="col-lg-3 col-md-6 g-mb-20">
+                <input type="tel" name="iti_phone"
+                    class="iti_phone g-bg-white form-control g-width-300 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-py-17 g-mb-20"
+                    required>
+                <small class="iti_error-msg hide form-control-feedback"></small>
+                <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <button class="g-width-300 btn btn-xl u-btn-teal g-font-weight-600 g-rounded-5 text-uppercase"
+                    data-attach-loading type="submit">{{ btnSubmitDays | raw }}
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

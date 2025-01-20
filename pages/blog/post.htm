@@ -1,0 +1,208 @@
+url = "/blog/post/:slug"
+layout = "default"
+title = "Статья"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "blog/category"
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 1
+categoryPage = "blog/category"
+
+[authorPost]
+slug = "{{ :slug }}"
+
+[genericForm]
+group = "blog-post"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+
+[commentsPost componentCommentsPost]
+
+[reviewsUseful componentReviewsUseful]
+
+==
+<?php
+function onEnd()
+    {
+      $this->page->title = $this->post->title;
+      $this->page->meta_title = $this->post->title;
+      $this->page->meta_description = $this->post->excerpt;
+      $this->page->category = $this->post->categories;
+      $this->page->og_type = 'article';
+      if($this->post->featured_images->isNotEmpty()) { 
+        $this->page->og_image = $this->post->featured_images['0']->getThumb(600, 600); 
+      }
+    }
+?>
+==
+{% put blogcriticalcss %}
+    {% partial 'layouts/blogcriticalcss' %}
+{% endput %}
+
+{% set post = blogPost.post %}
+{% set itemDirectory = post.itemDirectory %}
+
+{% partial 'blog/blog-categories-menu' %}
+
+
+<section class="g-bg-lightblue">
+  <div class="container">
+    {% partial 'common/breadcrumbs' breadcrumbs = {'Главная': '/', 'Блог': '/blog', (this.page.title): ''} %}
+
+    <div class="g-mb-25 g-hidden-lg-up">
+      {% partial 'banners/law-aid-tablet' %}
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-8 g-px-0 g-px-15--sm g-mb-40 g-mb-0--lg">
+        <!-- related itemDirectory card -->
+        {% if itemDirectory %}
+        <div class="g-pa-20 g-rounded-10 g-bg-white g-mx-15 g-mx-0--sm g-mb-30">
+          <h3 class="g-font-size-18 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black g-mb-20">
+            Обзор компании {{ itemDirectory.name}}
+          </h3>
+          <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between">
+            {% for item in itemDirectory.itemsSection %}
+            <a
+              href="{{ 'directory/company-profile'|page({section_slug: item.section.slug, item_slug: itemDirectory.slug}) }}"
+              class="d-flex flex-column flex-xl-row align-items-xl-center u-link-v5 g-mb-10 g-mb-0--sm"
+            >
+              <img
+                class="align-self-center fb-img-contain g-mr-30 g-mb-15 g-mb-0--xl"
+                src="{{ itemDirectory.logo|resize(200, auto, { mode: 'portrait' }) }}"
+                alt="{{ itemDirectory.name }}"
+                width="200"
+                height="60"
+              >
+              <div class="d-flex flex-column">
+                <div class="d-flex align-items-center">
+                  <span class="g-color-gray-dark-v2 g-mr-5">Оценка:</span>
+                  <div
+                    class="js-rating align-self-center g-color-yellow g-font-size-18"
+                    data-rating="{{ itemDirectory.display_rating }}"
+                  >
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+                  <span class="g-color-gray-dark-v2 g-mr-5">Отзывов:</span>
+                  <span class="g-font-size-16 g-color-black">{{ itemDirectory.getApprovedReviews.count }}</span>
+                </div>
+              </div>
+            </a>
+            {% endfor %}
+
+            <div class="d-flex flex-column">
+              {% for otherItem in itemDirectory.itemsSection %}
+              {% if  otherItem.section.slug == "brokers" %}
+              <a href="{{ 'dynamic-landings/chargeback-broker'|page({ item_slug: itemDirectory.slug }) }}" class="btn g-rounded-5 g-color-black g-color-white--hover g-bg-yellow g-bg-gray-dark-v2--hover g-transition-0_4 g-py-8 g-px-40 g-mb-15"> 
+                Вернуть средства
+              </a>
+              {% endif %}
+              {% if  otherItem.section.slug == "investment-projects" %}
+              <a href="{{ 'dynamic-landings/chargeback-investments'|page({ item_slug: itemDirectory.slug }) }}" class="btn g-rounded-5 g-color-black g-color-white--hover g-bg-yellow g-bg-gray-dark-v2--hover g-transition-0_4 g-py-8 g-px-40 g-mb-15"> 
+                Вернуть средства
+              </a>
+              {% endif %}
+              {% if  otherItem.section.slug == "cryptocurrency-exchanges" %}
+              <a href="{{ 'dynamic-landings/chargeback-cryptocurrency'|page({ item_slug: itemDirectory.slug }) }}" class="btn g-rounded-5 g-color-black g-color-white--hover g-bg-yellow g-bg-gray-dark-v2--hover g-transition-0_4 g-py-8 g-px-40 g-mb-15"> 
+                Вернуть средства
+              </a>
+              {% endif %}
+              {% endfor %}
+              <a
+                href="#law-aid"
+                data-modal-target="#law-aid"
+                data-modal-effect="fadein"
+                class="btn g-rounded-5 g-color-white g-bg-gray-dark-v2--hover g-transition-0_4 g-py-8 g-px-40" style="background-color: #001d42;"
+              >
+                Помощь юриста
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <!-- end of related itemDirectory card -->
+
+        {% partial 'blog/post-body' %}
+
+        <!-- comments and comments form -->
+        <section class="g-bg-lightblue">
+          <div class="container g-px-0--sm">
+            {% partial 'componentCommentsPost/form' %}
+            {% component 'componentCommentsPost' %}
+          </div>
+        </section>
+      </div>
+      <!-- sidebar -->
+      <div class="col-12 col-lg-4 g-pos-rel">
+        <div class="g-mb-30 g-hidden-md-down">
+          {% partial 'banners/choose-broker-sidebar' %}
+        </div>
+        {% if itemDirectory %}
+        <div class="g-mb-30">
+          {% partial 'blog/popular-companies-sidebar' %}
+        </div>
+
+        <div class="g-mb-30 g-hidden-md-down">
+          {% partial 'banners/become-author-sidebar' %}
+        </div>
+        <div class="g-mb-30">
+          {% for category in post.categories|slice(0,1) %}
+            {% partial 'blog/sidebar-overviews' filter = category.slug %}
+          {% endfor %}
+        </div>
+
+        {% else %}
+        <div class="g-mb-30">
+          {% partial 'blog/popular-posts-sidebar' %}
+        </div>
+        <div class="g-mb-30 g-hidden-md-down">
+          {% partial 'banners/become-author-sidebar' %}
+        </div>
+        {% endif %}
+        <div class="g-hidden-md-down" id="stickyblock-start">
+          <div class="js-sticky-block"
+            data-type="responsive"
+            data-start-point="#stickyblock-start"
+            data-end-point="#stickyblock-end">
+            {% partial 'banners/law-aid-sidebar' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="stickyblock-end"></div>
+</section>
+
+
+
+{% if post.categories.count %}
+  {% for category in post.categories|slice(0,1) %}
+
+    {% partial 'blog/popular-category-posts' filter = category.slug %}
+
+  {% endfor %}
+{% endif %}
+
+
+
+{% partial 'modals/law-aid' %}
+{% partial 'modals/become-author' %}
+{% partial 'modals/choose-broker' %}

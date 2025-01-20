@@ -1,0 +1,83 @@
+[viewBag]
+==
+<!--PROMO-->
+<section class="g-bg-size-cover g-pt-150--lg g-pb-130--lg g-py-50"
+    style="background-image: url( {{ 'assets/build/img/landings/chargeback/bg-main.jpg' | theme }} )">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 g-order-1--lg text-lg-left text-center g-mb-0--lg g-mb-30 g-order-2--lg">
+                <h1 class="g-font-size-42--lg text-uppercase g-line-height-1_2 g-color-white g-font-weight-600">{{
+                    h1Promo | raw }}</h1>
+                <h5
+                    class="g-color-white g-font-size-24--md g-font-size-22 g-mt-20 g-mb-30 g-max-width-600 mx-auto g-ml-0--lg">
+                    {{ h5PromoFirst | raw }}</h5>
+                <h5 class="g-color-white g-font-size-24--md g-font-size-22 g-max-width-600 mx-auto g-ml-0--lg">
+                    {{ h5PromoSecond | raw }}</h5>
+
+                <a class="js-go-to g-font-weight-600 g-mt-20 g-hidden-sm-down btn btn-xl u-btn-teal g-rounded-5 text-uppercase g-px-70 mr-3"
+                    href="#go-to-content" data-target="#go-to-content">
+                    {{ btnMore | raw }}
+                </a>
+            </div>
+            <div class="col-lg-5 col-md-6 align-self-end g-order-2--lg mx-auto g-order-1--lg">
+                <form class="g-bg-white g-rounded-15 u-shadow-v1-5 g-px-30 g-py-35"
+                    data-request="{{ genericForm }}::onFormSubmit">
+                    {{ form_token() }}
+                    <div id="{{ genericForm }}_forms_flash"></div>
+                    <div class="text-center">
+                        <h2
+                            class="g-font-weight-700 g-mb-30--md g-line-height-1_4 g-font-size-20 text-uppercase g-color-gray-dark-v2">
+                            {{ h2Form | raw }}</h2>
+                    </div>
+                    <input name="type" type="hidden" value="promo">
+                    <input name="url" type="hidden" value="{{ ''| page }}">
+                    <input
+                        class="w-100 form-control g-brd-around g-rounded-5 g-brd-gray-light-v4 g-font-size-12 g-px-15 g-py-15 g-mb-20"
+                        type="text" placeholder=" {{ inputName | raw }}" name="name">
+                    <div class="g-mb-20">
+                        <input type="tel" name="iti_phone"
+                            class="iti_phone w-100 form-control g-brd-around g-rounded-5 g-brd-gray-light-v4 g-font-size-12 g-py-15 g-mb-20"
+                            required>
+                        <small class="iti_error-msg hide form-control-feedback"></small>
+                        <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+                    </div>
+                    <input
+                        class="w-100 form-control g-brd-around g-rounded-5 g-brd-gray-light-v4 g-font-size-12 g-px-15 g-py-15 g-mb-20"
+                        type="email" placeholder=" {{ inputEmail | raw }}" name="email" required="">
+                    <button
+                        class="btn w-100 g-font-size-16 g-font-weight-600 g-rounded-5 g-brd-around g-brd-teal g-bg-teal g-bg-transparent--hover g-line-height-1 g-color-white g-color-teal--hover text-uppercase g-transition-0_3 g-py-16"
+                        type="submit"> {{ btnSubmit | raw }}
+                    </button>
+
+                    {% if telWhatsapp == '447507385047' %}
+                    
+                    <a href="https://api.whatsapp.com/send/?phone=447507385047"
+                        class="d-flex align-items-center justify-content-center btn w-100 g-color-teal g-color-white--hover g-bg-transparent g-bg-teal--hover g-transition-0_3 g-brd-around g-brd-teal g-font-size-16 g-font-weight-600 g-rounded-5 text-uppercase g-mt-25 g-py-16"
+                        type="submit">
+                        <img src="{{ 'assets/build/img/landings/chargeback/wa-icon.png'|theme }}" class="g-mr-12" alt="whatsapp">
+                        <span class="g-line-height-1">{{ btnWA | raw }}</span>
+                    </a>
+                    
+                    {% elseif telWhatsapp == '447366054449' %}
+                    
+                    <a href="https://api.whatsapp.com/send/?phone=447366054449"
+                        class="d-flex align-items-center justify-content-center btn w-100 g-color-teal g-color-white--hover g-bg-transparent g-bg-teal--hover g-transition-0_3 g-brd-around g-brd-teal g-font-size-16 g-font-weight-600 g-rounded-5 text-uppercase g-mt-25 g-py-16"
+                        type="submit">
+                        <img src="{{ 'assets/build/img/landings/chargeback/wa-icon.png'|theme }}" class="g-mr-12" alt="whatsapp">
+                        <span class="g-line-height-1">{{ btnWA | raw }}</span>
+                    </a>
+                    
+                    {% endif %}
+                </form>
+
+<!--                 <div class="w-100 text-center">
+                    <a class="g-mx-auto g-font-weight-600 g-mt-40 g-my-20 btn btn-xl u-btn-teal g-rounded-5 text-uppercase g-px-35 g-py-25"
+                        href="https://financebar.net/go/whatsapp" onclick="gtag('event', 'click', { 'event_category': 'messenger' });">
+                        {{ btnMore | raw }}
+                    </a>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+</section>

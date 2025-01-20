@@ -1,0 +1,34 @@
+title = "Подбор юридической компании по возврату денег от мошенников"
+url = "/legal"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+meta_title = "Вернуть деньги от мошенников"
+meta_description = "Закажите услуги юриста по возврату денег за не оказанную услугу или некачественный товар. Юридическая консультация – это начальный этап сотрудничества и первый шаг к решению проблемы."
+
+[session]
+security = "all"
+
+[genericForm]
+group = "check-broker-landing"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+==
+<div class="g-bg-darkblue">
+    {% partial 'landings/legal-promo' %}
+    {% partial 'landings/legal-info' %}
+    {% partial 'landings/legal-terms' %}
+    {% partial 'landings/legal-stages' %}
+    {% partial 'landings/legal-benefits' %}
+    {% partial 'landings/legal-banner' %}
+    {% partial 'modals/free-consultation' id="legal-banner" type="legal-banner" %}
+</div>

@@ -1,0 +1,101 @@
+<!-- leave review block -->
+
+{% if not user and not __SELF__.isAnonymousCommentsAllowed %}
+<div class="g-brd-around g-brd-gray-light-v4 g-rounded-2 g-mb-35 g-py-20 g-px-20 g-px-25--sm">
+    <p class="h5">
+        <a href="{{ 'account/sign-in'|page }}">Войти</a> / <a href="{{ 'account/sign-up'|page }}">зарегистрироваться</a>
+        чтобы оставить отзыв
+    </p>
+</div>
+{% else %}
+<div id="leaveReviewResult">
+    <form data-request="onReview" class="g-brd-around g-brd-gray-light-v4 g-rounded-2 g-px-25 g-py-30 g-mb-50"
+        id="leave-testimonal" data-request-validate>
+        {{ form_token() }}
+
+        <input name="organization" type="hidden" value="{{ organization.id }}">
+        {% if not user %}
+        <div class="g-mb-15">
+            <label class="g-color-black g-font-size-20 g-font-weight-700 g-mb-10">Напишите ваше имя</label>
+            <input
+                class="form-control g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 rounded-0 g-py-10 g-px-15"
+                type="text" name="name" placeholder="Имя" required>
+            <div data-validate-for="name" class="alert alert-danger"></div>
+        </div>
+        <div class="g-mb-15">
+            <label class="g-color-black g-font-size-20 g-font-weight-700 g-mb-10">Напишите ваш e-mail</label>
+            <input
+                class="form-control g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 rounded-0 g-py-10 g-px-15"
+                type="email" name="email" placeholder="Электронаая почта" required>
+            <div data-validate-for="email" class="alert alert-danger"></div>
+        </div>
+        {% endif %}
+
+        <!-- Stars -->
+        <div class="form-group d-flex flex-column justify-content-between g-mb-30">
+            <label class="g-color-black g-font-size-20 g-font-weight-700 g-mb-10">Оцените эту компанию</label>
+            <div class="star-rating g-mb-30 g-color-gray-light-v1 g-font-size-25">
+                <span class="fa fa-star-o fa-lg" data-rating="1"></span>
+                <span class="fa fa-star-o fa-lg" data-rating="2"></span>
+                <span class="fa fa-star-o fa-lg" data-rating="3"></span>
+                <span class="fa fa-star-o fa-lg" data-rating="4"></span>
+                <span class="fa fa-star-o fa-lg" data-rating="5"></span>
+                <input type="hidden" name="rating" id="rating" class="rating-value" value="0">
+            </div>
+            <div data-validate-for="rating" class="alert alert-danger"></div>
+        </div>
+        <!-- End Stars -->
+
+        <div class="form-group g-mb-30">
+            <label class="g-color-black g-font-size-20 g-font-weight-700 g-mb-15">Раскажите нам о вашем
+                опыте</label>
+            <textarea id="inputGroup2_1" name="content"
+                class="g-color-gray-dark-v5 g-font-size-16 form-control form-control-md g-resize-none rounded-0"
+                rows="7" placeholder="Опишите свой опыт с данной компанией" required></textarea>
+            <div data-validate-for="content" class="alert alert-danger"></div>
+        </div>
+
+        {% if user %}
+        <div class="d-flex align-items-start g-mb-20">
+            <label
+                class="form-check-inline u-check g-pl-25 g-line-height-1 align-self-center g-color-gray-dark-v5 g-font-size-13 g-mt-6">
+                <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0 g-line-height-1_2" type="checkbox" checked=""
+                    required="">
+                <div
+                    class="u-check-icon-checkbox-v4 g-color-black g-brd-gray-light-v4 rounded g-absolute-centered--y g-left-0">
+                    <i class="fa" data-check-icon=""></i>
+                </div>
+                Я хочу чтобы компания <a href="/c/{{ organization.slug }}" class="g-color-blue g-px-3">
+                    {{ organization.name }} </a> узнала о моем отзыве
+            </label>
+        </div>
+        {% else %}
+
+        <div class="g-mb-20 g-line-height-1_2 g-color-gray-dark-v5 g-font-size-13">
+            <a href="{{ 'account/sign-up'|page }}" class="g-color-blue g-px-3">Зарегистрируйтесь </a> чтобы компания <a
+                href="/c/{{ organization.slug }}" class="g-color-blue g-px-3">{{ record.name }}</a> смогла узнать о
+            вашем отзыве
+        </div>
+
+        {% endif %}
+
+        <div class="d-flex align-items-start g-mb-30">
+            <label
+                class="form-check-inline u-check g-pl-25 g-line-height-1_2 align-self-center g-color-gray-dark-v5 g-font-size-13 g-mt-6">
+                <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox" required>
+                <div
+                    class="u-check-icon-checkbox-v4 g-color-black g-brd-gray-light-v4 rounded  g-pos-abs g-top-0 g-left-0">
+                    <i class="fa" data-check-icon=""></i>
+                </div>
+                Я подтверждаю, что этот обзор посвящен моему собственному опыту. Я имею право оставить этот отзыв, и мне
+                не предлагали никаких стимулов или платежей за то, чтобы оставить отзыв для этой компании.
+            </label>
+        </div>
+
+        <div class="">
+            <button class="btn g-font-size-16 btn-md btn-block u-btn-blue rounded-0 g-py-13" type="submit" data-attach-loading>Оставить
+                отзыв</button>
+        </div>
+    </form>
+</div>
+{% endif %}

@@ -1,0 +1,51 @@
+title = "Обновление профиля"
+url = "/profile/update"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[session]
+security = "user"
+redirect = "account/sign-in"
+
+[fileUploader]
+placeholderText = "Click or drag files to upload"
+maxSize = 1
+fileTypes = ".jpeg,.gif,.png,.jpg"
+deferredBinding = 0
+
+[account]
+redirect = "account/profile"
+paramCode = "code"
+forceSecure = 0
+requirePassword = 0
+==
+<?php
+function onInit()
+{
+    if(Auth::check()) {
+        $this->fileUploader->bindModel('avatar', Auth::getUser());
+}
+}
+?>
+==
+<section class="g-py-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 g-mb-50 g-mb-0--lg">
+                {% partial 'account/left-sidebar' %}
+            </div>
+            <div class="col-lg-9">
+                <div class="u-heading-v3-1 g-mb-30 g-pos-rel">
+                    <h2 class="u-heading-v3__title g-font-size-18 g-font-primary g-font-weight-600 g-color-gray-dark-v1 text-uppercase g-brd-primary">
+                        НАСТРОЙКИ ПРОФИЛЯ</h2>
+                </div>
+
+                {% component 'account::update' %}
+
+            </div>
+        </div>
+
+    </div>
+</section>

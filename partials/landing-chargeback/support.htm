@@ -1,0 +1,46 @@
+[viewBag]
+==
+<!-- Support section -->
+<section class="g-py-110--md g-py-50 g-bg-bluegray-lineargradient">
+    <div class="container">
+        <h2
+            class="g-color-white text-center text-uppercase g-mb-50 g-font-size-26--md g-font-size-18 g-font-weight-600">
+            {{ h2Support | raw }} </h2>
+
+
+        <form class="row mx-auto justify-content-lg-between justify-content-center"
+            data-request="{{ genericForm }}::onFormSubmit">
+            {{ form_token() }}
+            <div id="{{ genericForm }}_forms_flash"></div>
+            <input name="type" type="hidden" value="call to action">
+            <input name="url" type="hidden" value="{{ ''| page }}">
+            <div class="col-md-4 col-sm-6 g-px-30--lg">
+                <input
+                    class="g-bg-white form-control w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-px-20 g-py-17 g-mb-20"
+                    type="text" placeholder="{{ inputNameSupport | raw }}" name="name" required>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <input type="tel" name="iti_phone"
+                    class="iti_phone g-bg-white form-control w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-py-17 g-mb-20"
+                    required>
+                <small class="iti_error-msg hide form-control-feedback"></small>
+                <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+            </div>
+            <div class="col-md-4 col-sm-6 g-px-30--lg">
+                <button
+                    class="g-mt-20 g-mt-0--md w-100 btn btn-xl u-btn-teal g-font-weight-600 g-py-14--md g-font-size-18--lg g-font-size-14 g-rounded-5 text-uppercase"
+                    type="submit" data-attach-loading>
+                    {{ btnSupport | raw }}
+                </button>
+            </div>
+        </form>
+
+<!--         <div class="w-100 text-center">
+            <a class="g-mx-auto g-font-weight-600 g-mt-10 btn btn-xl u-btn-teal g-rounded-5 text-uppercase g-px-30 g-py-15"
+                href="https://financebar.net/go/whatsapp" onclick="gtag('event', 'click', { 'event_category': 'messenger' });">
+                {{ btnMore | raw }}
+            </a>
+        </div> -->
+
+    </div>
+</section>

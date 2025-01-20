@@ -1,0 +1,44 @@
+<!--promo section-->
+<section
+  class="g-pt-80 g-pt-150--lg g-bg-size-cover g-bg-no-repeat"
+  style="background-image: url({{ 'assets/build/img/financebar-new/bgPromo.png' | theme }});"
+>
+  <div class="container u-bg-overlay__inner text-center">
+    <h1 class="g-mt-100--lg g-color-white g-font-weight-700 g-font-size-24 g-font-size-40--sm g-font-size-56--md g-line-height-1_2 text-center g-mb-25">
+        Все мнения о любых финансовых компаниях на одной площадке
+    </h1>
+
+    <p class="g-line-height-1_3 g-color-white g-font-size-18 g-font-size-25--sm g-font-size-30--md text-center g-mb-40 g-mb-150--lg">
+      Мы собираем опыт, который важен.
+    </p>
+
+    <!-- Search Form -->
+    <form action="{{ 'search' | page }}" method="get" class="g-bg-white g-pl-10 g-rounded-10 g-overflow-hidden" style="margin-bottom: -40px;">
+      <div class="row justify-content-center">
+        <div class="col-md-10 g-pa-20">
+          <div id="form-icon-magnifier" class="input-group">
+            <div class="input-group-append">
+              <span class="input-group-text g-bg-white rounded-0 border-0 g-font-size-16 g-color-bluegray g-pl-0 g-pr-0 g-pr-10--md g-py-0 g-pl-30--md">
+                <i class="icon-magnifier g-pos-rel g-top-1 g-px-1"></i>
+              </span>
+            </div>
+            <input
+              name="q"
+              class="form-control g-resize-none g-font-size-12 g-font-size-default--md rounded-0 g-py-15--md border-0 g-width-auto"
+              type="text" placeholder="Введите название финансовой организации"
+              aria-label="Введите название финансовой организации"
+              aria-describedby="form-icon-magnifier"
+            >
+          </div>
+        </div>
+
+        <div class="col-md-2 g-pr-10 g-pl-5 g-pl-0--lg">
+          <button class="btn btn-block u-btn-blue g-color-white g-font-size-16--md text-uppercase g-py-20 g-height-100x rounded-0" type="submit">
+            Поиск
+          </button>
+        </div>
+      </div>
+    </form>
+    <!-- End Search Form -->
+  </div>
+</section>

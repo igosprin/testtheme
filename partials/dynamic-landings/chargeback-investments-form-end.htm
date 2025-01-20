@@ -1,0 +1,134 @@
+==
+{% set itemDirectory = dynamicLanding.getItem %}
+
+<section class="g-bg-img-hero g-py-60 g-py-80--md g-overflow-x-hidden" style="background-image: url({{ 'assets/build/img/landings/chargeback/form-bg-end.svg'|theme }});">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <h2 class="g-font-size-22 g-font-size-30--md g-font-weight-700 g-color-white text-center g-mb-16">
+          Закажите бесплатную консультацию по возврату денег из {{ itemDirectory.name }}
+        </h2>
+        <p class="g-font-size-18--md g-line-height-1_4 g-font-weight-400 g-color-white-opacity-0_8 text-center g-mb-40">
+          Эксперты свяжутся с вами в день обращения. Для того, чтобы мы могли помочь наилучшим образом, пожалуйста, заполните краткую анкету про детали отправки депозитов
+        </p>
+
+        <!-- form -->
+        <form data-request="{{genericForm}}::onFormSubmit" data-request-validate data-request-flash>
+          {{ form_token() }}
+          <div id="{{ genericForm}}_forms_flash"></div>
+          <input type="hidden" name="url" value="{{ ''| page }}">
+          <input type="hidden" name="type" value="get-instruction-form">
+          {% if itemDirectory.name is defined %}
+          <input type="hidden" name="broker" value="{{ itemDirectory.name }}" id="organization">
+          {% endif %}
+          <div class="row">
+            <div class="col-12">
+              <!-- name -->
+              <div class="form-group g-mb-20">
+                <input
+                  class="form-control g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-teal--hover g-transition-0_4 g-pa-15"
+                  name="name"
+                  id="name"
+                  type="text"
+                  placeholder="Ваше имя*"
+                  required
+                >
+                <div data-validate-for="name" class="alert alert-danger"></div>
+                <div data-validate-for="slug" class="alert alert-danger"></div>
+              </div>
+            </div>
+            <div class="col-12">
+              <!-- phone -->
+              <div class="form-group g-mb-20">
+                <input
+                  name="phone"
+                  id="phone"
+                  type="tel"
+                  placeholder="Номер телефона*"
+                  class="iti_phone form-control g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-teal--hover g-transition-0_4 g-pl-90 g-pr-15 g-py-15"
+                  required
+                >
+                <small class="iti_error-msg hide form-control-feedback"></small>
+                <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+                <div data-validate-for="phone" class="alert alert-danger"></div>
+              </div>
+            </div>
+            <div class="col-12">
+              <!-- email -->
+              <div class="form-group g-mb-20">
+                <input
+                  name="email"
+                  id="email"
+                  type="email"
+                  placeholder="Электронная почта*"
+                  class="form-control g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-teal--hover g-transition-0_4 g-pa-15"
+                  required
+                >
+                <div data-validate-for="email" class="alert alert-danger"></div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <!-- summ -->
+              <div class="form-group g-mb-20">
+                <input
+                  class="form-control g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-teal--hover g-transition-0_4 g-pa-15"
+                  name="summ"
+                  id="summ"
+                  type="text"
+                  placeholder="Сумма ущерба в USD"
+                >
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <!-- name -->
+              <div class="form-group g-mb-20">
+                <input
+                  class="form-control g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-teal--hover g-transition-0_4 g-pa-15"
+                  name="data"
+                  id="data"
+                  type="text"
+                  placeholder="Дата последней транзакции"
+                >
+              </div>
+            </div>
+            <div class="col-12 g-mb-10">
+              <div class="form-group h-100">
+                <textarea
+                class="form-control h-100 g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-teal--hover g-transition-0_4 g-resize-none g-pa-15"
+                name="message"
+                rows="5"
+                placeholder="Кратко расскажите о ситуации и методах платежей"></textarea>
+              </div>
+            </div>
+          </div>
+          <p class="g-font-size-18--md g-line-height-1_4 g-font-weight-300 g-color-white-opacity-0_8 g-mb-40">
+            *поля, обязательные для заполнения
+          </p>
+
+          <!-- checkbox -->
+          <div class="form-group d-flex justify-content-center g-mb-20">
+            <label for="check-end" class="form-check-inline u-check g-pl-35 mb-0 g-mr-0 d-flex flex-wrap g-line-height-1_3">
+              <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="check-end" id="check-end" type="checkbox" value="1" checked>
+              <div class="u-check-icon-checkbox-v4 g-rounded-5 g-brd-teal g-bg-teal g-color-white g-absolute-centered--y g-left-0 g-width-25 g-height-25">
+                <i class="fa g-font-size-14" data-check-icon=""></i>
+              </div>
+              <span class="g-color-white-opacity-0_8 g-mr-5">
+                Я даю согласие на
+                <a href="{{ 'misc/privacy'|page }}" class="g-color-white-opacity-0_8 g-brd-white-opacity-0_8 g-brd-bottom--dashed u-link-v5">обработку персональных данных</a>
+              </span>
+            </label>
+          </div>
+          <!-- button -->
+          <button
+            class="d-block btn g-brd-around g-brd-teal g-bg-teal g-bg-transparent--hover g-rounded-10 g-font-size-16--md g-color-white g-color-teal--hover g-transition-0_4 text-uppercase g-py-15 g-px-50 mx-auto"
+            type="submit"
+            data-attach-loading
+          > Получить консультацию </button>
+        </form>
+        <!-- end form -->
+      </div>
+    </div>
+    
+    
+  </div>
+</section>

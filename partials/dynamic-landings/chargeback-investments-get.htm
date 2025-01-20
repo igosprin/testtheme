@@ -1,0 +1,23 @@
+==
+{% set itemDirectory = dynamicLanding.getItem %}
+ 
+<section class="g-py-60 g-py-70--md g-overflow-x-hidden" style="background:#EBEFF2;">
+  <div class="container">
+    <div class="row d-flex align-items-center">
+      <div class="col-12 col-lg-6 g-mb-30 g-mb-0--lg">
+        <img class="w-100" src="{{ 'assets/build/img/landings/chargeback/logos.svg'|theme }}" alt="">
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="d-flex flex-column align-items-start">
+          <h1 class="g-font-size-22 g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-black g-mb-25">
+            Как вернуть деньги из инвесткомпании {{ itemDirectory.name }}
+          </h1>
+          <div class="g-font-size-16 g-font-size-18--md g-color-gray-dark-v2 g-line-height-1_4 g-mb-0">
+            <p>Успешно оспоренные в виду мошеннической природы проекта денежные переводы <b>будут возвращены на банковский счет</b>. Ваш банк маркирует их для получателя как «отмену платежа» либо «возврат спорной транзакции».</p>
+            <p>Сроки и полнота возврата по всем оспоренным транзакциям зависят от качества подготовки документов, правильности запуска процедуры и ее оперативности. Полезно уложиться в 120-дневный период от момента отправки денег. В идеале инициировать возврат средств стоит сразу после понимания, что их присвоили мошенники.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

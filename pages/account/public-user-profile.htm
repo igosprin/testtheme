@@ -1,0 +1,333 @@
+title = "Профиль пользователя"
+url = "/users/:md5_id"
+layout = "default"
+is_hidden = 0
+
+[userProfile]
+md5_id = "{{ :md5_id }}"
+reviewsPerPage = 15
+
+[session]
+security = "all"
+==
+{% set profileUser = userProfile.getUser %}
+{% set reviews = userProfile.getApprovedReviewsPaginated %}
+
+<section class="g-pt-60 g-pb-70">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <div class="d-flex flex-column flex-md-row align-items-center g-mb-60">
+            <img
+              class="g-brd-around g-brd-3 g-brd-gray-light-v4 g-rounded-50 g-width-200 g-height-200 g-pa-15 g-mr-60--md g-mb-20 g-mb-0--md"
+              src="{{ user.avatar.thumb(auto, auto)|default('assets/build/img/account/user-avatar.svg'|theme) }}"
+              alt="User avatar"
+            >
+          <div class="d-flex flex-column align-items-center align-items-md-start">
+            <h2 class="g-font-size-28 g-font-size-36--md g-font-weight-700 g-color-black g-mb-16">
+              {{ profileUser.name }} {{ profileUser.surname }}
+            </h2>
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <div class="d-flex flex-column align-items-center g-brd-right g-brd-gray-light-v4 g-pl-15 g-pl-0--md g-pr-15 g-pr-30--md">
+                <div class="g-font-size-28 g-color-black g-line-height-1_4">{{ profileUser.getApprovedReviews.count }}</div>
+                <div class="g-font-size-16 g-color-gray-dark-v2">Отзывов</div>
+              </div>
+              <div class="d-flex flex-column align-items-center g-brd-right g-brd-gray-light-v4 g-px-15 g-px-30--md">
+                <div class="g-font-size-28 g-color-black g-line-height-1_4">5</div>
+                <div class="g-font-size-16 g-color-gray-dark-v2">Ответов</div>
+              </div>
+              <div class="d-flex flex-column align-items-center g-px-15 g-px-30--md">
+                <div class="g-font-size-28 g-color-black g-line-height-1_4">4</div>
+                <div class="g-font-size-16 g-color-gray-dark-v2">Оценок</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g-brd-bottom--md g-brd-gray-light-v4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-8">
+          <!-- Nav tabs -->
+          <ul
+            class="nav nav-justified u-nav-v-i u-nav-primary d-flex"
+            role="tablist"
+          >
+            <li class="nav-item g-font-size-14 g-font-size-16--md g-font-weight-700 text-uppercase flex-grow-1">
+              <a class="nav-link active" data-toggle="tab" href="#reviews" role="tab">отзывы</a>
+            </li>
+            <li class="nav-item g-font-size-14 g-font-size-16--md g-font-weight-700 text-uppercase flex-grow-1">
+              <a class="nav-link" data-toggle="tab" href="#replies" role="tab">Ответы</a>
+            </li>
+            <li class="nav-item g-font-size-14 g-font-size-16--md g-font-weight-700 text-uppercase flex-grow-1">
+              <a class="nav-link" data-toggle="tab" href="#ratings" role="tab">оценки</a>
+            </li>
+          </ul>
+          <!-- End Nav tabs -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row g-pt-40">
+      <div class="col-12 col-lg-8">
+        <!-- Tab panes -->
+        <div id="nav-5-2-primary-hor-justified" class="tab-content">
+          <!-- reviews -->
+          <div class="tab-pane fade show active" id="reviews" role="tabpanel">
+            <!-- review 1 -->
+            {% for review in reviews %}
+            <div class="g-pos-rel">
+              {% if user %}
+              <div class="d-flex g-pos-abs g-top-0 g-hidden-md-down" style="right: -90px;">
+                <btn class="btn d-flex justify-content-center align-items-center g-brd-around g-brd-gray-light-v4 g-rounded-5 g-width-35 g-height-35 g-mr-8">
+                  <img src="{{ 'assets/build/img/account/icons/edit-icon.svg'|theme }}" width="20" height="20" alt="edit">
+                </btn>
+                <btn class="btn d-flex justify-content-center align-items-center g-brd-around g-brd-gray-light-v4 g-rounded-5 g-width-35 g-height-35">
+                  <img src="{{ 'assets/build/img/account/icons/bin-icon.svg'|theme }}" width="20" height="20" alt="edit">
+                </btn>
+              </div>
+              {% endif %}
+              <div class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-pa-30 g-mb-30">
+                <div class="d-flex g-mb-20">
+                  <img
+                    class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-width-48 g-height-48 g-pa-5 g-mr-20 lazyload"
+                    src="{{ user.avatar.thumb(auto, auto)|default('assets/build/img/account/user-avatar.svg'|theme) }}"
+                    alt="user icon"
+                  >
+
+                  <div class="d-flex flex-column flex-sm-row w-100 justify-content-sm-between">
+                    <div>
+                      <div class="g-font-size-16 g-color-gray-dark-v2">
+                        {{ profileUser.name }} {{ profileUser.surname }} o <span class="g-color-blue">{{ review.organization.name }}</span>
+                      </div>
+                      <div class="js-rating g-font-size-16 g-letter-spacing-0 g-line-height-1 g-color-yellow mb-0" data-rating="4"></div>
+                      <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                        <meta itemprop="ratingValue" content="4">
+                        <meta itemprop="bestRating" content="5">
+                        <meta itemprop="worstRating" content="1">
+                      </span>
+                    </div>
+                    <div class="g-color-gray-dark-v5">
+                      {{ review.created_at_display }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="g-font-size-18--md g-color-black g-brd-bottom g-brd-gray-light-v4 g-pb-20">
+                  {{ review.content }}
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center g-pt-20">
+                  <div class="d-flex flex-wrap">
+                    <div class="d-flex align-items-center g-mr-20">
+                      <img src="{{ 'assets/build/img/account/icons/reply-arrow.svg'|theme }}" alt="reply-arrow">
+                      <span class="g-color-gray-dark-v5 g-line-height-1 g-ml-8">Ответить</span>
+                    </div>
+                    <div class="d-flex">
+                      <div class="d-flex align-items-center g-mr-20">
+                        <i class="fa fa-thumbs-o-up g-color-gray-dark-v5"></i>
+                        <span class="g-color-gray-dark-v5 g-line-height-1 g-ml-8">23</span>
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <i class="fa fa-thumbs-o-down g-color-gray-dark-v5"></i>
+                        <span class="g-color-gray-dark-v5 g-line-height-1 g-ml-8">4</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="g-hidden-md-down">
+                    <img src="{{ 'assets/build/img/account/icons/review-logo.svg'|theme }}" alt="company logo">
+                  </div>
+                  {% if user %}
+                  <div class="d-flex g-hidden-lg-up">
+                    <btn class="btn d-flex justify-content-center align-items-center g-brd-around g-brd-gray-light-v4 g-rounded-5 g-width-35 g-height-35 g-mr-8">
+                      <img src="{{ 'assets/build/img/account/icons/edit-icon.svg'|theme }}" width="20" height="20" alt="edit">
+                    </btn>
+                    <btn class="btn d-flex justify-content-center align-items-center g-brd-around g-brd-gray-light-v4 g-rounded-5 g-width-35 g-height-35">
+                      <img src="{{ 'assets/build/img/account/icons/bin-icon.svg'|theme }}" width="20" height="20" alt="edit">
+                    </btn>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <!-- end review 1 -->
+
+          </div>
+
+          <!-- replies -->
+          <div class="tab-pane fade" id="replies" role="tabpanel">
+            <!-- reply 1 -->
+            <div class="g-pos-rel">
+              {% if user %}
+              <div class="d-flex g-pos-abs g-top-0 g-hidden-md-down" style="right: -90px;">
+                <btn class="btn d-flex justify-content-center align-items-center g-brd-around g-brd-gray-light-v4 g-rounded-5 g-width-35 g-height-35 g-mr-8">
+                  <img src="{{ 'assets/build/img/account/icons/edit-icon.svg'|theme }}" width="20" height="20" alt="edit">
+                </btn>
+                <btn class="btn d-flex justify-content-center align-items-center g-brd-around g-brd-gray-light-v4 g-rounded-5 g-width-35 g-height-35">
+                  <img src="{{ 'assets/build/img/account/icons/bin-icon.svg'|theme }}" width="20" height="20" alt="edit">
+                </btn>
+              </div>
+              {% endif %}
+              <div class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-pa-30 g-mb-30">
+                <div class="d-flex align-items-center g-mb-20">
+                  <img
+                    class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-width-48 g-height-48 g-pa-5 g-mr-20 lazyload"
+                    src="{{ user.avatar.thumb(auto, auto)|default('assets/build/img/account/user-avatar.svg'|theme) }}"
+                    alt="user icon"
+                  >
+                  <div class="d-flex flex-column flex-sm-row justify-content-sm-between w-100">
+                    <div class="g-font-size-16 g-color-gray-dark-v2 g-line-height-1 g-mb-5 g-mb-0--sm">
+                      Татьяна о <span class="g-color-blue">Binarium</span>
+                    </div>
+                    <div class="g-color-gray-dark-v5 g-line-height-1">
+                      26 июня 2020 г.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="g-brd-left g-brd-2 g-brd-gray-light-v4 g-pl-20">
+                  <div class="d-flex align-items-center g-mb-15">
+                    <img
+                      class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-width-48 g-height-48 g-pa-5 g-mr-20 lazyload"
+                      src="{{ user.avatar.thumb(auto, auto)|default('assets/build/img/account/user-avatar.svg'|theme) }}"
+                      alt="user icon"
+                    >
+                    <div class="g-font-size-16 g-color-gray-dark-v2">
+                      {{ profileUser.name }} {{ profileUser.surname }}
+                    </div>
+                  </div>
+                  <div class="g-font-size-18--md g-color-black g-pb-15 g-brd-bottom g-brd-gray-light-v4">
+                    Развод на все деньги..
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center g-pt-15">
+                    <div class="d-flex flex-wrap">
+                      <div class="d-flex align-items-center g-mr-20">
+                        <img src="{{ 'assets/build/img/account/icons/reply-arrow.svg'|theme }}" alt="reply-arrow">
+                        <span class="g-color-gray-dark-v5 g-line-height-1 g-ml-8">Ответить</span>
+                      </div>
+                      <div class="d-flex">
+                        <div class="d-flex align-items-center g-mr-20">
+                          <i class="fa fa-thumbs-o-up g-color-gray-dark-v5"></i>
+                          <span class="g-color-gray-dark-v5 g-line-height-1 g-ml-8">23</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <i class="fa fa-thumbs-o-down g-color-gray-dark-v5"></i>
+                          <span class="g-color-gray-dark-v5 g-line-height-1 g-ml-8">4</span>
+                        </div>
+                      </div>
+                    </div>
+                    {% if user %}
+                    <div class="d-flex g-hidden-lg-up">
+                      <btn class="btn d-flex justify-content-center align-items-center g-brd-around g-brd-gray-light-v4 g-rounded-5 g-width-35 g-height-35 g-mr-8">
+                        <img src="{{ 'assets/build/img/account/icons/edit-icon.svg'|theme }}" width="20" height="20" alt="edit">
+                      </btn>
+                      <btn class="btn d-flex justify-content-center align-items-center g-brd-around g-brd-gray-light-v4 g-rounded-5 g-width-35 g-height-35">
+                        <img src="{{ 'assets/build/img/account/icons/bin-icon.svg'|theme }}" width="20" height="20" alt="edit">
+                      </btn>
+                    </div>
+                    {% endif %}
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- end reply 1 -->
+          </div>
+
+          <!-- ratings -->
+          <div class="tab-pane fade" id="ratings" role="tabpanel">
+            <!-- companies cards -->
+            <div class="row">
+              <div class="col-12 col-md-6 g-mb-20">
+                <div class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-pa-15">
+                  <div class="d-flex justify-content-between align-items-center g-brd-bottom g-brd-gray-light-v4 g-pb-8">
+                    <img src="{{ 'assets/build/img/account/finaxis-logo.jpg'|theme }}" width="150" alt="company logo">
+                    <div class="js-rating g-font-size-16 g-letter-spacing-0 g-line-height-1 g-color-yellow mb-0" data-rating="3"></div>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center g-pt-10">
+                    <div class="d-flex">
+                      <a href="#" class="g-font-size-16 g-color-black g-line-height-1">Finaxis</a>
+                      <div class="g-brd-around g-brd-black g-mx-8"></div>
+                      <a href="#" class="g-font-size-16 g-color-gray-dark-v5 g-line-height-1">Брокеры</a>
+                    </div>
+                    {% if user %}
+                    <btn class="btn d-flex justify-content-center align-items-center g-brd-around g-brd-gray-light-v4 g-rounded-5 g-width-28 g-height-28">
+                      <img src="{{ 'assets/build/img/account/icons/edit-icon.svg'|theme }}" width="16" height="16" alt="edit">
+                    </btn>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 g-mb-20">
+                <div class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-pa-15">
+                  <div class="d-flex justify-content-between align-items-center g-brd-bottom g-brd-gray-light-v4 g-pb-8">
+                    <img src="{{ 'assets/build/img/account/finaxis-logo.jpg'|theme }}" width="150" alt="company logo">
+                    <div class="js-rating g-font-size-16 g-letter-spacing-0 g-line-height-1 g-color-yellow mb-0" data-rating="3"></div>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center g-pt-10">
+                    <div class="d-flex">
+                      <a href="#" class="g-font-size-16 g-color-black g-line-height-1">Finaxis</a>
+                      <div class="g-brd-around g-brd-black g-mx-8"></div>
+                      <a href="#" class="g-font-size-16 g-color-gray-dark-v5 g-line-height-1">Брокеры</a>
+                    </div>
+                    {% if user %}
+                    <btn class="btn d-flex justify-content-center align-items-center g-brd-around g-brd-gray-light-v4 g-rounded-5 g-width-28 g-height-28">
+                      <img src="{{ 'assets/build/img/account/icons/edit-icon.svg'|theme }}" width="16" height="16" alt="edit">
+                    </btn>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              {# partial 'account/pagination' #}
+            </div>
+          </div>
+        </div>
+        <!-- End Tab panes -->
+      </div>
+
+      {% if user %}
+      <!-- <div class="col-12 col-lg-4"></div> -->
+      {% else %}
+      <div class="col-12 col-lg-4">
+        <div class="u-shadow-v1-3 g-brd-around g-brd-gray-light-v4 g-rounded-10 g-py-40 g-px-30">
+          <div class="g-font-size-16 g-color-black g-mb-25">
+            <strong>Зарегистрируйтесь</strong><br>
+            чтобы получить доступ к бесплатным инструментам и иметь возможность оставлять комментарии на Financebar
+          </div>
+
+          <a href="{{ 'account/sign-up'|page }}"
+              class="btn u-btn-blue g-font-size-16 g-color-white g-rounded-10 g-px-35 g-py-12 g-mb-12">
+              Зарегистрироваться
+          </a>
+
+          <div class="g-color-gray-dark-v5">
+            У меня уже есть аккаунт
+            <a href="{{ 'account/sign-in'|page }}" class="g-color-blue g-font-weight-700">Войти</a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .u-nav-v-i.u-nav-primary .nav-link.active {
+    border-color: #3398DC;
+    color: #3398DC;
+  }
+
+  .u-nav-v-i .nav-link {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: transparent;
+  }
+</style>

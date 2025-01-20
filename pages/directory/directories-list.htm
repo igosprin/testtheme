@@ -1,0 +1,108 @@
+title = "Каталог компаний"
+url = "/directories"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[session]
+security = "all"
+
+[directories componentDirectories]
+
+[genericForm]
+group = "directories"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+
+==
+
+{% set directories = componentDirectories.getDirectories %}
+
+<section class="g-bg-lightblue g-pb-30">
+  <div class="container">
+    {# partial 'common/breadcrumbs' breadcrumbs = directorySections.getBreadcrumbs() #}
+    <!-- breadcrumbs -->
+    <div class="g-py-20">
+      <ul class="u-list-inline" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li class="list-inline-item g-mr-0" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a class="u-link-v5 g-color-gray-dark-v5" href="/" itemprop="item">
+            <span itemprop="name">Главная</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <i class="fa fa-angle-right g-color-gray-dark-v5 g-mx-5"></i>
+        </li>
+        <li class="list-inline-item g-mr-0" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a class="u-link-v5 g-color-gray-dark-v2" itemprop="item">
+            <span itemprop="name">Категории компаний</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+      </ul>
+    </div>
+    <!-- end breadcrumbs -->
+
+    <!-- banner -->
+    <div class="g-hidden-xs-down">
+      {% partial 'banners/choose-broker' %}
+    </div>
+    <div class=" g-hidden-sm-up">
+      {% partial 'banners/choose-broker-tablet' %}
+    </div>
+    <!-- end banner -->
+
+    <!-- directories -->
+    <div class="g-pt-15 g-pt-60--md g-pb-40--xl">
+      <h1 class="g-font-size-18 g-font-size-30--md g-font-weight-700 g-color-black g-line-height-1_3 g-mb-20">
+        Категории компаний
+      </h1>
+      <div class="row g-mx-minus-5">
+        {% for directory in directories %}
+        {% for section in directory.sections %}
+        <div class="col-12 col-md-4 g-mb-10 g-px-5">
+          <a
+            href="{{ 'directory/section'|page({section_slug: section.slug})}}"
+            class="d-flex flex-column align-items-center justify-content-center g-bg-white g-rounded-10 g-color-black g-color-blue--hover u-shadow-v1-6--hover u-link-v5 g-transition-0_4 g-height-100x g-pa-40"
+          >
+            {% if section.picture.getThumb  is defined %}
+              <img src="{{ section.picture.getThumb(80, 80) }}" alt="{{ section.name }}" class="g-mb-30">
+            {% endif %}
+            
+            <h3 class="g-font-size-20 g-font-weight-700 g-line-height-1_4 g-mb-2 text-center">
+              {{ section.name }}
+            </h3>
+            <div class="g-color-gray-dark-v5 g-line-height-1_5 g-mb-0">
+              {{ section.number_of_items_directory }} компаний
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+        {% endfor %}
+        <div class="col-12 col-md-4 g-mb-10 g-px-5">
+          <a
+            href="{{ 'landings/landing-check-broker'|page }}"
+            class="d-flex flex-column align-items-center g-rounded-10 u-shadow-v1-6--hover u-link-v5 g-transition-0_4 g-pa-40 g-height-100x border-0" 
+            style="background: #356588;"
+          >
+            <h3 class="g-color-white g-font-size-26 g-font-weight-700 g-line-height-1_4 text-uppercase g-mb-20 text-center">
+              Проверить финансовую компанию
+            </h3>
+            <div class="btn g-bg-white g-color-black g-rounded-10 g-py-10 g-px-30">
+              Проверить бесплатно
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% partial 'modals/choose-broker' %}

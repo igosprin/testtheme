@@ -1,0 +1,137 @@
+title = "Категория"
+url = "/directories/:section_slug"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[session]
+security = "all"
+
+[directorySections]
+directorySlug = "companies"
+companiesPerPage = 46
+
+[sectionItemsDirectory]
+directorySlug = "companies"
+sectionSlug   = "{{ :section_slug }}"
+itemsPerPage = 46
+orderBy = "rating"
+orderDirection = "desc"
+
+[genericForm]
+group = "directory section"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+
+[sectionMetainfo]
+directorySlug = "companies"
+sectionSlug   = "{{ :section_slug }}"
+==
+
+
+<?php
+function onEnd()
+    {
+        $this['section'] = $this->sectionItemsDirectory->getSection();
+        $this->setMeta();
+    }
+
+    function setMeta()
+    {
+      $sectionPageTitle       = $this->sectionMetainfo->getPageTitle();
+      $sectionMetaTitle       = $this->sectionMetainfo->getMetaTitle();
+      $sectionMetaDescription = $this->sectionMetainfo->getMetaDescription();
+  
+      $this->page->title            = $sectionPageTitle;
+      $this->page->meta_title       = $sectionMetaTitle;
+      $this->page->meta_description = $sectionMetaDescription;
+    }
+?>
+==
+
+{% set section = sectionItemsDirectory.getSection %}
+
+<section class="g-bg-white g-pb-20 g-pb-40--md">
+  <div class="container">
+    {# partial 'common/breadcrumbs' breadcrumbs = sectionItemsDirectory.getBreadcrumbs() #}
+    <!-- breadcrumbs -->
+    <div class="g-py-15 g-py-20--sm">
+      <ul class="u-list-inline" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li class="list-inline-item g-mr-0" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a class="g-font-size-12 g-font-size-default--md u-link-v5 g-color-gray-dark-v5" href="/" itemprop="item">
+            <span itemprop="name">Главная</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <i class="fa fa-angle-right g-color-gray-dark-v5 g-mx-5"></i>
+        </li>
+        <li class="list-inline-item g-mr-0" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a class="g-font-size-12 g-font-size-default--md u-link-v5 g-color-gray-dark-v5" href="{{ 'directory/directories-list'| page }}" itemprop="item">
+            <span itemprop="name">Каталог компаний</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <i class="fa fa-angle-right g-color-gray-dark-v5 g-mx-5"></i>
+        </li>
+        <li class="list-inline-item g-mr-0" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a class="g-font-size-12 g-font-size-default--md u-link-v5 g-color-gray-dark-v2" itemprop="item">
+            <span itemprop="name">{{ section.name }}</span>
+          </a>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ul>
+    </div>
+    <!-- end breadcrumbs -->
+
+    <!-- banner -->
+    <div class="g-hidden-xs-down">
+      {% partial 'banners/choose-broker' %}
+    </div>
+    <div class=" g-hidden-sm-up">
+      {% partial 'banners/choose-broker-tablet' %}
+    </div>
+    <!-- end banner -->
+    <!-- latest companies -->
+      {% partial 'directory/section-latest-company' %}
+    <!-- end latest companies  -->
+  </div>
+</section>
+  <!-- directory companies -->
+<section class="g-bg-lightblue g-pb-20 g-pb-40--md">
+  <div class="container">
+    <div class="g-pt-15 g-pt-20--sm">
+      <h1 class="g-font-size-18 g-font-size-30--md g-font-weight-700 g-color-black g-line-height-1_3 g-mb-4">
+        {{ section.name }}
+      </h1>
+      <!-- Pagination result -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center g-mb-15 g-mb-20--sm">
+        {% set items = sectionItemsDirectory.getItemsSectionPaginated %}
+        
+        {% set begin = (items.currentPage - 1) * items.perPage + 1 %}
+        {% set end = begin + items.count() - 1 %}
+        {% set total = items.total() %}
+        <div class="g-color-gray-dark-v2">
+          Показано {{ end }} из {{ total }} компаний
+        </div>
+      </div>
+      <!-- End Pagination result -->
+      
+      {% partial 'directory/section-company' items = sectionItemsDirectory.getItemsSectionPaginated %}
+
+      {% partial 'directory/pagination' items = sectionItemsDirectory.getItemsSectionPaginated %}
+    </div>
+  </div>
+</section>
+{% partial 'directory/section-info' section = sectionItemsDirectory.getSection %}
+
+{% partial 'modals/law-aid' %}
+{% partial 'modals/choose-broker' %}
+{% partial 'modals/free-consultation' id="refund-banner" type="refund-banner" %}
+{% partial 'modals/consultation-modal' %}

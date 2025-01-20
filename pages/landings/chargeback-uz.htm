@@ -1,0 +1,185 @@
+title = "ZARARLASH - that is, we get the money back"
+url = "/chargeback-uz"
+layout = "financebar"
+is_hidden = 0
+
+[genericForm]
+group = "landing-chargeback-uz"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/chargeback-uz"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+==
+{% partial 'landing-chargeback/promo'
+    h1Promo       = 'ZARARLASH – PULINGIZNI KARTANGIZGA QAYTARING'
+    h5PromoFirst  = 'Agar siz nohaq xizmat ko\'rsatuvchi provayderga yoki mol-mulkka pul o\'tkazsangiz, bu muhim emas.'
+    h5PromoSecond = 'Siz  <span class="g-font-weight-600 text-uppercase">butun miqdorni </span> qonuniy yo\'l bilan qaytarishingiz mumkin. Zaryadlash-ni ishga tushiring! Va 1-2 oy ichida siz bankdan qimmatli SMS olasiz'
+    h2Form        = '<span class="g-color-teal">BEPUL</span> MASLAHAT UCHUN SO\'ROV QOLDIRING'
+    btnMore       = 'Batafsil ma\'lumot'
+    inputName     = 'Sizning ismingiz'
+    inputEmail    = 'Sizning email'
+    btnSubmit     = 'Yuborish'
+%}
+
+{% partial 'landing-chargeback/legal-analysis'
+    h2AnalysisFirst   = 'ISHINGIZNING'
+    h2AnalysisSecond  = '<span class="g-color-teal">HUQUQIY TAHLILINI</span> OLING'
+    h5AnalysisSecond  = 'Pulni qaytarish imkoniyatini bilib olasiz.'
+    btnAnalysisSecond = 'Tahlil qiling'
+%}
+
+{% partial 'landing-chargeback/about'
+    h2Chargeback       = '<span class="g-color-teal">ZARYAD </span> QILISH NIMA?'
+    pChargebackFirst   = 'Zaryadlash – bank karta operatsiyasini bekor qilgan jarayon'
+    pChargebackSecond  = 'Bank qabul qiluvchining roziligini so\'ramaydi va pulni to\'lovchiga qaytaradi. Agar siz pulni olgan bo\'lsangiz, lekin xizmat ko\'rsatilmasa yoki mahsulotni jo\'natmasangiz, zaryadlashni boshlang. Pulingizni qaytarib olasiz. Va siz vijdonli sotuvchi, soxta kompaniya yoki boshqa aldovchilarni jazolaysiz.'
+%}
+{% partial 'landing-chargeback/opportunities'
+    h2Opportunities         = 'ZARYADLASH <span class="g-color-teal">IMKONIYATLARI</span>'
+    h5Opportunities         = 'To\'lovni qaytarish uchun asoslar – massa. Sizda nima bor?'
+    h4OpportunitiesFirst    = 'Forex broker'
+    h4OpportunitiesSecond   = 'Casino'
+    h4OpportunitiesThird    = 'Kripto-valyutalar'
+    h4OpportunitiesFourth   = 'Banklar'
+    h4OpportunitiesFifth    = 'Ikkilik imkoniyatlari broker'
+    h4OpportunitiesSixth    = 'Bukmeykerlar'
+    h4OpportunitiesSeventh  = 'Moliyaviy piramidalar'
+    h4OpportunitiesEighth   = 'Onlayn xarid qilish'
+    pOpportunitiesFirst     = 'Broker, depozitni birlashtirdi soxta savdo signallarini etkazib beradi yoki daromadni qaytarib bermaydi.'
+    p4OpportunitiesSecond   = 'Siz pulni "ko\'tarolmadingiz", chunki o\'yin"burildi". "Chiqish" tugmasi muntazam ravishda yo\'qoladi.'
+    p4OpportunitiesThird    = 'Kriptoobmennik fiatnye pul oldi, lekin sizning bitcoins kelmadi. Siz icoga sarmoya kiritdingiz, lekin bu sovunli qabariq edi.'
+    p4OpportunitiesFourth   = 'ATM pulni yozib qo\'ydi. Lekin ularni bermadi. Yoki siz bir summani kiritdingiz va u qisman berdi.'
+    p4OpportunitiesFifth    = 'Sizga 80% daromad va\'da qilingan, ammo siz 20% ga ega bo\'lasiz. Minimal tikish $20 dan oshdi$ 1 000 gachaуф'
+    p4OpportunitiesSixth    = 'Sizning baholaringiz yo\'qotilganda qabul qilindi. Va keyin siz g\'alaba qozondingiz va hisobingiz bloklandi.'
+    p4OpportunitiesSeventh  = 'Siz Keshberri, boshlang\'ich tomonidan hayratga tushdingiz.Pro yoki boshqa mmm. Siz yo\'l-yo\'riq tizimida depozit va mukofotlarni yo\'qotdingiz.'
+    p4OpportunitiesEighth   = 'Instagram-butikda biror narsa sotib oldingiz. Lekin u nikoh bilan keldi. Yoki hech qachon kelmagan. Sotuvchi aloqadan g\'oyib bo\'ldi.    '
+%}
+
+{% partial 'landing-chargeback/120-days'
+    h2Days         = 'AGAR TO\'LOV KUNDAN BOSHLAB  <span class="g-color-teal"> 120 KUN </span> ICHIDA INVESTITSIYA BO\'LSA ZARYADLASH EHTIMOLI YUQORI'
+    h5Days         = 'Vaqt sizga qarshi ishlaydi! Buyurtmani qoldiring. Va pulingizni qaytarib olish uchun birinchi qadamni qo\'ying.'
+    inputNameDays  = 'Sizning ismingiz'
+    inputEmailDays = 'Sizning email'
+    inputPhoneDays = 'Sizning telefoningiz'
+    btnSubmitDays  = 'qo\'ng\'iroq qiling'
+%}
+
+{% partial 'landing-chargeback/difficulties'
+    h2Difficult        = 'MUSTAQIL RAVISHDA QANDAY <span class="g-color-teal"> QIYINCHILIKLAR </span> PAYDO BO\'LISHI MUMKIN ZARGARLIK'
+    h3DifficultFirst   = 'TO\'LOV TIZIMI REGLAMENTINI O\'RGANISH'
+    h3DifficultSecond  = 'BANKKA ARIZA TUZISH'
+    h3DifficultThird   = 'INGLIZ TILIGA TARJIMA'
+    h3DifficultFourth  = 'BANK BILAN ALOQA'
+    h3DifficultFifth   = 'ISHNI NAZORAT QILISH'
+    h3DifficultSixth   = 'BANKNI RAD ETISH'
+    pDifficultFirst    = 'Qaytariladigan Visa gaidline 70 sahifadan iborat. Va MasterCard haqida... Ushbu hujjatlar rus tilida mavjud emas.'
+    pDifficultSecond   = 'Internetda shablonni topish etarli emas. Chunki u bankga chizma rad etishga tayyor. Ariza matni faqat individual bo\'lishi kerak.'
+    pDifficultThird    = 'Ariza ingliz tiliga tarjima qilinishi kerak. Visa va MasterCard to\'lov tizimlarining qoidalari rus tilidagi opuslarni taqdim etishni nazarda tutmaydi.'
+    pDifficultFourth   = 'Dastlab, xodimlar zaryadlash haqida eshitmagan qo\'llari bilan o\'sadi. Keyin ular sizni rad etadilar. Natijada ular so\'roq qilishadi.'
+    pDifficultFifth    = 'Bank zaryadlashni amalga oshirishga qiziqmaydi. So\'rovlarga va rasmiy rad etishga qanday javob berishni bilishingiz kerak. Va yana-protsedura zarurligini isbotlashingiz kerak.'
+    pDifficultSixth    = 'Rad etish-bu final emas. Obunani tahlil qilish kerak. Va uning asosida siz munozarani davom ettirishingiz kerak. Vazifa ishni ishga qaytarishdir.'
+%}
+{% partial 'landing-chargeback/escort'
+    h2Escort         = 'ZARGARLIK BO\'YICHA ESKORT <span class="g-color-teal">BUYURTMA QILING</span>'
+    h4EscortFirst    = 'Jamoa ishi'
+    h4EscortSecond   = 'Qoidalar va qoidalarga rioya qilish'
+    h4EscortThird    = 'Maslahat 24/7'
+    h4EscortFourth   = 'Barcha bosqichlarda qo\'llab-quvvatlash'
+    h4EscortFifth    = 'Sifat kafolati'
+    pEscortFirst     = 'Har bir ish pul o\'tkazmalarini tanqid qilish tajribasi bo\'lgan advokatlar tomonidan baholanadi.'
+    pEscortSecond    = 'Ishga tushirish zarblash qonunni buzmasdan. Bankka qayta murojaat qilish ehtimolini minimallashtirish.'
+    pEscortThird     = 'Siz har doim telefon, elektron pochta, ijtimoiy tarmoqlarda va messenjerlarda savollar berishingiz mumkin.'
+    pEscortFourth    = 'Biz sizning ishingizni o\'rganamiz, tanlov strategiyasini tanlaymiz, hujjatlar ro\'yxatini tuzamiz, harakatlaringizni muvofiqlashtiramiz.'
+    pEscortFifth     = '100% hollarda qonuniy jihatdan savodli yondashuv bank xodimlarini tezroq va ko\'proq qo\'llab-quvvatlaydi.'
+%}
+
+{% partial 'landing-chargeback/works'
+    h2Works         = 'ZARYADLASH <span class="g-color-teal"> QANDAY </span> ISHLAYDI?'
+    h4WorksFirst    = 'ARIZANGIZNI YUBORASIZ'
+    h4WorksSecond   = 'IMKONIYATLARNI BAHOLASH'
+    h4WorksThird    = 'ISHGA KIRISHISH'
+    h4WorksFourth   = 'ARIZALARNI YUBORISH'
+    h4WorksFifth    = 'Natija'
+    pWorksFirst     = 'Vaziyatni batafsil tasvirlab bering.'
+    pWorksSecond    = 'Advokat murojaatni o\'rganadi va ishning natijasini taxmin qiladi.'
+    pWorksThird     = 'Siz hujjatlar ro\'yxatini va yo\'l xaritasini olasiz.'
+    pWorksFourth    = 'Tayyor hujjatlarni bankka yuborasiz.'
+    pWorksFifth     = 'Bank qarori va pulni qaytarish uchun SMS-xabarni oling.'
+%}
+
+{% partial 'landing-chargeback/support'
+    h2Support         = '<span class="g-color-teal">AVVAL YORDAM SO\'RASANGIZ</span>, BANKNING SALBIY JAVOBINI OLISH EHTIMOLI KAMROQ'
+    inputNameSupport  = 'Sizning ismingiz'
+    inputPhoneSupport = '236 567-44-44'
+    btnSupport        = 'qo\'ng\'iroq qiling'
+    %}
+
+{% partial 'landing-chargeback/return'
+    h2Return = 'PULNI USHBU " <span class="g-color-teal">MOLIYAVIY KOMPANIYALAR</span> " DAN QAYTARISH MUMKIN "'
+%}
+
+{% partial 'landing-chargeback/caution'
+    h2Caution          = '<span class="g-color-teal">Ehtiyot bo\'ling!</span>  TO\'LIQ ISHLAMAYDIGAN QAYTARISH USULLARI MAVJUD'
+    h3FirstCaution     = 'Oyna to\'lovlari'
+    h3SecondCaution    = 'Maqola yozish'
+    h3ThirdCaution     = 'Bepul qaytish'
+    pFirstCautionOne   = 'Ular qaytib kelishiga yordam bermaydi.'
+    pFirstCautionTwo   = 'To\'lov hech qanday joyga yopishib ololmaydi.'
+    pSecondCautionOne  = 'Ushbu xizmatni buyurtma qilmang.'
+    pSecondCautionTwo  = 'Maqolalar pulni qaytarishga yordam bermaydi!'
+    pThirdCautionOne   = 'Bu sodir bo\'lmaydi.'
+    pThirdCautionTwo   = 'Scammers ishonchga kiradi'
+    pThirdCautionThree = 'va AnyDesk orqali ma\'lumotlarni o\'g\'irlash.'
+%}
+
+{% partial 'landing-chargeback/return-now'
+    h2FormReturn    = 'maslahat uchun ro\'yxatdan o\'ting'
+    inputNameCall   = 'Sizning ismingiz'
+    inputPhoneCall  = '236 567-44-44'
+    inputEmailCall  = 'Sizning email'
+    inputBtnSubmit  = 'yuborish'
+    h2ReturnNow     = '<span class="g-color-teal">ENDI</span> PULINGIZNI QAYTARIB OLISHNI BOSHLANG'
+    h5ReturnNow     = 'So\'rov qoldiring va siz olasiz:'
+    liNowFirst      = 'Ishni moliyaviy advokat tomonidan baholash.'
+    liNowSecond     = 'Qaytish uchun shaxsiy ko\'rsatmalar.'
+    liNowThird      = 'Jarayonni boshlash uchun hujjatlar ro\'yxati zarblash.'
+%}
+
+{% partial 'landing-chargeback/faq'
+    h2FAQ           = '<span class="g-color-teal">TEZ-TEZ SAVOLLAR</span>'
+    LinkFirstFAQ    = 'Scammer, kazino va bukmekerlardan mablag\'larni qaytarish imkoniyati bormi?'
+    LinkSecondFAQ   = 'Politsiyaga murojaat qilish va telefon yoki onlayn scammersni da\'vo qilish mantiqiymi?'
+    LinkThirdFAQ    = 'Pulni qaytarish shartlari qanday?'
+    LinkFourthFAQ   = 'E-hamyon yoki eşanjör orqali yuborilgan pulni qanday qaytarish mumkin?'
+    LinkFifthAQ     = 'Pulni o\'z-o\'zidan qaytarish mumkinmi?'
+    BlockFirstFAQ   = 'Ha. Biroq, qaytarish ehtimoli alohida belgilanadi. Agar sizning pulingiz ikki yil avval "yopishgan" bo\'lsa, bu og\'irlashtiruvchi holat. Ammo bu holatda ham siz qaytarishni kutishingiz mumkin.'
+    BlockSecondFAQ  = 'Afsuski, Rossiya federatsiyasi huquqni muhofaza qilish organlari kamdan-kam hollarda moliyaviy firibgarliklarni tekshirmoqda. Ular turli sabablarga ko\'ra murojaat qilishadi. Va sud jarayoni, o\'z navbatida, politsiya tomonidan soxta faoliyatni isbotlagan tashkilotlarga qo\'llaniladi. Bundan tashqari, sud jarayoni tuzoqlarga ega.   <p class="g-color-gray-dark-v3 g-my-5">1. Jinoiy ishni qo\'zg\'atish uchun siz kompaniyani ro\'yxatdan o\'tkazish joyida murojaat qilishingiz kerak.</p> <p class="g-color-gray-dark-v3 g-mb-5">2. Kompaniya offshorda ro\'yxatdan o\'tishi mumkin.</p> <p class="g-color-gray-dark-v3 g-mb-0">3. Firibgarlarni jazolash uchun siz bir qator shartlarga rioya qilishingiz kerak. Misol uchun, Kiprda huquqni muhofaza qilish organlari ishni boshlash uchun shaxsan ishtirok etishingiz kerak.</p>'
+    BlockThirdFAQ   = 'O\'rtacha pul 1-3 oy ichida kartaga qaytariladi. Vaqt-individual parametr. Bu ko\'plab omillarga va strategiyaga izchil rioya qilishga bog\'liq.'
+    BlockFourthFAQ  = 'Tartib qoidalari ostida zarblash MasterCard, Visa, Mir, Maestro to\'lov tizimlarini o\'z ichiga oladi. Ko\'rib turganingizdek, ushbu ro\'yxatda Swift o\'tkazmalari, elektron pullar va Yandex xizmatlari orqali to\'lovlar yo\'q.Pul va Qiwi.'
+    BlockFifthFAQ   = 'Siz bu masalani o\'zingiz qilishingiz mumkin. Ammo qaytib kelish yo\'lida byurokratik to\'siqlar va tuzatishlar mavjud. Qiyinchiliklardan biri bankka borishdir.'
+%}
+
+{% partial 'landing-chargeback/modal'
+    h3ModalProfile          = 'MOLIYAVIY YAKLOZI QABUL QILADIGAN QISQA SAVOLNI TO\'LDIRING'
+    inputModalProfileFirst  = 'Firibgar kompaniya nomi'
+    inputModalProfileSecond = 'Zarar miqdori'
+    inputModalProfileThird  = 'Kartani to\'lash tizimi'
+    inputModalProfileFourth = 'To\'lovni cheklash muddati'
+    btnModalProfile         = 'Keyingi'
+    inputProfileFormName    = 'Sizning ismingiz'
+    inputProfileFormPhone   = 'Sizning telefoningiz'
+    btnProfileForm          = 'Yuborish'
+    h2BasicForm             = 'Asosiy'
+    h5BasicForm             = 'Zarar miqdori <span class="g-font-weight-600">250</span> dollardan'
+    inputMailBasicForm      = 'Sizning email'
+    btnBasicForm            = 'Tanlang'
+    h2MaxForm               = 'Maks'
+    h5MaxForm               = 'Zarar miqdori <span class="g-font-weight-600">650</span> dollardan'
+    h2AdvancedForm          = 'Oldinga'
+    h5AdvancedForm          = 'Zarar miqdori <span class="g-font-weight-600">1 500</span> dollardan'
+%}

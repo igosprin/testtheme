@@ -1,0 +1,58 @@
+title = "Регистрация"
+url = "/profile/signup"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[accountExtended account]
+redirect = "account/profile"
+paramCode = "code"
+forceSecure = 0
+requirePassword = 0
+
+[sociallogin] 
+
+[session]
+security = "guest"
+redirect = "account/profile"
+==
+
+<!-- sign up -->
+<section class="g-bg-blue g-py-50 g-py-80--lg g-pos-rel">
+  <div class="container g-pos-rel g-z-index-2">
+    <div class="row d-flex align-items-center">
+      <div class="col-12 col-lg-6 order-2 order-lg-1">
+        <div class="g-bg-white g-rounded-10 g-px-20 g-px-30--sm g-py-30 g-py-40--md">
+          <header class="text-center">
+            <h2 class="g-font-size-23 g-font-size-30--md g-font-weight-700 g-color-black g-mb-20 g-mb-40--md">
+              Зарегистрироваться
+            </h2>
+          </header>
+
+          {% if canRegister %}
+          {% component 'account::register' %}
+          {% endif %}
+
+          <footer class="d-flex flex-column flex-sm-row justify-content-center align-items-center">
+            <div class="g-color-gray-dark-v2 g-mr-10--sm">
+              У вас уже есть аккаунт?
+            </div>
+            <a class="g-color-blue g-font-weight-700" href="{{ 'account/sign-in'|page }}">
+              Войти
+            </a>
+            </p>
+          </footer>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center order-1 order-lg-2 g-hidden-md-down">
+        <img
+          class="w-100 img-fluid"
+          src="{{'assets/build/img/account/sign-page-img.svg'|theme}}"
+          alt="sign-up"
+        >
+      </div>
+    </div>
+  </div>
+  <div class="w-100 g-height-280 g-pos-abs g-bottom-0" style="background-color: #E9F7FE;"></div>
+</section>

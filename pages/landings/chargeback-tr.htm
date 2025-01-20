@@ -1,0 +1,161 @@
+url = "/chargeback-tr"
+layout = "financebar"
+title = "Chargeback - ÖDEME - PARAYI KARTINIZA İADE EDERİZ"
+is_hidden = 0
+
+[genericForm]
+group = "landing-chargeback-tr"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/chargeback-uz"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+==
+{% partial 'landing-chargeback/promo'
+    h1Promo       = 'ÖDEME - PARAYI KARTINIZA İADE EDERİZ'
+    h5PromoFirst  = 'Dürüst olmayan bir hizmete veya ürün sağlayıcıya para aktardıysanız, bunun bir önemi yok.'
+    h5PromoSecond = "<span class='g-font-weight-600'>BÜTÜN MİKTARINI</span> yasal olarak iade edebilirsiniz. Ters ibraz başlatın! Ve 1-2 ay içinde bankadan aziz SMS'i alacaksınız."
+    h2Form        = '<span class="g-color-teal">ÜCRETSİZ</span> ÜCRETSİZ DANIŞMANLIK TALEP EDİN'
+    btnMore       = 'Detaylar'
+    inputName     = 'Adınız'
+    inputEmail    = 'E-posta'
+    btnSubmit     = 'Gönder'
+%}
+
+{% partial 'landing-chargeback/what'
+    h2Chargeback       = '<span class="g-color-teal">İBADET</span> NEDİR?'
+    pChargebackFirst   = 'Ters ibraz, bankanın kart üzerindeki işlemi iptal etmesi işlemidir.'
+    pChargebackSecond  = 'Alıcının rızasını istemez ve parayı ödeyene iade eder. Sizden para aldılarsa, ancak hizmet verilmediyse veya mallar gönderilmediyse, ters ibraz başlatın. Paranızı geri alacaksınız ve ayrıca vicdansız bir satıcıyı, dolandırıcı bir şirketi veya diğer dolandırıcıları da cezalandıracaksınız.'
+%}
+
+{% partial 'landing-chargeback/opportunities'
+    h2Opportunities         = 'ŞARJ <span class="g-color-teal">ÖZELLİKLERİ</span>'
+    h5Opportunities         = 'Para iadesi için birçok sebep var. Neye sahipsin?'
+    h4OpportunitiesFirst    = 'Forex Brokerı'
+    h4OpportunitiesSecond   = 'kumarhane'
+    h4OpportunitiesThird    = 'kripto para birimleri'
+    h4OpportunitiesFourth   = 'Bankalar'
+    h4OpportunitiesFifth    = 'Ikili opsiyon komisyoncusu'
+    h4OpportunitiesSixth    = 'Bahisçiler'
+    h4OpportunitiesSeventh  = 'Finansal piramitler'
+    h4OpportunitiesEighth   = 'Çevrimiçi alışveriş'
+    pOpportunitiesFirst     = 'Broker depozitoyu sızdırdı, yanlış ticaret sinyalleri veriyor veya kazançlarınızı çekmenize izin vermiyor.'
+    p4OpportunitiesSecond   = 'Oyun "bükülmüş" olduğu için parayı "yükseltemediniz". “Para Çekme” düğmeniz düzenli olarak kaybolur.'
+    p4OpportunitiesThird    = "Kripto borsası fiat aldı, ancak BTC'niz asla gelmedi. ICO'ya yatırım yaptınız ama bu bir sabun köpüğüydü."
+    p4OpportunitiesFourth   = 'ATM parayı borçlandırdı ama vermedi. Veya bir miktar girdiniz ve o kısmen verdi.'
+    p4OpportunitiesFifth    = 'Size %80 getiri sözü verildi, ancak %20 alıyorsunuz. Minimum teklif 20 dolardan artırıldı 1.000 dolara kadar.'
+    p4OpportunitiesSixth    = 'Kaybettiğinizde bahisleriniz kabul edildi. Sonra kazandınız ve hesabınız bloke edildi.'
+    p4OpportunitiesSeventh  = 'Cashberry, Startcom.pro veya başka bir MMM sizi büyüledi. Para yatırma ve yönlendirme bonuslarınızı kaybettiniz.'
+    p4OpportunitiesEighth   = 'Bir Instagram butiğinden bir şey aldınız ama ya evlilikle geldi ya da hiç gelmedi. Satıcı radardan kayboldu.'
+%}
+
+{% partial 'landing-chargeback/120-days'
+    h2Days         = 'ÖDEME TARİHİNDEN İTİBAREN <span class="g-color-teal">120 GÜN</span> İÇİNDE YATIRIM YAPARSANIZ GERİ İADE ŞANSI YÜKSEKTİR'
+    h5Days         = 'Zaman sana karşı işliyor! Bir istek bırakın ve paranızı iade etmek için ilk adımı atın.'
+    inputNameDays  = 'Adınız'
+    inputEmailDays = 'E-posta'
+    inputPhoneDays = 'Telefon'
+    btnSubmitDays  = 'Call back'
+%}
+
+{% partial 'landing-chargeback/difficulties'
+    h2Difficult        = 'BAĞIMSIZ BİR ŞARJ İLE HANGİ <span class="g-color-teal">ZORLUKLAR</span> BAŞARABİLİR'
+    h3DifficultFirst   = 'ÖDEME SİSTEMİ YÖNETMELİKLERİNİN İNCELENMESİ'
+    h3DifficultSecond  = 'BANKAYA BAŞVURU HAZIRLANMASI'
+    h3DifficultThird   = 'İNGİLİZCE ÇEVİRİ'
+    h3DifficultFourth  = 'BANKA İLE İLETİŞİM'
+    h3DifficultFifth   = 'VAKA KONTROLÜ'
+    h3DifficultSixth   = 'BANKA RED'
+    pDifficultFirst    = "Vize İade Rehberi 70 sayfa uzunluğundadır. Ve MasterCard'dan bahsediyor... 438. Bu belgeler Rusça çeviride yok."
+    pDifficultSecond   = 'İnternette bir şablon bulmak yeterli değil. Çünkü bankanın onun için hazır bir ret şablonu var. Başvuru metni kesinlikle bireysel olmalıdır.'
+    pDifficultThird    = "Başvurunun İngilizce'ye tercüme edilmesi gerekmektedir. Visa ve MasterCard ödeme sistemlerinin düzenlemeleri, Rusça dilindeki eserlerin sunulmasını sağlamaz."
+    pDifficultFourth   = 'İlk başta, çalışanlar ters ibraz hakkında bir şey duymadıkları için omuzlarını silkecekler. O zaman seni vazgeçirirler. Ve sonuç olarak, bir sorgulama ayarlayacaklar.'
+    pDifficultFifth    = 'Banka, ters ibraz yapmakla ilgilenmiyor. İsteklere ve inkarlara nasıl yanıt vereceğinizi bilmeniz gerekir. Ve ayrıca - prosedürün gerekliliğini kanıtlamak için.'
+    pDifficultSixth    = 'Reddedilmek son değildir. Abonelikten çıkmanın analiz edilmesi ve buna dayanarak anlaşmazlığın devam etmesi gerekir. Amaç, işleri tekrar işe almaktır.'
+%}
+
+{% partial 'landing-chargeback/escort'
+    h2Escort         = '<span class="g-color-teal">ŞARJ DESTEĞİ</span> SİPARİŞ ET'
+    h4EscortFirst    = 'Takım çalışması'
+    h4EscortSecond   = 'Kurallara ve düzenlemelere uygunluk'
+    h4EscortThird    = '7/24 danışma'
+    h4EscortFourth   = 'Her aşamada destek'
+    h4EscortFifth    = 'Kalite güvencesi'
+    pEscortFirst     = 'Her dava, zorlu para transferlerinde deneyimli avukatlar tarafından değerlendirilir.'
+    pEscortSecond    = 'Yasaya uygun bir ters ibraz yapın ve bankaya yeniden başvurma olasılığını en aza indirin.'
+    pEscortThird     = 'Her zaman telefon, e-posta, sosyal ağlar ve anlık mesajlaşma programları aracılığıyla soru sorabilirsiniz.'
+    pEscortFourth    = 'Davanızı inceliyoruz, bir anlaşmazlık stratejisi seçiyoruz, bir belge listesi hazırlıyoruz ve eylemlerinizi koordine ediyoruz.'
+    pEscortFifth     = "Vakaların %100'ünde yasal olarak yetkin bir yaklaşım, banka çalışanlarının daha hızlı ve destekleyici olmasını sağlar."
+%}
+
+{% partial 'landing-chargeback/works'
+    h2Works         = '<span class="g-color-teal">TABLO</span> NASIL ÇALIŞIR'
+    h4WorksFirst    = 'BAŞVURU GÖNDERİRSİNİZ'
+    h4WorksSecond   = 'ŞANS DEĞERLENDİRMESİ'
+    h4WorksThird    = 'İŞİN BAŞLANGICI'
+    h4WorksFourth   = 'BAŞVURU GÖNDERME'
+    h4WorksFifth    = 'SONUÇ'
+    pWorksFirst     = 'Durumu tam olarak açıklayın.'
+    pWorksSecond    = 'Avukat temyizi inceler ve davanın sonucunu tahmin eder.'
+    pWorksThird     = 'Bir belge listesi ve bir yol haritası alırsınız.'
+    pWorksFourth    = 'Bitmiş belgeleri bankaya gönderirsiniz.'
+    pWorksFifth     = 'Paranın iadesi ile ilgili banka kararı ve SMS alırsınız.'
+%}
+
+{% partial 'landing-chargeback/support'
+    h2Support         = '<span class="g-color-teal">YARDIM İÇİN ERKEN BAŞVURDUĞUNUZ</span>, BANKA TARAFINDAN OLUMSUZ CEVAP ALMA OLASILIĞI AZ OLARAK'
+    inputNameSupport  = 'Adınız'
+    inputPhoneSupport = 'Telefon'
+    btnSupport        = 'Call back'
+%}
+
+{% partial 'landing-chargeback/return'
+    h2Return = 'BU “FİNANSAL ŞİRKETLERDEN” <span class="g-color-teal">PARA İADESİ YAPILABİLİR</span>'
+%}
+
+{% partial 'landing-chargeback/caution'
+    h2Caution          = ' <span class="g-color-teal">DİKKATLİCE!</span> KESİNLİKLE <span class="g-color-teal">ÇALIŞMAYAN</span> İADE YOLLARI VARDIR'
+    h3FirstCaution     = 'Ayna ödemeleri'
+    h3SecondCaution    = 'Makale yazımı'
+    h3ThirdCaution     = 'Ücretsiz iade'
+    pFirstCautionOne   = 'İade konusunda yardımcı olmuyorlar.'
+    pFirstCautionTwo   = 'Ödeme hiçbir yerde takılıp kalamaz.'
+    pSecondCautionOne  = 'Bu hizmeti sipariş etmeyin.'
+    pSecondCautionTwo  = 'Makaleler parayı iade etmeye yardımcı olmaz!'
+    pThirdCautionOne   = 'Bu olmaz.'
+    pThirdCautionTwo   = 'Dolandırıcılar güvene giriyor '
+    pThirdCautionThree = 've veriler AnyDesk aracılığıyla çalınır.'
+%}
+
+{% partial 'landing-chargeback/return-now'
+    h2FormReturn    = 'DESTEK DETAYLARINI ÖĞRENMEK İÇİN ARAYINIZ'
+    inputNameCall   = 'Adınız'
+    inputPhoneCall  = 'Telefon'
+    inputEmailCall  = 'E-posta'
+    inputBtnSubmit  = 'Gönder'
+    h2ReturnNow     = 'ŞİMDİ PARANIZI <span class="g-color-teal">GERİ ÖDEMEYE</span> BAŞLAYIN'
+    h5ReturnNow     = 'Bir istek bırakın ve şunları alacaksınız:'
+    liNowFirst      = 'Davanın bir mali avukat tarafından değerlendirilmesi.'
+    liNowSecond     = 'Kişisel geri ödeme talimatları.'
+    liNowThird      = 'Ters ibraz prosedürünü başlatmak için belgelerin listesi.'
+%}
+
+{% partial 'landing-chargeback/faq'
+    h2FAQ           = '<span class="g-color-teal">SSS</span>'
+    LinkFirstFAQ    = 'Sahte bir komisyoncu, kumarhane ve bahisçiden para alma şansı var mı?'
+    LinkSecondFAQ   = 'Polise başvurmak ve telefona veya çevrimiçi dolandırıcılara dava açmak mantıklı mı?'
+    LinkThirdFAQ    = 'Geri ödeme süreleri nelerdir?'
+    LinkFourthFAQ   = 'Elektronik cüzdan veya eşanjör aracılığıyla gönderilen para nasıl iade edilir?'
+    LinkFifthAQ     = 'Parayı kendi başınıza iade etmek mümkün mü?'
+    BlockFirstFAQ   = 'Evet. Ancak geri dönüş olasılığı bireysel olarak belirlenir. Paranız iki yıl önce "sıkışmış" ise, bu ağırlaştırıcı bir durumdur. Ancak bu durumda bile, geri ödemeye güvenebilirsiniz.'
+    BlockSecondFAQ  = 'Ne yazık ki, Rusya Federasyonu\'nun kolluk kuvvetleri nadiren finansal dolandırıcılığı araştırıyor. Farklı sebepler öne sürüyorlar. Ve dava, hileli faaliyetleri polis tarafından kanıtlanan kuruluşlar için geçerlidir. Ayrıca, davanın tuzakları vardır. <p class="g-color-gray-dark-v3 g-my-5">1. Bir ceza davası başlatmak için şirketin tescil edildiği yerde bir başvuruda bulunmanız gerekir.</p> <p class="g-color-gray-dark-v3 g-mb-5">2. Şirket açık denizde tescil edilebilir.</p> <p class="g-color-gray-dark-v3 g-mb-0">3. Dolandırıcıları cezalandırmak için bir takım koşullara uymanız gerekir. Örneğin, Kıbrıs\'ta bir davayı başlatmak için kolluk kuvvetleri için şahsen bulunmanız gerekir.</p>'
+    BlockThirdFAQ   = 'Ortalama olarak 1-3 ay içerisinde para karta iade edilir. Terim, birçok faktöre ve stratejiye tutarlı bir şekilde bağlı kalmaya bağlı olan bireysel bir parametredir.'
+    BlockFourthFAQ  = 'MasterCard, Visa, Mir, Maestro ödeme sistemleri, ters ibraz prosedürü kurallarına tabidir. Gördüğünüz gibi bu listeye hızlı transferler, e-cüzdanlar üzerinden ödemeler ve Yandex.Money ve Qiwi servisleri dahil değil.'
+    BlockFifthFAQ   = 'Bu sorunla kendiniz başa çıkabilirsiniz. Ancak dönüş yolunda bürokratik engeller ve tuzaklar vardır. Zorluklardan biri bankaya ulaşmaktır.'
+%}

@@ -1,0 +1,34 @@
+title = "Чарджбэк – верните деньги от компании"
+url = "/chargeback"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+meta_title = "Возврат денежных средств"
+meta_description = "Возврат денег через Чарджбэк. Узнайте, как вернуть свои деньги законно и быстро. Бесплатная консультация."
+
+[session]
+security = "all"
+
+[genericForm]
+group = "landing-chargeback"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+==
+
+{% partial 'landing-chargeback-new/promo' %}
+{% partial 'landing-chargeback-new/about' %}
+{% partial 'landing-chargeback-new/steps' %}
+{% partial 'landing-chargeback-new/difficulties' %}
+{% partial 'landing-chargeback-new/form' %}
+{% partial 'landing-chargeback-new/faq' %}
+
+{% partial 'modals/chargeback-consultation' %}

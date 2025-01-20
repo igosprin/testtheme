@@ -1,0 +1,31 @@
+<p class="lead">
+    <strong>Забыли пароль?</strong> Не проблема! Введите Ваш email адрес для подтверждения вашей учетной записи.
+</p>
+
+<form
+    data-request="{{ __SELF__ }}::onRestorePassword"
+    data-request-update="'{{ __SELF__ }}::reset': '#partialUserResetForm'"
+    data-request-validate>
+
+
+    <div class="mb-4">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text g-width-45 g-brd-right-none g-brd-gray-light-v4 g-color-gray-dark-v5">
+                    <i class="icon-communication-062 u-line-icon-pro"></i>
+                </span>
+            </div>
+            <input
+                class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover g-py-15 g-px-15"
+                name="email"
+                type="email"
+                id="registerEmail"
+                placeholder="Введите ваш email"
+                required
+            >
+        </div>
+        <div data-validate-for="email" class="alert alert-danger"></div>
+    </div>
+
+    <button type="submit" class="btn btn-md btn-block u-btn-primary g-py-13" data-attach-loading>Восстановить пароль</button>
+</form>

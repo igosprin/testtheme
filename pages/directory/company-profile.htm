@@ -1,0 +1,326 @@
+title = "Профиль компании"
+url = "/company/:item_slug"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[session]
+security = "all"
+
+[genericForm]
+group = "company-profile"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+
+[itemDirectoryProfile componentItemDirectoryProfile]
+directorySlug = "{{ :directory_slug }}"
+sectionSlug = "{{ :section_slug }}"
+itemDirectorySlug = "{{ :item_slug }}"
+reviewsPerPage = 10
+ratingRequired = 1
+
+[similarItems]
+itemDirectorySlug = "{{ :item_slug }}"
+recordsPerPage = 5
+
+[reviewsUseful componentReviewsUseful]
+
+[itemDirectoryMetainfo]
+itemDirectorySlug = "{{ :item_slug }}"
+
+==
+<?php
+function onEnd()
+{
+  $this->setMeta();
+  $this->page->meta_robots = $this->itemDirectoryMetainfo->getMetaRobots();
+  //$this->setCanonicalUrl();
+  if ($this->itemDirectory->logo) {
+      $this->page->og_image = $this->itemDirectory->logo->getThumb('auto', 250);
+  }
+}
+
+  function setMeta()
+    {
+      $defaultPageTitle = 'Профиль компании: ' . $this->itemDirectory->name;
+      $defaultMetaTitle = 'Профиль компании: ' . $this->itemDirectory->name;
+      $defaultMetaDescription = 'Детально про компанию: ' . $this->itemDirectory->name;
+  
+      $itemDirectoryProfileTitle = $this->itemDirectory->getProfileTitle();
+      $itemDirectoryMetaTitle = $this->itemDirectory->getMetaTitle();
+      $itemDirectoryMetaDescription = $this->itemDirectory->getMetaDescription();
+  
+      $this->page->title = $itemDirectoryProfileTitle ? $itemDirectoryProfileTitle : $defaultPageTitle;
+      $this->page->meta_title = $itemDirectoryMetaTitle ? $itemDirectoryMetaTitle : $defaultMetaTitle;
+      $this->page->meta_description = $itemDirectoryMetaDescription ? $itemDirectoryMetaDescription : $defaultMetaDescription;
+    }
+
+    function setCanonicalUrl()
+    {
+        $this->page->canonical_url = $this->itemDirectory->getCanonicalUrl();
+    }
+?>
+==
+{% set item = componentItemDirectoryProfile.getItemDirectory %}
+{% set itemSection = componentItemDirectoryProfile.getItemSection %}
+{% set post = itemDirectory.overview %}
+
+<section class="g-bg-lightblue">
+  <div class="container">
+    <!-- breadcrumbs -->
+    <div class="g-py-20">
+      <ul class="u-list-inline" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li class="list-inline-item g-mr-0" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a class="u-link-v5 g-color-gray-dark-v5" href="/" itemprop="item">
+            <span itemprop="name">Главная</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <i class="fa fa-angle-right g-color-gray-dark-v5 g-mx-5"></i>
+        </li>
+        <li class="list-inline-item g-mr-0" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a class="g-font-size-12 g-font-size-default--md u-link-v5 g-color-gray-dark-v5"
+            href="{{ 'directory/directories-list'| page }}" itemprop="item">
+            <span itemprop="name">Каталог компаний</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <i class="fa fa-angle-right g-color-gray-dark-v5 g-mx-5"></i>
+        </li>
+        <li class="list-inline-item g-mr-0" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          {% for item in itemDirectory.itemsSection %}
+          <a class="u-link-v5 g-color-gray-dark-v5"
+            href="{{ 'directory/section'|page({ section_slug: item.section.slug}) }}" itemprop="item">
+            <span itemprop="name">{{ item.section.name }} </span>
+          </a>
+          {% endfor %}
+          <meta itemprop="position" content="3" />
+          <i class="fa fa-angle-right g-color-gray-dark-v5 g-mx-5"></i>
+        </li>
+        <li class="list-inline-item g-mr-0" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a class="u-link-v5 g-color-gray-dark-v2" itemprop="item">
+            <span itemprop="name">{{ itemDirectory.name }}</span>
+          </a>
+          <meta itemprop="position" content="4" />
+        </li>
+      </ul>
+    </div>
+    <!-- end breadcrumbs -->
+    
+    <!-- banner -->
+    {% for otherItem in itemDirectory.itemsSection %}
+    {% if  otherItem.section.slug == "investment-projects" %}
+    <div class="g-mb-20 g-hidden-sm-down">
+      {% partial 'banners/chargeback-investments' %}
+    </div>
+    <div class="g-mb-20 g-hidden-md-up">
+      {% partial 'banners/chargeback-investments-mobile' %}
+    </div>
+    {% elseif otherItem.section.slug == "brokers" %}
+    <div class="g-mb-20 g-hidden-sm-down">
+      {% partial 'banners/chargeback-broker' %}
+    </div>
+    <div class="g-mb-20 g-hidden-md-up">
+      {% partial 'banners/chargeback-broker-tablet' %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    <!-- end banner -->
+
+    <div class="g-pb-40 g-pb-80--md">
+      <div class="row" itemscope itemtype="http://schema.org/Organization">
+        <!-- left sidebar -->
+        <div class="col-12 col-lg-4 order-2 order-lg-1 g-pos-rel">
+          <!-- company card -->
+          <div class="d-flex flex-column g-bg-white g-rounded-10 g-mb-30 g-hidden-md-down" itemscope
+            itemtype="http://schema.org/Organization">
+            <div class="d-flex flex-column align-items-center g-pt-30 g-pb-20 g-px-20 g-brd-bottom g-brd-gray-light-v4">
+              <img src="{{ itemDirectory.logo|resize(220, auto, { mode: 'crop' }) }}" class="fb-img-contain g-mb-15"
+                width="220" height="70" alt="{{ itemDirectory.name }}" itemprop="image">
+              <h3 class="g-font-size-26 g-font-weight-700 g-line-height-1_3 g-color-black g-mb-5" itemprop="name">
+                {{ itemDirectory.name }}
+              </h3>
+              <div class="js-rating align-self-center g-color-yellow g-font-size-24 g-line-height-1 g-mb-5"
+                data-rating="{{ itemDirectory.display_rating }}">
+
+              </div>
+              <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+                <span class="g-hidden-xs-up" itemprop="name">{{ itemDirectory.name }}</span>
+                <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                  <meta itemprop="ratingValue" content="{{ itemDirectory.display_rating }}">
+                  <meta itemprop="reviewCount" content="{{ itemDirectory.getApprovedReviews.count }}">
+                  <meta itemprop="bestRating" content="5">
+                  <meta itemprop="worstRating" content="1">
+                </span>
+              </div>
+              {% for item in itemDirectory.itemsSection %}
+              <a href="{{ 'directory/section' | page({ section_slug:item.section.slug }) }}"
+                class="g-color-gray-dark-v5 g-line-height-1_3 g-brd-bottom--dashed g-brd-gray-dark-v5 g-brd-transparent--hover g-transition-0_4 u-link-v5">
+                {{ item.section.name }}
+              </a>
+              {% endfor %}
+            </div>
+            <div class="d-flex justify-content-between align-items-center g-pa-20">
+              <div class="d-flex align-items-center g-font-size-18--md g-color-gray-dark-v2 g-line-height-1">
+                <i class="icon-speech g-mr-10"></i>
+                <span>{{ itemDirectory.getApprovedReviews.count }}</span>
+              </div>
+              <div class="d-flex align-items-center g-font-size-18--md g-color-gray-dark-v2 g-line-height-1">
+                <i class="icon-eye g-mr-10"></i>
+                <span>{{ itemDirectory.views }}</span>
+              </div>
+            </div>
+          </div>
+          <!-- end company card -->
+          <div class="g-hidden-md-down">
+            {% partial 'banners/consultation-form-sidebar' %}
+          </div>
+
+          {% partial 'directory/similar-companies-sidebar' %}
+
+          <div class="g-hidden-md-down" id="stickyblock-start">
+            <div class="js-sticky-block" data-type="responsive" data-start-point="#stickyblock-start"
+              data-end-point="#stickyblock-end">
+              {% partial 'banners/law-aid-sidebar' %}
+            </div>
+          </div>
+        </div>
+        <!-- end of sidebar -->
+
+        <div class="col-12 col-lg-8 order-1 order-lg-2 g-mb-20 g-mb-0--lg g-pos-rel">
+          <!-- company card mobile -->
+          <div class="d-flex flex-column g-bg-white g-rounded-10 g-mb-20 g-hidden-lg-up" itemscope
+            itemtype="http://schema.org/Organization">
+            <div class="d-flex flex-column align-items-center g-pt-30 g-pb-20 g-px-20 g-brd-bottom g-brd-gray-light-v4">
+              <img src="{{ itemDirectory.logo|resize(220, auto, { mode: 'portrait' }) }}" class="fb-img-contain g-mb-15"
+                width="220" height="70" alt="{{ itemDirectory.name }}" itemprop="image">
+              <h3 class="g-font-size-26 g-font-weight-700 g-line-height-1_3 g-color-black g-mb-5" itemprop="name">
+                {{ itemDirectory.name }}
+              </h3>
+              <div class="js-rating align-self-center g-color-yellow g-font-size-24 g-line-height-1 g-mb-5"
+                data-rating="{{ itemDirectory.display_rating }}"></div>
+              <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+                <span class="g-hidden-xs-up" itemprop="name">{{ itemDirectory.name }}</span>
+                <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                  <meta itemprop="ratingValue" content="{{ itemDirectory.display_rating }}">
+                  <meta itemprop="reviewCount" content="{{ itemDirectory.getApprovedReviews.count }}">
+                  <meta itemprop="bestRating" content="5">
+                  <meta itemprop="worstRating" content="1">
+                </span>
+              </div>
+              {% for item in itemDirectory.itemsSection %}
+
+              <a href="{{ 'directory/section' | page({ section_slug:item.section.slug }) }}"
+                class="g-color-gray-dark-v5 g-line-height-1_3 g-brd-bottom--dashed g-brd-gray-dark-v5 g-brd-transparent--hover g-transition-0_4 u-link-v5">
+                {{ item.section.name }}
+              </a>
+              {% endfor %}
+            </div>
+            <div class="d-flex justify-content-between align-items-center g-pa-20">
+              <div class="d-flex align-items-center g-font-size-18--md g-color-gray-dark-v2 g-line-height-1">
+                <i class="icon-speech g-mr-10"></i>
+                <span>{{ itemDirectory.getApprovedReviews.count }}</span>
+              </div>
+              <div class="d-flex align-items-center g-font-size-18--md g-color-gray-dark-v2 g-line-height-1">
+                <i class="icon-eye g-mr-10"></i>
+                <span>{{ itemDirectory.views }}</span>
+              </div>
+            </div>
+          </div>
+          <!-- end company card mobile -->
+
+          <div class="g-hidden-lg-up">
+            {% partial 'banners/consultation-form-sidebar' %}
+          </div>
+
+          <div class="g-bg-lightblue g-z-index-99 g-pb-20 g-px-15 g-px-0--sm g-mx-minus-15 g-mx-0--sm"
+            style="position: sticky; top: 0;">
+            <!-- Nav tabs -->
+            <div class="g-bg-white g-rounded-10 g-overflow-hidden">
+              <ul class="nav nav-justified u-nav-v-i d-flex" role="tablist">
+                <li class="nav-item g-font-size-11 g-font-size-16--md g-font-weight-400 text-uppercase flex-grow-1">
+                  <a class="nav-link g-py-15 g-pl-10 g-pr-0 active" data-toggle="tab" href="#about"
+                    role="tab">О&nbsp;компании</a>
+                </li>
+                <li class="nav-item g-font-size-11 g-font-size-16--md g-font-weight-400 text-uppercase flex-grow-1">
+                  <a class="nav-link g-py-15 g-px-0" data-toggle="tab" href="#reviews" role="tab">отзывы</a>
+                </li>
+                <li class="nav-item g-font-size-11 g-font-size-16--md g-font-weight-400 text-uppercase flex-grow-1">
+                  <a class="nav-link g-py-15 g-pl-0 g-pr-10" data-toggle="tab" href="#faq"
+                    role="tab">Вопрос&nbsp;-&nbsp;ответ</a>
+                </li>
+              </ul>
+            </div>
+            <!-- End Nav tabs -->
+          </div>
+
+          <!-- Tab panes -->
+          <div class="tab-content g-z-index-minus-1">
+            <!-- about tab -->
+            <div class="tab-pane fade show active" id="about" role="tabpanel">
+              <div
+                class="g-bg-white fb-rounded-0 fb-rounded-10 g-py-25 g-py-30--md g-px-15 g-px-20--md g-mx-minus-15 g-mx-0--sm">
+                {% partial 'directory/profile-about' %}
+              </div>
+              {% if post %}
+              <div
+                class="g-bg-white fb-rounded-0 fb-rounded-10 g-py-25 g-py-30--md g-px-15 g-px-20--md g-mx-minus-15 g-mx-0--sm g-mt-25 g-mt-30--md">
+                <h3 class="g-font-size-18 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black g-mb-20">
+                  Подробный обзор компании {{ itemDirectory.name }} от команды Financebar вы можете прочитать здесь
+                </h3>
+                <div class="g-font-size-14 g-font-size-18--md g-color-black g-mb-10">
+                  {{ post.title }}
+                </div>
+                <div class="d-flex align-items-center g-mb-8">
+                  {% for category in post.categories|slice(0, 1) %}
+                  <a href="{{ 'blog/category'|page({slug:category.slug}) }}"
+                    class="g-rounded-5 g-font-size-10 g-font-size-12--md g-line-height-1_4 g-letter-spacing-1 g-bg-teal-opacity-0_1 g-color-teal text-uppercase g-pa-5">
+                    {{ category.name }}
+                  </a>
+                  {% endfor %}
+                  <div
+                    class="d-flex align-items-center g-color-gray-dark-v4 g-font-size-10 g-font-size-default--md g-line-height-1 g-ml-5 g-ml-15--md">
+                    <span>{{ post.published_at|date("d M") }}</span>
+                    <span class="g-mx-5">|</span>
+                    <span class="d-flex align-items-center"><i class="icon-eye g-mr-5"></i>{{ post.views }}</span>
+                  </div>
+                </div>
+                <a href="{{ 'blog/post'|page({slug:post.slug}) }}" class="g-line-height-1 g-color-primary">
+                  Читать обзор компании&nbsp;&#8594;
+                </a>
+              </div>
+              {% endif %}
+            </div>
+            <!-- reviews tab -->
+            <div class="tab-pane fade" id="reviews" role="tabpanel">
+              <div>
+                {% partial 'componentItemDirectoryProfile::reviews' reviews =
+                componentItemDirectoryProfile.getApprovedAndMyReviewsPaginated %}
+                {% partial 'componentItemDirectoryProfile::review-form' %}
+              </div>
+            </div>
+            <!-- faq tab -->
+            <div class="tab-pane fade" id="faq" role="tabpanel">
+              <div class="g-bg-white fb-rounded-0 fb-rounded-10 g-pt-30 g-pb-10 g-px-20 g-mx-minus-15 g-mx-0--sm">
+                {% partial 'directory/profile-faq' %}
+              </div>
+            </div>
+          </div>
+          <!-- End Tab panes -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="stickyblock-end"></div>
+</section>
+
+{% partial 'modals/law-aid' %}
+{% partial 'modals/choose-broker' %}
+{% partial 'modals/become-author' %}

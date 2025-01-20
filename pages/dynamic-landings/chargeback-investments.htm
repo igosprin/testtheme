@@ -1,0 +1,59 @@
+title = "Чарджбэк инвест"
+url = "/chargeback/investment-projects/:item_slug"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[genericForm]
+group = "chargeback-investments-landing"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+
+[itemDirectoryMetainfo]
+itemDirectorySlug = "{{ :item_slug }}"
+
+[dynamicLanding]
+itemSlug = "{{ :item_slug }}"
+==
+<?php
+ function onEnd()
+{
+    $this->setMeta();
+    $this['itemDirectory'] = $this->dynamicLanding->getItem();
+}
+
+function setMeta()
+{
+    $defaultPageTitle = $this->dynamicLanding->getItem()->name.' | '.$this->dynamicLanding->getItem()->web_site;
+    $defaultMetaTitle = $this->dynamicLanding->getItem()->name.' | '.$this->dynamicLanding->getItem()->web_site;
+    $defaultMetaDescription = $this->dynamicLanding->getItem()->name.' | '.$this->dynamicLanding->getItem()->web_site;
+
+    $landingPageTitle       = $this->dynamicLanding->getPageTitle();
+    $landingMetaTitle       = $this->dynamicLanding->getMetaTitle();
+    $landingMetaDescription = $this->dynamicLanding->getMetaDescription();
+
+    $this->page->title            = $landingPageTitle ? $landingPageTitle : $defaultPageTitle;
+    $this->page->meta_title       = $landingMetaTitle ? $landingMetaTitle : $defaultMetaTitle;
+    $this->page->meta_description = $landingMetaDescription ? $landingMetaDescription : $defaultMetaDescription;
+}
+?>
+==
+{% set itemDirectory = dynamicLanding.getItem %}
+<div itemscope itemtype="http://schema.org/Organization">
+    {% partial 'dynamic-landings/chargeback-investments-v2-promo' %}
+    {% partial 'dynamic-landings/chargeback-investments-v2-cases' %}
+    {% partial 'dynamic-landings/chargeback-investments-v2-banner' %}
+    {% partial 'dynamic-landings/chargeback-investments-v2-rewievs' %}
+    {% partial 'dynamic-landings/chargeback-investments-v2-featured' %}
+    {% partial 'dynamic-landings/chargeback-investments-v2-bottom' %}
+</div>
+{% partial 'modals/free-consultation' id="legal-banner" type="legal-banner" %}

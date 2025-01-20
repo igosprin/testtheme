@@ -1,0 +1,11 @@
+==
+<!-- section info -->
+{% if section.about %}
+<section class="g-py-40 g-py-80--md g-bg-white">
+  <div class="container">
+    <div class="content g-color-black g-line-height-1_4">
+      {{ section.about|raw }}
+    </div>
+  </div>
+</section>
+{% endif %}

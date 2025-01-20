@@ -1,0 +1,288 @@
+==
+<div id="company-reviews" class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center g-bg-white g-rounded-10 g-pa-20 g-mb-30">
+  <h3 class="g-font-size-18 g-font-size-20--md g-font-weight-700 g-color-black g-mb-10 g-mb-0--sm">
+    Отзывов -
+    <span>{{ itemDirectory.getApprovedReviews.count }}</span>
+  </h3>
+
+  <a
+    href="#leaveReviewResult"
+    class="js-go-to btn g-bg-teal g-bg-gray-dark-v2--hover g-color-white g-rounded-10 g-font-size-16 g-transition-0_4 g-py-8 g-px-25"
+    data-target="#leaveReviewResult"
+    data-type="static"
+  >
+    Оставить отзыв
+  </a>
+</div> 
+
+{% for review in reviews %}
+{% if loop.index == 2 %}
+<div class="g-bg-white fb-rounded-0 fb-rounded-10 g-pa-15 g-pa-20--md g-mb-25 g-mb-30--md g-mx-minus-15 g-mx-0--sm">
+  <div class="d-flex g-mb-20">
+    <img
+      class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-width-48 g-height-48 g-pa-5 g-mr-20 lazyload"
+      src="{{ review.user.avatar.thumb(auto, auto)|default('assets/build/img/account/user-avatar.svg'|theme) }}"
+      alt="{{ review.name }}"
+    >
+
+    <div class="d-flex flex-column flex-sm-row w-100 justify-content-sm-between">
+      <div>
+        {% if review.user %}
+        <a
+          href="{{ 'public-user-profile'|page({ md5_id: review.user.md5_id }) }}"
+          class="g-font-size-16 g-color-gray-dark-v2"
+        >
+          {{ review.name }} {{ review.surname }}
+        </a>
+        {% else %}
+        <div class="g-font-size-16 g-color-gray-dark-v2">
+          {{ review.name }}
+        </div>
+        {% endif %}
+
+        {% if review.rating is not null and review.rating != 0 %}
+        <div class="js-rating g-font-size-16 g-letter-spacing-0 g-line-height-1 g-color-yellow mb-0" data-rating="{{ review.rating }}"></div>
+        {% endif %}
+
+      </div>
+
+      <div class="g-color-gray-dark-v5">
+        {{ review.created_at_display|date("d F Y") }}
+      </div>
+    </div>
+  </div>
+
+<div class="g-font-size-18--md g-color-black g-pb-20">
+    {{ review.content | tgwz }}
+  </div>
+
+</div>
+<div class="g-mb-25 g-mb-30--md">
+  {% partial 'banners/choose-broker-tablet' %}
+</div>
+{% elseif loop.index == 4 %}
+<div class="g-bg-white fb-rounded-0 fb-rounded-10 g-pa-15 g-pa-20--md g-mb-25 g-mb-30--md g-mx-minus-15 g-mx-0--sm">
+  <div class="d-flex g-mb-20">
+    <img
+      class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-width-48 g-height-48 g-pa-5 g-mr-20 lazyload"
+      src="{{ review.user.avatar.thumb(auto, auto)|default('assets/build/img/account/user-avatar.svg'|theme) }}"
+      alt="{{ review.name }}"
+    >
+
+    <div class="d-flex flex-column flex-sm-row w-100 justify-content-sm-between">
+      <div>
+        {% if review.user %}
+        <a
+          href="{{ 'public-user-profile'|page({ md5_id: review.user.md5_id }) }}"
+          class="g-font-size-16 g-color-gray-dark-v2"
+        >
+          {{ review.name }} {{ review.surname }}
+        </a>
+        {% else %}
+        <div class="g-font-size-16 g-color-gray-dark-v2">
+          {{ review.name }}
+        </div>
+        {% endif %}
+
+        {% if review.rating is not null and review.rating != 0 %}
+        <div class="js-rating g-font-size-16 g-letter-spacing-0 g-line-height-1 g-color-yellow mb-0" data-rating="{{ review.rating }}"></div>
+        {% endif %}
+
+      </div>
+
+      <div class="g-color-gray-dark-v5">
+        {{ review.created_at_display|date("d F Y") }}
+      </div>
+    </div>
+  </div>
+
+<div class="g-font-size-18--md g-color-black g-pb-20">
+    {{ review.content | tgwz }}
+  </div>
+
+
+</div>
+<div class="g-mb-25 g-mb-30--md">
+  {% partial 'banners/chargeback-tablet' %}
+</div>
+{% elseif loop.index == 6 %}
+<div class="g-bg-white fb-rounded-0 fb-rounded-10 g-pa-15 g-pa-20--md g-mb-25 g-mb-30--md g-mx-minus-15 g-mx-0--sm">
+  <div class="d-flex g-mb-20">
+    <img
+      class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-width-48 g-height-48 g-pa-5 g-mr-20 lazyload"
+      src="{{ review.user.avatar.thumb(auto, auto)|default('assets/build/img/account/user-avatar.svg'|theme) }}"
+      alt="{{ review.name }}"
+    >
+
+    <div class="d-flex flex-column flex-sm-row w-100 justify-content-sm-between">
+      <div>
+        {% if review.user %}
+        <a
+          href="{{ 'public-user-profile'|page({ md5_id: review.user.md5_id }) }}"
+          class="g-font-size-16 g-color-gray-dark-v2"
+        >
+          {{ review.name }} {{ review.surname }}
+        </a>
+        {% else %}
+        <div class="g-font-size-16 g-color-gray-dark-v2">
+          {{ review.name }}
+        </div>
+        {% endif %}
+
+        {% if review.rating is not null and review.rating != 0 %}
+        <div class="js-rating g-font-size-16 g-letter-spacing-0 g-line-height-1 g-color-yellow mb-0" data-rating="{{ review.rating }}"></div>
+        {% endif %}
+
+      </div>
+
+      <div class="g-color-gray-dark-v5">
+        {{ review.created_at_display|date("d F Y") }}
+      </div>
+    </div>
+  </div>
+
+<div class="g-font-size-18--md g-color-black g-pb-20">
+    {{ review.content | tgwz }}
+  </div>
+
+</div>
+<div class="g-mb-25 g-mb-30--md g-hidden-xs-down">
+  {% partial 'banners/check-broker' %}
+</div>
+<div class="g-mb-25 g-mb-30--md g-hidden-sm-up">
+  {% partial 'banners/check-broker-tablet' %}
+</div>
+{% elseif loop.index == 8 %}
+<div class="g-bg-white fb-rounded-0 fb-rounded-10 g-pa-15 g-pa-20--md g-mb-25 g-mb-30--md g-mx-minus-15 g-mx-0--sm">
+  <div class="d-flex g-mb-20">
+    <img
+      class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-width-48 g-height-48 g-pa-5 g-mr-20 lazyload"
+      src="{{ review.user.avatar.thumb(auto, auto)|default('assets/build/img/account/user-avatar.svg'|theme) }}"
+      alt="{{ review.name }}"
+    >
+
+    <div class="d-flex flex-column flex-sm-row w-100 justify-content-sm-between">
+      <div>
+        {% if review.user %}
+        <a
+          href="{{ 'public-user-profile'|page({ md5_id: review.user.md5_id }) }}"
+          class="g-font-size-16 g-color-gray-dark-v2"
+        >
+          {{ review.name }} {{ review.surname }}
+        </a>
+        {% else %}
+        <div class="g-font-size-16 g-color-gray-dark-v2">
+          {{ review.name }}
+        </div>
+        {% endif %}
+
+        {% if review.rating is not null and review.rating != 0 %}
+        <div class="js-rating g-font-size-16 g-letter-spacing-0 g-line-height-1 g-color-yellow mb-0" data-rating="{{ review.rating }}"></div>
+        {% endif %}
+
+      </div>
+
+      <div class="g-color-gray-dark-v5">
+        {{ review.created_at_display|date("d F Y") }}
+      </div>
+    </div>
+  </div>
+
+<div class="g-font-size-18--md g-color-black g-pb-20">
+    {{ review.content | tgwz }}
+  </div>
+
+</div>
+<div class="g-mb-25 g-mb-30--md">
+  {% partial 'banners/become-author-tablet' %}
+</div>
+{% else %}
+<div class="g-bg-white fb-rounded-0 fb-rounded-10 g-pa-15 g-pa-20--md g-mb-25 g-mb-30--md g-mx-minus-15 g-mx-0--sm">
+  <div class="d-flex g-mb-20">
+    <img
+      class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-width-48 g-height-48 g-pa-5 g-mr-20 lazyload"
+      src="{{ review.user.avatar.thumb(auto, auto)|default('assets/build/img/account/user-avatar.svg'|theme) }}"
+      alt="{{ review.name }}"
+    >
+
+    <div class="d-flex flex-column flex-sm-row w-100 justify-content-sm-between">
+      <div>
+        {% if review.user %}
+        <a
+          href="{{ 'public-user-profile'|page({ md5_id: review.user.md5_id }) }}"
+          class="g-font-size-16 g-color-gray-dark-v2"
+        >
+          {{ review.name }} {{ review.surname }}
+        </a>
+        {% else %}
+        <div class="g-font-size-16 g-color-gray-dark-v2">
+          {{ review.name }}
+        </div>
+        {% endif %}
+
+        {% if review.rating is not null and review.rating != 0 %}
+        <div class="js-rating g-font-size-16 g-letter-spacing-0 g-line-height-1 g-color-yellow mb-0" data-rating="{{ review.rating }}"></div>
+        {% endif %}
+
+      </div>
+
+      <div class="g-color-gray-dark-v5">
+        {{ review.created_at_display|date("d F Y") }}
+      </div>
+    </div>
+  </div>
+
+<div class="g-font-size-18--md g-color-black g-pb-20">
+    {{ review.content | tgwz }}
+  </div>
+
+</div>
+
+{% endif %}
+
+{% else %}
+<div class="d-flex justify-content-center align-items-center g-font-size-18--md g-color-gray-dark-v5 g-mb-20">
+  <i class="icon-info g-font-size-22 g-mr-12"></i>Ещё нет отзывов, будьте первым!
+</div>
+{% endfor %}
+
+{% partial 'componentItemDirectoryProfile::modal-answer-form' %}
+
+<!-- Pagination -->
+{% if reviews.lastPage > 1 %}
+<nav class="w-100 g-mb-60" aria-label="Page Navigation">
+  <div class="d-flex justify-content-between">
+    {% if reviews.previousPageUrl %}
+    <div class="d-flex w-100 text-left">
+      <a
+        class="u-pagination-v1__items g-py-12 g-px-20 g-bg-blue g-bg-gray-dark-v2--hover g-transition-0_4 g-rounded-5 g-color-white u-link-v5"
+        href="{{ reviews.previousPageUrl }}"
+        aria-label="Previous"
+      >
+        <span aria-hidden="true">
+          <i class="fa fa-angle-left g-mr-10"></i>
+          Предыдущая
+        </span>
+        <span class="sr-only">Предыдущая</span>
+      </a>
+    </div>
+    {% endif %}
+    {% if reviews.nextPageUrl %}
+    <div class="d-flex w-100 text-right">
+      <a
+        class="u-pagination-v1__items g-py-12 g-px-20 g-bg-blue g-bg-gray-dark-v2--hover g-transition-0_4 g-rounded-5 g-color-white u-link-v5"
+        href="{{ reviews.nextPageUrl }}"
+        aria-label="Next"
+      >
+        <span aria-hidden="true">
+          Следующая
+          <i class="fa fa-angle-right g-ml-10"></i>
+        </span>
+        <span class="sr-only">Следующая</span>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}
+<!-- End Pagination -->

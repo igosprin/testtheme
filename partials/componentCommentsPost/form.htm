@@ -1,0 +1,94 @@
+<div class="g-pt-40 g-pt-80--md">
+  <h2 class="g-font-size-18 g-font-size-25--sm g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-black text-md-center g-mb-15 g-mb-30--md">
+    Поделитесь своим мнением 
+  </h2>
+      <div id="wrap-comment-form">
+        <div id="comment-form">
+          <small>
+            <a onclick="Comment.cancel()" style="display: none;" rel="nofollow" id="cancel-comment-reply-link" title="Cancel reply">
+              <i class="material-icons g-font-size-18 g-color-black">close</i>
+            </a>
+          </small>
+
+          <form>
+            <div id="comment_flash_message"></div>
+            {% if(user == false) %}
+            <div class="row">
+              <!-- Name Field -->
+              <div class="col-12 form-group g-mb-15 g-mb-30--md">
+                <input
+                  class="form-control g-rounded-5 g-brd-gray-light-v4 g-brd-blue--hover g-transition-0_4 g-pa-15"
+                  placeholder="Ваше имя"
+                  name="author"
+                  type="text"
+                >
+              </div>
+              <!-- Email Field -->
+              <div class="col-12 col-md-6 form-group g-mb-15 g-mb-30--md">
+                <input
+                  class="form-control g-rounded-5 g-brd-gray-light-v4 g-brd-blue--hover g-transition-0_4 g-pa-15"
+                  placeholder="Эл. почта"
+                  name="email"
+                  type="email">
+              </div>
+
+              <!-- Phone Field -->
+              <div class="col-12 col-md-6 form-group g-mb-15 g-mb-30--md">
+                <input
+                  placeholder="Номер телефона"
+                  class="iti_phone form-control g-rounded-5 g-brd-gray-light-v4 g-brd-blue--hover g-transition-0_4 g-pl-90 g-py-15 g-pr-15"
+                  name="phone"
+                  type="tel"
+                >
+                <small class="iti_error-msg hide form-control-feedback"></small>
+                <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- Content Field -->
+            <div class="form-group g-mb-15 g-mb-30--md">
+              <textarea
+                class="form-control g-resize-none g-rounded-5 g-brd-gray-light-v4 g-brd-blue--hover g-transition-0_4 g-pa-15"
+                placeholder="Раскажите нам о вашем опыте"
+                id="comment-text"
+                name="content"
+                rows="4"></textarea>
+            </div>
+            <input name="post_id" type="hidden" value="{{__SELF__.post_id}}">
+            {% if (__SELF__.settings.recaptcha_enabled) %}  
+            <div class="g-recaptcha" data-sitekey="{{ __SELF__.settings.site_key }}"></div>
+            <br>
+            {% endif %}
+  
+            <!-- Submit Field -->
+            <div class="d-flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center">
+              <div>
+                <label
+                  for="check"
+                  class="form-check-inline u-check g-font-size-9 g-font-size-default--md g-pl-35 mb-0 g-mr-0 d-flex flex-wrap g-mb-15 g-mb-30--md g-mb-0--lg"
+                >
+                  <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="check" id="check" type="checkbox" value="1" checked>
+        
+                  <div class="u-check-icon-checkbox-v4 g-bg-blue u-btn-outline-white g-color-white g-rounded-5 g-absolute-centered--y g-left-0 g-width-25 g-height-25">
+                    <i class="fa g-font-size-16 g-font-weight-200" data-check-icon=""></i>
+                  </div>
+        
+                  <span class="g-mr-5 g-color-black">
+                    Я даю согласие на
+                    <a href="{{ 'misc/privacy'|page }}" class="g-color-black">
+                      обработку персональных данных
+                    </a>
+                  </span>
+                </label>
+              </div>
+              <div class="form-group g-mb-0">
+                <button type="submit" class="btn w-100 g-rounded-10 g-bg-blue g-bg-gray-dark-v2--hover g-color-white g-font-size-16 g-transition-0_4 g-py-16 g-px-30 g-px-55--xl" onclick="Comment.saveButton(event)">
+                  Отправить отзыв
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>

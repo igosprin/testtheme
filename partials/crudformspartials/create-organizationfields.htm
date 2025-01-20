@@ -1,0 +1,56 @@
+<div class="form-group g-mb-20">
+  <label for="name">Название компании</label>
+  <input name="name" type="text" class="form-control form-control-md rounded-0" required
+         id="name" value="{{ form_value('name')|default(organization.name) }}">
+</div>
+<div class="form-group g-mb-20">
+  <label for="alt_name">Альтернативное название компании</label>
+  <input name="alt_name" type="text" class="form-control form-control-md rounded-0" required
+         id="alt_name" value="{{ form_value('alt_name')|default(organization.alt_name) }}">
+</div>
+<div class="form-group g-mb-20">
+  <label for="web_site">Сайт компании</label>
+  <input name="web_site" type="text" class="form-control form-control-md rounded-0" required
+         id="web_site" value="{{ form_value('web_site')|default(organization.web_site) }}">
+</div>
+{#<div class="form-group g-mb-20">#}
+{#  <label for="phone">Номер телефона</label>#}
+{#  <input type="tel"#}
+{#         name="phone" class="form-control form-control-md rounded-0" required#}
+{#         id="phone" value="{{ form_value('phone')|default(organization.phone) }}">#}
+{#</div>#}
+<div class="form-group g-mb-20">
+  <label for="iti_phone">Номер телефона</label>
+  <input type="tel"
+         name="phone" class="form-control iti_phone form-control-md rounded-0" required
+         id="iti_phone" value="{{ form_value('phone')|default(organization.phone) }}">
+</div>
+<div class="form-group g-mb-20">
+  <label for="headquarters">Главное управление</label>
+  <input name="headquarters" type="text" class="form-control form-control-md rounded-0" required
+         id="headquarters" value="{{ form_value('headquarters')|default(organization.headquarters) }}">
+</div>
+<div class="form-group g-mb-20">
+  <label for="about">Описание компании</label>
+  <textarea name="about" rows="1" type="text" class="form-control form-control-md rounded-0"
+            id="about" required>{{ form_value('about')|default(organization.about) }}</textarea>
+</div>
+<div class="form-group g-mb-20">
+  <label for="founded" class="g-mb-10">Дата основания</label>
+  <div class="input-group g-brd-primary--focus">
+    <input id="datepickerDefault"
+           class="form-control form-control-md u-datepicker-v1 g-brd-right-none rounded-0"
+           required
+           type="text" name="founded" value="{{ form_value('founded')|default(organization.founded) }}">
+    <div class="input-group-append">
+                                <span class="input-group-text rounded-0 g-color-gray-dark-v5"><i
+                                      class="icon-calendar"></i></span>
+    </div>
+  </div>
+</div>
+<div class="form-group g-mb-20">
+  <label for="email">Email компании</label>
+  <input name="email" type="email" class="form-control form-control-md rounded-0"
+         required
+         id="email" value="{{ form_value('email')|default(organization.email) }}">
+</div>

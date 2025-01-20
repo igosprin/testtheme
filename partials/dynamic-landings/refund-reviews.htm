@@ -1,0 +1,84 @@
+[itemDirectoryProfile componentItemDirectoryProfile]
+directorySlug = "companies"
+sectionSlug = "{{ :section_slug }}"
+itemDirectorySlug = "{{ :item_slug }}"
+reviewsPerPage = 10
+ratingRequired = 1
+==
+
+{% set itemDirectory = dynamicLanding.getItem %}
+{% set reviews = componentItemDirectoryProfile.getApprovedAndMyReviewsPaginated %}
+
+{% if itemDirectory.getApprovedReviews.count > 0 %}
+<section class="g-py-60 g-py-80--md" style="background-color: #000633;">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-8">
+        <h2 class="g-font-size-22 g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-white text-center g-mb-40 g-mb-60--md">
+          Актуальные отзывы о брокере {{ itemDirectory.name }} на&nbsp;нашем сайте
+        </h2>
+      </div>
+    </div>
+
+    <!-- slider -->
+    <div
+      id="carousel-1"
+      class="js-carousel g-pb-40"
+      data-infinite="true"
+      data-autoplay="true"
+      data-speed="7000"
+      data-lazy-load="progressive"
+      data-slides-show="3"
+      data-pagi-classes="u-carousel-indicators-v1 g-absolute-centered--x g-bottom-0 text-center"
+      data-responsive='[{
+        "breakpoint": 1200,
+        "settings": {
+          "slidesToShow": 3
+        }
+      }, {
+        "breakpoint": 992,
+        "settings": {
+          "slidesToShow": 2
+        }
+      }, {
+        "breakpoint": 768,
+        "settings": {
+          "slidesToShow": 2
+        }
+      }, {
+        "breakpoint": 576,
+        "settings": {
+          "slidesToShow": 1
+        }
+      }]'
+    >
+      <!-- slide -->
+      {% for review in reviews %}
+      <div class="js-slide g-px-15">
+        <div class="g-pa-20 g-height-250 g-brd-around g-brd-white-opacity-0_2 g-rounded-10">
+          <div class="d-flex align-items-center g-mb-20">
+            <img
+              src="{{ review.user.avatar.thumb(auto, auto)|default('assets/build/img/organic-landings/refund/default-avatar.jpg'|theme) }}"
+              alt="{{ review.name }}"
+              class="lazyload g-width-48 g-height-48 g-rounded-10 g-mr-15"
+            >
+            <div>
+              <div class="g-font-size-16 g-color-white">{{ review.name }}</div>
+              <div class="js-rating g-font-size-16 g-letter-spacing-0 g-line-height-1 g-color-yellow mb-0" data-rating="{{ review.rating }}"></div>
+            </div>
+          </div>
+          <p class="g-font-size-18--md g-line-height-1_4 g-color-white">
+            {{ str_limit(review.content, 100) }}
+            {% for item in itemDirectory.itemsSection %}
+            <a href="{{ 'directory/company-profile'|page({section_slug: item.section.slug, item_slug: itemDirectory.slug}) }}#company-reviews" class="g-font-size-14 g-color-gray-dark-v5">Читать далее...</a>
+            {% endfor %}
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- end slide -->
+    </div>
+    <!-- end slider -->
+  </div>
+</section>
+{% endif %}

@@ -1,0 +1,135 @@
+==
+{% set authors = authorsList.getAuthorsList() %}
+
+<div class="g-bg-white fb-rounded-0 fb-rounded-10 g-py-20 g-px-15 g-px-20--sm" itemscope itemtype="http://schema.org/BlogPosting">
+  <link itemprop="mainEntityOfPage" href="/" />
+  <!-- post category -->
+  {% if post.categories.count %}
+    {% for category in post.categories|slice(0,1) %}
+    <a
+      href="{{ 'blog/category'|page({slug:category.slug}) }}"
+      class="g-rounded-5 g-font-size-12 g-line-height-1_4 g-letter-spacing-1 g-bg-teal-opacity-0_1 g-color-teal text-uppercase g-pa-5"
+    >
+      {{ category.name }}
+    </a>
+    {% endfor %}
+  {% endif %}
+
+  <!-- post title -->
+  <h1 class="g-font-size-24 g-font-size-36--md g-font-weight-700 g-line-height-1_3 g-color-black g-mb-30" itemprop="headline">
+    {{ post.title }}
+  </h1>
+
+  <!-- post author, date, views, comments -->
+  <div class="d-flex flex-column flex-xl-row align-items-center g-mb-20">
+    <div class="w-100 d-flex align-items-center justify-content-between g-mb-10 g-mb-0--xl">
+      {% if authorPost.getAuthorByPostSlug.user is not empty %}
+      <div class="g-mr-30--xl" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <link itemprop="sameAs" href="/"/>
+        <a
+          href="{{ 'blog/author'|page({slug:authorPost.getAuthorByPostSlug.nickname}) }}"
+          class="g-font-size-16--md g-font-weight-700 g-line-height-1 g-color-blue"
+        >
+          <span itemprop="name">{{authorPost.getAuthorByPostSlug.user.getFullNameAttribute}}</span>
+        </a>
+      </div>
+      {% endif %}
+      <div class="g-font-size-16--md g-color-gray-dark-v2 g-line-height-1 g-mr-30--xl" itemprop="datePublished dateModified">
+        {{ post.published_at|date('d F Y') }}
+      </div>
+    </div>
+
+    <div class="w-100 d-flex justify-content-between align-items-center">
+      <div class="g-font-size-16--md g-color-gray-dark-v2 g-line-height-1">
+        {{ post.views }} Просмотров
+      </div>
+      <div class="g-font-size-16--md g-color-gray-dark-v2 g-line-height-1">
+        {{ componentCommentsPost.count }} Комментариев
+      </div>
+    </div>
+  </div>
+
+  <!-- post cover image -->
+  {% if post.featured_images.count %}
+  {% for image in post.featured_images %}
+  <div class="g-mb-20" itemscope="" itemtype="https://schema.org/ImageObject" itemprop="image">
+    <img
+      class="g-height-350--lg w-100 fb-img-cover g-rounded-10" itemprop="url image"
+      src="{{ image.path }}"
+      alt="{{ post.title }}"
+      title="{{ post.title }}"
+    >
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  <div>
+    <h4 class="g-font-size-20 g-font-weight-700 g-line-height-1 g-color-black g-mb-20">
+      Содержание статьи
+    </h4>
+
+    <!-- post chapters list -->
+    <ul class="g-font-size-16--md list-unstyled g-mb-20">
+      {% for post in post.navigation %}
+      {% set index = 0 %}
+      {% set number_li = post.id+1 %}
+      {% if post.level == 2 %}
+        <li class="d-flex align-items-center g-mb-15">
+          <a
+            href="#{{ post.id }}"
+            data-target="#{{ post.id }}"
+            class="d-flex js-go-to g-line-height-1 g-color-gray-dark-v5 g-color-blue--hover u-link-v5"
+          >
+          <span class="g-line-height-1 g-mr-8">&#8212;</span>
+            {{ post.innerHtml|raw }}
+          </a>
+        </li>
+      {% else %}
+        <li class="d-flex align-items-center g-mb-15">
+          <a
+            href="#{{ post.id }}"
+            data-target="#{{ post.id }}"
+            class="d-flex js-go-to g-line-height-1 g-color-gray-dark-v5 g-color-blue--hover u-link-v5"
+          >
+            <span class="g-line-height-1 g-mr-8">&#8212;</span>
+            {{ post.innerHtml|raw }}
+          </a>
+        </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+    <!-- post content -->
+    <div class="fb-content g-font-size-16--md g-color-gray-dark-v2 g-mb-25" itemprop="articleBody">
+      {{ post.content_html|raw }}
+    </div>
+  </div>
+
+  <!-- post author -->
+  {% if authorPost.getAuthorByPostSlug.user is not empty %}
+  <div class="d-flex">
+    <img
+      class="g-width-80 g-height-80 fb-img-cover g-mr-15 g-mr-20--md g-rounded-10 lazyload"
+      src="{{ authorPost.getAuthorByPostSlug.user.getAvatarThumb(80) }}"
+      alt="{{authorPost.getAuthorByPostSlug.user.getFullNameAttribute}}"
+    >
+    <div>
+      <a
+        href="{{ 'blog/author'|page({slug:authorPost.getAuthorByPostSlug.nickname}) }}"
+        class="d-flex g-font-size-16 g-font-size-20--md g-font-weight-700 g-color-blue g-line-height-1 g-mb-10"
+      >
+        {{ authorPost.getAuthorByPostSlug.user.getFullNameAttribute }}
+      </a>
+      <div class="g-font-size-14 g-font-size-16--md g-color-gray-dark-v2 g-line-height-1 g-mb-minus-5">
+        {{ authorPost.getAuthorByPostSlug.about|raw }}
+      </div>
+      <a
+        href="mailto:{{authorPost.getAuthorByPostSlug.user.email}}"
+        class="g-font-size-14 g-font-size-16--md g-color-gray-dark-v2 g-brd-bottom--dashed g-brd-gray-dark-v2 g-brd-transparent--hover g-transition-0_4 u-link-v5"
+      >
+        {{ authorPost.getAuthorByPostSlug.user.email }}
+      </a>
+    </div>
+  </div>
+  {% endif %}
+</div>

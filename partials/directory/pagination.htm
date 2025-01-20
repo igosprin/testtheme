@@ -1,0 +1,111 @@
+==
+<!-- pagination -->
+ <div>
+  {% set itemsperpage = items.perPage %}
+  {% set totalitems = items.total %}
+  {% set round = totalitems/itemsperpage %}
+  {% if items.lastPage > 1 %}
+  {% set beforePages = items.currentPage - 1 %}
+  {% set afterPages = items.currentPage + 1 %}
+  <nav id="stickyblock-end-1" aria-label="Page Navigation">
+      <ul
+          class="list-inline text-center mb-0 d-flex justify-content-center flex-wrap flex-md-nowrap flex-lg-nowrap">
+
+          {% if items.currentPage > 1 %}
+          <!-- if page value is greater than 1 then add new li which is the previous button -->
+          <li class="list-inline-item g-mr-20 g-mb-20">
+            <a href="{{ this.page.baseFileName|page()}}?page={{(items.currentPage-1)}}"
+            class="d-flex align-items-center justify-content-center u-pagination-v1__item g-px-10 g-height-45 g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-rounded-5"
+            aria-label="Prev" >
+              <i class="fa fa-angle-left g-color-black"></i>
+              <span class="g-ml-5 g-color-black g-line-height-1">Предыдущая</span>
+            </a>
+          </li>
+          {% if items.currentPage > 2 %} <!-- if page value is greater than 2 then add new li tag with 1 value -->
+
+          {% if round|round(0, 'ceil') != 3 %}
+          <li class="list-inline-item g-mr-20 g-mb-20">
+              <a class="d-flex align-items-center justify-content-center g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-rounded-5 g-color-black u-pagination-v1__item g-width-45 g-height-45"
+                  href="{{ this.page.baseFileName|page()}}?page=1">
+                  1</a>
+          </li>
+          {% endif %}
+          {% endif %}
+          <!-- if page value is greater than 3 then add new li tag with (...) -->
+          {% if items.currentPage > 3 and round|round(0, 'ceil') > 4 %}
+          <!-- if page value is greater than 4 then add new li tag with (...) -->
+          <li
+              class="list-inline-item g-mr-20 g-mb-20">
+              <p
+                  class="d-flex align-items-center justify-content-center g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-rounded-5 g-color-black u-pagination-v1__item g-width-45 g-height-45">
+                  ...</p>
+          </li>
+          {% endif %}
+          {% endif %}
+          <!-- how many pages or li show after the current li -->
+          {% if items.currentPage == 1 %}
+          <!-- if page value is equal to totalpages then substract by -2 to the afterpages value -->
+          {% set afterPages = items.currentPage + 2 %}
+          {% endif %}
+
+          <!-- how many pages or li show before the current li -->
+          {% if items.currentPage == items.lastPage %}
+          <!-- if page value is equal to totalpages then substract by -2 to the beforepages value -->
+          {% set beforePages = items.currentPage - 2 %}
+          {% endif %}
+
+
+          {% for pageLength in beforePages..afterPages %}
+
+          {% if pageLength == items.currentPage %}
+          <!-- if page value is equal to pagelength then assign the active string in the active variable -->
+          <li class="list-inline-item g-mr-20 g-mb-20">
+              <button
+                  class="active g-brd-primary g-brd-primary--active g-color-white g-bg-primary g-rounded-5 g-brd-primary--active g-bg-primary--active u-pagination-v1__item g-width-45 g-height-45 font-weight-normal g-font-size-16 d-flex align-items-center justify-content-center">
+                  {{items.currentPage}}
+              </button>
+          </li>
+          {% else %}
+          {% if pageLength > 0 and pageLength < round + 1 %} 
+          <li class="list-inline-item g-mr-20 g-mb-20">
+            <a class="d-flex align-items-center justify-content-center g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-rounded-5 g-color-black u-pagination-v1__item g-width-45 g-height-45"
+              href="{{ this.page.baseFileName|page()}}?page={{pageLength}}">
+              {{pageLength}}</a>
+          </li>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+          {% if items.currentPage < items.lastPage %} 
+          <!-- if page value is less than totalpages by -1 then show the last li or page which is iqual last page -->
+            {% if items.currentPage < items.lastPage -1 %} 
+            <!-- if page value is less than totalpages by -2 then show the (...) before last page -->
+              {% if items.currentPage < items.lastPage -2 and round|round(0, 'ceil' )> 4 %} 
+              <li class="list-inline-item g-rounded-5 d-flex align-items-end border g-brd-gray-light-v4 g-mr-20 g-mb-20">
+                <p class="d-flex align-items-center justify-content-center g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-rounded-5 g-color-black u-pagination-v1__item g-width-45 g-height-45"> ...</p>
+              </li>
+              {% endif %}
+              {% if round|round(0, 'ceil') != 3 %}
+              <li class="list-inline-item">
+                <a class="d-flex align-items-center justify-content-center g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-rounded-5 g-color-black u-pagination-v1__item g-width-45 g-height-45" 
+                href="{{ this.page.baseFileName|page()}}?page={{items.lastPage}}">
+                  {{items.lastPage}}</a>
+              </li>
+              {% endif %}
+              {% endif %}
+              <!-- if page value is less than totalPages then add new li which is the next button -->
+              <li class="list-inline-item g-mb-20">
+                <a
+                  href="{{ this.page.baseFileName|page()}}?page={{(items.currentPage+1)}}"
+                  class="d-flex align-items-center justify-content-center u-pagination-v1__item g-brd-around g-rounded-5 g-brd-gray-light-v4 g-px-10 g-height-45 g-brd-blue--hover"
+                  aria-label="Next"
+                >
+                  <span class="g-mr-5 g-line-height-1 g-color-black">Следующая</span>
+                  <i class="fa fa-angle-right g-color-black"></i>
+                </a>
+              </li>
+          {% endif %}
+      </ul>
+  </nav>
+  {% endif %}
+</div>
+<!-- end pagination -->

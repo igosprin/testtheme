@@ -1,0 +1,96 @@
+<div class="modal fade"
+     id="modalAnswerForm"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="modalAnswerFormLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content u-shadow-v1-7 g-px-25 g-py-30 g-mb-50">
+            <div class="g-pb-25">
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-hidden="true">&times;
+                </button>
+                <h4 class="modal-title mb-0" id="modalAnswerFormLabel">
+                    Ответить
+                </h4>
+            </div>
+            {% if not user and not __SELF__.isAnonymousCommentsAllowed %}
+            <p class="h5">
+                <a href="{{ 'account/sign-in'|page }}">Войти</a>
+                /
+                <a href="{{ 'account/sign-up'|page }}">зарегистрироваться</a> чтобы оставить ответ
+            </p>
+            {% else %}
+            <div id="leaveAnswerResult">
+                {{ form_ajax('onAnswer', {
+                    success: "$('#modalAnswerForm').modal('hide'); $('#successAnswer').modal('show');",
+                    'data-request-validate': true
+                }) }}
+                    <input name="organization" type="hidden" value="{{ organization.id }}">
+                    <input name="parent_review" class="parentReviewId" type="hidden" value="">
+                    {% if not user %}
+                    <div class="g-mb-15">
+                        <label class="g-color-gray-dark-v2 g-font-size-20 g-font-weight-700 g-mb-10">Напишите ваше имя</label>
+                        <input class="form-control g-bg-white g-bg-white--focus g-brd-gray-light-v2 g-brd-primary--hover g-color-gray-dark-v5 rounded-0 g-py-10 g-px-15"
+                               type="text"
+                               name="name"
+                               placeholder="Имя"
+                               required>
+                        <div data-validate-for="name" class="alert alert-danger"></div>
+                    </div>
+                    <div class="g-mb-15">
+                        <label class="g-color-gray-dark-v2 g-font-size-20 g-font-weight-700 g-mb-10">Напишите ваш e-mail</label>
+                        <input class="form-control g-bg-white g-bg-white--focus g-brd-gray-light-v2 g-brd-primary--hover g-color-gray-dark-v5 rounded-0 g-py-10 g-px-15"
+                               type="email"
+                               name="email"
+                               placeholder="Электронаая почта"
+                               required>
+                        <div data-validate-for="email" class="alert alert-danger"></div>
+                    </div>
+                    {% endif %}
+                    <div class="form-group g-mb-30">
+                        <label class="g-color-gray-dark-v2 g-font-size-20 g-font-weight-700 g-mb-15">Напишите текст вашего ответа</label>
+                        <textarea
+                                id="content"
+                                name="content"
+                                class="g-color-gray-dark-v5 g-font-size-16 form-control form-control-md g-resize-none rounded-0"
+                                rows="7"
+                                placeholder="Текст вашего ответа"
+                                required></textarea>
+                        <div data-validate-for="content" class="alert alert-danger"></div>
+                    </div>
+                    <div class="">
+                        <button
+                            id="reviewSubmit"
+                            class="btn g-font-size-16 btn-md btn-block u-btn-blue rounded-0 g-py-13"
+                            type="submit"
+                            role="button"
+                            data-attach-loading>
+                            Отправить ответ
+                        </button>
+                    </div>
+                {{ form_close() }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="successAnswer" tabindex="-1" role="dialog" aria-labelledby="successAnswerLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content u-shadow-v1-7 g-mb-35 g-py-20 g-px-20 g-px-25--sm">
+            <div>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-hidden="true">&times;
+                </button>
+                <h5 class="g-color-primary">
+                    Ваш ответ отправлен и появится на сайте после модерации.
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>

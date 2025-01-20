@@ -1,0 +1,10 @@
+{
+    "name": "btdev/financebar-theme",
+    "type": "october-theme",
+    "description": "The theme for financebar  site",
+    "homepage": "https://github.com/VadimIzmalkov/oc-financebar-theme.git",
+    "keywords": ["october", "theme", "financebar"],
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

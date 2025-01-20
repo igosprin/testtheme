@@ -1,0 +1,53 @@
+==
+{% set post = itemDirectory.overview %}
+
+{% if itemDirectory.overview %}
+<div>
+  <h3 class="g-font-size-18 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black g-mb-20">
+    Содержание статьи
+  </h3>
+  <ul class="g-font-size-16--md list-unstyled g-mb-10">
+    {% for post in post.navigation %}
+    {% set index = 0 %}
+    {% set number_li = post.id+1 %}
+    {% if post.level == 2 %}
+      <li class="d-flex align-items-center g-mb-15">
+        <span class="g-color-blue g-line-height-1 g-mr-8">&#8212;</span>
+        <a
+          href="#{{ post.id }}"
+          data-target="#{{ post.id }}"
+          class="d-flex js-go-to g-line-height-1 g-color-blue"
+        >
+          {{ post.innerHtml|raw }}
+        </a>
+      </li>
+    {% else %}
+      <li class="d-flex align-items-center g-mb-15">
+        <span class="g-color-blue g-line-height-1 g-mr-8">&#8212;</span>
+        <a
+          href="#{{ post.id }}"
+          data-target="#{{ post.id }}"
+          class="d-flex js-go-to g-line-height-1 g-color-blue"
+        >
+          {{ post.innerHtml|raw }}
+        </a>
+      </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+
+  <div class="post content g-font-size-16--md">
+    {{ post.content_html|raw }}
+  </div>
+</div>
+{% else %}
+<h3 class="g-font-size-18--md g-font-weight-600 g-color-gray-dark-v2 g-mb-0">
+  У этой компании еще нет обзора
+</h3>
+{% endif %}
+
+<style>
+  .post img {
+    width: 100%;
+  }
+</style>

@@ -1,0 +1,67 @@
+==
+<div class="control-popup modal fade" id="{{ id }}">
+  <div class="modal-dialog g-max-width-400">
+    <div class="modal-content g-rounded-10">
+      <div class="modal-body g-rounded-10 g-pa-0">
+        <div class="g-bg-white g-rounded-10 g-px-20 g-px-25--md g-py-30 g-py-40--md">
+          <header class="text-center g-mb-20">
+            <h2 class="g-font-size-22 g-font-size-26--md g-color-black g-font-weight-600 modal-title g-mb-0">Бесплатная консультация</h2>
+          </header>
+          <!-- Form -->
+          <form data-request="{{ genericForm }}::onFormSubmit">
+            {{ form_token() }}
+            <div id="{{ genericForm }}_forms_flash"></div>
+            <input type="hidden" name="type" value="{{ type }}">
+            <input type="hidden" name="url" value="{{ ''| page }}">
+
+            <div class="g-mb-20">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="form-control g-color-gray-dark-v5 g-bg-white g-brd-gray-light-v3 g-brd-primary--hover g-transition-0_3 rounded-0 g-font-size-14 rounded-0 g-px-10 g-py-12 g-mb-0"
+                placeholder="Ваше имя"
+              >
+            </div>
+            <div class="g-mb-20">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="form-control g-color-gray-dark-v5 g-bg-white g-brd-gray-light-v3 g-brd-primary--hover g-transition-0_3 rounded-0 g-font-size-14 rounded-0 g-px-10 g-py-12 g-mb-0"
+                placeholder="Электронная почта"
+              >
+            </div>
+            <div class="g-mb-20">
+              <input
+                type="tel"
+                name="iti_phone"
+                class="iti_phone form-control g-color-gray-dark-v5 g-bg-white g-brd-gray-light-v3 g-brd-primary--hover g-transition-0_3 rounded-0 g-font-size-14 rounded-0 g-pr-50 g-py-12 g-mb-0 g-pl-90"
+                required
+              >
+              <small class="iti_error-msg hide form-control-feedback"></small>
+              <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+            </div>
+            <div class="g-mb-15">
+              <button
+                id="simpleContactSubmitButton"
+                class="w-100 btn u-btn-primary g-font-size-14 g-font-weight-500 text-uppercase rounded-0 g-py-12 g-px-30"
+                type="submit" data-attach-loading
+              >Отправить</button>
+            </div>
+          </form>
+          <!-- End Form -->
+          <footer class="d-flex justify-content-center">
+            <button
+              onclick="Custombox.modal.close();"
+              class="g-color-gray-dark-v5 g-color-primary--hover g-transition-0_3 g-bg-transparent g-brd-none"
+              data-dismiss="modal"
+            >В другой раз</button>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

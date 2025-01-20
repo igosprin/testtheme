@@ -1,0 +1,47 @@
+{% for post in posts %}
+<li class="g-bg-white fb-rounded-0 fb-rounded-10 g-pt-20 g-px-15 g-px-20--sm g-mt-20 g-mt-30--md ">
+  <div class="comment g-py-0" id="comment-{{post.id}}">
+    <div class="comment-header d-flex justify-content-between g-mb-20">
+      <div class="d-flex align-items-center">
+        <img
+          class="g-width-50 g-height-50 g-mr-20"
+          src="{{ post.user.avatar.thumb(auto, auto)|default('assets/build/img/account/user avatar.png'|theme) }}"
+          alt="{{ post.user.name }}"
+        >
+        <div class="comment-name g-font-size-16 g-font-weight-400 g-color-gray-dark-v2">
+          {% if post.user.name %}
+          {{ post.user.name }}
+          {% else %}
+          Гость
+          {% endif %}
+        </div>
+      </div>
+      <div class="comment-date g-color-gray-dark-v5">
+        {{post.created_at_display|date("d F Y") }}
+      </div>
+    </div>
+
+    <div class="comment-content w-100 g-ml-0">
+      <div class="g-font-size-16--md g-color-black g-brd-bottom g-brd-gray-light-v4 g-pb-20">
+        {{post.content|tgwz|raw}}
+      </div>
+      <div class="d-flex align-items-center comment-footer g-py-20">
+        <a class="comment-reply g-font-size-14 g-color-gray-dark-v5 g-line-height-1 u-link-v5" onclick="Comment.replay(event,'{{post.id}}')">
+          <img src="{{ 'assets/build/img/account/icons/reply-arrow.svg'|theme }}" class="g-mb-3" alt="reply-arrow">
+          <span class="g-ml-5">Ответить</span>
+        </a>
+        <div class="g-ml-20">
+          {% partial componentReviewsUseful~'::default' review = post isUseful = post.isUsefulChecked() %}
+        </div>
+      </div>
+    </div>
+      <div class="clearfix"></div>
+  </div>
+
+  {% if post.children %}
+  <ul class="g-mt-minus-40 g-pl-0">
+    {% partial "componentCommentsPost::list" posts=post.children %}
+  </ul>
+  {% endif %}
+</li>
+{% endfor %}

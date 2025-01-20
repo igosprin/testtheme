@@ -1,0 +1,33 @@
+==
+<!-- search result companies -->
+<div class="col-6 col-lg-3 g-mb-10 g-px-0">
+  <a
+    href="{{ 'directory/company-profile'|page({item_slug: result.model.slug})}}"
+    class="d-flex flex-column justify-content-between g-height-100x g-bg-white g-rounded-10 u-link-v5 u-shadow-v1-6--hover g-mx-5"
+  >
+    <div class="d-flex flex-column align-items-center g-pt-15 g-pt-30--sm g-pb-8 g-pb-15--sm g-px-8 g-px-15--sm">
+      <img
+        src="{{ result.thumb.getThumb(170, 55) }}"
+        class="fb-img-contain g-mb-15 g-width-100 g-width-170--sm g-height-35 g-height-60--md"
+        alt="{{ result.title }}"
+      >
+      <h3 class="g-font-size-14 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-0">
+        {{ result.title | raw }} 
+      </h3>
+      <div
+        class="js-rating align-self-center g-color-yellow g-font-size-16 g-line-height-1"
+        data-rating="{{ result.model.display_rating }}"
+      ></div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center g-brd-top g-brd-gray-light-v4 g-pt-8 g-pt-15--sm g-px-8 g-px-15--sm g-pb-15">
+      <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+        <i class="icon-speech g-mr-5"></i>
+        <span>{{ result.model.getApprovedReviews.count }}</span>
+      </div>
+      <div class="d-flex align-items-center g-color-gray-dark-v2 g-line-height-1">
+        <i class="icon-eye g-mr-5"></i>
+        <span>{{ result.model.views }}</span>
+      </div>
+    </div>
+  </a>
+</div>

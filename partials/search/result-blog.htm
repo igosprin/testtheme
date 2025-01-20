@@ -1,0 +1,38 @@
+==
+<!-- search result blog -->
+
+<div class="d-flex justify-content-between align-items-center g-bg-white fb-rounded-0 fb-rounded-10 g-px-15 g-px-20--md g-py-15 g-py-20--md g-mb-25 g-mb-30--md">
+  <div>
+    <a href="{{ result.url }}" class="d-block g-font-size-14 g-font-size-18--md g-line-height-1_4 g-color-black g-color-blue--hover g-mb-8 u-link-v5">
+      {{ result.title |raw }}
+    </a>
+    <a href="{{ result.url }}" class="d-block g-font-size-12 g-font-size-default--md g-line-height-1_4 g-color-gray-dark-v2 g-mb-8 u-link-v5 g-hidden-sm-down">
+      {{ result.excerpt|slice(0, 150)|raw }}...
+    </a>
+    <div class="d-flex align-items-center">
+      {% for category in result.model.categories|slice(0, 1) %}
+      <a href="{{ 'blog/category'|page({slug:category.slug}) }}" class="g-rounded-5 g-font-size-10 g-font-size-12--md g-line-height-1_4 g-letter-spacing-1 g-bg-teal-opacity-0_1 g-color-teal text-uppercase g-pa-5">
+        {{ category.name }}
+      </a>
+      {% endfor %}
+      <div class="d-flex align-items-center g-color-gray-dark-v4 g-font-size-10 g-font-size-default--md g-line-height-1 g-ml-5 g-ml-15--md">
+        <span>{{ result.model.published_at|date("d M") }}</span>
+        <span class="g-mx-5">|</span>
+        <span class="d-flex align-items-center"><i class="icon-eye g-mr-5"></i>{{ result.model.getViewsAttribute() }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="g-ml-15 g-ml-20--md">
+    {% if result.model.featured_images.count %}
+    {% for image in result.model.featured_images %}
+    <a href="{{ result.url }}">
+      <img
+        class="fb-img-cover g-rounded-5 g-height-60 g-height-170--md g-width-60 g-width-170--md"
+        src="{{ image.getThumb(200, 200) }}"
+        alt="{{ result.title }}"
+      >
+    </a>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,81 @@
+title = "Все авторы"
+url = "/all-authors"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[authorsList]
+
+[genericForm]
+group = "all-authors-page"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+==
+{% set authors = authorsList.getAuthorsList %}
+
+<section class="g-bg-lightblue g-pb-40">
+  <div class="container">
+    {% partial 'common/breadcrumbs' breadcrumbs = {'Главная': '/', 'Авторы': ''} %}
+
+    <div class="g-hidden-sm-down g-mb-20">
+      {% partial 'banners/become-author' %}
+    </div>
+    <div class="g-hidden-md-up g-mb-20">
+      {% partial 'banners/become-author-tablet' %}
+    </div>
+    <h1 class="g-font-size-20 g-font-size-30--md g-font-weight-700 g-line-height-1 g-color-black g-mb-20">
+      Все авторы
+    </h1>
+    <div class="row">
+      {% for author in authors %}
+      <div class="col-12 col-sm-6 col-lg-4 g-mb-20">
+        <div class="d-flex flex-column g-bg-white g-rounded-10 g-height-100x g-py-20 g-py-40--md g-px-20">
+          <div class="d-flex flex-column align-items-center g-brd-bottom g-brd-gray-light-v4 g-pb-20">
+            <img
+              class="g-width-140 g-height-140 g-rounded-10 fb-img-cover g-mb-20"
+              src="{{ author.getAvatarThumb(140) }}"
+              alt="{{ author.getFullNameAttribute }}"
+            >
+            <a
+              href="{{ 'blog/author'|page({slug:author.author.nickname}) }}"
+              class="g-font-size-18 g-font-size-24--md g-line-height-1_3 g-color-black g-color-primary--hover g-transition-0_4 text-center u-link-v5 g-mb-8"
+            >
+              {{ author.getFullNameAttribute }}
+            </a>
+            <div class="g-font-size-16--md g-line-height-1 g-color-gray-dark-v2 g-mb-minus-5">
+              {{ author.author.about|raw }}
+            </div>
+            <a
+              href="mailto:{{ author.author.user.email }}"
+              class="g-font-size-16--md g-color-primary g-brd-bottom--dashed g-brd-primary g-brd-transparent--hover g-transition-0_4 u-link-v5"
+            >
+              {{ author.author.user.email }}
+            </a>
+          </div>
+
+          <!-- author blog categories -->
+          <div class="d-flex justify-content-center flex-wrap g-pt-15">
+            <a href="#" class="g-font-size-12 g-font-size-default--md g-line-height-1 g-color-teal text-uppercase g-mr-15">
+              трейдинг
+            </a>
+            <a href="#" class="g-font-size-12 g-font-size-default--md g-line-height-1 g-color-teal text-uppercase">
+              обзоры
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% partial 'modals/become-author' %}

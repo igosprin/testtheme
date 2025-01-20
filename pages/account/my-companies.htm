@@ -1,0 +1,87 @@
+title = "Мои компании"
+url = "/profile/companies"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+requirePassword = 0
+
+[session]
+security = "user"
+redirect = "account/sign-in"
+==
+{% set organizations = user.getOrganizations() %}
+
+<section class="g-py-50">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3">
+                {% partial 'account/left-sidebar' %}
+            </div>
+
+            <!-- Profle Content -->
+            <div class="col-lg-9">
+                <div class="card border-0 g-mb-40">
+                    <div class="u-heading-v3-1 g-mb-30 g-pos-rel">
+                        <h2 class="u-heading-v3__title g-font-size-18 g-font-primary g-font-weight-600 g-color-gray-dark-v1 text-uppercase g-brd-primary">
+                            МОИ КОМПАНИИ</h2>
+                        <a class="g-pos-abs g-right-0" href="{{ 'account/choose-company-type'|page }}">+ Добавить
+                            компанию</a>
+                    </div>
+
+                    <!-- Companies -->
+                    {% for organization in organizations %}
+                        <div class="card-block g-pa-0 g-mb-10">
+                            <div
+                                class=" d-flex justify-content-lg-between g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-20 flex-md-row flex-column">
+                                <div class="media">
+                                    <div class="g-width-85 g-mr-25">
+                                        <a href="{{ 'account/company-update'|page({id: organization.id}) }}"
+                                           class="g-color-gray-dark-v2">
+                                            <img class="w-100"
+                                                 src="{{ organization.logo.thumb(auto, auto)|default('assets/build/img/default-company-image.jpg'|theme) }}"
+                                                 alt="Company logo">
+                                        </a>
+                                    </div>
+                                    <div class="media">
+                                        <div class="g-mb-15 g-mb-10--sm">
+                                            <h5 class="h4  g-mr-10 g-mb-5 g-mb-0--sm  g-font-size-18--md g-font-size-16">
+
+                                                {% set companyType = organization.organizable.getTypeSlug() %}
+                                                {% if 'hyip' == companyType %}
+                                                    {% set companyDetailsUrl = 'hyip/update'|page({id: organization.id}) %}
+                                                {% endif %}
+
+                                                <a href="{{ companyDetailsUrl }}"
+                                                   class="g-color-gray-dark-v2">
+                                                    {{ organization.name }}</a></h5>
+
+                                            {# <h6 class="g-color-gray-dark-v3 g-font-size-14 g-font-weight-300" #}
+                                            {# >Описание компании.</h6> #}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="g-font-size-12 g-color-gray-dark-v3 text-right">
+                                    Добавлена {{ organization.created_at }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    {% if not organizations %}
+                    Компаний пока нет
+                    {% endif %}
+
+                    <!-- End Companies -->
+                </div>
+            </div>
+            <!-- End Profile Content -->
+        </div>
+    </div>
+</section>

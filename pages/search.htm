@@ -1,0 +1,161 @@
+title = "Результаты поиска"
+url = "/search"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[searchResultsExtended searchDirectory]
+providerFilter = "BTDev\Directory\Classes\SearchProviders\DirectorySearchProvider"
+resultsPerPage = 10
+showProviderBadge = 1
+noResultsMessage = "Your search returned no results."
+visitPageMessage = "Visit page"
+
+[searchResultsExtended searchCompany]
+providerFilter = "BTDev\Directory\Classes\SearchProviders\ItemsDirectorySearchProvider"
+resultsPerPage = 12
+showProviderBadge = 1
+noResultsMessage = "Your search returned no results."
+visitPageMessage = "Visit page"
+
+[searchResultsExtended searchBlog]
+providerFilter = "OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider"
+resultsPerPage = 20
+showProviderBadge = 1
+noResultsMessage = "Your search returned no results."
+visitPageMessage = "Visit page"
+
+[session]
+security = "all"
+==
+
+{% set resultsBlog = searchBlog.results %}
+{% set resultsDirectory = searchDirectory.results %}
+{% set resultsCompanies = searchCompany.results %}
+{% set resultsTotal = resultsBlog.total + resultsCompanies.total %}
+
+<section class="g-pt-40">
+  <div class="container">
+    <h2 class="g-font-size-20 g-font-size-30--md g-font-weight-700 g-line-height-1 g-color-black g-mb-20">
+      Поиск по запросу «{{ query }}»
+    </h2>
+
+    <!-- Search Form -->
+    <div class="g-mb-20">
+      <form
+        action="{{ searchInput.searchPage | page }}?q={{ query | url_encode(true) }}" 
+        method="get"
+        itemprop="potentialAction"
+        itemscope
+        itemtype="http://schema.org/SearchAction"
+        id="searchform" class="g-bg-white u-dropdown--hidden"
+      >
+        <meta itemprop="target" content="/search?q={query}" />
+        <div class="input-group g-pos-rel">
+          <input class="form-control g-rounded-10 u-form-control g-font-size-14 g-color-gray-dark-v2 g-bg-white g-brd-gray-light-v4 g-brd-primary--hover g-transition-0_4 g-py-15 g-pl-20 g-pr-50"
+            name="q" 
+            type="text" 
+            placeholder="Поиск..." 
+            autocomplete="on"
+            {% if searchInput.useAutoComplete %} 
+              data-track-input
+              data-request="{{ searchInput }}::onType"
+              data-request-before-update="document.getElementById('autocomplete-results').cla('ss-search-form__results--visible')"
+              data-request-update="'{{ searchInput }}::autocomplete': '#autocomplete-results'"
+            {% endif %} 
+            value="{{ query }}"
+            >
+          <div class="input-group-addon g-pos-abs g-top-10 g-right-7">
+            <button class="btn g-width-35 g-height-35 d-flex justify-content-center align-items-center g-brd-none g-rounded-5 g-width-35 g-height-35 g-bg-lightblue" type="submit">
+              <span class="icon-magnifier g-font-size-16 g-color-gray-dark-v2"></span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- End Search Form -->
+    <div class="g-font-size-16 g-color-gray-dark-v2 g-mb-20">
+      {% if resultsTotal > 0 %}
+      Найдено {{resultsTotal}} результатов
+      {% else %}
+      Ничего не найдено
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="g-brd-bottom--md g-brd-gray-light-v4">
+    <div class="container">
+      <!-- Nav tabs -->
+      <ul
+        class="nav u-nav-v-i u-nav-primary d-flex"
+        role="tablist"
+      >
+        <li class="nav-item g-font-size-14 g-font-size-16--md g-font-weight-700 text-uppercase">
+          <a class="nav-link active g-px-20 g-px-40--md" data-toggle="tab" href="#companies" role="tab">компании ({{ resultsCompanies.total }})</a>
+        </li>
+        <li class="nav-item g-font-size-14 g-font-size-16--md g-font-weight-700 text-uppercase">
+          <a class="nav-link g-px-20 g-px-40--md" data-toggle="tab" href="#blog" role="tab">блог ({{ resultsBlog.total }})</a>
+        </li>
+      </ul>
+      <!-- End Nav tabs -->
+    </div>
+  </div>
+</section>
+
+<section class="g-bg-lightblue">
+  <div class="container">
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- companies -->
+      <div class="tab-pane fade show active" id="companies" role="tabpanel">
+        <div class="row g-pt-25 g-pb-50 g-pb-80--md">
+          {% for result in resultsCompanies %}
+            {% partial 'search/result-companies' result = result %}
+          {% else %}
+            {% partial 'search/no-results' query = searchCompany.query nameResult = 'компаний' %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- blog -->
+      <div class="tab-pane fade" id="blog" role="tabpanel">
+        {% if resultsBlog.total > 0 %}
+        <div class="row g-pt-25">
+          <div class="col-12 col-lg-8 g-px-0 g-px-15--sm">
+            {% for result in resultsBlog %}
+              {% partial 'search/result-blog' result = result last = loop.last %}
+            {% endfor %}
+            
+            <div class="d-flex justify-content-center g-mb-60">
+              <a
+                href="{{ 'blog/index'|page }}"
+                class="btn g-bg-primary g-bg-gray-dark-v2--hover g-transition-0_4 g-color-white g-rounded-10 g-font-size-16 g-py-12 g-px-30"
+              >
+                Показать еще
+              </a>
+            </div>
+            {# partial 'search/pagination' results = searchBlog.results #}
+          </div>
+          <div class="col-12 col-lg-4 g-pb-50">
+            <div class="g-hidden-md-down">
+              {% partial 'banners/become-author-sidebar' %}
+            </div>
+            <div class="g-hidden-lg-up">
+              {% partial 'banners/become-author-tablet' %}
+            </div>
+          </div>
+        </div>
+        {% else %}
+        {% partial 'search/no-results' query = searchBlog.query nameResult = 'статей' %}
+        {% endif %}
+      </div>
+
+    </div>
+    <!-- End Tab panes -->
+  </div>
+</section>
+
+{% partial 'modals/become-author' %}
+{% partial 'modals/free-consultation' id="add-company" type="add-company" %}
+{% partial 'modals/consultation-modal' %}

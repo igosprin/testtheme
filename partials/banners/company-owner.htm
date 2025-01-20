@@ -1,0 +1,16 @@
+==
+<!-- company owning request banner -->
+<a
+  href="{{ 'mycompany/company-owning-request'| page({item_slug:itemDirectory.slug}) }}"
+  class="d-flex flex-column align-items-center g-bg-white g-rounded-10 u-link-v5 g-py-40 g-px-20 g-mb-30--lg"
+>
+  <h4 class="g-font-size-20 g-font-weight-700 g-line-height-1_4 g-color-black text-center g-mb-8">
+    Являетесь представителем {{ itemDirectory.name }}?
+  </h4>
+  <p class="g-font-size-16 g-line-height-1_5 g-color-gray-dark-v2 text-center g-mb-15">
+    Подключите личный кабинет своей компании, чтобы получить доступ к бесплатным бизнес-инструментам
+  </p>
+  <button class="btn g-rounded-10 g-bg-transparent g-brd-around g-brd-blue g-font-size-16 g-color-blue g-py-16 g-px-30">
+    Запросить доступ
+  </button>
+</a>

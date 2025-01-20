@@ -1,0 +1,148 @@
+==
+{% set posts = popularBlogPosts.posts %}
+
+<section>
+  <div class="container">
+    <h2 class="g-font-size-22 g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-black text-center g-mb-20 g-mb-40--md">
+      Популярные статьи
+    </h2>
+    <div class="row g-mb-10">
+      <div class="col-12 col-lg-8">
+        <div class="row">
+          {% for post in posts|slice(0, 2) %}
+          <div class="col-12 col-md-6 g-mb-20 g-mb-30--md">
+            <div class="d-flex flex-column g-bg-lightblue g-rounded-10 g-height-100x g-pa-20" itemscope itemtype="https://schema.org/BlogPosting">
+              {% if post.featured_images.count %}
+              {% for image in post.featured_images %}
+              <a href="{{ post.url }}">
+                <img
+                  class="fb-img-cover g-rounded-5 img-fluid w-100 g-height-250 g-mb-20"
+                  src="{{ image.getThumb(200, 200) }}"
+                  alt="{{ post.title }}"
+                  itemprop="image"
+                >
+              </a>
+              {% endfor %}
+              {% endif %}
+              <a href="{{ post.url }}" class="g-font-size-14 g-font-size-18--md g-line-height-1_4 g-color-black g-color-blue--hover g-mb-8 u-link-v5">
+                <span itemprop="headline">{{ post.title }}</span>
+              </a>
+              <div class="g-hidden-xs-up" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                <link itemprop="sameAs" href="/" />
+                <a href="/">
+                <span itemprop="name">post author</span>
+                </a>
+                <a href="/" itemprop="email">
+                    author email
+                </a>
+              </div>
+              <div class="d-flex align-items-center">
+                {% for category in post.categories|slice(0, 1) %}
+                <a href="{{ 'blog/category'|page({slug:category.slug}) }}" class="g-rounded-5 g-font-size-10 g-font-size-12--md g-line-height-1_4 g-letter-spacing-1 g-bg-teal-opacity-0_1 g-color-teal text-uppercase g-pa-5">
+                  {{ category.name }}
+                </a>
+                {% endfor %}
+                <div class="d-flex align-items-center g-color-gray-dark-v4 g-font-size-10 g-font-size-default--md g-line-height-1 g-ml-15">
+                  <span itemprop="datePublished">{{ post.published_at|date("d M") }}</span>
+                  <span class="g-mx-5">|</span>
+                  <span class="d-flex align-items-center"><i class="icon-eye g-mr-5"></i>{{ post.views }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <div class="col-12 g-mb-20 g-mb-30--md">
+            {% partial 'banners/become-author-tablet' %}
+          </div>
+          {% for post in posts|slice(2, 2) %}
+          <div class="col-12 col-md-6 g-mb-20 g-mb-30--md">
+            <div class="d-flex flex-column g-bg-lightblue g-rounded-10 g-height-100x g-pa-20" itemscope itemtype="https://schema.org/BlogPosting">
+              {% if post.featured_images.count %}
+              {% for image in post.featured_images %}
+              <a href="{{ post.url }}">
+                <img
+                  class="fb-img-cover g-rounded-5 img-fluid w-100 g-height-250 g-mb-20"
+                  src="{{ image.getThumb(200, 200) }}"
+                  alt="{{ post.title }}"
+                  itemprop="image"
+                >
+              </a>
+              {% endfor %}
+              {% endif %}
+              <a href="{{ post.url }}" class="g-font-size-14 g-font-size-18--md g-line-height-1_4 g-color-black g-color-blue--hover g-mb-8 u-link-v5">
+                <span itemprop="headline">{{ post.title }}</span>
+              </a>
+              <div class="g-hidden-xs-up" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                <link itemprop="sameAs" href="/" />
+                <a href="/">
+                <span itemprop="name">post author</span>
+                </a>
+                <a href="/" itemprop="email">
+                    author email
+                </a>
+              </div>
+              <div class="d-flex align-items-center">
+                {% for category in post.categories|slice(0, 1) %}
+                <a href="{{ 'blog/category'|page({slug:category.slug}) }}" class="g-rounded-5 g-font-size-10 g-font-size-12--md g-line-height-1_4 g-letter-spacing-1 g-bg-teal-opacity-0_1 g-color-teal text-uppercase g-pa-5">
+                  {{ category.name }}
+                </a>
+                {% endfor %}
+                <div class="d-flex align-items-center g-color-gray-dark-v4 g-font-size-10 g-font-size-default--md g-line-height-1 g-ml-15">
+                  <span itemprop="datePublished">{{ post.published_at|date("d M") }}</span>
+                  <span class="g-mx-5">|</span>
+                  <span class="d-flex align-items-center"><i class="icon-eye g-mr-5"></i>{{ post.views }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-12 col-lg-4">
+        {% for post in posts|slice(4, 8) %}
+        <div class="d-flex flex-column g-mb-20 g-mb-30--md" itemscope itemtype="https://schema.org/BlogPosting">
+            <img
+              class="g-hidden-xs-up"
+              src="{{ post.url }}"
+              alt="{{ post.title }}"
+              itemprop="image"
+            >
+          <a href="{{ post.url }}" class="g-font-size-14 g-font-size-18--md g-line-height-1_4 g-color-black g-color-blue--hover g-mb-8 u-link-v5">
+            <span itemprop="headline">{{ post.title }}</span>
+          </a>
+          <div class="g-hidden-xs-up" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            <link itemprop="sameAs" href="/" />
+            <a href="/">
+            <span itemprop="name">post author</span>
+            </a>
+            <a href="/" itemprop="email">
+                author email
+            </a>
+          </div>
+          <div class="d-flex align-items-center">
+            {% for category in post.categories|slice(0,1) %}
+            <a href="{{ 'blog/category'|page({slug:category.slug}) }}" class="g-rounded-5 g-font-size-10 g-font-size-12--md g-line-height-1_4 g-letter-spacing-1 g-bg-teal-opacity-0_1 g-color-teal text-uppercase g-pa-5">
+              {{ category.name }}
+            </a>
+            {% endfor %}
+            <div class="d-flex align-items-center g-color-gray-dark-v4 g-font-size-10 g-font-size-default--md g-line-height-1 g-ml-15">
+              <span itemprop="datePublished">{{ post.published_at|date("d M") }}</span>
+              <span class="g-mx-5">|</span>
+              <span class="d-flex align-items-center"><i class="icon-eye g-mr-5"></i>{{ post.views }}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <a
+        href="{{ 'blog/index'|page }}"
+        class="btn g-rounded-10 g-bg-primary g-bg-gray-dark-v2--hover g-font-size-16 g-color-white g-transition-0_5 g-py-15 g-px-30"
+      >
+        Смотреть больше статей
+      </a>
+    </div>
+  </div>
+</section>

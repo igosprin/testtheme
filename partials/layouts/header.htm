@@ -1,0 +1,198 @@
+==
+{% flash %}
+<div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div>
+{% endflash %}
+
+<header
+  id="js-header"
+  class="u-header u-header--sticky-top u-header--show-hide u-header--toggle-section g-py-11 g-bg-white u-shadow-v1-7"
+  data-header-fix-moment="100"
+  data-header-fix-effect="slide"
+>
+  <div
+    class="u-header__section js-header-change-moment g-transition-0_3"
+    data-header-fix-moment-exclude="g-py-10"
+    data-header-fix-moment-classes="u-shadow-v18 g-py-0"
+  >
+    <nav class="navbar navbar-expand-lg g-py-0">
+      <div class="container g-pos-rel flex-column flex-lg-row justify-content-start justify-content-lg-between align-items-start align-items-lg-center">
+        <!-- Responsive Toggle Button -->
+        <button
+          class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-top-minus-1 g-right-0"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="navBar"
+          data-toggle="collapse"
+          data-target="#navBar"
+        >
+          <span class="hamburger hamburger--slider">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </span>
+        </button>
+        <!-- End Responsive Toggle Button -->
+        <div class="d-flex align-items-center">
+            <!-- Logo -->
+          <a href="/" class="navbar-brand g-mr-45--lg">
+            <img src="{{ 'assets/build/img/financebar-new/financebar-logo.svg' | theme }}" alt="Financebar" width="208" height="35">
+          </a>
+          <!-- End Logo -->
+
+          <!-- Navigation -->
+          <div class="d-flex align-items-center">          
+            <ul class="navbar-nav g-font-weight-700 align-items-center ml-auto g-hidden-md-down">
+              <li class="nav-item g-mx-15--lg">
+                <a href="{{ 'directory/directories-list'| page }}" class="nav-link px-0 py-0 g-color-gray-dark-v2 g-color-blue--hover g-font-size-16 g-font-weight-400">
+                  Категории компаний
+                </a>
+              </li>
+
+              <li class="nav-item g-mx-15--lg">
+                <a href="{{ 'blog/index'|page }}" class="nav-link px-0 py-0 g-color-gray-dark-v2 g-color-blue--hover g-font-size-16 g-font-weight-400">
+                  Блог
+                </a>
+              </li>
+              <li class="nav-item g-mx-15--lg">
+                <button class="btn g-width-30 g-height-30 d-flex align-items-center justify-content-center g-bg-lightblue g-pa-5 g-rounded-5 border-0 u-link-v5" 
+                aria-haspopup="true" aria-expanded="false" aria-controls="searchform-1" data-dropdown-target="#searchform-1" data-dropdown-type="css-animation" data-dropdown-duration="300" data-dropdown-animation-in="fadeInUp"
+                data-dropdown-animation-out="fadeOutDown">
+                  <img src="{{ 'assets/build/img/icon/search.svg'|theme }}" alt="Search">
+                </button>
+                <!-- Search Form -->
+                <div itemscope itemtype="https://schema.org/WebSite">
+                  <link itemprop="url" href="/">
+                  <form action="{{ 'search' | page }}" method="get" id="searchform-1" class="u-searchform-v1 u-dropdown--css-animation u-dropdown--hidden g-bg-white g-pa-10 g-mt-25--lg g-mt-12--lg--scrolling" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+                    <meta itemprop="target" content="/search?q={q}"/>
+                    <div class="input-group g-brd-primary--focus">
+                      <input itemprop="query-input" name="q" class="form-control rounded-0 u-form-control" type="search" placeholder="Поиск...">
+
+                      <div class="input-group-addon p-0">
+                        <button class="btn rounded-0 btn-primary btn-md g-font-size-14 g-px-18" type="submit">Поиск</button>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+                <!-- End Search Form -->
+              </li>
+
+              {# if user #}
+              <!-- <li class="nav-item g-mx-15--lg g-hidden-md-down">
+                <a
+                  id="account-dropdown-invoker"
+                  class="media align-items-center float-right g-text-underline--none--hover"
+                  href="{{ 'account/profile'|page }}" aria-controls="account-dropdown"
+                  aria-haspopup="true" aria-expanded="false" data-dropdown-event="hover"
+                  data-dropdown-target="#account-dropdown1" data-dropdown-type="css-animation"
+                  data-dropdown-duration="300" data-dropdown-hide-on-scroll="false"
+                  data-dropdown-animation-in="fadeIn" data-dropdown-animation-out="fadeOut"
+                >
+                  <div class="g-mr-12">
+                    <img
+                      class="g-brd-around g-brd-gray-light-v4 g-rounded-10 g-width-48 g-height-48 g-pa-5"
+                      src="{{ user.avatar.thumb(auto, auto)|default('assets/build/img/account/user-avatar.svg'|theme) }}"
+                      alt="user icon"
+                    >
+                  </div>
+                  <span class="d-block g-hidden-sm-down g-color-gray-dark-v2 g-color-blue--hover g-font-size-16 g-font-weight-400">
+                    {{ user.name }} {{ user.surname }}
+                  </span>
+                </a>
+              </li>
+
+              <li class="nav-item g-hidden-lg-up">
+                <div class="col g-px-0">
+                  <a class="nav-link g-px-0" href="{{ 'account/profile'|page }}">
+                    <div class="media-body">
+                      <span class="d-block g-color-gray-dark-v2 g-color-blue--hover g-font-size-16 g-font-weight-700">
+                        {{ user.name|default('Мой аккаунт') }}
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </li> -->
+
+              {# else #}
+              <!-- <li class="nav-item g-mx-15--lg">
+                <a href="{{ 'account/sign-in'|page }}" class="d-flex align-items-center nav-link px-0 py-0 g-color-gray-dark-v2 g-color-blue--hover g-font-size-16 g-font-weight-400">
+                  <div class="g-width-30 g-height-30 d-flex align-items-center justify-content-center g-bg-lightblue g-rounded-5 g-mr-10">
+                    <img src="{{ 'assets/build/img/icon/login.svg'|theme }}" alt="Search">
+                  </div>
+                  Войти
+                </a>
+              </li> -->
+              <!-- <li class="nav-item g-mx-20--lg">
+                  <a href="{{ 'account/sign-up'|page }}"
+                      class="nav-link px-0 g-color-gray-dark-v2 g-color-gray-dark-v5--hover g-font-size-16 g-font-weight-700">
+                      Зарегистрироваться
+                  </a>
+              </li> -->
+
+              {# endif #}
+            </ul>
+          </div>
+          <!-- End Navigation -->
+        </div>
+        
+        <div class="d-flex align-items-center g-mt-10 g-mt-0--lg g-bg-lightblue g-pa-5 g-pl-15 g-rounded-50 w-100 g-width-auto--lg justify-content-between justify-content-lg-start" >
+          <div class="nav-item g-mr-10">
+            <a href="{{ 'landings/landing-chargeback-2.htm'| page }}" class="nav-link px-0 py-0 g-color-gray-dark-v2 g-color-blue--hover g-font-size-14 text-uppercase g-font-weight-500">
+              Возврат депозита
+            </a>
+          </div>
+          <div class="d-flex align-items-center ">
+            <div class="nav-item g-mr-10">
+              <a href="https://wa.me/{{ whatsapp1() }}" class="nav-link px-0 py-0 g-color-gray-dark-v2 g-color-blue--hover g-font-size-16 g-font-weight-400">
+                <img src="{{ 'assets/src/img/icons/social/whatsapp.svg'|theme }}" alt="">
+              </a>
+            </div>
+  
+            <div class="nav-item g-mr-10">
+              <a href="https://t.me/{{ telegram1() }}" class="nav-link px-0 py-0 g-color-gray-dark-v2 g-color-blue--hover g-font-size-16 g-font-weight-400">
+                <img src="{{ 'assets/src/img/icons/social/telegram-head.svg'|theme }}" alt="">
+              </a>
+            </div>
+          </div>
+         
+        </div>
+        <!-- Mobile navigation -->
+        <div class="g-hidden-lg-up w-100">
+          <div class="collapse navbar-collapse" id="navBar">
+            <ul class="navbar-nav align-items-center g-py-20">
+              <li class="nav-item w-100 g-pt-15 g-pb-8 g-brd-bottom g-brd-black g-hidden-lg-up">
+                <div class="col g-px-0">
+                  <!-- Search Form -->
+                  <form action="{{ 'search' | page }}" method="get" id="searchform-mob">
+                    <div class="input-group g-brd-primary--focus">
+                      <input  name="q" class="form-control rounded-0 border-0 g-pa-0" type="search" placeholder="Поиск...">
+
+                      <button class="btn g-width-30 g-height-30 d-flex align-items-center justify-content-center g-bg-lightblue g-pa-5 g-rounded-5 border-0 u-link-v5" type="submit">
+                        <img src="{{ 'assets/build/img/icon/search.svg'|theme }}" alt="Search">
+                      </button>
+                    </div>
+                  </form>
+                  <!-- End Search Form -->
+                </div>
+              </li>
+  
+              <li class="nav-item w-100 g-py-15 g-brd-y g-brd-gray-light-v5">
+                <a href="{{ 'directory/directories-list'| page }}" class="nav-link px-0 py-0 g-color-gray-dark-v2 g-color-blue--hover g-font-size-16 g-font-weight-400 g-line-height-1">
+                  Категории компаний
+                </a>
+              </li>
+  
+              <li class="nav-item w-100 g-pt-15">
+                <a href="{{ 'blog/index'|page }}" class="nav-link px-0 py-0 g-color-gray-dark-v2 g-color-blue--hover g-font-size-16 g-font-weight-400 g-line-height-1 ">
+                  Блог
+                </a>
+              </li>
+  
+            </ul>
+          </div>
+        </div>
+        <!-- End mobile navigation -->
+      </div>
+    </nav>
+  </div>
+</header>

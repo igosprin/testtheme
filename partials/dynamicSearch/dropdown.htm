@@ -1,0 +1,131 @@
+[itemDirectoryList priorityCompanies]
+listId = "priority-companies"
+limit = 6
+
+[sectionList]
+listId = 'priority-home-search'
+limit = 6
+==
+{% if searchStarted %}
+
+    {% if results.count %}
+
+        {% if resultsGrouped.Category %}
+            {% set numberOfCategories = resultsGrouped.Category.count() %}
+            {% set numberOfCategories = numberOfCategories > __SELF__.maxNumberOfResults / 2 ? __SELF__.maxNumberOfResults / 2 : numberOfCategories %}
+        {% endif %}
+
+        {% if resultsGrouped.ItemDirectory %}
+            {% set numberOfItemsDirectory = resultsGrouped.ItemDirectory.count() %}
+            {% set numberOfItemsDirectory = numberOfItemsDirectory > __SELF__.maxNumberOfResults - numberOfCategories ? __SELF__.maxNumberOfResults - numberOfCategories : numberOfItemsDirectory %}
+        {% endif %}
+
+        {% if resultsGrouped.Category %}
+            {% set numberOfCategories = resultsGrouped.Category.count() %}
+            {% set numberOfCategories = numberOfCategories > __SELF__.maxNumberOfResults - numberOfItemsDirectory ? __SELF__.maxNumberOfResults - numberOfItemsDirectory : numberOfCategories %}
+        {% endif %}
+<div class="form-control border-0 g-pa-30">
+    <div class="row g-mx-0">
+        {% if resultsGrouped.ItemDirectory %}
+        <div class="text-left col-12 col-md-6 col-lg-6 g-px-0 g-pr-15 g-pr-40--lg">
+            {% for index,result in resultsGrouped.ItemDirectory | slice(0, numberOfItemsDirectory) %}
+                {% if index > 0 %}
+                    <hr class="g-brd-gray-light-v4 g-my-10"/>
+                {% endif %}
+                {% partial __SELF__ ~ '::result.htm'
+                    thumb = result.thumb
+                    url = result.url
+                    title = result.title
+                    separator = index > 1 ? true : false %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if resultsGrouped.Category %}
+        <div class="text-left col-12 col-md-6 col-lg-6 g-px-0 g-pl-0 g-pl-15--md g-pl-40--lg g-mt-20 g-mt-0--md g-mt-0--lg">
+            <div class="g-color-gray-dark-v2 g-font-size-12 g-line-height-1_6 text-uppercase">Категории</div>
+            {% for index,result in resultsGrouped.Category | slice(0, numberOfCategories) %}
+                {% if index > 0 %}
+                    <hr class="g-brd-gray-light-v4 g-my-10"/>
+                {% endif %}
+
+                {% partial __SELF__ ~ '::result.htm'
+                    thumb = result.thumb
+                    url = result.url
+                    title = result.title
+                    numberOfItemsDirectory = result.model.number_of_items_directory %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if query %}
+            {% partial __SELF__ ~ '::showall.htm'
+                text = 'Показать все результаты'
+                link = 'search' | page ~ '?q=' ~ query | url_encode(true) %}
+            {% else %}
+                {% partial __SELF__ ~ '::showall.htm'
+                    text = 'Показать все результаты'
+                    link = 'directory/directories-list' | page %}
+            {% endif %}
+    </div>
+    {% else %}
+        <div class="g-bg-secondary g-px-20 g-py-20 text-left g-pt-40" >
+            <p class="g-font-size-14 g-color-gray-dark-v1 g-font-weight-500 g-line-height-1_6 g-mb-4">Не найдено результатов по запросу "{{ query }}"</p>
+            <p class="g-font-size-14 g-color-gray-dark-v3 g-line-height-1_4 g-mb-20 g-max-width-400">Возможно этой компании еще нет на Вся Правда. Добавьте компанию на площадку.</p>
+            <a href="{{ 'account/company-add'|page}}" class="  g-color-gray-dark-v1 g-color-lightred  border-bottom-0--hover g-font-size-14 g-font-weight-500 d-flex align-items-center">
+                Добавить компанию
+
+                <img src=" {{ 'assets/build/img/arrow.svg' | theme }}" alt="arrow" class="g-ml-8">
+
+            </a>
+        </div>
+    {% endif %}
+
+{% else %}
+
+    {% set priorityCompanies = priorityCompanies.getItemDirectoryListItems %}
+
+    {% set sectionList = sectionList.getSectionListItems() %}
+    <div class="g-bg-secondary g-px-20 g-py-20">
+        <div class="row g-px-15">
+            <div class="text-left col-12 col-md-6 col-lg-6 g-px-0 g-pr-15 g-pr-40--lg">
+                {% for index,item in priorityCompanies | slice(0, 3) %}
+                    {% if index > 0 %}
+                        <hr class="g-brd-gray-light-v4 g-my-10"/>
+                    {% endif %}
+                    {% partial __SELF__ ~ '::result.htm'
+                        thumb = item.itemDirectory.logo
+                        url = item.itemDirectory.getCanonicalUrl
+                        title = item.itemDirectory.name %}
+                {% endfor %}
+            </div>
+            <div class="text-left col-12 col-md-6 col-lg-6 g-px-0 g-pl-0 g-pl-15--md g-pl-40--lg g-mt-20 g-mt-0--md g-mt-0--lg">
+                <div class="g-color-gray-dark-v2 g-font-size-12 g-line-height-1_6 text-uppercase">Категории</div>
+                {% for index,sectionListItem in sectionList | slice(0, 3) %}
+                    {% if index > 0 %}
+                        <hr class="g-brd-gray-light-v4 g-my-10"/>
+                    {% endif %}
+                    {% partial __SELF__ ~ '::result.htm'
+                        thumb = ''
+                        url = 'directory/section'|page({ directory_slug: sectionListItem.section.directory.slug,section_slug:
+                        sectionListItem.section.slug })
+                        title = sectionListItem.section.name
+                        numberOfItemsDirectory = sectionListItem.section.number_of_items_directory  %}
+
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if query %}
+
+            {% partial __SELF__ ~ '::showall.htm'
+                text = 'Показать все результаты'
+                link = 'search' | page ~ '?q=' ~ query | url_encode(true) %}
+
+        {% else %}
+
+            {% partial __SELF__ ~ '::showall.htm'
+                text = 'Показать все результаты'
+                link = 'directory/directories-list' | page %}
+        {% endif %}
+    </div>
+{% endif %}

@@ -1,0 +1,63 @@
+[viewBag]
+==
+<!--RETURN NOW-->
+<section class="w-100 g-py-80--md g-py-50 g-bg-size-cover"
+    style="background-image: url({{ 'assets/build/img/landings/chargeback/return-bg.jpg' | theme }})">
+    <div class="container">
+        <div class="row justify-content-lg-between justify-content-center">
+            <div class="col-lg-4 g-max-width-400">
+                <form class="g-bg-white g-rounded-15 u-shadow-v1-5 g-px-30 g-py-40"
+                    data-request="{{ genericForm }}::onFormSubmit">
+                    {{ form_token() }}
+                    <div id="{{ genericForm }}_forms_flash"></div>
+                    <input name="type" type="hidden" value="call to action">
+                    <input name="url" type="hidden" value="{{ ''| page }}">
+                    <div class="text-center">
+                        <h2
+                            class=" g-font-weight-600 g-mb-40--md g-line-height-1_4 g-font-size-16 text-uppercase g-color-gray-dark-v3">
+                            {{ h2FormReturn | raw }}</h2>
+                    </div>
+                    <input
+                        class="w-100 form-control g-brd-around g-rounded-5 g-brd-gray-light-v4 g-font-size-12 g-px-15 g-py-15 g-mb-20 g-color-gray-dark-v3"
+                        type="text" placeholder=" {{ inputNameCall | raw }}" name="name">
+                    <div class="g-mb-20">
+                        <input type="tel" name="iti_phone"
+                            class="iti_phone w-100 form-control g-brd-around g-rounded-5 g-brd-gray-light-v4 g-font-size-12 g-py-15 g-mb-20"
+                            required>
+                        <small class="iti_error-msg hide form-control-feedback"></small>
+                        <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+                    </div>
+                    <input
+                        class="w-100 form-control g-brd-around g-rounded-5 g-brd-gray-light-v4 g-font-size-12 g-px-15 g-py-15 g-mb-20 g-color-gray-dark-v3"
+                        type="email" placeholder=" {{ inputEmailCall | raw }}" name="email" required="">
+                    <button
+                        class="btn btn-xl g-font-weight-600 w-100 g-rounded-5 u-btn-outline-teal u-btn-teal text-uppercase"
+                        type="submit" data-attach-loading> {{ inputBtnSubmit | raw }}
+                    </button>
+                </form>
+            </div>
+            <div class="col-lg-7 g-mt-0--lg g-mt-30">
+                <h2 class="text-uppercase g-font-weight-600 g-font-size-42--lg g-font-size-30  g-color-white g-mb-30">
+                    {{ h2ReturnNow | raw }}</h2>
+                <h5 class="g-color-white g-font-size-24--md g-mb-40">{{ h5ReturnNow | raw }}</h5>
+                <ul class="text-md-left list-unstyled mb-0 g-color-white g-font-size-20--md g-font-size-16">
+                    <li class="d-flex g-mb-5 ">
+                        <img class="align-self-start g-mt-5 g-mr-25"
+                            src="{{ 'assets/build/img/landings/chargeback/elips.png' | theme }}">
+                        {{ liNowFirst | raw }}
+                    </li>
+                    <li class="d-flex g-mb-5">
+                        <img class="align-self-start g-mt-5 g-mr-25"
+                            src="{{ 'assets/build/img/landings/chargeback/elips.png' | theme }}">
+                        {{ liNowSecond | raw }}
+                    </li>
+                    <li class="d-flex g-mb-5">
+                        <img class="align-self-start g-mt-5 g-mr-25"
+                            src="{{ 'assets/build/img/landings/chargeback/elips.png' | theme }}">
+                        {{ liNowThird | raw }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,105 @@
+<!-- pagination -->
+<div class="g-mt-40">
+{# set postsperpage = items.perPage #}
+{# set totalpost = items.total #}
+{# set round = totalpost/postsperpage #}
+
+  {# if items.lastPage > 1 #}
+  <nav id="stickyblock-end-1" aria-label="Page Navigation">
+    <ul class="list-inline text-center mb-0 d-flex justify-content-center flex-wrap flex-md-nowrap flex-lg-nowrap">
+      {# if items.currentPage > 1 #}
+      <li class="list-inline-item g-mr-20 g-mb-20">
+        <a
+          href="{{ this.page.baseFileName|page()}}?page={{(items.currentPage-1)}}"
+          class="d-flex align-items-center justify-content-center u-pagination-v1__item g-px-10 g-height-45 g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-rounded-5"
+          aria-label="Prev"
+        >
+          <i class="fa fa-angle-left g-color-black"></i>
+          <span class="g-ml-5 g-color-black g-line-height-1">Предыдущая</span>
+        </a>
+      </li>
+      {# endif #}
+
+      {# if items.currentPage > 4 #}
+      <li class="list-inline-item g-mr-20 g-mb-20">
+        <a
+          class="d-flex align-items-center justify-content-center g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-rounded-5 g-color-black u-pagination-v1__item g-width-45 g-height-45"
+          href="{{ this.page.baseFileName|page()}}?page=1"
+        >
+          1
+        </a>
+      </li>
+      <li class="list-inline-item g-rounded-5 g-brd-around g-brd-gray-light-v4 g-mr-20 g-mb-20">
+        <p class="g-color-black g-width-45 g-height-45 g-mb-0 d-flex align-items-center justify-content-center">...</p>
+      </li>
+      {# endif #}
+
+      {# if (items.currentPage - 1) > 0 #}
+      <li class="list-inline-item g-mr-20 g-mb-20">
+        <a
+          class="g-brd-around g-rounded-5 g-brd-gray-light-v4 g-brd-blue--hover g-color-black u-pagination-v1__item g-width-45 g-height-45 d-flex align-items-center justify-content-center"
+          href="{{ this.page.baseFileName|page()}}?page={{(items.currentPage-1)}}"
+        >
+          {{ items.currentPage-1 }}
+        </a>
+      </li>
+      {# endif #}
+
+      <li class="list-inline-item g-mr-20 g-mb-20">
+        <button class="active g-brd-around g-rounded-5 g-color-white g-color-black--hover g-bg-blue g-brd-blue--active g-bg-blue--active g-bg-transparent--hover u-pagination-v1__item g-width-45 g-height-45 d-flex align-items-center justify-content-center">
+          {{items.currentPage}}
+        </button>
+      </li>
+
+      {# if (items.currentPage + 1) < round|round + 1 #}
+      <li class="list-inline-item g-mr-20 g-mb-20">
+        <a
+          class="g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-color-black g-rounded-5 u-pagination-v1__item g-width-45 g-height-45 d-flex align-items-center justify-content-center"
+          href="{{ this.page.baseFileName|page()}}?page={{(items.currentPage+1)}}"
+        >
+          {{ items.currentPage+1 }}
+        </a>
+      </li>
+      {# endif #}
+
+      {# if (items.currentPage) < round|round - 2 #}
+      <li class="list-inline-item g-rounded-5 g-brd-around g-brd-gray-light-v4 g-mr-20 g-mb-20">
+        <p class="g-color-black g-width-45 g-height-45 g-mb-0 d-flex align-items-center justify-content-center">...</p>
+      </li>
+
+      <li class="list-inline-item g-mr-20 g-mb-20">
+        <a
+          class="g-brd-around g-rounded-5 g-brd-gray-light-v4 g-brd-blue--hover g-color-black u-pagination-v1__item g-width-45 g-height-45 d-flex align-items-center justify-content-center"
+          href="{{ this.page.baseFileName|page()}}?page={{(items.lastPage-5)}}"
+        >
+          {{items.lastPage-5}}
+        </a>
+      </li>
+
+      <li class="list-inline-item g-mr-20 g-mb-20">
+        <a
+          class="g-brd-around g-rounded-5 g-brd-gray-light-v4 g-brd-blue--hover g-color-black u-pagination-v1__item g-width-45 g-height-45 d-flex align-items-center justify-content-center"
+          href="{{ this.page.baseFileName|page()}}?page={{(items.lastPage)}}"
+        >
+          {{items.lastPage}}
+        </a>
+      </li>
+      {# endif #}
+
+      {# if items.lastPage > items.currentPage #}
+      <li class="list-inline-item g-mb-20">
+        <a
+          href="{{ this.page.baseFileName|page()}}?page={{(items.currentPage+1)}}"
+          class="d-flex align-items-center justify-content-center u-pagination-v1__item g-brd-around g-rounded-5 g-brd-gray-light-v4 g-px-10 g-height-45 g-brd-blue--hover"
+          aria-label="Next"
+        >
+          <span class="g-mr-5 g-line-height-1 g-color-black">Следующая</span>
+          <i class="fa fa-angle-right g-color-black"></i>
+        </a>
+      </li>
+      {# endif #}
+    </ul>
+  </nav>
+  {# endif #}
+</div>
+<!-- end pagination -->

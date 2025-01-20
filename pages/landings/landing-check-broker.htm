@@ -1,0 +1,29 @@
+title = "Проверить брокера на лицензию и надежность"
+url = "/check-broker"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+meta_title = "Проверка сайта брокера"
+meta_description = "Сервис для проверки брокерских компаний. Узнайте всю правду о брокере, с которым сотрудничаете."
+
+[session]
+security = "all"
+
+[genericForm]
+group = "check-broker-landing"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+==
+
+{% partial 'landing-check-broker/promo' %}
+{% partial 'landing-check-broker/check-data' %}
+{% partial 'landing-check-broker/contact-form' %}

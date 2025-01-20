@@ -1,0 +1,79 @@
+{% for answer in answers %}
+<div class="g-mt-70 g-ml-25">
+    <div class="media flex-column flex-sm-row justify-content-between">
+        <div class="d-flex">
+            <img class="g-mr-12" src="{{ 'assets/build/img/financebar-new/companies/user.png' | theme }}" alt="user">
+            <!--           {# user.avatar.thumb(auto, auto)|default('assets/build/img/financebar-new/companies/user.png'|theme) #}-->
+            <div class="d-flex flex-column align-self-center">
+                {% if answer.by_company %}
+                <p class="g-font-size-16 g-color-gray-dark-v2 g-my-0">
+                    <span class="g-color-red">Ответ {{ answer.organization.name }}</span>
+                </p>
+                {% elseif answer.user %}
+                <p class="g-font-size-16 g-color-gray-dark-v2 g-my-0">
+                    <a class="u-link-v4 g-color-black"
+                        href="{{ 'account/public-user-profile'|page({ md5_id: answer.user.md5_id }) }}">
+                        {{ answer.name }}
+                    </a>
+                </p>
+                <!--                            <span class="g-color-gray-light-v2 d-flex align-items-center">-->
+                <!--                                <img class="g-mr-5" src="{{ 'assets/build/img/financebar-new/companies/plus.svg' | theme }}" alt="plus">-->
+                <!--                                Зарегестрирован(а)-->
+                <!--                            </span>-->
+                {% else %}
+                <p class="g-font-size-16 g-color-gray-dark-v2 g-my-0">
+                    {{ answer.name }}
+                </p>
+                <span class="g-color-gray-light-v2 d-flex align-items-center">
+                    <!--                                <img class="g-mr-5" src="{{ 'assets/build/img/financebar-new/companies/minus.svg' | theme }}" alt="minus">-->
+                    (Не зарегестрированный пользователь)
+                </span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="pull-right">
+            {% if not answer.approved %}
+            <span class="g-color-orange">ожидает модерации</span>
+            {% endif %}
+        </div>
+        <!--                    <div class="row align-self-end  g-mt-15 g-mt-0&#45;&#45;sm">-->
+        <!--                        <span class="g-color-gray-light-v2 g-pr-20">-->
+        <!--                            <img class="g-mx-2" src="{{ 'assets/build/img/financebar-new/companies/like.svg' | theme }}" alt="like">-->
+        <!--                            - -->
+        <!--                        </span>-->
+        <!--                        <span class="g-color-gray-light-v2 g-pr-20">-->
+        <!--                            <img class="g-mx-2" src="{{ 'assets/build/img/financebar-new/companies/dislike.svg' | theme }}" alt="dislike">-->
+        <!--                            - -->
+        <!--                        </span>-->
+        <!--                    </div>-->
+    </div>
+    <hr class="g-brd-gray-light-v4 g-mt-15 g-mb-5">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="align-self-center"></div>
+        <div class="g-color-gray-light-v4">
+            {{ answer.created_at_display|localizeddate('long', 'none', 'ru') }}
+        </div>
+    </div>
+
+    <blockquote class="g-color-gray-dark-v2 g-line-height-1_5 g-font-size-16">
+        {{ answer.content }}
+    </blockquote>
+
+    <!--                <hr class="g-brd-gray-light-v4 g-mt-20 g-mb-15">-->
+
+    <!--                <div class="d-flex justify-content-between">-->
+    <!--                    <span class="d-flex"></span>-->
+    <!--                    <div class="d-flex">-->
+    <!--                        <a href="#" class="u-link-v4 g-color-blue g-pr-30 d-flex">-->
+    <!--                            <img class="g-mx-2" src="{{ 'assets/build/img/financebar-new/companies/like-blue.svg' | theme }}" alt="like">-->
+    <!--                            Like-->
+    <!--                        </a>-->
+    <!--                        <a href="#" class="u-link-v4 g-color-blue d-flex">-->
+    <!--                            <img class="g-mx-2" src="{{ 'assets/build/img/financebar-new/companies/dislike-blue.svg' | theme }}" alt="dislike">-->
+    <!--                            Dislike-->
+    <!--                        </a>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+</div>
+{% endfor %}

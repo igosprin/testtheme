@@ -1,0 +1,142 @@
+[viewBag]
+==
+<!--MODAL-->
+<!--profile-->
+<form class="g-pt-40 g-pb-60 g-px-60 g-bg-white u-shadow-v1-5" id="modal1" style="display: none;"  data-request="{{ genericForm }}::onFormSubmit">
+    {{ form_token() }}
+    <div id="{{ genericForm }}_forms_flash"></div>
+    <input name="type" type="hidden" value="modal">
+    <input name="url" type="hidden" value="{{ ''| page }}">
+    <h3 class="g-font-size-16 g-color-gray-dark-v3 text-center text-uppercase g-mb-30 g-font-weight-500">{{ h3ModalProfile | raw }}
+    </h3>
+    <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-px-30 g-py-17 g-mb-20" type="text"
+           placeholder="{{ inputModalProfileFirst | raw }}" name="Name company" required>
+    <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-px-30 g-py-17 g-mb-20" type="text"
+           placeholder="{{ inputModalProfileSecond | raw }}" name="Amount of damage" required>
+    <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-px-30 g-py-17 g-mb-20" type="text"
+           placeholder="{{ inputModalProfileThird | raw }}" name="Payment system" required>
+    <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-px-30 g-py-17 g-mb-20" type="text"
+           placeholder="{{ inputModalProfileFourth | raw }}" name="Limitation period" required>
+    <a href="#modal2" data-modal-target="#modal2" data-modal-effect="fadein"
+       class="btn btn-xl g-font-weight-600 w-100 g-rounded-5 u-btn-outline-teal u-btn-teal text-uppercase">{{ btnModalProfile | raw }}
+    </a>
+</form>
+<!--profile form-->
+<div class="container">
+    <form class="g-bg-white u-shadow-v1-5 g-pa-55" id="modal2" style="display: none"  data-request="{{ genericForm }}::onFormSubmit">
+        {{ form_token() }}
+        <div id="{{ genericForm }}_forms_flash"></div>
+        <input name="type" type="hidden" value="modal">
+        <input name="url" type="hidden" value="{{ ''| page }}">
+        <div class="row">
+            <div class="col-md-3 g-width-300">
+                <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-px-30 g-py-15"
+                       placeholder="{{ inputProfileFormName | raw }}" name="name" type="text" required>
+            </div>
+            <div class="col-md-3 g-width-300">
+                <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-px-30 g-py-15"
+                       placeholder="{{ inputMailBasicForm | raw }}" name="email" type="email">
+            </div>
+            <div class="col-md-3 g-width-300">
+                <input 
+                	type="tel" 
+                	name="iti_phone"
+                	class="iti_phone w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-py-15 g-px-80" required>
+                <small class="iti_error-msg hide form-control-feedback"></small>
+                <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+            </div>
+            <div class="col-md-3 g-width-300">
+                <button class="btn btn-xl w-100 u-btn-teal g-font-weight-600 g-rounded-5 text-uppercase" data-attach-loading type="submit">
+                    {{ btnProfileForm | raw }}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<!--basic-->
+<form class="g-bg-white g-rounded-15 u-shadow-v1-5 g-px-20 g-py-40 g-width-360" id="modal21" style="display: none"
+      data-request="{{ genericForm }}::onFormSubmit">
+    {{ form_token() }}
+    <div id="{{ genericForm }}_forms_flash"></div>
+    <input name="type" type="hidden" value="modal">
+    <input name="url" type="hidden" value="{{ ''| page }}">
+    <div class="text-center">
+        <h2 class="g-font-weight-600 g-mb-30--md g-line-height-1_4 g-font-size-20 text-uppercase g-color-gray-dark-v3">
+            {{ h2BasicForm | raw }}</h2>
+            <h5 class="text-center g-color-gray-dark-v3 g-font-size-14 g-mb-15">{{ h5BasicForm | raw }}</h5>
+    </div>
+    <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-px-20 g-py-15 g-mb-20"
+           type="text" placeholder="{{ inputProfileFormName | raw }}" name="name">
+    <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-px-20 g-py-15 g-mb-20"
+           type="email" placeholder="{{ inputMailBasicForm | raw }}" name="email">
+    <input 
+    	type="tel" 
+        name="iti_phone"
+        class="iti_phone form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover rounded-3 g-py-13 g-px-80">
+    <small id="valid-msg" class="hide form-control-feedback">✓ Правильный номер</small>
+    <small id="error-msg" class="hide form-control-feedback"></small>
+    <!-- <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-px-20 g-py-15 g-mb-20"
+           type="text" placeholder="{{ inputProfileFormPhone | raw }}" name="phone" required minlength="7"
+           maxlength="20"> -->
+    <button class="btn btn-xl g-font-weight-600 w-100 g-rounded-5 u-btn-outline-teal u-btn-teal text-uppercase" data-attach-loading
+            type="submit">{{ btnBasicForm | raw }}
+    </button>
+</form>
+<!--maximum-->
+<form class="g-bg-white g-rounded-15 u-shadow-v1-5 g-px-20 g-py-40 g-width-360" id="modal18" style="display: none"
+      data-request="{{ genericForm }}::onFormSubmit">
+    {{ form_token() }}
+    <div id="{{ genericForm }}_forms_flash"></div>
+    <input name="type" type="hidden" value="modal">
+    <input name="url" type="hidden" value="{{ ''| page }}">
+    <div class="text-center">
+        <h2 class="g-font-weight-600 g-mb-30--md g-line-height-1_4 g-font-size-20 text-uppercase g-color-gray-dark-v3">
+            {{ h2MaxForm | raw }}</h2>
+        <h5 class="text-center g-color-gray-dark-v3 g-font-size-14 g-mb-15"> {{ h5MaxForm | raw }}</h5>
+    </div>
+    <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-px-20 g-py-15 g-mb-20"
+           type="text" placeholder="{{ inputProfileFormName | raw }}" name="name">
+    <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-px-20 g-py-15 g-mb-20"
+           type="email" placeholder="{{ inputMailBasicForm | raw }}" name="email">
+    <input 
+    	type="tel" 
+        name="iti_phone"
+        class="iti_phone form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover rounded-3 g-py-13 g-px-80">
+    <small id="valid-msg" class="hide form-control-feedback">✓ Правильный номер</small>
+    <small id="error-msg" class="hide form-control-feedback"></small>
+    <!-- <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-px-20 g-py-15 g-mb-20"
+           type="text" placeholder="{{ inputProfileFormPhone | raw }}" name="phone" required="" minlength="7"
+           maxlength="20"> -->
+    <button class="btn btn-xl g-font-weight-600 w-100 g-rounded-5 u-btn-outline-teal u-btn-teal text-uppercase" data-attach-loading
+            type="submit">{{ btnBasicForm | raw }}
+    </button>
+</form>
+<!--advanced-->
+<form class="g-bg-white g-rounded-15 u-shadow-v1-5 g-px-20 g-py-40 g-width-360" id="modal17" style="display: none"
+      data-request="{{ genericForm }}::onFormSubmit">
+    {{ form_token() }}
+    <div id="{{ genericForm }}_forms_flash"></div>
+    <input name="type" type="hidden" value="modal">
+    <input name="url" type="hidden" value="{{ ''| page }}">
+    <div class="text-center">
+        <h2 class="g-font-weight-600 g-mb-30--md g-line-height-1_4 g-font-size-20 text-uppercase g-color-gray-dark-v3">
+            {{ h2AdvancedForm | raw }}</h2>
+        <h5 class="text-center g-color-gray-dark-v3 g-font-size-14 g-mb-15">{{ h5AdvancedForm | raw }}</h5>
+    </div>
+    <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-px-20 g-py-15 g-mb-20"
+           type="text" placeholder="{{ inputProfileFormName | raw }}" name="name">
+    <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-px-20 g-py-15 g-mb-20"
+           type="email" placeholder="{{ inputMailBasicForm | raw }}" name="email">
+    <input 
+    	type="tel" 
+        name="iti_phone"
+        class="iti_phone form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover rounded-3 g-py-13 g-px-80">
+    <small id="valid-msg" class="hide form-control-feedback">✓ Правильный номер</small>
+    <small id="error-msg" class="hide form-control-feedback"></small>
+    <!-- <input class="w-100 g-brd-around g-rounded-5 g-brd-secondary-light-v2 g-font-size-12 g-px-20 g-py-15 g-mb-20"
+           type="text" placeholder="{{ inputProfileFormPhone | raw }}" name="phone" required="" minlength="7"
+           maxlength="20"> -->
+    <button class="btn btn-xl g-font-weight-600 w-100 g-rounded-5 u-btn-outline-teal u-btn-teal text-uppercase"
+            data-attach-loading type="submit">{{ btnBasicForm | raw }}
+    </button>
+</form>

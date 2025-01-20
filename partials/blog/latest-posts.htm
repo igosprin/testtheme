@@ -1,0 +1,104 @@
+==
+{% set posts = blogPosts.posts %}
+
+<section class="g-bg-lightblue g-pt-60 g-pt-80--md g-pb-40 g-pb-60--md">
+  <div class="container">
+    <h2 class="g-font-size-18 g-font-size-25--sm g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-black g-mb-30">
+      Последние статьи
+    </h2>
+    <div class="masonry-grid row">
+      {% for post in posts %}
+      {% if loop.index == 5 %}
+      <div class="masonry-grid-item masonry-grid-sizer col-12 col-lg-6 g-px-0 g-px-15--sm">
+        <div class="g-px-15 g-px-0--sm g-mb-25 g-mb-30--md">
+          {% partial 'banners/check-broker-tablet' %}
+        </div>
+      </div>
+      {% elseif loop.index == 10 %}
+      <div class="masonry-grid-item masonry-grid-sizer col-12 col-lg-6 g-px-0 g-px-15--sm">
+        <div class="g-px-15 g-px-0--sm g-mb-25 g-mb-30--md">
+          {% partial 'banners/law-aid-tablet' %}
+        </div>
+      </div>
+      {% elseif loop.index == 15 %}
+      <div class="masonry-grid-item masonry-grid-sizer col-12 col-lg-6 g-px-0 g-px-15--sm">
+        <div class="g-px-15 g-px-0--sm g-mb-25 g-mb-30--md">
+          {% partial 'banners/choose-broker-tablet' %}
+        </div>
+      </div>
+      {% elseif loop.index == 20 %}
+      <div class="masonry-grid-item masonry-grid-sizer col-12 col-lg-6 g-px-0 g-px-15--sm">
+        <div class="g-px-15 g-px-0--sm g-mb-25 g-mb-30--md">
+          {% partial 'banners/become-author-tablet' %}
+        </div>
+      </div>
+      {% elseif loop.index == 25 %}
+      <div class="masonry-grid-item masonry-grid-sizer col-12 col-lg-6 g-px-0 g-px-15--sm">
+        <div class="g-px-15 g-px-0--sm g-mb-25 g-mb-30--md">
+          {% partial 'banners/chargeback-tablet' %}
+        </div>
+      </div>
+      {% elseif loop.index == 30 %}
+      <div class="masonry-grid-item masonry-grid-sizer col-12 col-lg-6 g-px-0 g-px-15--sm">
+        <div class="g-px-15 g-px-0--sm g-mb-25 g-mb-30--md">
+          {% partial 'banners/refund-tablet' %}
+        </div>
+      </div>
+      {% else %}
+      <div class="masonry-grid-item col-12 col-lg-6 g-px-0 g-px-15--sm">
+        <div class="d-flex justify-content-between align-items-center g-bg-white fb-rounded-0 fb-rounded-10 g-px-15 g-px-20--md g-py-15 g-py-20--md g-mb-25 g-mb-30--md" itemscope itemtype="https://schema.org/BlogPosting">
+          <div>
+            <a href="{{ post.url }}" class="d-block g-font-size-14 g-font-size-18--md g-line-height-1_4 g-color-black g-color-blue--hover g-mb-8 u-link-v5">
+              <span itemprop="headline">{{ post.title }}</span>
+            </a>
+            <img
+              class="g-hidden-xs-up"
+              src="{{ post.url }}"
+              alt="{{ post.title }}"
+              itemprop="image"
+            >
+            <div class="g-hidden-xs-up" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+              <link itemprop="sameAs" href="/" />
+              <a href="/">
+              <span itemprop="name">post author</span>
+              </a>
+              <a href="/" itemprop="email">
+                  author email
+              </a>
+            </div>
+            <div class="d-flex align-items-center">
+              {% for category in post.categories|slice(0, 1) %}
+              <a href="{{ 'blog/category'|page({slug:category.slug}) }}" class="g-rounded-5 g-font-size-10 g-font-size-12--md g-line-height-1_4 g-letter-spacing-1 g-bg-teal-opacity-0_1 g-color-teal text-uppercase g-pa-5">
+                {{ category.name }}
+              </a>
+              {% endfor %}
+              <div class="d-flex align-items-center g-color-gray-dark-v4 g-font-size-10 g-font-size-default--md g-line-height-1 g-ml-5 g-ml-15--md">
+                <span itemprop="datePublished">{{ post.published_at|date("d M") }}</span>
+                <span class="g-mx-5">|</span>
+                <span class="d-flex align-items-center"><i class="icon-eye g-mr-5"></i>{{ post.views }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="g-ml-15 g-ml-20--md">
+            {% if post.featured_images.count %}
+            {% for image in post.featured_images %}
+            <a href="{{ post.url }}">
+              <img
+                class="fb-img-cover g-rounded-5 g-height-60 g-height-100--md g-width-60 g-width-100--md"
+                src="{{ image.getThumb(200, 200) }}"
+                alt="{{ post.title }}"
+                itemprop="image"
+              >
+            </a>
+            {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    {% partial 'blog/pagination' %}
+  </div>
+</section>

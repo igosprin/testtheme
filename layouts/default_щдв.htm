@@ -1,0 +1,217 @@
+[intlTelInput]
+
+[trafficSourceDetector]
+
+[LaunchPopupExtended componentLaunchPopup]
+showMobile = 1
+
+==
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ this.page.title }}</title>
+  <meta name="description" content="{{ this.page.meta_description }}">
+  <meta name="title" content="{{ this.page.meta_title }}">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="">
+  <meta name="robots" content="{{ this.page.meta_robots ? this.page.meta_robots : 'all' }}">
+  <link rel="shortcut icon" href="{{ 'assets/build/img/favicon.svg' |theme}}" type="image/x-icon">
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NWS3FJX');</script>
+    <!-- End Google Tag Manager -->
+
+  {% if placeholder('blogcriticalcss') %}
+    {% placeholder blogcriticalcss %}
+  {% elseif placeholder('indexcritical') %}
+    {% placeholder indexcritical %}
+  {% else %}
+    {% partial 'layouts/criticalcss' %}
+  {% endif %}
+
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWS3FJX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <main>
+    <!-- Header -->
+    <section>
+      {% partial 'layouts/header' %}
+    </section>
+    <!-- End Header -->
+
+    <!-- Content -->
+    <section class="g-pt-110 g-pt-65--lg">
+      {% page %}
+    </section>
+    <!-- End Content -->
+
+    <!-- Footer -->
+    <section>
+      {% partial 'layouts/footer' %}
+    </section>
+    <!-- End Footer -->
+  </main>
+
+  <button
+    class="js-go-to g-width-50 g-height-50 rounded-circle g-bg-primary d-flex align-items-center justify-content-center g-brd-none g-bg-black--hover u-link-v4 g-z-index-99"
+    data-type="fixed"
+    data-position='{
+      "bottom": 100,
+      "right": 15
+      }'
+    data-offset-top="400"
+    data-compensation="#js-header"
+    data-show-effect="zoomIn"
+  >
+    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M11.4896 5.76961V21.6735C11.4896 22.237 11.9465 22.6939 12.51 22.6939C13.0736 22.6939 13.5304 22.237 13.5304 21.6735V5.76961L17.911 10.1501C18.3094 10.5486 18.9555 10.5486 19.354 10.1501C19.7525 9.75162 19.7525 9.10553 19.354 8.70703L13.232 2.58497C13.2318 2.58484 13.2317 2.58471 13.2316 2.58458C13.2305 2.58347 13.2294 2.58237 13.2282 2.58126C13.0439 2.39856 12.7901 2.28571 12.51 2.28571C12.3717 2.28571 12.2398 2.31325 12.1194 2.36314C12.0005 2.41237 11.8889 2.48508 11.7918 2.58126C11.7907 2.58237 11.7896 2.58347 11.7885 2.58458C11.7884 2.58471 11.7882 2.58484 11.7881 2.58497L5.66606 8.70703C5.26756 9.10553 5.26756 9.75162 5.66606 10.1501C6.06455 10.5486 6.71064 10.5486 7.10913 10.1501L11.4896 5.76961Z" fill="white"/>
+    </svg>
+  </button>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="preload" href="{{ 'assets/src/vendor/icon-awesome/css/font-awesome.min.css'|theme }}" as="style"
+  onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="{{ 'assets/src/vendor/icon-awesome/css/font-awesome.min.css'|theme }}">
+  </noscript>
+
+  <link rel="preload" href="{{ 'assets/src/vendor/icon-line/css/simple-line-icons.css'|theme }}" as="style"
+  onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="{{ 'assets/src/vendor/icon-line/css/simple-line-icons.css'|theme }}">
+  </noscript>
+
+  <link rel="preload" href="{{ 'assets/src/vendor/icon-material/material-icons.css'|theme }}" as="style"
+  onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="{{ 'assets/src/vendor/icon-material/material-icons.css'|theme }}">
+  </noscript>
+  
+  {% styles %}
+
+  <script src="//code.jivosite.com/widget/tPo07ezp8W" async></script>
+  <script src="{{ 'assets/build/js/script.min.js'|theme }}"></script>
+  <script src="{{ 'assets/src/vendor/masonry/dist/masonry.pkgd.min.js'|theme }}"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    lazyload();
+ 
+    // initialization of MegaMenu
+    $('.js-mega-menu').HSMegaMenu();
+
+    // initialization of counters
+    var counters = $.HSCore.components.HSCounter.init('[class*="js-counter"]');
+
+    // initialization of HSDropdown component
+    $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'), {
+      afterOpen: function () {
+        $(this).find('input[type="search"]').focus();
+      }
+    });
+
+    // initialization of carousel
+    $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
+
+    // initialization of popups
+    $.HSCore.components.HSPopup.init('.js-fancybox');
+    $.HSCore.components.HSModalWindow.init('[data-modal-target]');
+
+    // initialization of go to
+    $.HSCore.components.HSGoTo.init('.js-go-to');
+
+    // Rating
+    $.HSCore.components.HSRating.init($('.js-rating'), {
+        spacing: 2
+    });
+
+    // initialization of header's height equal offset
+    $.HSCore.helpers.HSHeightCalc.init();
+
+    // initialization of countdowns
+    var countdowns = $.HSCore.components.HSCountdown.init('.js-countdown', {
+        yearsElSelector: '.js-cd-years',
+        monthElSelector: '.js-cd-month',
+        daysElSelector: '.js-cd-days',
+        hoursElSelector: '.js-cd-hours',
+        minutesElSelector: '.js-cd-minutes',
+        secondsElSelector: '.js-cd-seconds'
+    });
+
+    $(document).ready(function () {
+      // initialization of masonry
+      $('.masonry-grid').imagesLoaded().then(function () {
+        $('.masonry-grid').masonry({
+          columnWidth: '.masonry-grid-sizer',
+          itemSelector: '.masonry-grid-item',
+          percentPosition: true
+        });
+      });
+
+      // initialization of header
+      $.HSCore.components.HSHeader.init($('#js-header'));
+      $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+      // initialization of HSScrollNav
+      $.HSCore.components.HSScrollNav.init($('#js-scroll-nav'), {
+        duration: 700
+      });
+
+      // initialization of sticky blocks
+      setTimeout(function () {
+        $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
+      }, 300);
+
+      // initialization of autonomous popups
+      $.HSCore.components.HSModalWindow.init('.js-autonomous-popup', {
+        autonomous: true
+      });
+
+
+    });
+
+    /*$(window).on('load', function () {
+     
+      
+
+    });*/
+
+  </script>
+ <script>
+  const runAsyncApp = window.requestIdleCallback || (fn => setTimeout(fn, 500))
+
+  function loadAssets() {
+      let link = document.createElement('link');
+      link.rel = 'preload'
+      link.href = "{{'assets/build/css/styles.min.css'|theme }}";
+      link.as = 'style'
+      link.onload = () => { link.onload = null; link.rel = 'stylesheet' };
+      document.body.appendChild(link)
+    }
+    runAsyncApp(loadAssets)
+  </script>
+
+  {% framework extras %}
+  {% scripts %}
+
+  <!-- Pop up -->
+  {% component 'componentLaunchPopup' %}
+
+  
+</body>
+</html>

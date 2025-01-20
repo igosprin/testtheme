@@ -1,0 +1,24 @@
+title = "Заявка на владение компанией"
+url = "/company-owning-request/:item_slug"
+layout = "default"
+description = "Request to make the company mine."
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[owningRequest componentOwningRequest]
+itemDirectorySlug = {{ :item_slug }}
+item_slug = "{{ :item_slug }}"
+
+[session]
+security = 'all'
+==
+<?php
+
+  function onEnd () {
+    $this->page->meta_robots = 'noindex';
+  }
+
+?>
+==
+{% component 'componentOwningRequest' %}

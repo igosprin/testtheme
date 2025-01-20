@@ -1,0 +1,112 @@
+<div>
+    {% for review in reviews %}
+
+
+    <div class="col-lg-7 g-px-0">
+        {% if review.by_company %}
+            <div class="u-shadow-v1-7 g-brd-red g-mb-35 g-py-20 g-px-20 g-px-25--sm">
+        {% else %}
+            <div class="u-shadow-v1-7 g-mb-35 g-py-20 g-px-20 g-px-25--sm">
+        {% endif %}
+                <div class="pull-right">
+                    {% if not review.approved %}
+                        <span class="g-color-orange">ожидает модерации</span>
+                    {% else %}
+<!--                        <span class="g-color-blue">одобрен</span>-->
+                    {% endif %}
+                    {% if review.by_company %}
+                        <span class="g-color-red">от имени {{ review.organization.name }}</span>
+                    {% endif %}
+                </div>
+            <div class="media flex-column flex-sm-row justify-content-between">
+                <div class="d-flex">
+                    <img class="align-self-center g-mr-12" src="{{ 'assets/build/img/financebar-new/companies/user.png' | theme }}" alt="user">
+                    <!--           {# user.avatar.thumb(auto, auto)|default('assets/build/img/financebar-new/companies/user.png'|theme) #}-->
+                    <div class="d-flex flex-column align-self-center">
+                        <a href="{{ 'account/public-user-profile'|page({ md5_id: review.user.md5_id }) }}">
+                            <p class="g-font-size-16 g-color-gray-dark-v2 g-my-0">{{ user.name }}</p>
+                        </a>
+                        <div class="d-flex flex-column flex-sm-row">
+                            <span class="g-color-gray-light-v2 d-flex align-items-center">
+<!--                            <img class="g-mr-5" src="{{ 'assets/build/img/financebar-new/companies/minus.svg' | theme }}" alt="minus">-->
+                            Отзыв о компании
+                            </span>
+                            <a href="{{ 'company-profile'|page({ slug: review.organization.slug }) }}" class="g-color-blue g-mx-7">{{ review.organization.name }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="g-brd-gray-light-v4 g-mt-15 g-mb-5">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="js-rating g-font-size-24 g-color-{{ review.rating|stars_color }} mb-0" data-rating="{{ review.rating }}"></div>
+                <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                    <meta itemprop="ratingValue" content="{{ review.rating }}">
+                    <meta itemprop="bestRating" content="5">
+                    <meta itemprop="worstRating" content="1">
+                </span>
+                <div class="g-color-gray-light-v4">
+                    {{ review.created_at_display|localizeddate('long', 'none', 'ru') }}
+                </div>
+            </div>
+
+            <blockquote class="g-color-gray-dark-v2 g-line-height-1_5 g-font-size-16">
+                {{ review.content }}
+            </blockquote>
+
+<!--            <hr class="g-brd-gray-light-v4 g-mt-20 g-mb-15">-->
+
+<!--            <div class="d-flex justify-content-start">-->
+<!--                <div class="d-flex">-->
+<!--                    <a href="#" class="g-color-gray-light-v2 g-pr-20 d-flex">-->
+<!--                        <img class="g-mr-10" src="{{ 'assets/build/img/financebar-new/pen-light.svg' | theme }}" alt="pen">-->
+<!--                        Редактировать-->
+<!--                    </a>-->
+<!--                    <a href="#" class="g-color-gray-light-v2 d-flex">-->
+<!--                        <img class="g-mr-10" src="{{ 'assets/build/img/financebar-new/trash.svg' | theme }}" alt="trash">-->
+<!--                        Удалить-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+
+    {% else %}
+        <div class="u-shadow-v1-7 g-mb-35 g-py-20 g-px-20 g-px-25--sm">
+            <p class="h5"><i class="fa fa-info-circle g-mr-10"></i>Пока нету отзывов</p>
+        </div>
+    {% endfor %}
+</div>
+
+<!--Pagination-->
+{% if reviews.lastPage > 1 %}
+<nav class="text-center w-100" aria-label="Page Navigation">
+    <div class="d-flex justify-content-between">
+        {% if reviews.previousPageUrl %}
+        <div class="w-100 text-left">
+            <a class="u-pagination-v1__item  g-color-indigo  g-pa-4-13" href="{{ reviews.previousPageUrl }}"
+               aria-label="Previous">
+                        <span aria-hidden="true">
+                            <i class="fa fa-arrow-left g-mr-10"></i>
+                            Предыдущая
+                        </span>
+                <span class="sr-only">Предыдущая</span>
+            </a>
+        </div>
+        {% endif %}
+        {% if reviews.nextPageUrl %}
+        <div class="w-100 text-right">
+            <a class="u-pagination-v1__item g-color-indigo g-pa-4-13" href="{{ reviews.nextPageUrl }}" aria-label="Next">
+                        <span aria-hidden="true">
+                            Следующая
+                              <i class="fa fa-arrow-right g-ml-10"></i>
+
+                        </span>
+                <span class="sr-only">Следующая</span>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</nav>
+{% endif %}
+<!--End pagination-->

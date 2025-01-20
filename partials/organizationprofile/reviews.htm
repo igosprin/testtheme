@@ -1,0 +1,170 @@
+<!-- reviews section -->
+<div class="d-flex flex-column flex-sm-row justify-content-between g-mb-30">
+
+
+    <a class="js-go-to btn u-btn-blue rounded-0 g-py-10 g-px-50 g-font-size-16 g-mb-30 g-mb-0--md order-sm-2"
+        href="#leave-testimonal" data-target="#leave-testimonal">Написать отзыв</a>
+
+    <div class="g-color-black g-font-size-24 g-font-weight-700 order-sm-1">
+        Отзывы
+        <span class="g-color-gray-dark-v4">{{ organization.getApprovedReviews.count }}</span>
+    </div>
+
+</div>
+
+
+{% for review in reviews %}
+<div class="g-brd-around g-brd-gray-light-v4 g-rounded-2 g-mb-35 g-py-20 g-px-20 g-px-25--sm">
+    <div class="media flex-column flex-sm-row justify-content-between">
+        <div class="d-flex">
+            <img class="g-mr-12" src="{{ 'assets/build/img/financebar-new/companies/user.png' | theme }}" alt="user">
+            <!--           {# user.avatar.thumb(auto, auto)|default('assets/build/img/financebar-new/companies/user.png'|theme) #}-->
+            <div class="d-flex flex-column align-self-center">
+                {% if review.user %}
+                <p class="g-font-size-16 g-color-black g-my-0">
+                    <a class="g-color-black"
+                        href="{{ 'account/public-user-profile'|page({ md5_id: review.user.md5_id }) }}">
+                        {{ review.name }}
+                    </a>
+                </p>
+                <!--                    <span class="g-color-gray-light-v2 d-flex align-items-center">-->
+                <!--                        <img class="g-mr-5" src="{{ 'assets/build/img/financebar-new/companies/plus.svg' | theme }}" alt="plus">-->
+                <!--                        Зарегестрирован(а)-->
+                <!--                    </span>-->
+                {% else %}
+                <p class="g-font-size-16 g-color-black g-my-0">
+                    {{ review.name }}
+                </p>
+                <span class="g-color-gray-dark-v5 d-flex align-items-center">
+                    <!--                        <img class="g-mr-5" src="{{ 'assets/build/img/financebar-new/companies/minus.svg' | theme }}" alt="minus">-->
+                    (Не зарегистрированный пользователь)
+                </span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="pull-right">
+            {% if not review.approved %}
+            <span class="g-color-orange">ожидает модерации</span>
+            {% endif %}
+        </div>
+        <!--        <div class="row align-self-end  g-mt-15 g-mt-0&#45;&#45;sm">-->
+        <!--            <span class="g-color-gray-light-v2 g-pr-20">-->
+        <!--                <img class="g-mx-2" src="{{ 'assets/build/img/financebar-new/companies/like.svg' | theme }}" alt="like">-->
+        <!--                - -->
+        <!--            </span>-->
+        <!--            <span class="g-color-gray-light-v2 g-pr-20">-->
+        <!--                <img class="g-mx-2" src="{{ 'assets/build/img/financebar-new/companies/dislike.svg' | theme }}" alt="dislike">-->
+        <!--                - -->
+        <!--            </span>-->
+        <!--            <span class="g-color-gray-light-v2 g-pr-15">-->
+        <!--                <img class="g-mx-2" src="{{ 'assets/build/img/financebar-new/companies/comment.svg' | theme }}" alt="comment">-->
+        <!--                {{ review.getApprovedAndMyAnswers.count }}-->
+        <!--            </span>-->
+        <!--        </div>-->
+    </div>
+    <hr class="g-brd-gray-light-v4 g-mt-15 g-mb-5">
+
+    <div class="d-flex justify-content-between align-items-center">
+        {% if review.rating is not null and review.rating != 0 %}
+        <div class="js-rating g-font-size-24 g-color-{{ review.rating|stars_color }} mb-0"
+            data-rating="{{ review.rating }}"></div>
+        <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+            <meta itemprop="ratingValue" content="{{ review.rating }}">
+            <meta itemprop="bestRating" content="5">
+            <meta itemprop="worstRating" content="1">
+        </span>
+        {% endif %}
+        <div class="g-color-gray-dark-v5">
+            {{ review.created_at_display|localizeddate('long', 'none', 'ru') }}
+        </div>
+    </div>
+
+    <blockquote class="g-color-black g-line-height-1_5 g-font-size-16">
+        {{ review.content }}
+    </blockquote>
+
+    <hr class="g-brd-gray-light-v4 g-mt-20 g-mb-15">
+
+    <div class="d-flex justify-content-between">
+        <!-- Answer link-->
+        {% if __SELF__.isUserCompanyOwner %}
+        <span class="d-flex">
+            <a class="u-link-v4 g-color-red" href="#modalAnswerForm" data-toggle="modal" data-target="#modalAnswerForm"
+                data-review-id="{{ review.id }}" class="g-color-red">
+                <img class="g-mx-2" src="{{ 'assets/build/img/financebar-new/companies/comment-blue.svg' | theme }}"
+                    alt="comment">
+                Ответить от имени {{ organization.name }}
+            </a>
+        </span>
+        {% else %}
+        <span class="d-flex">
+            <a class="u-link-v4 g-color-blue" href="#modalAnswerForm" data-toggle="modal" data-target="#modalAnswerForm"
+                data-review-id="{{ review.id }}">
+                <img class="g-mx-2" src="{{ 'assets/build/img/financebar-new/companies/comment-blue.svg' | theme }}"
+                    alt="comment">
+                Ответить
+            </a>
+        </span>
+        {% endif %}
+        <!--End Answer link-->
+        <!--        <div class="d-flex">-->
+        <!--            <a href="#" class="u-link-v4 g-color-blue g-pr-30 d-flex">-->
+        <!--                <img class="g-mx-2" src="{{ 'assets/build/img/financebar-new/companies/like-blue.svg' | theme }}" alt="like">-->
+        <!--                Like-->
+        <!--            </a>-->
+        <!--            <a href="#" class="u-link-v4 g-color-blue d-flex">-->
+        <!--                <img class="g-mx-2" src="{{ 'assets/build/img/financebar-new/companies/dislike-blue.svg' | theme }}" alt="dislike">-->
+        <!--                Dislike-->
+        <!--            </a>-->
+        <!--        </div>-->
+    </div>
+
+    <!--Start Answers        -->
+    {% partial __SELF__~"::answers" answers = review.getApprovedAndMyAnswers %}
+    <!--End Answers        -->
+</div>
+
+{% else %}
+<div class="u-shadow-v1-7 g-mb-35 g-py-20 g-px-20 g-px-25--sm">
+    <p class="h5"><i class="fa fa-info-circle g-mr-10"></i>Пока нет отзывов</p>
+</div>
+{% endfor %}
+
+<!-- Modal Answer form -->
+{% partial __SELF__~"::modal-answer-form" %}
+<!-- End Modal Answer form -->
+
+<!-- Pagination -->
+{% if reviews.lastPage > 1 %}
+<nav class="text-center w-100" aria-label="Page Navigation">
+    <div class="d-flex justify-content-between">
+        {% if reviews.previousPageUrl %}
+        <div class="w-100 text-left">
+            <a class="u-pagination-v1__item  g-color-indigo  g-pa-4-13" href="{{ reviews.previousPageUrl }}"
+                aria-label="Previous">
+                <span aria-hidden="true">
+                    <i class="fa fa-arrow-left g-mr-10"></i>
+                    Предыдущая
+                </span>
+                <span class="sr-only">Предыдущая</span>
+            </a>
+        </div>
+        {% endif %}
+        {% if reviews.nextPageUrl %}
+        <div class="w-100 text-right">
+            <a class="u-pagination-v1__item g-color-indigo g-pa-4-13" href="{{ reviews.nextPageUrl }}"
+                aria-label="Next">
+                <span aria-hidden="true">
+                    Следующая
+                    <i class="fa fa-arrow-right g-ml-10"></i>
+
+                </span>
+                <span class="sr-only">Следующая</span>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</nav>
+{% endif %}
+<!-- End Pagination -->

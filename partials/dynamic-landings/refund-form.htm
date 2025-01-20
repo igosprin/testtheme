@@ -1,0 +1,111 @@
+==
+{% set itemDirectory = dynamicLanding.getItem %}
+
+<section class="g-py-60 g-py-80--md g-overflow-x-hidden" style="background-color: #000633;">
+  <div class="container">
+    <div class="g-bg-white-opacity-0_1 g-rounded-10 g-px-20 g-px-60--md g-py-40 g-py-60--md g-pos-rel" id="contact-form">
+      <!-- blur -->
+      <div
+      class="g-pos-abs g-top-100 g-right-minus-50 g-width-200 g-height-200"
+      style="background: linear-gradient(174.74deg, #50E7B7 61.67%, #323992 189.61%); opacity: 0.5; filter: blur(120px);"
+      ></div>
+      <!-- blur end -->
+      <h2 class="g-font-size-22 g-font-size-30--md g-font-weight-700 g-color-white text-center text-lg-left g-mb-25">
+        Заберите свою инструкцию по возврату средств
+      </h2>
+      <p class="g-font-size-18--md g-line-height-1_4 g-color-white-opacity-0_8 text-center text-lg-left">
+        Напишите подробно о своей ситуации: ваши деньги застряли на счете или баланс обнулен? какую сумму вы пытаетесь вывести?
+        как долго длятся ваши проблемы с выводом?
+      </p>
+      <p class="g-font-size-18--md g-line-height-1_4 g-color-white-opacity-0_8 text-center text-lg-left g-mb-25 g-mb-40--md">
+        Детали, которые вы зафиксируете в сообщении, ускорят подготовку инструкции.
+      </p>
+
+      <!-- form -->
+      <form data-request="{{genericForm}}::onFormSubmit" data-request-validate data-request-flash>
+        {{ form_token() }}
+        <div id="{{ genericForm}}_forms_flash"></div>
+        <input type="hidden" name="url" value="{{ ''| page }}">
+        <input type="hidden" name="type" value="get-instruction-form">
+        {% if itemDirectory.name is defined %}
+        <input type="hidden" name="broker" value="{{ itemDirectory.name }}" id="organization">
+        {% endif %}
+        <div class="row g-mb-25">
+          <div class="col-12 col-lg-6">
+            <!-- name -->
+            <div class="form-group g-mb-25">
+              <input
+                class="form-control g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-yellow--hover g-transition-0_4 g-pa-15"
+                name="name"
+                id="name"
+                type="text"
+                placeholder="Ваше имя"
+                required
+              >
+              <div data-validate-for="name" class="alert alert-danger"></div>
+              <div data-validate-for="slug" class="alert alert-danger"></div>
+            </div>
+            <!-- email -->
+            <div class="form-group g-mb-25">
+              <input
+                name="email"
+                id="email"
+                type="email"
+                placeholder="Электронная почта"
+                class="form-control g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-yellow--hover g-transition-0_4 g-pa-15"
+                required
+              >
+              <div data-validate-for="email" class="alert alert-danger"></div>
+            </div>
+            <!-- phone -->
+            <div class="form-group g-mb-25 g-mb-0--lg">
+              <input
+                name="phone"
+                id="phone"
+                type="tel"
+                placeholder="Номер телефона"
+                class="iti_phone form-control g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-yellow--hover g-transition-0_4 g-pl-90 g-pr-15 g-py-15"
+                required
+              >
+              <small class="iti_error-msg hide form-control-feedback"></small>
+              <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+              <div data-validate-for="phone" class="alert alert-danger"></div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="form-group h-100 g-mb-0">
+              <textarea
+              class="form-control h-100 g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-yellow--hover g-transition-0_4 g-resize-none g-pa-15"
+              name="message"
+              rows="5"
+              placeholder="Текст вашего сообщения"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- checkbox -->
+        <div class="form-group g-mb-25">
+          <label for="check-1" class="form-check-inline u-check g-pl-35 mb-0 g-mr-0 d-flex flex-wrap g-line-height-1_3">
+            <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="check-1" id="check-1" type="checkbox" value="1" checked>
+            <div class="u-check-icon-checkbox-v4 g-rounded-5 g-brd-yellow g-color-yellow g-absolute-centered--y g-left-0 g-width-25 g-height-25">
+              <i class="fa g-font-size-14" data-check-icon=""></i>
+            </div>
+            <span class="g-color-white-opacity-0_8 g-mr-5">
+              Я даю согласие на
+              <a href="{{ 'misc/privacy'|page }}" class="g-color-white-opacity-0_8 g-brd-white-opacity-0_8 g-brd-bottom--dashed u-link-v5">обработку персональных данных</a>
+            </span>
+          </label>
+        </div>
+        <!-- button -->
+        <button
+          class="btn g-brd-around g-brd-yellow g-bg-yellow g-bg-transparent--hover g-rounded-10 g-font-size-16--md g-color-black g-color-yellow--hover g-transition-0_4 g-py-15 g-px-50"
+          type="submit"
+          data-attach-loading
+        >
+          Забрать инструкцию
+        </button>
+      </form>
+      <!-- end form -->
+    </div>
+  </div>
+</section>

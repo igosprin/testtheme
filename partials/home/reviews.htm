@@ -1,0 +1,99 @@
+[lastReviews]
+reviewsPerPage = 5
+orderBy = "created_at_display"
+orderDirection = "desc"
+==
+{% set reviews = lastReviews.getReviewsList() %}
+<!--reviews-->
+<section class="g-bg-lightblue g-pt-40 g-pt-80--md g-pb-70 g-pb-100--md">
+  <div class="container">
+    <h2 class="g-font-size-22 g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-black text-center g-mb-20 g-mb-40--md">
+      Истории реальных клиентов
+    </h2>
+
+    <div
+      class="js-carousel"
+      data-autoplay="false"
+      data-slides-show="3"
+      data-slides-scroll="1"
+      data-infinite="true"
+      data-arrows-classes="g-hidden-md-down u-arrow-v1 g-width-45 g-height-45 g-color-blue g-brd-primary-opacity-0_3 g-brd-around g-color-white--hover g-bg-white g-bg-primary--hover g-rounded-10 g-transition-0_2 g-absolute-centered--y"
+      data-arrow-left-classes="fa fa-angle-left g-font-size-20 g-left-minus-50"
+      data-arrow-right-classes="fa fa-angle-right g-font-size-20 g-right-minus-50"
+      data-pagi-classes="u-carousel-indicators-v35 g-absolute-centered--x text-center g-bottom-minus-40"
+      data-responsive='[{
+          "breakpoint": 1200,
+            "settings": {
+            "slidesToShow": 2
+          }
+        }, {
+            "breakpoint": 768,
+            "settings": {
+            "slidesToShow": 1
+          }
+        }]'
+    >
+      {% for review in reviews %}
+      <div class="js-slide g-mx-15">
+        <div class="d-flex flex-column justify-content-between g-bg-white g-rounded-10  g-height-280 g-py-20 g-px-20">
+          <div>
+            <div class="d-flex g-mb-20">
+              <img
+                class="img-fluid g-width-48 g-height-48 g-rounded-10 g-mr-15 lazyload"
+                src="{{ review.user.avatar.thumb(70, 70)|default('assets/build/img/financebar-new/companies/user.png'|theme) }}"
+                alt="user photo"
+              >
+              <div class="d-flex flex-column">
+                <span class="g-font-size-16 g-color-gray-dark-v2">
+                  {{ review.name }} о
+                  {% for item in review.itemDirectory.itemsSection %}
+                  <a
+                    href="{{ 'directory/company-profile'|page({section_slug: item.section.slug, item_slug: review.itemDirectory.slug}) }}"
+                    class="g-color-blue"
+                  >
+                    {{ review.itemDirectory.name }}
+                  </a>
+                  {% endfor %}
+                </span>
+                <div class="d-flex flex-row g-mt-0 g-mb-0">
+                  <div class="js-rating g-font-size-16 g-color-yellow mb-0" data-rating="{{ review.rating }}"></div>
+                  <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                    <meta itemprop="ratingValue" content="{{ review.rating }}">
+                    <meta itemprop="bestRating" content="5">
+                    <meta itemprop="worstRating" content="1">
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="media-body g-mb-20">
+              <blockquote class="lead g-font-size-16 g-line-height-1_4 g-color-black g-mb-0">
+                {% if (review.content|length < 90) %}
+                  {{ review.content | slice(0, 90) }}
+                {% else %}
+                  {{ review.content | slice(0, 90) }}
+                  
+                  <a
+                    href="{{ review.itemDirectory.getCanonicalUrl()  }}"
+                    class="g-font-size-14 g-color-gray-dark-v5"
+                  >
+                    Читать далее...
+                  </a>
+                {% endif %}
+                
+                
+              </blockquote>
+            </div>
+          </div>
+          {% for item in review.itemDirectory.itemsSection %}
+          <a href="{{ 'directory/company-profile'|page({section_slug: item.section.slug, item_slug: review.itemDirectory.slug}) }}">
+            <img src="{{ review.itemDirectory.logo|resize(60, 35, { mode: 'fit' }) }}" alt="{{ review.itemDirectory.name }}">
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% else %}
+      <p class="text-center text-md-left g-mb-0">Пока нет отзывов</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

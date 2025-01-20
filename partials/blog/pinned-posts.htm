@@ -1,0 +1,56 @@
+==
+{% set posts = postList.getPostListItems %}
+{% if posts|length > 0 %}
+<section class="g-bg-lightblue">
+  <!-- Carousel Slider -->
+  <div
+    class="js-carousel u-carousel-v5"
+    data-infinite="true"
+    data-autoplay="false"
+    data-speed="9000"
+    data-pagi-classes="u-carousel-indicators-v34 g-absolute-centered--y g-left-auto g-right-20 g-right-130--md"
+    data-calc-target="#js-header"
+    style="max-height: 500px;"
+  >
+    <!-- Carousel Slides -->
+    {% for post in posts %}
+
+    <div
+      class="g-bg-img-hero swiper-slide g-pos-rel"
+      style="{% for image in post.post.featured_images %} background-image: url({{ image.getThumb(1200, 500) }}); {% endfor %}"
+    >
+      <div class="g-pos-abs w-100 h-100 g-left-0 g-top-0 g-right-0" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));">
+        <div class="container h-100 d-flex flex-column justify-content-center">
+          <div class="row">
+            <div class="col-11 col-md-10 col-lg-8">
+              {% for category in post.post.categories|slice(0,1) %}
+              <a
+                href="{{ 'blog/category'|page({slug:category.slug}) }}"
+                class="d-inline-block g-rounded-5 g-font-size-12 g-font-size-16--md g-line-height-1_4 g-letter-spacing-1 g-bg-teal-opacity-0_1 g-color-teal text-uppercase g-pa-5 g-mb-15"
+              >
+                {{ category.name }}
+              </a>
+              {% endfor %}
+              <h1 class="g-font-size-24 g-font-size-32--md g-font-size-42--lg g-font-weight-700 g-line-height-1_1 g-color-white g-mb-20 g-mb-25--md">
+                {{ post.post.title }}
+              </h1>
+              <p class="g-font-size-14 g-font-size-20--md g-line-height-1_4 g-color-white g-mb-20 g-mb-40--md">
+                {{ post.post.excerpt }}
+              </p>
+              <a
+                class="btn g-rounded-10 g-line-height-1 g-bg-primary g-bg-gray-dark-v2--hover g-transition-0_4 g-color-white g-py-14 g-px-25"
+                href="{{ 'blog/post'|page({slug:post.post.slug}) }}"
+              >
+                Читать статью&nbsp;&#8594;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <!-- End Carousel Slides -->
+  </div>
+  <!-- End Carousel Slider -->
+</section>
+{% endif %}

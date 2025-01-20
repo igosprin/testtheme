@@ -1,0 +1,67 @@
+[directorySections componentDirectories]
+directorySlug = "companies"
+==
+
+{% set directory = componentDirectories.getDirectory() %}
+
+
+<!--categories section-->
+<section class="g-bg-lightblue g-pt-120 g-pt-170--md g-pb-70 g-pb-80--md">
+  <div class="container">
+    <h2 class="g-font-size-22 g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-black text-center g-mb-20 g-mb-40--md">
+      Популярные категории компаний
+    </h2>
+
+    <div
+      class="js-carousel row"
+      data-autoplay="false"
+      data-slides-show="4"
+       data-slides-scroll="1"
+       data-infinite="true"
+       data-arrows-classes="g-hidden-md-down u-arrow-v1 g-width-45 g-height-45 g-color-blue g-brd-primary-opacity-0_3 g-brd-around g-color-white--hover g-bg-white g-bg-primary--hover g-rounded-10 g-transition-0_2 g-absolute-centered--y"
+      data-arrow-left-classes="fa fa-angle-left g-font-size-20 g-left-minus-50"
+      data-arrow-right-classes="fa fa-angle-right g-font-size-20 g-right-minus-50"
+      data-pagi-classes="g-hidden-lg-up u-carousel-indicators-v35 g-absolute-centered--x text-center g-bottom-minus-40"
+      data-responsive='[{
+          "breakpoint": 1200,
+            "settings": {
+            "slidesToShow": 4
+          }
+        }, {
+            "breakpoint": 992,
+            "settings": {
+            "slidesToShow": 2
+          }
+        }, {
+            "breakpoint": 768,
+            "settings": {
+            "slidesToShow": 1
+          }
+        }, {
+            "breakpoint": 576,
+            "settings": {
+            "slidesToShow": 1
+          }
+        }]'>
+        
+        {% for section in directory.sections| slice(0, 5) %}
+        <div class="js-slide col-12">
+          <a
+            href="{{ 'directory/section'|page({section_slug: section.slug})}}"
+            class="g-text-underline--none--hover g-px-20 g-py-30 g-bg-white d-flex flex-column align-items-center g-color-black g-color-blue--hover justify-content-center text-center g-rounded-10 g-height-220"
+          >
+
+          {% if section.picture.getThumb  is defined %}
+            <img class="g-mb-20 g-width-70" src="{{ section.picture.getThumb(65, 65) }}">
+          {% endif %}
+            
+            <p class="g-font-size-20 g-mb-8">
+              {{ section.name }}
+            </p>
+            
+          </a>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+</section>

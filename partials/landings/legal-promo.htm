@@ -1,0 +1,47 @@
+==
+<!--PROMO-->
+<section class="g-py-40 g-py-70--lg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 g-mb-0--lg g-mb-30 d-flex flex-column justify-content-center">
+                <h1 class="g-font-size-24 g-font-size-30--md g-font-size-50--md g-line-height-1_2 g-color-white g-font-weight-600  g-mb-40">Финансово-правовая помощь в возврате средств</h1>
+                <h5 class="g-color-white g-font-size-20--md g-font-size-16 g-font-weight-400 g-max-width-500">
+                    <p>Быстрый подбор компании, осуществляющей возврат украденных средств.</p>
+                    <p>Эффективная правовая помощь в вопросах столкновения с финансовыми махинациями и неподобающим клиентским обслуживанием.</p>
+                </h5>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="g-bg-white-opacity-0_05 g-rounded-5 u-shadow-v1-5 g-ml-40--lg g-pa-40--lg">
+                    <div class="g-color-white g-font-size-22 g-font-weight-700 text-center g-mb-8">
+                        Заявка на получение консультации
+                    </div>
+                    <div class="g-color-white-opacity-0_8 g-font-size-16 g-font-weight-400 g-max-width-300 g-mb-25 text-center mx-auto">Заполните заявку, чтобы с вами связались специалисты</div>
+                    <form class=""
+                        data-request="{{ genericForm }}::onFormSubmit">
+                        {{ form_token() }}
+                        <div id="{{ genericForm }}_forms_flash"></div>
+                        <input name="type" type="hidden" value="promo">
+                        <input name="url" type="hidden" value="{{ ''| page }}">
+                        <input
+                            class="w-100 form-control g-brd-around g-rounded-5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20"
+                            type="text" placeholder="Ваше имя" name="name">
+                        <div class="g-mb-20">
+                            <input type="tel" name="iti_phone"
+                                class="iti_phone w-100 form-control g-brd-around g-rounded-5 g-brd-gray-light-v4 g-font-size-16 g-py-15 g-mb-20"
+                                required>
+                            <small class="iti_error-msg hide form-control-feedback"></small>
+                            <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+                        </div>
+                        <input
+                            class="w-100 form-control g-brd-around g-rounded-5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20"
+                            type="email" placeholder="Электронная почта" name="email" required="">
+                        <button
+                            class="btn w-100 g-font-size-16 g-font-weight-400 g-rounded-5 g-brd-around g-brd-deeporange g-bg-deeporange g-bg-transparent--hover g-line-height-1 g-color-white text-uppercase g-transition-0_3 g-py-16"
+                            type="submit" data-attach-loading> Отправить
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

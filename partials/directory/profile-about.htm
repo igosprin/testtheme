@@ -1,0 +1,84 @@
+==
+{% set item = componentItemDirectoryProfile.getItemDirectory %}
+
+<h3 class="g-font-size-18 g-font-size-20--md g-font-weight-700 g-line-height-1_4 g-color-black g-mb-15">
+  Детали компании {{ itemDirectory.name }}
+</h3>
+
+<img src="{{ itemDirectory.logo.path }}" class="g-hidden-xs-up" alt="{{ itemDirectory.name }}" itemprop="image">
+
+<table class="w-100">
+  <tbody>
+    <tr class="media g-py-5">
+      <td class="g-width-30x g-color-gray-dark-v5 g-mr-15">
+        Название компании
+      </td>
+      <td class="g-width-70x media-body g-color-black g-font-size-16--md g-overflow-hidden" itemprop="name">
+        {{ itemDirectory.name }}
+      </td>
+    </tr>
+
+    {% if itemDirectory.web_site %}
+    <tr class="media g-py-5">
+      <td class="g-width-30x g-color-gray-dark-v5 g-mr-15">
+        Сайт
+      </td>
+      <td class="g-width-70x media-body g-color-black g-font-size-16--md g-overflow-hidden" itemprop="url">
+        {{ itemDirectory.web_site }}
+      </td>
+    </tr>
+    {% endif %}
+
+    {% if itemDirectory.founded %}
+    <tr class="media g-py-5">
+      <td class="g-width-30x g-color-gray-dark-v5 g-mr-15">
+        Дата основания
+      </td>
+      <td class="g-width-70x media-body g-color-black g-font-size-16--md g-overflow-hidden" itemprop="foundingDate">
+        Работает с {{ itemDirectory.founded|date('Y') }} года
+      </td>
+    </tr>
+    {% endif %}
+
+    {% if itemDirectory.headquarters %}
+    <tr class="media g-py-5">
+      <td class="g-width-30x g-color-gray-dark-v5 g-mr-15">
+        Главный офис
+      </td>
+      <td class="g-width-70x media-body g-color-black g-font-size-16--md g-overflow-hidden" itemprop="address">
+        {{ itemDirectory.headquarters }}
+      </td>
+    </tr>
+    {% endif %}
+
+    {% if itemDirectory.phone %}
+    <tr class="media g-py-5">
+      <td class="g-width-30x g-color-gray-dark-v5 g-mr-15">
+          Телефон поддержки
+      </td>
+      <td class="g-width-70x media-body g-color-black g-font-size-16--md g-overflow-hidden" itemprop="telephone">
+        {{ itemDirectory.phone }}
+      </td>
+    </tr>
+    {% endif %}
+
+    {% if itemDirectory.email %}
+    <tr class="media g-py-5">
+      <td class="g-width-30x g-color-gray-dark-v5 g-mr-15">
+          Почта
+      </td>
+      <td class="g-width-70x media-body g-color-black g-font-size-16--md g-overflow-hidden" itemprop="email">
+          {{ itemDirectory.email }}
+      </td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+
+{% if itemDirectory.about is not empty %}
+
+<div class="content g-font-size-16--md g-mt-20">
+  {{ itemDirectory.about|raw }}
+</div>
+
+{% endif %}

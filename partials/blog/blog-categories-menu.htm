@@ -1,0 +1,26 @@
+==
+{% if blogCategories.categories %}
+<section class="g-bg-white g-py-10">
+  <div class="u-header__section u-header__section--hidden">
+    <div class="container" >
+      <ul
+        class="js-carousel g-py-10 d-flex align-items-center justify-content-center u-list-inline"
+        id="carousel7"
+        data-slides-scroll="2"
+        data-variable-width="true"
+      >
+        {% for category in blogCategories.categories %}
+        <li class="js-slide g-mx-10 g-mx-20--md g-mx-40--lg">
+          <a
+            class="g-font-size-12 g-font-size-16--md g-line-height-1 g-color-gray-dark-v2 g-color-blue--hover text-uppercase u-link-v5 text-nowrap {% if category.slug == currentCategorySlug %} g-color-blue {% endif %}"
+            href="{{ category.url }}"
+          >
+            {{ category.name }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endif %}

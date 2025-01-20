@@ -1,0 +1,14 @@
+==
+<!-- refund banner tablet version -->
+<a  
+  href="{% if itemDirectory.name is defined %}{{ 'dynamic-landings/chargeback-broker'|page({ item_slug: itemDirectory.slug }) }}{% else %}#consult{% endif %}"
+  {% if itemDirectory.name is not defined %} data-modal-target="#consult" data-modal-effect="fadein" {% endif %}
+  class="d-flex justify-content-between align-items-center g-bg-img-hero g-rounded-10 g-py-25 g-px-30 g-px-30--md g-height-100--md u-link-v5 g-opacity-0_8--hover g-transition-0_3"
+  style="background-image: url({{ 'assets/build/img/dinamic-landings/chargeback-broker/bg-banner.webp'|theme }});"
+>
+  <div class="d-flex align-items-center">
+    <h4 class="g-font-size-20 g-font-size-22--md g-font-weight-700 g-color-white g-line-height-1_4 g-mb-0">
+      Возврат клиентских средств со счета брокера {{ itemDirectory.name }}
+    </h4>
+  </div>
+</a>

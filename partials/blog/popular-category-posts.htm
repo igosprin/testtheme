@@ -1,0 +1,63 @@
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 3
+categoryFilter = {{filter}}
+noPostsMessage = "Нет записей"
+sortOrder = "random"
+categoryPage = "blog/category"
+postPage = "blog/post"
+==
+
+{% set posts = blogPosts.posts %}
+
+<section class="g-bg-lightblue g-pb-20 g-pb-80--lg g-pt-10 g-pt-80--md">
+  <div class="container">
+    <h2 class="g-font-size-18 g-font-size-25--sm g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-black g-mb-15 g-mb-30--md">
+      Популярное в этой теме
+    </h2>
+    <div class="row">
+      {% for post in posts %}
+      <div class="col-12 col-lg-4 g-mb-25 g-mb-0--lg">
+        <div class="d-flex flex-column g-bg-white g-rounded-10 g-height-100x g-pa-20" itemscope itemtype="https://schema.org/BlogPosting">
+          {% if post.featured_images.count %}
+          {% for image in post.featured_images %}
+          <a href="{{ post.url }}">
+            <img
+              class="fb-img-cover g-rounded-5 img-fluid w-100 g-height-250 g-mb-20"
+              src="{{ image.getThumb(auto,auto) }}"
+              alt="{{ post.title }}"
+              itemprop="image"
+            >
+          </a>
+          {% endfor %}
+          {% endif %}
+          <a href="{{ post.url }}" class="g-font-size-14 g-font-size-18--md g-line-height-1_4 g-color-black g-color-blue--hover g-mb-8 u-link-v5">
+            <span itemprop="headline">{{ post.title }}</span>
+          </a>
+          <div class="g-hidden-xs-up" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            <link itemprop="sameAs" href="/" />
+            <a href="/">
+            <span itemprop="name">post author</span>
+            </a>
+            <a href="/" itemprop="email">
+                author email
+            </a>
+          </div>
+          <div class="d-flex align-items-center">
+            {% for category in post.categories|slice(0, 1) %}
+            <a href="{{ 'blog/category'|page({slug:category.slug}) }}" class="g-rounded-5 g-font-size-10 g-font-size-12--md g-line-height-1_4 g-letter-spacing-1 g-bg-teal-opacity-0_1 g-color-teal text-uppercase g-pa-5">
+              {{ category.name }}
+            </a>
+            {% endfor %}
+            <div class="d-flex align-items-center g-color-gray-dark-v4 g-font-size-10 g-font-size-default--md g-line-height-1 g-ml-15">
+              <span itemprop="datePublished">{{ post.published_at|date("d M") }}</span>
+              <span class="g-mx-5">|</span>
+              <span class="d-flex align-items-center"><i class="icon-eye g-mr-5"></i>{{ post.views }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

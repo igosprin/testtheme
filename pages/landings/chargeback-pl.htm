@@ -1,0 +1,149 @@
+title = "Chargeback - czyli odzyskujemy pieniądze"
+url = "/chargeback-pl"
+layout = "financebar"
+is_hidden = 0
+
+[genericForm]
+group = "landing-chargeback-pl"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/chargeback"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+==
+{% partial 'landing-chargeback/promo'
+    h1Promo       = 'CHARGEBACK - ZWRÓĆ PIENIĄDZE NA SWOJĄ KARTĘ'
+    h5PromoFirst  = 'Jeśli przelałeś pieniądze nieuczciwemu dostawcy usług lub towarów, nie martw się!'
+    h5PromoSecond = 'Możesz zwrócić <span class="g-font-weight-600">CAŁĄ KWOTĘ</span> absolutnie legalnie. Uruchom chargeback! I już w ciągu 1-2 miesięcy otrzymasz od banku wymarzony SMS!'
+    h2Form        = 'Zostaw prośbę o <span class="g-color-teal">bezpłatną</span> konsultację'
+    btnMore       = 'Uczyć się więcej'
+    inputName     = 'Twoje imię'
+    inputEmail    = 'Twój email'
+    btnSubmit     = 'wysłać'
+%}
+
+{% partial 'landing-chargeback/what'
+    h2Chargeback       = 'Czym jest <span class="g-color-teal">chargeback</span>?'
+    pChargebackFirst   = 'Chargeback to proces, w którym bank anuluje transakcję kartą.'
+    pChargebackSecond  = 'Nie pyta o zgodę odbiorcy i zwraca środki płatnikowi. Jeśli zostały od Ciebie pobrane pieniądze, ale usługa nie została zrealizowana lub towary nie zostały wysłane, uruchom funkcję chargeback.  Odzyskasz swoje pieniądze, a także ukażesz nieuczciwego sprzedawcę, firmę lub innych oszustów'
+%}
+{% partial 'landing-chargeback/opportunities'
+    h2Opportunities         = '<span class="g-color-teal">MOŻLIWOŚCI</span> CHARGEBACK'
+    h5Opportunities         = 'Istnieje wiele powodów do zwrotu płatności. Jaki jest Twój?'
+    h4OpportunitiesFirst    = 'Broker Forex'
+    h4OpportunitiesSecond   = 'Kasyno'
+    h4OpportunitiesThird    = 'Kryptowaluty'
+    h4OpportunitiesFourth   = 'Banki'
+    h4OpportunitiesFifth    = 'Broker opcji binarnych'
+    h4OpportunitiesSixth    = 'Bukmacherzy'
+    h4OpportunitiesSeventh  = 'Piramidy finansowe'
+    h4OpportunitiesEighth   = 'Zakupy online'
+    pOpportunitiesFirst     = 'Broker stracił cały depozyt, dostarcza fałszywe sygnały handlowe lub nie zezwala na wypłatę zarobków.'
+    p4OpportunitiesSecond   = 'Nie wygrałeś, bo gra została zaprogramowana właśnie w taki sposób. Przycisk “Wypłata” regularnie znika.'
+    p4OpportunitiesThird    = 'Wymiennik kryptograficzny pobrał pieniądze, ale Twój BTC nigdy do Ciebie nie dotarł. Zainwestowałeś w ICO, ale to była bańka.'
+    p4OpportunitiesFourth   = 'Bankomat pobrał pieniądze z karty, ale ich nie wypłacił. Albo wpisałeś kwotę, a została ona wypłacona tylko częściowo.'
+    p4OpportunitiesFifth    = 'Obiecano Ci zysk w wysokości 80%, ale otrzymujesz 20%. Minimalny zakład wzrósł z 20 USD do 1000 USD.'
+    p4OpportunitiesSixth    = 'Twoje zakłady były akceptowane, dopóki przegrywałeś. A potem wygrałeś i Twoje konto zostało zablokowane.'
+    p4OpportunitiesSeventh  = 'Zafascynował Cię Cashberry, Startcom.pro lub inny MMM. Straciłeś swój depozyt i bonusy w systemie poleceń.'
+    p4OpportunitiesEighth   = 'Kupiłeś coś w butiku na Instagramie, ale wysłana Ci została uszkodzona rzecz (lub w ogóle przesyłka do Ciebie nie dotarła). Sprzedawca z kolei odmawia kontaktu.'
+%}
+
+{% partial 'landing-chargeback/difficulties'
+    h2Difficult        = 'JAKIE <span class="g-color-teal"> TRUDNOŚCI</span> MOGĄ POWSTAĆ W PRZYPADKU SAMODZIELNEGO CHARGEBACKU?'
+    h3DifficultFirst   = 'POTRZEBA ZBADANIA REGULAMINU SYSTEMU PŁATNOŚCI'
+    h3DifficultSecond  = 'TŁUMACZENIE NA JĘZYK ANGIELSKI'
+    h3DifficultThird   = 'KONTROLA PRZEBIEGU SPRAWY'
+    h3DifficultFourth  = 'SPORZĄDZANIE WNIOSKU DO BANKU'
+    h3DifficultFifth   = 'KOMUNIKACJA Z BANKIEM'
+    h3DifficultSixth   = 'ODMOWA BANKU'
+    pDifficultFirst    = 'Wytyczne dotyczące zwrotu opłat w systemie Visa składają się z 70 stron. A w przypadku MasterCard mówimy już o… 438 stronach. Ponadto trudno też znaleźć te dokumenty przetłumaczone na język polski.'
+    pDifficultSecond   = 'Wniosek obowiązkowo należy przetłumaczyć na język angielski. Regulaminy systemów płatności Visa i MasterCard nie przewidują możliwości wysłania wniosku w języku polskim.'
+    pDifficultThird    = 'Żaden bank nie jest zainteresowany wypłatą chargebacku. Musisz wiedzieć, jak odpowiadać na różnego rodzaju pytania i formalne odrzucenia Twoich wniosków. Dodatkowo - jak umieć udowodnić potrzebę realizacji chargebacku.'
+    pDifficultFourth   = 'Znalezienia szablonu w Internecie nie jest wystarczające. Na szablonowy wniosek banki mają tak samo szablonowy tekst odmowy. Treść wniosku powinna być jak najbardziej indywidualna.'
+    pDifficultFifth    = 'Najpierw pracownicy będą twierdzić, że nigdy nie słyszeli nic na temat chargebacku, następnie będę odwodzić od skorzystania z tej usługi. Jednak w końcu zaakceptują wniosek.'
+    pDifficultSixth    = 'Odmowa to nie koniec. Tekst odmowy trzeba rzetelnie przeanalizować i na jego podstawie kontynuować negocjacje z bankiem. Podstawowe zadanie - przywrócić sprawę do jej rozpatrywania przez bank.'
+%}
+{% partial 'landing-chargeback/escort'
+    h2Escort         = 'ZAMÓW <span class="g-color-teal">POMOC</span> W UZYSKANIU CHARGEBACKU'
+    h4EscortFirst    = 'Praca zespołowa'
+    h4EscortSecond   = 'Zgodność z przepisami prawa i regulaminu'
+    h4EscortThird    = 'Doradztwo 24/7'
+    h4EscortFourth   = 'Wsparcie na wszystkich etapach'
+    h4EscortFifth    = 'Zapewnienie jakości'
+    pEscortFirst     = 'Każda sprawa jest oceniana przez prawników z doświadczeniem w zakwestionowaniu transakcji pieniężnych.'
+    pEscortSecond    = 'Wszystkie wnioski sporządzane są w oparciu o aktualne ustawodawstwo, co pozwala zminimalizować prawdopodobieństwo ponownego kontaktu z bankiem.'
+    pEscortThird     = 'Zawsze możesz zadawać pytania przez telefon, e-mail, sieci społecznościowe i komunikatory internetowe.'
+    pEscortFourth    = 'Dokładnie badamy Twoją sprawę i na tej podstawie dobieramy strategię działań, sporządzamy listę dokumentów, koordynujemy Twoje interakcje z bankiem.'
+    pEscortFifth     = 'Gwarantujemy w 100% przypadków kompetentne podejście pod względem prawnym, które sprawia, że ​​pracownicy banku zaczynają być bardziej pomocni i szybciej rozpatrują Twoją sprawę.'
+%}
+
+{% partial 'landing-chargeback/works'
+    h2Works         = 'JAK <span class="g-color-teal">DZIAŁA</span> CHARGEBACK?'
+    h4WorksFirst    = 'WYSŁANIE WNIOSKU'
+    h4WorksSecond   = 'OCENA SZANS'
+    h4WorksThird    = 'ROZPOCZĘCIE WSPÓŁPRACY'
+    h4WorksFourth   = 'WYSŁANIE WNIOSKÓW'
+    h4WorksFifth    = 'WYNIK'
+    pWorksFirst     = 'Szczegółowo opisz swoją sytuację'
+    pWorksSecond    = 'Prawnik bada wniosek i prognozuje wynik sprawy'
+    pWorksThird     = 'Dostajesz listę dokumentów i plan działań'
+    pWorksFourth    = 'Wysyłasz gotowe dokumenty do banku'
+    pWorksFifth     = 'Bank wysyła Ci decyzję i SMS o zwrocie pieniędzy'
+%}
+
+{% partial 'landing-chargeback/support'
+    h2Support         = '<span class="g-color-teal">IM WCZEŚNIEJ ZGŁOSISZ SIĘ O POMOC</span>, TYM MNIEJ PRAWDOPODOBNĄ JEST WIARYGODNOŚĆ OTRZYMANIA NEGATYWNEJ ODPOWIEDZI Z BANKU'
+    inputNameSupport  = 'Twoje imię'
+    inputPhoneSupport = '236 567-44-44'
+    btnSupport        = 'Oddzwoń'
+    %}
+
+{% partial 'landing-chargeback/return'
+    h2Return = '<span class="g-color-teal">MOŻESZ ZWRÓCIĆ PIENIĄDZE</span> OD TAKICH FIRM FINANSOWYCH:'
+%}
+
+{% partial 'landing-chargeback/caution'
+    h2Caution          = ' <span class="g-color-teal">OSTROŻNIE!</span> ISTNIEJĄ METODY ZWROTÓW, KTÓRE ZDECYDOWANIE<span class="g-color-teal"> NIE ZADZIAŁAJĄ</span>'
+    h3FirstCaution     = 'Płatności lustrzane'
+    h3SecondCaution    = 'Pisanie artykułów'
+    h3ThirdCaution     = 'Bezpłatny zwrot'
+    pFirstCautionOne   = 'W żaden sposób nie pomagają w zwrocie.'
+    pFirstCautionTwo   = 'Płatność nie może zostać gdzieś zablokowana.'
+    pSecondCautionOne  = 'Nie zamawiaj tej usługi.'
+    pSecondCautionTwo  = 'Artykuły nie pomogą Ci odzyskać pieniędzy!'
+    pThirdCautionOne   = 'Taka usługa nie istnieje.'
+    pThirdCautionTwo   = 'Oszuści próbują uzyskać zaufanie, a następnie'
+    pThirdCautionThree = 'kradną dane za pomocą AnyDesk.'
+%}
+
+{% partial 'landing-chargeback/return-now'
+    h2FormReturn    = 'Umów się na konsultację'
+    inputNameCall   = 'Twoje imię'
+    inputPhoneCall  = '236 567-44-44'
+    inputEmailCall  = 'Twój email'
+    inputBtnSubmit  = 'wysłać'
+    h2ReturnNow     = 'ZACZNIJ <span class="g-color-teal">ZWROT</span> SWOICH PIENIĘDZY JUŻ TERAZ'
+    h5ReturnNow     = 'Złóż wniosek i z pewnością otrzymasz:'
+    liNowFirst      = 'Wycenę sprawy przez prawnika finansowego;'
+    liNowSecond     = 'Personalne instrukcje dotyczące zwrotu środków;'
+    liNowThird      = 'Listę dokumentów, które pomogą uruchomić procedurę chargeback.'
+%}
+
+{% partial 'landing-chargeback/faq'
+    h2FAQ           = 'NAJCZĘSTSZE<span class="g-color-teal"> PYTANIA</span>'
+    LinkFirstFAQ    = 'Czy są szanse na odzyskanie środków od brokera, kasyna lub bukmachera, będących oszustami?'
+    LinkSecondFAQ   = 'Czy warto udać się na policję i pozwać oszustów telefonicznych lub internetowych?'
+    LinkThirdFAQ    = 'Jakie są terminy zwrotu pieniędzy?'
+    LinkFourthFAQ   = 'Jak zwrócić pieniądze, które były wysłane za pomocą portfela elektronicznego lub kantora?'
+    LinkFifthAQ     = 'Czy samodzielny zwrot pieniędzy jest możliwy?'
+    BlockFirstFAQ   = 'Tak. Ale prawdopodobieństwo zwrotu jest ustalane indywidualnie. Jeśli Twoje pieniądze utknęły dwa lata temu, jest to okoliczność obciążająca. Mimo to możesz spodziewać się zwrotu pieniędzy.'
+    BlockSecondFAQ  = 'Warto, jednak należy wziąć pod uwagę, że w przypadku niewielkich kwot, wyciągniętych od Ciebie przez oszustów, postępowanie w Twojej sprawie może nawet nie zostać wszczęte lub sprawa będzie szybko umorzona. Na wytłumaczenie tego mogą zostać znalezione liczne powody. Z kolei przekazanie sprawy do sądu jest możliwe wyłącznie pod warunkiem udowodnienia przez policję faktu popełnienia przestępstwa. Dodatkowo  rozpatrzenie sprawy przez sąd ma pewne swoje aspekty i pułapki:   <p class="g-color-gray-dark-v3 g-my-5">1. W celu wszczęcia sprawy karnej należy złożyć wniosek w miejscu rejestracji firmy.</p> <p class="g-color-gray-dark-v3 g-mb-5">2. Firma może zostać zarejestrowana w strefie offshore.</p> <p class="g-color-gray-dark-v3 g-mb-0">3. Aby ukarać oszustów, musisz spełnić szereg warunków. Na przykład na Cyprze musisz być obecny osobiście, aby funkcjonariusze organów ścigania mogli wszcząć sprawę.</p>'
+    BlockThirdFAQ   = 'Średnio pieniądze są zwracane na kartę w ciągu 1-3 miesięcy. Termin - to parametr indywidualny, który zależy od wielu czynników i konsekwentnego przestrzegania strategii.'
+    BlockFourthFAQ  = 'Zasadą procedury chargeback podlegają systemy płatności: MasterCard, Visa, Mir i Maestro. Jak można zauważyć, lista ta nie obejmuje przelewów swift, płatności za pośrednictwem e-portfeli oraz serwisów Yandex.Money i Qiwi.'
+    BlockFifthFAQ   = 'Możesz zająć się tym procesem samodzielnie. Jednak na drodze zwrotu pieniędzy często pojawiają się biurokratyczne przeszkody i pułapki. Jedną z podstawowych trudności jest dotarcie do odpowiednich pracowników banku.'
+%}

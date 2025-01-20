@@ -1,0 +1,61 @@
+==
+
+<!--PROMO-->
+<section class="g-pb-0 g-pt-60 g-py-80--lg" style="background-image: url({{ 'assets/build/img/dinamic-landings/chargeback-investment/bg.webp'|theme }});">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-12 col-lg-5 g-mb-0--lg g-mb-30 d-flex flex-column justify-content-center">
+                <h1 class="g-font-size-24 g-font-size-40--md g-line-height-1_2 g-color-white g-font-weight-700 g-mb-20">Возврат инвестиций от {{ itemDirectory.name }} быстро и эффективно</h1>
+                <div class="g-color-white-opacity-0_8 g-font-size-16 g-font-weight-400 g-line-height-1_4 g-mb-20">
+                    <p>Вернуть средства клиенты могут исключительно на ту карту, с которой совершалось пополнение счета на сайте {{ itemDirectory.name }}.</p>
+                    <p>На скорость возврата влияет сложность каждого отдельного случая, размер суммы и особенности платежного сервиса.</p>
+                    <p class="g-font-weight-700 g-mb-20">В среднем процедура занимает от 4 до 6 месяцев.</p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="g-bg-white g-rounded-10 g-px-30 g-px-60--lg g-pt-60 g-pb-80 ">
+                    <div class="g-color-black g-font-size-20 g-font-size-24--md g-font-weight-700 text-center g-mb-30">
+                        Задайте вопрос эксперту
+                    </div>
+                    
+                    <form class=""
+                        data-request="{{ genericForm }}::onFormSubmit">
+                        {{ form_token() }}
+                        <div id="{{ genericForm }}_forms_flash"></div>
+                        <input name="type" type="hidden" value="promo">
+                        <input name="url" type="hidden" value="{{ ''| page }}">
+                        <input
+                            class="w-100 form-control rounded-0 g-brd-around g-bg-gray-light-v5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20"
+                            type="text" placeholder="Ваше имя" name="name">
+                        <div class="g-mb-20">
+                            <input type="tel" name="iti_phone"
+                                class="iti_phone w-100 form-control rounded-0 g-brd-around g-bg-gray-light-v5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20 g-pl-80"
+                                required>
+                            <small class="iti_error-msg hide form-control-feedback"></small>
+                            <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+                        </div>
+                        <input
+                            class="w-100 form-control rounded-0 g-brd-around g-bg-gray-light-v5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20"
+                            type="email" placeholder="Электронная почта" name="email" required="">
+                        <div class="form-group g-mb-20">
+                            <label for="check-end" class="form-check-inline u-check g-pl-35 mb-0 g-mr-0 d-flex flex-wrap g-line-height-1_3 g-font-size-12">
+                                <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="check-end" id="check-end" type="checkbox" value="1" checked>
+                                <div class="u-check-icon-checkbox-v4 g-rounded-0 g-brd-orange g-bg-orange g-color-white g-absolute-centered--y g-left-0 g-width-25 g-height-25">
+                                <i class="fa g-font-size-14" data-check-icon=""></i>
+                                </div>
+                                <span class="g-color-gray-dark-v2 g-mr-5">
+                                    Я даю согласие на
+                                <a href="{{ 'misc/privacy'|page }}" class="g-color-gray-dark-v2 g-brd-gray-dark-v2 g-brd-bottom--dashed u-link-v5">обработку персональных данных</a>
+                                </span>
+                            </label>
+                        </div>
+                        <button
+                            class="btn w-100 g-font-size-16 g-font-weight-400 g-rounded-10 u-btn-orange g-line-height-1 g-color-white g-py-18"
+                            type="submit" data-attach-loading> Получить консультацию
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

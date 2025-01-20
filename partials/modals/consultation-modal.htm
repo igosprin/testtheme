@@ -1,0 +1,77 @@
+<div class="g-overflow-y-auto">
+  <div id="consult" class="g-max-width-400" style="display: none;">
+    <div class="container g-bg-white g-max-width-400 g-rounded-10 g-px-20 g-px-25--md g-pt-30 g-pt-40--md g-pb-20 g-pb-30--md g-pos-rel">
+      <button type="button" class="close" onclick="Custombox.modal.close();">
+        <i class="hs-icon hs-icon-close"></i>
+      </button>
+
+      <h2 class="g-font-size-22 g-font-size-26--md g-color-black g-font-weight-600 g-line-height-1_3 text-center g-mb-20">
+        Бесплатная консультация
+      </h2>
+      <form
+        data-request="{{genericForm}}::onFormSubmit"
+        data-request-validate data-request-flash
+      >
+        {{ form_token() }}
+        <input type="hidden" name="url" value="{{ ''| page }}">
+        <input type="hidden" name="type" value="consult">
+        <div id="{{ genericForm}}_forms_flash"></div>
+        <!-- name -->
+        <div class="form-group g-mb-20">
+          <input
+            class="form-control g-color-gray-dark-v5 g-bg-white g-brd-gray-light-v3 g-brd-primary--hover g-transition-0_3 rounded-0 g-font-size-14 rounded-0 g-px-10 g-py-12 g-mb-0"
+            name="name"
+            id="name"
+            type="text"
+            placeholder="Ваше имя"
+            required
+          >
+          <div data-validate-for="name" class="alert alert-danger"></div>
+        </div>
+        <!-- email -->
+        <div class="form-group g-mb-20">
+          <input
+            class="form-control g-color-gray-dark-v5 g-bg-white g-brd-gray-light-v3 g-brd-primary--hover g-transition-0_3 rounded-0 g-font-size-14 rounded-0 g-px-10 g-py-12 g-mb-0"
+            name="email"
+            id="email"
+            type="email"
+            placeholder="Электронная почта"
+            required
+          >
+          <div data-validate-for="email" class="alert alert-danger"></div>
+        </div>
+        <!-- phone -->
+        <div class="form-group g-color-gray-dark-v5 g-mb-20">
+          <input
+            name="phone"
+            id="phone"
+            type="tel"
+            placeholder="Номер телефона"
+            class="iti_phone form-control g-color-gray-dark-v5 g-bg-white g-brd-gray-light-v3 g-brd-primary--hover g-transition-0_3 rounded-0 g-font-size-14 rounded-0 g-pr-50 g-py-12 g-mb-0 g-pl-90"
+            required
+          >
+          <small class="iti_error-msg hide form-control-feedback"></small>
+          <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+          <div data-validate-for="phone" class="alert alert-danger"></div>
+        </div>
+        <!-- button -->
+        <button
+          class="w-100 btn u-btn-primary g-font-size-14 g-font-weight-500 text-uppercase rounded-0 g-py-12 g-px-30 g-mb-10"
+          type="submit"
+          role="button"
+          data-attach-loading
+        >
+          Отправить
+        </button>
+      </form>
+      <div class="d-flex justify-content-center">
+        <button
+          type="button"
+          class="close g-font-size-14 g-font-weight-400 g-color-gray-dark-v4 g-color-primary--hover g-transition-0_3 g-bg-transparent g-brd-none g-pa-10"
+          onclick="Custombox.modal.close();"
+        >В другой раз
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

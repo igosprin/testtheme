@@ -1,0 +1,234 @@
+title = "Автор"
+url = "/author/:slug/"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[authorProfile]
+nickname = "{{ :slug }}"
+postsPerPage = 20
+newsPerPage = 20
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 1
+categoryPage = "blog/category"
+
+[genericForm]
+group = "blog-author-page"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+==
+<?php
+function onEnd()
+  {
+    $this->page->title = 'Автор '.$this->author->user->first_name.' '.$this->author->user->last_name;
+    $this->page->meta_title = 'Автор '.$this->author->user->first_name.''.$this->author->user->last_name;
+    $this->page->meta_description = $this->author->about;
+    $this->page->og_image = $this->author->user->getAvatarThumb(200);
+
+    $this['posts'] = $this->authorProfile->getPostsList();
+    $this['news'] = $this->authorProfile->getNewsList();
+  }
+?>
+==
+
+{% set round = authorsPostsCount / posts.perPage %}
+
+<section class="g-bg-lightblue g-pb-40 g-pb-60--md">
+  <div class="container">
+    {% partial 'common/breadcrumbs' breadcrumbs = {'Главная': '/', 'Авторы': '/all-authors', (author.user.getFullNameAttribute): ''} %}
+
+    <div class="g-hidden-lg-up g-mb-20">
+      {% partial 'banners/become-author-tablet' %}
+    </div>
+
+    <div class="row">
+      <!-- sidebar -->
+      <div class="col-12 col-lg-4">
+        <!-- author card -->
+        <div class="d-flex flex-column g-bg-white g-rounded-10 g-py-20 g-py-40--md g-px-20 g-mb-20 g-mb-30--lg">
+          <div class="d-flex flex-column align-items-center g-brd-bottom g-brd-gray-light-v4 g-pb-20" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            <img
+              class="g-width-140 g-height-140 g-rounded-10 fb-img-cover g-mb-20"
+              src="{{ author.user.getAvatarThumb(140)}}"
+              alt="{{ author.user.getFullNameAttribute }}"
+            >
+            <h1 class="g-font-size-18 g-font-size-24--md g-line-height-1_3 g-color-black text-center g-mb-8" itemprop="name">
+              {{ author.user.getFullNameAttribute }}
+            </h1>
+            <div class="g-font-size-16--md g-line-height-1 g-color-gray-dark-v2 g-mb-minus-5">
+              {{ author.about|raw }}
+            </div>
+            <a
+              href="mailto:{{ author.user.email }}"
+              class="g-font-size-16--md g-color-primary g-brd-bottom--dashed g-brd-primary g-brd-transparent--hover g-transition-0_4 u-link-v5"
+              itemprop="email"
+            >
+              {{ author.user.email }}
+            </a>
+          </div>
+          <!-- author blog categories -->
+          <div class="d-flex justify-content-center flex-wrap g-pt-15">
+            {% for url, category in authorPostCategories %}
+            <a
+              href="{{ 'blog/category'|page({slug:url}) }}"
+              class="g-font-size-12 g-font-size-default--md g-line-height-1_4 g-color-teal text-uppercase {% if loop.last %} g-mr-0 {% else %} g-mr-15 {% endif %}"
+            >
+              {{category}}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        <!-- end author card -->
+        <div class="g-hidden-md-down">
+          {% partial 'banners/become-author-sidebar' %}
+        </div>
+      </div>
+
+      <!-- author posts -->
+      <div class="col-12 col-lg-8">
+        {% for post in posts %}
+        <a
+          href="{{ 'blog/post'|page({slug:post.slug}) }}"
+          class="d-flex flex-column g-bg-white g-rounded-10 g-pa-20 g-color-black g-color-primary--hover g-transition-0_4 u-link-v5 g-mb-10"
+          itemscope itemtype="https://schema.org/BlogPosting"
+          >
+          <div class="g-font-size-14 g-font-size-20--md g-line-height-1_4 g-mb-10" itemprop="headline">
+            {{ post.title }}
+          </div>
+          <img
+            class="g-hidden-xs-up"
+            src="{{ 'blog/post'|page({slug:post.slug}) }}"
+            alt="{{ post.title }}"
+            itemprop="image"
+          >
+          <div class="g-hidden-xs-up" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            <link itemprop="sameAs" href="/" />
+            <span itemprop="name">{{ author.user.getFullNameAttribute }}</span>
+            <span itemprop="email">{{ author.user.email }}</span>
+          </div>
+          <div class="d-flex align-items-center g-color-gray-dark-v4 g-font-size-10 g-font-size-default--md g-line-height-1">
+            <span itemprop="datePublished">{{ post.published_at|date("d M") }}</span>
+            <span class="g-mx-5">|</span>
+            <span class="d-flex align-items-center"><i class="icon-eye g-mr-5"></i>{{ post.views }}</span>
+          </div>
+        </a>
+        {% endfor %}
+
+        <!-- pagination -->
+        {% if posts.lastPage > 1 %}
+        <div class="g-pt-20">
+          <nav id="stickyblock-end-1" aria-label="Page Navigation">
+            <ul class="list-inline text-center mb-0 d-flex justify-content-center flex-wrap flex-md-nowrap flex-lg-nowrap">
+              {% if posts.currentPage > 1 %}
+              <li class="list-inline-item g-mr-20 g-mb-20">
+                <a
+                  href="{{ this.page.baseFileName|page()}}?page={{(posts.currentPage-1)}}"
+                  class="d-flex align-items-center justify-content-center u-pagination-v1__item g-px-10 g-height-40 g-min-width-40 g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-rounded-5"
+                  aria-label="Prev"
+                >
+                  <i class="fa fa-angle-left g-color-blue"></i>
+                  <span class="g-ml-5 g-color-blue g-line-height-1 g-hidden-xs-down">Предыдущая</span>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if posts.currentPage > 4 %}
+              <li class="list-inline-item g-mr-20 g-mb-20">
+                <a
+                  class="d-flex align-items-center justify-content-center g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-rounded-5 g-color-black u-pagination-v1__item g-width-40 g-height-40"
+                  href="{{ this.page.baseFileName|page()}}?page=1"
+                >
+                  1
+                </a>
+              </li>
+              <li class="list-inline-item g-rounded-5 g-brd-around g-brd-gray-light-v4 g-mr-20 g-mb-20">
+                <p class="g-color-black g-width-40 g-height-40 g-mb-0 d-flex align-items-center justify-content-center">...</p>
+              </li>
+              {% endif %}
+
+              {% if (posts.currentPage - 1) > 0 %}
+              <li class="list-inline-item g-mr-20 g-mb-20">
+                <a
+                  class="g-brd-around g-rounded-5 g-brd-gray-light-v4 g-brd-blue--hover g-color-black u-pagination-v1__item g-width-40 g-height-40 d-flex align-items-center justify-content-center"
+                  href="{{ this.page.baseFileName|page()}}?page={{(posts.currentPage-1)}}"
+                >
+                  {{ posts.currentPage-1 }}
+                </a>
+              </li>
+              {% endif %}
+
+              <li class="list-inline-item g-mr-20 g-mb-20">
+                <button class="active g-brd-around g-rounded-5 g-color-white g-color-black--hover g-bg-blue g-brd-blue--active g-bg-blue--active g-bg-transparent--hover u-pagination-v1__item g-width-40 g-height-40 d-flex align-items-center justify-content-center">
+                  {{posts.currentPage}}
+                </button>
+              </li>
+
+              {% if (posts.currentPage + 1) < round|round + 1 %}
+              <li class="list-inline-item g-mr-20 g-mb-20">
+                <a
+                  class="g-brd-around g-brd-gray-light-v4 g-brd-blue--hover g-color-black g-rounded-5 u-pagination-v1__item g-width-40 g-height-40 d-flex align-items-center justify-content-center"
+                  href="{{ this.page.baseFileName|page()}}?page={{(posts.currentPage+1)}}"
+                >
+                  {{ posts.currentPage+1 }}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if (posts.currentPage) < round|round - 2 %}
+              <li class="list-inline-item g-rounded-5 g-brd-around g-brd-gray-light-v4 g-mr-20 g-mb-20">
+                <p class="g-color-black g-width-40 g-height-40 g-mb-0 d-flex align-items-center justify-content-center">...</p>
+              </li>
+
+              <li class="list-inline-item g-mr-20 g-mb-20">
+                <a
+                  class="g-brd-around g-rounded-5 g-brd-gray-light-v4 g-brd-blue--hover g-color-black u-pagination-v1__item g-width-40 g-height-40 d-flex align-items-center justify-content-center"
+                  href="{{ this.page.baseFileName|page()}}?page={{(posts.lastPage-5)}}"
+                >
+                  {{posts.lastPage-5}}
+                </a>
+              </li>
+
+              <li class="list-inline-item g-mr-20 g-mb-20">
+                <a
+                  class="g-brd-around g-rounded-5 g-brd-gray-light-v4 g-brd-blue--hover g-color-black u-pagination-v1__item g-width-40 g-height-40 d-flex align-items-center justify-content-center"
+                  href="{{ this.page.baseFileName|page()}}?page={{(posts.lastPage)}}"
+                >
+                  {{posts.lastPage}}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if posts.lastPage > posts.currentPage %}
+              <li class="list-inline-item g-mb-20">
+                <a
+                  href="{{ this.page.baseFileName|page()}}?page={{(posts.currentPage+1)}}"
+                  class="d-flex align-items-center justify-content-center u-pagination-v1__item g-brd-around g-rounded-5 g-brd-gray-light-v4 g-px-10 g-height-40 g-min-width-40 g-brd-blue--hover"
+                  aria-label="Next"
+                >
+                  <span class="g-mr-5 g-line-height-1 g-color-blue g-hidden-xs-down">Следующая</span>
+                  <i class="fa fa-angle-right g-color-blue"></i>
+                </a>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+        {% endif %}
+        <!-- end pagination -->
+      </div>
+    </div>
+  </div>
+</section>
+
+{% partial 'modals/become-author' %}

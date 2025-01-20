@@ -1,0 +1,59 @@
+==
+
+<!--PROMO-->
+<section class="g-py-60 g-py-80--lg" style="background-image: url({{ 'assets/build/img/dinamic-landings/chargeback-broker/bg.webp'|theme }});">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-7 g-mb-0--lg g-mb-30 d-flex flex-column justify-content-center g-pr-55--lg">
+                <h1 class="g-font-size-24 g-font-size-48--md g-line-height-1_2 g-color-white g-font-weight-700 g-mb-20">Возврат клиентских средств со счета брокера <span itemprop="name">{{ itemDirectory.name }}</span></h1>
+                <div class="g-color-white-opacity-0_8 g-font-size-18--md g-font-size-16 g-font-weight-400 g-line-height-1_4 g-mb-20">
+                    Получите информацию о том, как быстро и эффективно вернуть собственные средства, которые брокер присвоил себе обманным путем. Специалисты по чарджбэку предоставят подробную консультацию и ответят на все вопросы
+                </div>
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="g-bg-white g-pa-30 g-pa-40--lg">
+                    <div class="g-color-black g-font-size-20 g-font-size-24--md g-font-weight-700 text-center g-mb-8">
+                        Ваша заявка на получение консультации
+                    </div>
+                    <div class="g-color-gray-dark-v2 g-font-size-14 g-font-weight-400 g-max-width-300 g-mb-25 text-center mx-auto">Заполните заявку, чтобы с вами связались специалисты</div>
+                    <form class=""
+                        data-request="{{ genericForm }}::onFormSubmit">
+                        {{ form_token() }}
+                        <div id="{{ genericForm }}_forms_flash"></div>
+                        <input name="type" type="hidden" value="promo">
+                        <input name="url" type="hidden" value="{{ ''| page }}">
+                        <input
+                            class="w-100 form-control rounded-0 g-brd-around g-bg-gray-light-v5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20"
+                            type="text" placeholder="Ваше имя" name="name">
+                        <div class="g-mb-20">
+                            <input type="tel" name="iti_phone"
+                                class="iti_phone w-100 form-control rounded-0 g-brd-around g-bg-gray-light-v5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20 g-pl-90"
+                                required>
+                            <small class="iti_error-msg hide form-control-feedback"></small>
+                            <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+                        </div>
+                        <input
+                            class="w-100 form-control rounded-0 g-brd-around g-bg-gray-light-v5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20"
+                            type="email" placeholder="Электронная почта" name="email" required="">
+                        <div class="form-group g-mb-20">
+                            <label for="check-end" class="form-check-inline u-check g-pl-35 mb-0 g-mr-0 d-flex flex-wrap g-line-height-1_3 g-font-size-12">
+                                <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="check-end" id="check-end" type="checkbox" value="1" checked>
+                                <div class="u-check-icon-checkbox-v4 g-rounded-0 g-brd-blue g-bg-blue g-color-white g-absolute-centered--y g-left-0 g-width-25 g-height-25">
+                                <i class="fa g-font-size-14" data-check-icon=""></i>
+                                </div>
+                                <span class="g-color-gray-dark-v2 g-mr-5">
+                                    Я даю согласие на
+                                <a href="{{ 'misc/privacy'|page }}" class="g-color-gray-dark-v2 g-brd-gray-dark-v2 g-brd-bottom--dashed u-link-v5">обработку персональных данных</a>
+                                </span>
+                            </label>
+                        </div>
+                        <button
+                            class="btn w-100 g-font-size-16 g-font-weight-400 rounded-0 u-btn-blue g-line-height-1 g-color-white g-py-18"
+                            type="submit" data-attach-loading> Отправить
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

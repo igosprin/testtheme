@@ -1,0 +1,64 @@
+title = "Чарджбэк инвест (old)"
+url = "/chargeback-investments/:item_slug"
+layout = "default"
+is_hidden = 1
+robot_index = "index"
+robot_follow = "follow"
+
+[dynamicLanding]
+itemSlug = "{{ :item_slug }}" 
+
+[session]
+security = "all" 
+
+[itemDirectoryMetainfo]
+itemDirectorySlug = "{{ :item_slug }}"
+
+[genericForm]
+group = "chargeback-investments-landing"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+==
+<?php
+function onEnd()
+{
+    $this->setMeta();
+}
+
+function setMeta()
+{
+    $defaultPageTitle       = 'Как вернуть деньги из инвесткомпании';
+    $defaultMetaTitle       = 'Как вернуть деньги из инвесткомпании';
+    $defaultMetaDescription = 'Как вернуть деньги из инвесткомпании';
+
+    $landingPageTitle       = $this->dynamicLanding->getPageTitle();
+    $landingMetaTitle       = $this->dynamicLanding->getMetaTitle();
+    $landingMetaDescription = $this->dynamicLanding->getMetaDescription();
+
+    $this->page->title            = $landingPageTitle ? $landingPageTitle : $defaultPageTitle;
+    $this->page->meta_title       = $landingMetaTitle ? $landingMetaTitle : $defaultMetaTitle;
+    $this->page->meta_description = $landingMetaDescription ? $landingMetaDescription : $defaultMetaDescription;
+}
+?>
+==
+<div itemscope itemtype="http://schema.org/Organization">
+    {% partial 'dynamic-landings/chargeback-investments-promo' %}
+    {% partial 'dynamic-landings/chargeback-investments-manipulations' %}
+    {% partial 'dynamic-landings/chargeback-investments-form-top' %}
+    {% partial 'dynamic-landings/chargeback-investments-lying' %}
+    {% partial 'dynamic-landings/chargeback-investments-stop-pay' %}
+    {% partial 'dynamic-landings/chargeback-investments-reviews' %}
+    {% partial 'dynamic-landings/chargeback-investments-form-center' %}
+    {% partial 'dynamic-landings/chargeback-investments-return' %}
+    {% partial 'dynamic-landings/chargeback-investments-get' %}
+    {% partial 'dynamic-landings/chargeback-investments-form-end' %}
+</div>
+{% partial 'modals/chargeback-investments' %}

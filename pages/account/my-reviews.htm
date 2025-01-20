@@ -1,0 +1,80 @@
+title = "Отзывы"
+url = "/profile/reviews"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[accountExtended account]
+redirect = "home"
+paramCode = "code"
+forceSecure = 0
+requirePassword = 0
+reviewsPerPage = 30
+
+[session]
+security = "user"
+redirect = "account/sing-in"
+==
+<!-- user profile testimonals -->
+
+<section class="g-pt-80 g-pt-100--lg g-mb-80 g-mb-170--lg">
+    <div class="container">
+        <div class="u-shadow-v1-7 d-flex justify-content-md-between justify-content-center align-items-center flex-column flex-md-row g-py-35 g-px-15 g-px-60--md g-mb-60">
+            <div class="d-flex align-items-center g-mb-30 g-mb-0--lg">
+                <div class="g- mr-12">
+                    <img src="{{ 'assets/build/img/financebar-new/user-default.png' | theme }}" alt="user avatar"
+                    class="img-fluid g-mr-25">
+                </div>
+                <div class="d-flex flex-column">
+                    <span class="d-block g-color-gray-dark-v2 g-color-gray-dark-v5--hover g-font-size-24 g-line-height-1 g-font-weight-700">
+                        {{ user.name }}
+                    </span>
+                    <span class="g-color-gray-dark-v3 g-font-size-16 g-mt-12">Страна</span>
+                </div>
+            </div>    
+
+            <div class="col-md-6 d-flex justify-content-between g-pl-50--lg">
+                <div class="d-flex flex-column">
+                </div>
+                <div class="d-flex flex-column">
+                    <span class="g-color-gray-dark-v3 g-font-size-16 g-font-size-20--sm">
+                        Отзывов
+                    </span>
+                    <span class="g-color-gray-dark-v5 d-flex align-items-center g-font-size-20">
+                        <img src="{{ 'assets/build/img/financebar-new/pen.svg' | theme }}" alt="pen"
+                        class="img-fluid mr-2">
+                        {{ user.getReviews.count }}
+                    </span>
+                </div>
+    
+<!--                <div class="d-flex flex-column">-->
+<!--                    <span class="g-color-gray-dark-v3 g-font-size-16 g-font-size-20&#45;&#45;sm">-->
+<!--                        Ответов-->
+<!--                    </span>-->
+<!--                    <span class="g-color-gray-dark-v5 d-flex align-items-center g-font-size-20">-->
+<!--                        <img src="{{ 'assets/build/img/financebar-new/comment-dark.svg' | theme }}" alt="pen"-->
+<!--                        class="img-fluid mr-2">-->
+<!--                        - -->
+<!--                    </span>-->
+<!--                </div>-->
+    
+<!--                <div class="d-flex flex-column">-->
+<!--                    <span class="g-color-gray-dark-v3 d-flex align-items-center g-font-size-16 g-font-size-20&#45;&#45;sm">-->
+<!--                        Оценок-->
+<!--                    </span>-->
+<!--                    <span class="g-color-gray-dark-v5 g-font-size-20 mr-1">-->
+<!--                        <i class="fa fa-star"></i>-->
+<!--                        - -->
+<!--                    </span>-->
+<!--                </div>-->
+            </div>
+        </div>
+
+
+<!-- Reviews -->
+        {% partial 'account::reviews' reviews = user.getApprovedAndMyReviewsPaginated(account.reviewsPerPage) %}
+<!-- End Reviews -->
+
+    </div>
+</section>

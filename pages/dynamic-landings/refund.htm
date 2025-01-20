@@ -1,0 +1,58 @@
+title = "Вернуть деньги от брокера"
+url = "/refund/:item_slug"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[dynamicLanding]
+itemSlug = "{{ :item_slug }}" 
+
+[session]
+security = "all" 
+
+[itemDirectoryMetainfo]
+itemDirectorySlug = "{{ :item_slug }}"
+
+[genericForm]
+group = "refund-landing"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+==
+<?php
+function onEnd()
+{
+    $this->setMeta();
+}
+
+function setMeta()
+{
+    $defaultPageTitle       = 'Вернуть деньги';
+    $defaultMetaTitle       = 'Вернуть деньги';
+    $defaultMetaDescription = 'Вернуть деньги';
+
+    $landingPageTitle       = $this->dynamicLanding->getPageTitle();
+    $landingMetaTitle       = $this->dynamicLanding->getMetaTitle();
+    $landingMetaDescription = $this->dynamicLanding->getMetaDescription();
+
+    $this->page->title            = $landingPageTitle ? $landingPageTitle : $defaultPageTitle;
+    $this->page->meta_title       = $landingMetaTitle ? $landingMetaTitle : $defaultMetaTitle;
+    $this->page->meta_description = $landingMetaDescription ? $landingMetaDescription : $defaultMetaDescription;
+}
+?>
+==
+
+{% partial 'dynamic-landings/refund-promo' %}
+{% partial 'dynamic-landings/refund-manipulations' %}
+{% partial 'dynamic-landings/refund-reviews' %}
+{% partial 'dynamic-landings/refund-instruction' %}
+{% partial 'dynamic-landings/refund-benefits' %}
+{% partial 'dynamic-landings/refund-form' %}

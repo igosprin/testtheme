@@ -1,0 +1,124 @@
+==
+<section class="g-bg-lightblue g-py-50 g-py-100--md" id="contact-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-8 g-pr-0">
+        <h2 class="g-font-size-20 g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-black g-mb-8 g-mb-25--md">
+          Сформируйте заявку на проверку и получите полное досье на брокера
+        </h2>
+        <p class="g-font-size-16 g-font-size-18--md g-color-gray-dark-v2 g-line-height-1_4 g-mb-16 g-mb-40--md">
+          Сервис Financebar направит вам результаты исследования в течение рабочего дня
+        </p>
+      </div>
+    </div>
+    <form data-request="{{genericForm}}::onFormSubmit" data-request-validate data-request-flash>
+      {{ form_token() }}
+      <div id="{{ genericForm}}_forms_flash"></div>
+      <input type="hidden" name="url" value="{{ ''| page }}">
+      <input type="hidden" name="type" value="contact-form">
+      <div class="row g-mb-16">
+        <div class="col-12 col-lg-6">
+          <!-- name -->
+          <div class="form-group g-mb-16 g-mb-30--md">
+            <input
+              class="form-control g-rounded-5 g-color-gray-dark-v2-opacity-0_75 g-font-size-16--md g-brd-around g-brd-gray-light-v2 g-brd-indigo--hover g-transition-0_4 g-pa-15"
+              name="name"
+              id="name"
+              type="text"
+              placeholder="Ваше имя"
+              required
+            >
+            <div data-validate-for="name" class="alert alert-danger"></div>
+            <div data-validate-for="slug" class="alert alert-danger"></div>
+          </div>
+          <!-- email -->
+          <div class="form-group g-mb-16 g-mb-30--md">
+            <input
+              name="email"
+              id="email"
+              type="email"
+              placeholder="Электронная почта"
+              class="form-control g-rounded-5 g-color-gray-dark-v2-opacity-0_75 g-font-size-16--md g-brd-around g-brd-gray-light-v2 g-brd-indigo--hover g-transition-0_4 g-pa-15"
+              required
+            >
+            <div data-validate-for="email" class="alert alert-danger"></div>
+          </div>
+          <!-- phone -->
+          <div class="form-group g-mb-16 g-mb-30--md">
+            <input
+              name="phone"
+              id="phone"
+              type="tel"
+              placeholder="Номер телефона"
+              class="iti_phone form-control g-rounded-5 g-color-gray-dark-v2-opacity-0_75 g-font-size-16--md g-brd-around g-brd-gray-light-v2 g-brd-indigo--hover g-transition-0_4 g-pl-90 g-pr-15 g-py-15"
+              required
+            >
+            <small class="iti_error-msg hide form-control-feedback"></small>
+            <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+            <div data-validate-for="phone" class="alert alert-danger"></div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <!-- company name -->
+          <div class="form-group g-mb-16 g-mb-30--md">
+            <input
+              class="form-control g-rounded-5 g-color-gray-dark-v2-opacity-0_75 g-font-size-16--md g-brd-around g-brd-gray-light-v2 g-brd-indigo--hover g-transition-0_4 g-pa-15"
+              name="company-name"
+              id="company-name"
+              type="text"
+              placeholder="Наименование компании"
+            >
+          </div>
+          <!-- company site -->
+          <div class="form-group g-mb-16 g-mb-30--md">
+            <input
+              class="form-control g-rounded-5 g-color-gray-dark-v2-opacity-0_75 g-font-size-16--md g-brd-around g-brd-gray-light-v2 g-brd-indigo--hover g-transition-0_4 g-pa-15"
+              name="company-site"
+              id="company-site"
+              type="url"
+              placeholder="Сайт компании"
+            >
+          </div>
+          <!-- money amount -->
+          <div class="form-group g-mb-16 g-mb-30--md">
+            <input
+              class="form-control g-rounded-5 g-color-gray-dark-v2-opacity-0_75 g-font-size-16--md g-brd-around g-brd-gray-light-v2 g-brd-indigo--hover g-transition-0_4 g-pa-15"
+              name="amount"
+              id="amount"
+              type="text"
+              placeholder="Сумма стартового капитала/итоговых потерь"
+            >
+          </div>
+        </div>
+        <div class="col-12">
+          <textarea
+            class="form-control g-rounded-5 g-color-gray-dark-v2-opacity-0_75 g-font-size-16--md g-brd-around g-brd-gray-light-v2 g-brd-indigo--hover g-transition-0_4 g-resize-none g-pa-15"
+            name="message"
+            rows="4"
+            placeholder="Детали вашего обращения"></textarea>
+        </div>
+      </div>
+      <!-- checkbox -->
+      <div class="form-group g-mb-16">
+        <label for="check-1" class="form-check-inline u-check g-pl-35 mb-0 g-mr-0 d-flex flex-wrap g-line-height-1_3">
+          <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="check-1" id="check-1" type="checkbox" value="1" checked>
+          <div class="u-check-icon-checkbox-v4 g-rounded-5 g-bg-indigo g-brd-none g-color-white g-absolute-centered--y g-left-0 g-width-25 g-height-25">
+            <i class="fa g-font-size-14" data-check-icon=""></i>
+          </div>
+          <span class="g-color-gray-dark-v2 g-mr-5">
+            Я даю согласие
+            <a href="{{ 'misc/privacy'|page }}" class="g-color-gray-dark-v2 g-brd-gray-dark-v2 g-brd-bottom--dashed u-link-v5">на обработку персональных данных</a>
+          </span>
+        </label>
+      </div>
+      <!-- button -->
+      <button
+        class="btn g-bg-indigo g-bg-gray-dark-v2--hover g-rounded-10 g-font-size-16 g-color-white g-transition-0_4 g-py-12 g-px-50"
+        type="submit"
+        data-attach-loading
+      >
+        Отправить
+      </button>
+    </form>
+  </div>
+</section>

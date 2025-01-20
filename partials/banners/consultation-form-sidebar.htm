@@ -1,0 +1,73 @@
+==
+<!-- free consultation form banner -->
+<div class="g-bg-bluegray-lineargradient g-rounded-10 g-px-20 g-py-40 g-mb-20 g-mb-30--md">
+  <h4 class="g-font-size-20 g-font-weight-700 g-color-white text-center g-mb-8">
+    Задайте вопрос юристу
+  </h4>
+  <p class="g-font-size-18 g-line-height-1_4 g-color-white-opacity-0_8 text-center g-mb-30">
+    Бесплатная правовая помощь опытных юристов
+  </p>
+
+  <!-- form -->
+  <form data-request="{{genericForm}}::onFormSubmit" data-request-validate data-request-flash>
+    {{ form_token() }}
+    <div id="{{ genericForm}}_forms_flash"></div>
+    <input type="hidden" name="url" value="{{ ''| page }}">
+    <input type="hidden" name="type" value="free-consultation-banner">
+    {% if itemDirectory.name is defined %}
+    <input type="hidden" name="broker" value="{{ itemDirectory.name }}" id="organization">
+    {% endif %}
+    <!-- name -->
+    <div class="form-group g-mb-15">
+      <input
+        class="form-control g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-brown--hover g-transition-0_4 g-pa-15"
+        name="name"
+        id="name"
+        type="text"
+        placeholder="Ваше имя"
+        required
+      >
+      <div data-validate-for="name" class="alert alert-danger"></div>
+      <div data-validate-for="slug" class="alert alert-danger"></div>
+    </div>
+
+    <!-- phone -->
+    <div class="form-group g-mb-15">
+      <input
+        name="phone"
+        id="phone"
+        type="tel"
+        placeholder="Номер телефона"
+        class="iti_phone form-control g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-brown--hover g-transition-0_4 g-pl-90 g-pr-15 g-py-15"
+        required
+      >
+      <small class="iti_error-msg hide form-control-feedback"></small>
+      <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+      <div data-validate-for="phone" class="alert alert-danger"></div>
+    </div>
+
+    <!-- email -->
+    <div class="form-group g-mb-30">
+      <input
+        name="email"
+        id="email"
+        type="email"
+        placeholder="Электронная почта"
+        class="form-control g-rounded-5 g-color-gray-dark-v3 g-font-size-16--md g-brd-around g-brd-brown--hover g-transition-0_4 g-pa-15"
+        required
+      >
+      <div data-validate-for="email" class="alert alert-danger"></div>
+    </div>
+
+    <!-- button -->
+    <button
+      class="btn w-100 g-rounded-10 g-bg-brown g-rounded-10 g-font-size-12 g-font-size-default--md g-color-white g-transition-0_4 g-py-16"
+      type="submit"
+      data-attach-loading
+    >
+      Проконсультироваться бесплатно
+    </button>
+  </form>
+  <!-- end form -->
+
+</div>

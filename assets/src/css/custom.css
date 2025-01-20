@@ -1,0 +1,45 @@
+/* Add here all your css styles (customizations) */
+
+.fb-img-contain {
+  object-fit: contain;
+}
+.fb-img-cover {
+  object-fit: cover;
+}
+
+.u-nav-v-i .nav-link.active {
+  border-color: #3398DC;
+  color: #3398DC;
+  font-weight: 700;
+}
+
+.u-nav-v-i .nav-link {
+  color: #999;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: transparent;
+}
+
+.fb-content h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.fb-content img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+@media (max-width: 575px) {
+  .fb-rounded-0 {
+    border-radius: 0px;
+  }
+}
+
+@media (min-width: 576px) {
+  .fb-rounded-10 {
+    border-radius: 10px;
+  }
+}

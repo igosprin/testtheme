@@ -1,0 +1,5 @@
+{% if organization.logo %}
+  <div class="form-group">
+    <img class="lazyload" data-src="{{ organization.logo|resize(100, auto) }}" alt="logo">
+  </div>
+{% endif %}

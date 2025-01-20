@@ -1,0 +1,21 @@
+<div class="ss-autocomplete-result  align-items-center d-flex justify-content-between">
+
+  <div class="ss-autocomplete-result__content">
+
+      <a class="g-font-size-14 g-font-weight-500 g-color-gray-dark-v1 ss-autocomplete-result__title g-mb-0 "
+         href="{{ url }}">{{ title | raw }}</a>
+
+      {% if not thumb %}
+          <span class="g-color-gray-dark-v5 g-font-size-14 g-mb-0 g-line-height-1_5">
+              ({{ numberOfItemsDirectory }} компаний)</span>
+      {% endif %}
+  </div>
+  {% if thumb %}
+      <div class="ss-autocomplete-result__aside  d-flex align-items-center g-width-60 g-mr-10 justify-content-center">
+          <a href="{{ url }}">
+              <img class="ss-autocomplete-result__image   g-line-height-1_6"
+                   src="{{ thumb.getPath | resize(60, 30, { mode: 'fit' }) }}" alt="logo"/>
+          </a>
+      </div>
+  {% endif %}
+</div>

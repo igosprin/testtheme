@@ -1,0 +1,62 @@
+==
+
+<!--PROMO-->
+<section class="g-py-60 g-py-80--lg" style="background-image: url({{ 'assets/build/img/dinamic-landings/chargeback-investment/bg.webp'|theme }});">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-7 g-mb-0--lg g-mb-30 d-flex flex-column justify-content-center g-pr-55--lg">
+                <h1 class="g-font-size-24 g-font-size-40--md g-line-height-1_2 g-color-white g-font-weight-700 g-mb-20">Эффективный метод возврата денег из инвестиционного проекта <span itemprop="name">{{ itemDirectory.name }}</span></h1>
+                <div class="g-color-white-opacity-0_8 g-font-size-16 g-font-weight-400 g-line-height-1_4 g-mb-20">
+                    <p>Заработок на инвестициях является одним из наиболее эффективных пассивных методов приумножения капитала. Однако это возможно лишь в том случае, если инвестиционная компания также нацелена на успех своих клиентов.</p>
+                    <p>Если же финансовый посредник использует манипуляции с инвесторскими депозитами, постоянно отказывает или систематически затягивает с возвратом денежных средств, решить эти вопросы можно через чарджбэк-специалистов. </p>
+                    <p class="g-font-weight-700 g-mb-20">Вы прямо сейчас можете узнать, как вернуть утраченные средства или защитить свои вложения от мошенников!</p>
+                    <a class="d-flex align-items-center u-link-v5 g-color-orange" href="#more">Узнать детали <span class="g-font-size-30 icon-arrow-right-circle g-ml-5"></span></a>
+                </div>
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="g-bg-white g-rounded-10 g-pa-30 g-pa-40--lg">
+                    <div class="g-color-black g-font-size-20 g-font-size-24--md g-font-weight-700 text-center g-mb-8">
+                        Бесплатная консультация по чарджбэку
+                    </div>
+                    <div class="g-color-gray-dark-v2 g-font-size-14 g-font-weight-400 g-max-width-300 g-mb-25 text-center mx-auto">Заполните заявку, чтобы с вами связались специалисты</div>
+                    <form class=""
+                        data-request="{{ genericForm }}::onFormSubmit">
+                        {{ form_token() }}
+                        <div id="{{ genericForm }}_forms_flash"></div>
+                        <input name="type" type="hidden" value="promo">
+                        <input name="url" type="hidden" value="{{ ''| page }}">
+                        <input
+                            class="w-100 form-control rounded-0 g-brd-around g-bg-gray-light-v5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20"
+                            type="text" placeholder="Ваше имя" name="name">
+                        <div class="g-mb-20">
+                            <input type="tel" name="iti_phone"
+                                class="iti_phone w-100 form-control rounded-0 g-brd-around g-bg-gray-light-v5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20 g-pl-80"
+                                required>
+                            <small class="iti_error-msg hide form-control-feedback"></small>
+                            <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+                        </div>
+                        <input
+                            class="w-100 form-control rounded-0 g-brd-around g-bg-gray-light-v5 g-brd-gray-light-v4 g-font-size-16 g-px-15 g-py-15 g-mb-20"
+                            type="email" placeholder="Электронная почта" name="email" required="">
+                        <div class="form-group g-mb-20">
+                            <label for="check-end" class="form-check-inline u-check g-pl-35 mb-0 g-mr-0 d-flex flex-wrap g-line-height-1_3 g-font-size-12">
+                                <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="check-end" id="check-end" type="checkbox" value="1" checked>
+                                <div class="u-check-icon-checkbox-v4 g-rounded-0 g-brd-orange g-bg-orange g-color-white g-absolute-centered--y g-left-0 g-width-25 g-height-25">
+                                <i class="fa g-font-size-14" data-check-icon=""></i>
+                                </div>
+                                <span class="g-color-gray-dark-v2 g-mr-5">
+                                    Я даю согласие на
+                                <a href="{{ 'misc/privacy'|page }}" class="g-color-gray-dark-v2 g-brd-gray-dark-v2 g-brd-bottom--dashed u-link-v5">обработку персональных данных</a>
+                                </span>
+                            </label>
+                        </div>
+                        <button
+                            class="btn w-100 g-font-size-16 g-font-weight-400 g-rounded-10 u-btn-orange g-line-height-1 g-color-white g-py-18"
+                            type="submit" data-attach-loading> Отправить
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

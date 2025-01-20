@@ -1,0 +1,160 @@
+title = "Chargeback - pullari kartiniza qaytarin"
+url = "/chargeback-az"
+layout = "financebar"
+is_hidden = 0
+
+[genericForm]
+group = "landing-chargeback-az"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/chargeback-uz"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+==
+
+{% partial 'landing-chargeback/promo'
+    h1Promo       = 'CHARGEBACK - PULLARI KARTINIZA QAYTARIN'
+    h5PromoFirst  = 'Əgər siz vicdansız xidmət və ya məhsul provayderinə pul köçürmüsünüzsə, bunun heç bir əhəmiyyəti yoxdur.'
+    h5PromoSecond = '<span class="g-font-weight-600">BÜTÜN MƏBLƏĞİ</span> qanuni yolla qaytara bilərsiniz. Geri ödəməyə başlayın! Və 1-2 ay ərzində bankdan dəyərli SMS alacaqsınız.'
+    h2Form        = '<span class="g-color-teal">ÖDƏNİŞSİZ</span> MƏSLƏHƏT ÜÇÜN SORĞU QAYDIN'
+    btnMore       = 'Daha ətraflı'
+    inputName     = 'Sənin adın'
+    inputEmail    = 'E-poçtunuz'
+    btnSubmit     = 'Göndər'
+%}
+
+{% partial 'landing-chargeback/what'
+    h2Chargeback       = '<span class="g-color-teal">ÖDƏNİŞ</span> NƏDİR?'
+    pChargebackFirst   = 'Chargeback, bankın kart üzrə əməliyyatı ləğv etdiyi prosesdir.'
+    pChargebackSecond  = 'O, alıcının razılığını almır və pulu ödəyənə qaytarır. Əgər sizdən pul götürüblərsə, lakin xidmət göstərilməyibsə və ya mal göndərilməyibsə, geri qaytarmağa başlayın. Pulunuzu geri alacaqsınız, həmçinin vicdansız satıcını, fırıldaqçı şirkəti və ya digər fırıldaqçıları cəzalandıracaqsınız.'
+%}
+
+{% partial 'landing-chargeback/opportunities'
+    h2Opportunities         = 'GERİ GERİ <span class="g-color-teal">XÜSUSİYYƏTLƏRİ</span>'
+    h5Opportunities         = 'Geri qaytarılması üçün bir çox səbəb var. Sənin nəyin var?'
+    h4OpportunitiesFirst    = 'Forex Brokeri'
+    h4OpportunitiesSecond   = 'Casino'
+    h4OpportunitiesThird    = 'Kriptovalyutalar'
+    h4OpportunitiesFourth   = 'Banklar'
+    h4OpportunitiesFifth    = 'Ikili Seçim Brokeri'
+    h4OpportunitiesSixth    = 'Bukmeker kontorları'
+    h4OpportunitiesSeventh  = 'Maliyyə piramidaları'
+    h4OpportunitiesEighth   = 'Online alış-veriş'
+    pOpportunitiesFirst     = 'Broker əmanəti sızdırdı, saxta ticarət siqnalları verir və ya qazancınızı geri götürməyə imkan vermir.'
+    p4OpportunitiesSecond   = 'Siz pulu "qaldıra" bilmədiniz, çünki oyun "bükülmüşdür". "Çıxarma" düyməniz müntəzəm olaraq yox olur.'
+    p4OpportunitiesThird    = 'Kriptovalyuta birjası fiat aldı, lakin sizin BTC heç vaxt gəlmədi. Siz ICO-ya sərmayə qoymusunuz, amma bu, sabun köpüyü idi.'
+    p4OpportunitiesFourth   = 'Bankomat pulu hesaba çəkdi, amma vermədi. Yaxud bir məbləğ daxil etmisən, o da onu qismən verib.'
+    p4OpportunitiesFifth    = 'Sizə 80% gəlir vəd edilmişdi, ancaq 20% alırsınız. Minimum təklif $20-dən artdı 1000 dollara qədər.'
+    p4OpportunitiesSixth    = 'Uduzan zaman mərcləriniz qəbul edildi. Və sonra siz qalib oldunuz və hesabınız bloklandı'
+    p4OpportunitiesSeventh  = 'Cashberry, Startcom.pro və ya başqa MMM sizi valeh etdi. Siz depozit və referal bonuslarınızı itirdiniz.'
+    p4OpportunitiesEighth   = 'İnstaqram butikindən bir şey aldınız, ancaq evliliklə gəldi və ya ümumiyyətlə gəlmədi. Satıcı radardan itib.'
+%}
+
+{% partial 'landing-chargeback/120-days'
+    h2Days         = 'ÖDƏNİŞ TARİXİNDƏN SONRA <span class="g-color-teal">120 GÜN</span> İÇİNƏ İNVİSİYA EDİLDƏNDƏ, GERİ ÖDƏNMƏ ŞANSLARI YÜKSƏKDİR'
+    h5Days         = 'Zaman sizə qarşı işləyir! Bir sorğu buraxın və pulunuzu qaytarmaq üçün ilk addımı atın.'
+    inputNameDays  = 'Sənin adın'
+    inputEmailDays = 'E-poçtunuz'
+    inputPhoneDays = 'Sənin telefonun'
+    btnSubmitDays  = 'Call back'
+%}
+
+{% partial 'landing-chargeback/difficulties'
+    h2Difficult        = 'MÜSTƏQİL ÖDƏNİLMƏ İLƏ HANSI <span class="g-color-teal">ÇƏTİNLİKLƏR</span> GƏLƏ BİLƏR'
+    h3DifficultFirst   = 'ÖDƏNİŞ SİSTEMİNİN NİQAMƏLƏRİNİN ÖYRANILMƏSI'
+    h3DifficultSecond  = 'BANKA ƏRİZƏNİN HAZIRLANMASI'
+    h3DifficultThird   = 'İNGİLİS DİLİNƏ TƏRCÜMƏ'
+    h3DifficultFourth  = 'BANK İLƏ ƏLAQƏ'
+    h3DifficultFifth   = 'İŞƏ NƏZARƏT'
+    h3DifficultSixth   = 'BANK RƏDDİ'
+    pDifficultFirst    = 'Viza Qaytarma Bələdçisi 70 səhifədən ibarətdir. MasterCard isə ... 438. Bu sənədlər rus dilində tərcümədə yoxdur.'
+    pDifficultSecond   = 'İnternetdə şablon tapmaq kifayət deyil. Çünki bankda onun üçün hazır imtina şablonu var. Ərizənin mətni ciddi şəkildə fərdi olmalıdır.'
+    pDifficultThird    = 'Ərizə ingilis dilinə tərcümə edilməlidir. Visa və MasterCard ödəniş sistemlərinin qaydaları rusdilli əməliyyatların təqdim edilməsini nəzərdə tutmur.'
+    pDifficultFourth   = 'Əvvəlcə işçilər geri ödəmə haqqında eşitmədikləri üçün çiyinlərini çəkəcəklər. Onda səni fikrindən daşındıracaqlar. Və nəticədə dindirmə təşkil edəcəklər.'
+    pDifficultFifth    = 'Bank geri ödəmə həyata keçirməkdə maraqlı deyil. İstəklərə və rəddlərə necə cavab verməyi bilməlisiniz. Həm də - prosedurun zəruriliyini sübut etmək.'
+    pDifficultSixth    = 'Rədd olmaq son deyil. Abunəliyin ləğvi təhlil edilməlidir və bunun əsasında mübahisə davam etdirilməlidir. Məqsəd hər şeyi işə qaytarmaqdır.'
+%}
+{% partial 'landing-chargeback/escort'
+    h2Escort         = '<span class="g-color-teal">PULSUZ GERİ DƏSTƏK</span> SİFARİŞ EDİN'
+    h4EscortFirst    = 'Komanda işi'
+    h4EscortSecond   = 'Qaydalara və qaydalara uyğunluq'
+    h4EscortThird    = 'Məsləhətləşmələr 24/7'
+    h4EscortFourth   = 'Bütün mərhələlərdə dəstək'
+    h4EscortFifth    = 'Keyfiyyət təminatı'
+    pEscortFirst     = 'Hər bir iş pul köçürmələrinə etiraz etmək təcrübəsi olan hüquqşünaslar tərəfindən qiymətləndirilir.'
+    pEscortSecond    = 'Qanuna uyğun olaraq geri qaytarma əməliyyatını həyata keçirin və banka yenidən müraciət etmək ehtimalını minimuma endirin.'
+    pEscortThird     = 'Siz həmişə telefon, e-poçt, sosial şəbəkələr və messencerlər vasitəsilə suallar verə bilərsiniz.'
+    pEscortFourth    = 'Biz sizin işinizi öyrənirik, mübahisə strategiyası seçirik, sənədlərin siyahısını tərtib edirik və hərəkətlərinizi koordinasiya edirik.'
+    pEscortFifth     = '100% hallarda hüquqi cəhətdən səriştəli yanaşma bank işçilərini daha operativ və dəstəkləyici olmağa vadar edir.'
+%}
+
+{% partial 'landing-chargeback/works'
+    h2Works         = '<span class="g-color-teal">CHARGBACK</span> NECƏ İŞLƏYİR'
+    h4WorksFirst    = 'MÜRACİƏT GÖNDƏRİRSİNİZ'
+    h4WorksSecond   = 'ŞANSLARIN QİYMƏTLƏNDİRİLMƏSİ'
+    h4WorksThird    = 'İŞİN BAŞLANMASI'
+    h4WorksFourth   = 'MÜRACİƏTLƏRİN GÖNDƏRİLMƏSİ'
+    h4WorksFifth    = 'NƏTİCƏ'
+    pWorksFirst     = 'Vəziyyəti tam təfərrüatı ilə təsvir edin.'
+    pWorksSecond    = 'Vəkil müraciəti öyrənir və işin nəticəsini proqnozlaşdırır.'
+    pWorksThird     = 'Sənədlərin siyahısını və yol xəritəsini alırsınız.'
+    pWorksFourth    = 'Hazır sənədləri banka göndərirsiniz.'
+    pWorksFifth     = 'Pulun qaytarılması barədə bankın qərarını və SMS alırsınız.'
+%}
+
+{% partial 'landing-chargeback/support'
+    h2Support         = '<span class="g-color-teal">YARDIM ÜÇÜN MÜRACİƏT ETMƏSİNİZ</span>, BANK TƏRƏFİNDƏN MƏNFİ CAVAB ALMA EHTİMALINIZ DAHA AZALAR.'
+    inputNameSupport  = 'Sənin adın'
+    inputPhoneSupport = 'Sənin telefonun'
+    btnSupport        = 'Call back'
+    %}
+
+{% partial 'landing-chargeback/return'
+    h2Return = 'BU “MALİYYƏ ŞİRKƏTLƏRİNDƏN” <span class="g-color-teal">PULLAR GERİ VERİLƏ BİLƏR</span>'
+%}
+
+{% partial 'landing-chargeback/caution'
+    h2Caution          = ' <span class="g-color-teal">DİQQƏTLİ!</span> QEYDİYYƏ YOLU VAR Kİ, <span class="g-color-teal">QEYTİ İŞLƏMİR</span>'
+    h3FirstCaution     = 'Güzgü ödənişləri'
+    h3SecondCaution    = 'Məqalənin yazılması'
+    h3ThirdCaution     = 'Pulsuz qaytarma'
+    pFirstCautionOne   = 'Qaytarmağa kömək etmirlər.'
+    pFirstCautionTwo   = 'Ödəniş heç bir yerdə ilişib qala bilməz.'
+    pSecondCautionOne  = 'Bu xidməti sifariş etməyin.'
+    pSecondCautionTwo  = 'Məqalələr pulu qaytarmağa kömək etməyəcək!'
+    pThirdCautionOne   = 'Bu baş vermir.'
+    pThirdCautionTwo   = 'Fırıldaqçılar etibara girirlər '
+    pThirdCautionThree = 'və məlumatlar AnyDesk vasitəsilə oğurlanır.'
+%}
+
+{% partial 'landing-chargeback/return-now'
+    h2FormReturn    = 'MƏSLƏHƏT ÜÇÜN SORĞU QAYDIN'
+    inputNameCall   = 'Sənin adın'
+    inputPhoneCall  = 'Sənin telefonun'
+    inputEmailCall  = 'E-poçtunuz'
+    inputBtnSubmit  = 'Göndər'
+    h2ReturnNow     = 'İNDİ <span class="g-color-teal">PULUNUZU GERİ</span> ÖDƏMƏYƏ BAŞLAYIN'
+    h5ReturnNow     = 'Bir sorğu buraxın və alacaqsınız:'
+    liNowFirst      = 'Maliyyə hüquqşünası tərəfindən işin qiymətləndirilməsi.'
+    liNowSecond     = 'Şəxsi geri qaytarma təlimatları.'
+    liNowThird      = 'Geri ödəmə proseduruna başlamaq üçün sənədlərin siyahısı.'
+%}
+
+{% partial 'landing-chargeback/faq'
+    h2FAQ           = '<span class="g-color-teal">Tez-tez verilən suallar</span>'
+    LinkFirstFAQ    = 'Fırıldaqçı brokerdən, kazinodan və bukmekerdən pulları geri qaytarmaq şansı varmı?'
+    LinkSecondFAQ   = 'Polisə müraciət edib telefon və ya onlayn fırıldaqçıları məhkəməyə vermək məntiqlidirmi?'
+    LinkThirdFAQ    = 'Geri qaytarma müddətləri hansılardır?'
+    LinkFourthFAQ   = 'Elektron pul kisəsi və ya dəyişdirici vasitəsilə göndərilən pulu necə qaytarmaq olar?'
+    LinkFifthAQ     = 'Pulu özbaşına qaytarmaq mümkündürmü?'
+    BlockFirstFAQ   = 'Bəli. Ancaq qaytarılma ehtimalı fərdi olaraq müəyyən edilir. Əgər iki il əvvəl pulunuz “ilişib”sə, bu, ağırlaşdırıcı haldır. Ancaq bu vəziyyətdə belə, geri qaytarılacağına arxalana bilərsiniz.'
+    BlockSecondFAQ  = 'Təəssüf ki, Rusiya Federasiyasının hüquq-mühafizə orqanları maliyyə fırıldaqlarını nadir hallarda araşdırırlar. Müxtəlif səbəblər gətirirlər. Və məhkəmə çəkişmələri, öz növbəsində, fırıldaqçılıq fəaliyyəti polis tərəfindən sübuta yetirilən təşkilatlara aiddir. Üstəlik, məhkəmə çəkişmələrinin tələləri var. <p class="g-color-gray-dark-v3 g-my-5">1. Cinayət işi başlamaq üçün şirkətin qeydiyyata alındığı yerdə ərizə vermək lazımdır.</p> <p class="g-color-gray-dark-v3 g-mb-5">2. Şirkət ofşorda qeydiyyatdan keçə bilər.</p> <p class="g-color-gray-dark-v3 g-mb-0">3. Fırıldaqçıları cəzalandırmaq üçün bir sıra şərtlərə əməl etmək lazımdır. Məsələn, Kiprdə hüquq-mühafizə orqanlarının işə başlaması üçün şəxsən iştirak etməlisiniz.</p>'
+    BlockThirdFAQ   = 'Orta hesabla pul 1-3 ay ərzində karta qaytarılır. Termin bir çox amillərdən və strategiyaya ardıcıl riayətdən asılı olan fərdi parametrdir.'
+    BlockFourthFAQ  = 'MasterCard, Visa, Mir, Maestro ödəniş sistemləri geri qaytarma prosedurunun qaydalarına aiddir. Gördüyünüz kimi, bu siyahıya sürətli köçürmələr, elektron pul kisələri və Yandex.Money və Qiwi xidmətləri vasitəsilə ödənişlər daxil deyil.'
+    BlockFifthFAQ   = 'Bu məsələ ilə özünüz məşğul ola bilərsiniz. Amma qayıtmaq yolunda bürokratik əngəllər və tələlər var. Çətinliklərdən biri banka keçməkdir.'
+%}

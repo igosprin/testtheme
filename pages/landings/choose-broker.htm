@@ -1,0 +1,29 @@
+title = "Выбрать надежного брокера для инвестирования"
+url = "/choose-broker"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+meta_title = "Как выбрать лучшего брокера для торговли"
+meta_description = "Подбор брокерской компании для биржевой торговли. Работайте с лицензированными брокерами."
+
+[session]
+security = "all"
+
+[genericForm]
+group = "choose-broker-landing"
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+redirect = "/message-sent"
+inline_errors = "disabled"
+sanitize_data = "htmlspecialchars"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+==
+
+{% partial 'landings/choose-broker-promo' %}
+{% partial 'landings/choose-broker-form' %}
+{% partial 'landings/choose-broker-how-it-works' %}

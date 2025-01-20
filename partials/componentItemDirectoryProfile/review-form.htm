@@ -1,0 +1,114 @@
+<div id="leaveReviewResult" class="g-mt-30 g-mt-50--md">
+  <h2 class="g-font-size-18 g-font-size-20--md g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-black g-mb-20 g-mb-30--md">
+    Поделитесь своим мнением
+  </h2>
+
+  <form
+    data-request="onReview"
+    id="leave-testimonal"
+    data-request-validate
+  >
+    {{ form_token() }}
+    <input type="hidden" name="url" value="{{ ''| page }}">
+    <input type="hidden" name="broker" value="{{ itemDirectory.name }}" id="organization">
+
+    <div class="row">
+      {% if not user %}
+      <!-- name -->
+      <div class="col-12 col-lg-6 order-2 order-lg-1 form-group g-mb-20 g-mb-30--md">
+        <input
+          class="form-control g-brd-around g-brd-white g-brd-blue--hover g-font-size-16--md g-color-gray-dark-v4 g-rounded-5 g-py-12 g-px-12 g-px-15--md g-py-15--md"
+          type="text"
+          name="name"
+          placeholder="Ваше имя"
+          required
+        >
+        <div data-validate-for="name" class="alert alert-danger"></div>
+      </div>
+      {% endif %}
+
+      <!-- rating -->
+      <div class="col-12 col-lg-6 d-flex align-items-center order-1 order-lg-2 g-mb-20 g-mb-30--md">
+        <div class="form-group d-flex flex-wrap align-items-center g-mb-0">
+          <label class="g-font-size-18--md g-line-height-1 g-color-gray-dark-v5 g-mb-0 g-mr-20">Оцените компанию</label>
+          <div class="star-rating g-color-yellow g-font-size-20">
+            <span class="fa fa-star-o fa-lg" data-rating="1"></span>
+            <span class="fa fa-star-o fa-lg" data-rating="2"></span>
+            <span class="fa fa-star-o fa-lg" data-rating="3"></span>
+            <span class="fa fa-star-o fa-lg" data-rating="4"></span>
+            <span class="fa fa-star-o fa-lg" data-rating="5"></span>
+            <input type="hidden" name="rating" id="rating" class="rating-value" value="0">
+          </div>
+          <div data-validate-for="rating" class="alert alert-danger"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      {% if not user %}
+      <!-- email -->
+      <div class="col-12 col-lg-6 form-group g-mb-20 g-mb-30--md">
+        <input
+          class="form-control g-brd-around g-brd-white g-brd-blue--hover g-font-size-16--md g-color-gray-dark-v4 g-rounded-5 g-py-12 g-px-12 g-px-15--md g-py-15--md"
+          type="email"
+          name="email"
+          placeholder="Эл. почта"
+        >
+        <div data-validate-for="email" class="alert alert-danger"></div>
+      </div>
+
+      <!-- phone -->
+      <div class="col-12 col-lg-6 form-group g-mb-20 g-mb-30--md">
+        <input
+          class="iti_phone form-control g-brd-around g-brd-blue--hover g-font-size-16--md g-color-gray-dark-v4 g-rounded-5 g-py-12 g-py-15--md g-pl-90 g-pr-15"
+          type="tel"
+          name="phone"
+          placeholder="Номер телефона"
+          id="iti_phone"
+        >
+        <small class="iti_error-msg hide form-control-feedback"></small>
+        <small class="iti_valid-msg hide form-control-feedback">✓ Правильный номер</small>
+        <div data-validate-for="phone" class="alert alert-danger"></div>
+      </div>
+      {% endif %}
+
+      <!-- textarea -->
+      <div class="col-12 form-group g-mb-20 g-mb-30--md">
+        <textarea
+          id="inputGroup2_1"
+          name="content"
+          class="form-control g-brd-around g-brd-white g-brd-blue--hover g-font-size-16--md g-color-gray-dark-v4 g-rounded-5 g-py-12 g-px-12 g-px-15--md g-py-15--md g-resize-none"
+          rows="4"
+          placeholder="Раскажите нам о вашем опыте"
+          required
+        ></textarea>
+        <div data-validate-for="content" class="alert alert-danger"></div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+      <div class="g-mb-10 g-mb-0--sm">
+        <label class="form-check-inline u-check g-pl-35" for="check">
+          <input
+            class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0"
+            id="check"
+            type="checkbox"
+            required
+            checked
+          >
+          <span class="u-check-icon-checkbox-v4 g-rounded-5 g-brd-blue g-absolute-centered--y g-left-0 g-width-25 g-height-25">
+            <i class="fa g-font-size-16 g-color-blue" data-check-icon=""></i>
+          </span>
+          <span class="g-color-gray-dark-v2">
+            Я даю согласие на обработку персональных данных
+          </span>
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        class="btn g-rounded-10 g-font-size-16 g-bg-blue g-bg-gray-dark-v2--hover g-transition-0_4 g-color-white g-py-12 g-py-15--md g-px-30 g-px-60--xl" data-attach-loading>
+          Отправить отзыв
+      </button>
+    </div>
+  </form>
+</div>
