@@ -22,27 +22,7 @@ directorySlug = "companies"
       data-arrow-left-classes="fa fa-angle-left g-font-size-20 g-left-minus-50"
       data-arrow-right-classes="fa fa-angle-right g-font-size-20 g-right-minus-50"
       data-pagi-classes="g-hidden-lg-up u-carousel-indicators-v35 g-absolute-centered--x text-center g-bottom-minus-40"
-      data-responsive='[{
-          "breakpoint": 1200,
-            "settings": {
-            "slidesToShow": 4
-          }
-        }, {
-            "breakpoint": 992,
-            "settings": {
-            "slidesToShow": 2
-          }
-        }, {
-            "breakpoint": 768,
-            "settings": {
-            "slidesToShow": 1
-          }
-        }, {
-            "breakpoint": 576,
-            "settings": {
-            "slidesToShow": 1
-          }
-        }]'>
+      >
         
         {% for section in directory.sections| slice(0, 5) %}
         <div class="js-slide col-12">
