@@ -37,7 +37,8 @@ showMobile = 1
     })(window,document,'script','dataLayer','GTM-NWS3FJX');</script>
     <!-- End Google Tag Manager -->
   
-</head>
+</head> 
+
 <body>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWS3FJX" height="0" width="0"
@@ -107,7 +108,15 @@ showMobile = 1
 
   <!-- JS Plugins Init. -->
   <script>
-    
+    function loadAssets() {
+        let link = document.createElement('link');
+        link.rel = 'preload'
+        link.href = "{{'assets/build/css/styles.min.css'|theme }}";
+        link.as = 'style'
+        link.onload = () => { link.onload = null; link.rel = 'stylesheet' };
+        document.body.appendChild(link)
+      }
+      loadAssets();
     $(document).ready(function () {
 
       //
@@ -174,15 +183,7 @@ showMobile = 1
         autonomous: true
       });
       
-      function loadAssets() {
-        let link = document.createElement('link');
-        link.rel = 'preload'
-        link.href = "{{'assets/build/css/styles.min.css'|theme }}";
-        link.as = 'style'
-        link.onload = () => { link.onload = null; link.rel = 'stylesheet' };
-        document.body.appendChild(link)
-      }
-      loadAssets()
+      
 
       // initialization of masonry
       $('.masonry-grid').imagesLoaded().then(function () {
