@@ -28,6 +28,9 @@ showMobile = 1
   {% partial 'layouts/criticalcss' %}
   {% endif %}
 
+  <link rel="stylesheet" property="stylesheet" href="{{'assets/build/css/styles.min.css'|theme }}">
+  
+
   <!-- Google Tag Manager -->
    <!-- Google Tag Manager -->
   <script async>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -108,15 +111,7 @@ showMobile = 1
 
   <!-- JS Plugins Init. -->
   <script>
-    function loadAssets() {
-        let link = document.createElement('link');
-        link.rel = 'preload'
-        link.href = "{{'assets/build/css/styles.min.css'|theme }}";
-        link.as = 'style'
-        link.onload = () => { link.onload = null; link.rel = 'stylesheet' };
-        document.body.appendChild(link)
-      }
-      loadAssets();
+    
     $(document).ready(function () {
 
       //
