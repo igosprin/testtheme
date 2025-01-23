@@ -119,7 +119,7 @@ showMobile = 1
       $('.js-mega-menu').HSMegaMenu();
 
       $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
-      
+
       // initialization of counters
       var counters = $.HSCore.components.HSCounter.init('[class*="js-counter"]');
 
@@ -133,6 +133,7 @@ showMobile = 1
       // initialization of popups
       $.HSCore.components.HSPopup.init('.js-fancybox');
       $.HSCore.components.HSModalWindow.init('[data-modal-target]');
+      delayedLoadingStyle();
 
       // initialization of go to
       $.HSCore.components.HSGoTo.init('.js-go-to');
@@ -175,7 +176,7 @@ showMobile = 1
         autonomous: true
       });
       
-      delayedLoadingStyle();
+      
 
       // initialization of masonry
       $('.masonry-grid').imagesLoaded().then(function () {
