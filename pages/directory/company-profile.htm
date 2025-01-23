@@ -124,11 +124,8 @@ function onEnd()
       {% partial 'banners/chargeback-investments-mobile' %}
     </div>
     {% elseif otherItem.section.slug == "brokers" %}
-    <div class="g-mb-20 g-hidden-sm-down">
-      {% partial 'banners/refund' %}
-    </div>
-    <div class="g-mb-20 g-hidden-md-up">
-      {% partial 'banners/refund-tablet' %}
+    <div class="g-mb-20">
+      {% partial 'banners/broker-fraud' %}
     </div>
     {% endif %}
     {% endfor %}
@@ -186,7 +183,7 @@ function onEnd()
           {% partial 'directory/similar-companies-sidebar' %}
 
           <div class="g-hidden-md-down" id="stickyblock-start">
-            <div class="js-sticky-block" data-type="responsive" data-start-point="#stickyblock-start"
+            <div class="js-sticky-block g-max-width-350" data-type="responsive" data-start-point="#stickyblock-start"
               data-end-point="#stickyblock-end">
               {% partial 'banners/law-aid-sidebar' %}
             </div>

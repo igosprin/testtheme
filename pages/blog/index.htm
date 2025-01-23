@@ -33,12 +33,6 @@ sortOrder = "published_at desc"
 categoryPage = "blog/category"
 postPage = "blog/post"
 
-[popularPosts popularBlogPosts] 
-category = "{{ :category }}"
-postsLimit = 12
-noPostsMessage = "No posts found"
-postPage = "blog/post"
-
 [blogCategories]
 slug = "{{ :slug }}"
 displayEmpty = 1
@@ -57,7 +51,7 @@ categoryPage = "blog/category"
 
 
 {% partial 'blog/pinned-posts' %}
-{% partial 'blog/popular-posts' %}
+{% partial 'blog/popular-posts'%}
 {% partial 'blog/latest-posts' %}
 
 {% else %}

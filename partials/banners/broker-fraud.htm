@@ -1,0 +1,16 @@
+==
+<!-- broker banner -->
+<a
+  href="{{ 'dynamic-landings/chargeback-broker'|page({ item_slug: itemDirectory.slug }) }}"
+  class="d-flex align-items-center g-bg-img-hero g-rounded-10 u-link-v5 g-overflow-hidden"
+  style="background-image: url({{ 'assets/build/img/banners/broker-1-bg.webp'|theme }});">
+  <img class="d-block g-height-110 g-hidden-md-down" src="{{ 'assets/build/img/banners/broker-1.png'|theme }}" alt="broker">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center w-100 g-py-25 g-py-15--md g-px-25 g-px-50--lg">
+    <h4 class="text-center text-md-left g-font-size-16 g-font-size-20--md g-font-weight-700 g-color-white g-line-height-1_3 g-mb-0">
+      Брокер {{ itemDirectory.name }} обманул вас? <br class="g-hidden-lg-down"> Ваши деньги еще можно вернуть! 
+    </h4>
+    <button class="btn g-bg-blue-v1 rounded-0 g-font-size-14 g-font-size-16--lg g-color-white g-py-13 g-px-35 g-mt-20 g-mt-0--lg g-mr-50--lg">
+      Подробнее
+    </button>
+  </div>
+</a>

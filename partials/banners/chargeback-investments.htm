@@ -1,20 +1,16 @@
 ==
 <!-- refund banner -->
-<a
-  href="{{ 'dynamic-landings/chargeback-investments'|page({ item_slug: itemDirectory.slug }) }}"
-  {% if itemDirectory.name is not defined %} data-modal-target="#consult" data-modal-effect="fadein" {% endif %}
-  class="d-flex justify-content-between align-items-center g-bg-img-hero g-rounded-10 u-link-v5"
-  style="background-color:#03314B;"
->
+<a href="{{ 'dynamic-landings/chargeback-investments'|page({ item_slug: itemDirectory.slug }) }}"
+  class="d-flex align-items-center g-bg-img-hero g-rounded-10 u-link-v5 g-bg-darkblue-v3">
   <div class="d-flex align-items-center">
-    <img class="g-px-20 g-pt-20" src="{{ 'assets/build/img/banners/banner-dinamic-chargeback.svg'|theme }}" alt="money-bag" class="g-width-80 g-mr-30">
-    <h4 class="g-font-size-20 g-font-size-25--md g-font-weight-700 g-color-white g-line-height-1_4  g-mb-0 g-py-20 g-pl-40--lg">
-      {{ itemDirectory.name }} не выводит деньги? <br> Верните свое!
+    <img class="g-mr-25" src="{{ 'assets/build/img/banners/broker-2.png'|theme }}" alt="chargeback" class="g-width-80 g-mr-30">
+    <h4 class="g-font-size-18 g-font-size-20--md g-font-weight-700 g-color-white g-line-height-1_3 g-py-20 g-pr-55--lg">
+      Проект {{ itemDirectory.name }}  обманул с заработком? <br class="g-hidden-lg-down"> Ваши деньги еще можно вернуть! 
     </h4>
   </div>
   <div class="g-pa-20">
-    <button class="d-block btn g-brd-around g-brd-teal g-bg-teal g-bg-transparent--hover g-rounded-10 g-font-size-16--md g-color-white g-color-teal--hover g-transition-0_4 text-uppercase g-py-15 g-px-40 g-hidden-md-down">
-      вернуть деньги
+    <button class="d-block btn g-bg-orange-v1 g-bg-orange--hover g-rounded-10 g-font-size-16--md g-color-white g-transition-0_4 g-py-15 g-px-40 g-hidden-md-down">
+      Подробнее
     </button>
   </div>
 </a>

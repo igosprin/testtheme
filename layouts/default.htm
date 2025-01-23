@@ -28,10 +28,8 @@ showMobile = 1
   {% partial 'layouts/criticalcss' %}
   {% endif %}
 
-  <link rel="stylesheet" property="stylesheet" href="{{'assets/build/css/styles.min.css'|theme }}">
-  
-
   <!-- Google Tag Manager -->
+
    <!-- Google Tag Manager -->
   <script async>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -40,15 +38,15 @@ showMobile = 1
     })(window,document,'script','dataLayer','GTM-NWS3FJX');</script>
     <!-- End Google Tag Manager -->
   
-</head> 
+</head>
 
-<body>
+<body class="w-100 g-overflow-x-hidden">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWS3FJX" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <main>
+  <main class="w-100 g-overflow-x-hidden">
     <!-- Header -->
     <section>
       {% partial 'layouts/header' %}
@@ -110,16 +108,18 @@ showMobile = 1
   <script src="{{ 'assets/src/vendor/masonry/dist/masonry.pkgd.min.js'|theme }}"></script>
 
   <!-- JS Plugins Init. -->
+  {% partial 'layouts/delayed-load-styles' %}
   <script>
-    
+
     $(document).ready(function () {
 
-      //
       lazyload();
 
       // initialization of MegaMenu
       $('.js-mega-menu').HSMegaMenu();
 
+      $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
+      
       // initialization of counters
       var counters = $.HSCore.components.HSCounter.init('[class*="js-counter"]');
 
@@ -129,9 +129,6 @@ showMobile = 1
           $(this).find('input[type="search"]').focus();
         }
       });
-
-      // initialization of carousel
-      $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
 
       // initialization of popups
       $.HSCore.components.HSPopup.init('.js-fancybox');
@@ -178,7 +175,7 @@ showMobile = 1
         autonomous: true
       });
       
-      
+      delayedLoadingStyle();
 
       // initialization of masonry
       $('.masonry-grid').imagesLoaded().then(function () {
@@ -188,14 +185,12 @@ showMobile = 1
           percentPosition: true
         });
       });
-    });
-
+    });   
   </script>
 
-  
+
   {% framework extras %}
   {% scripts %}
-
   
   <!-- Pop up -->
   {% component 'componentLaunchPopup' %}

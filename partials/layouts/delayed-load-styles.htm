@@ -1,0 +1,14 @@
+<script>
+    var styleFiles=["{{'assets/build/css/styles.min.css'|theme }}"];
+    function delayedLoadingStyle(){
+
+        styleFiles.forEach(function(file) {
+            var link = document.createElement('link');
+            link.rel = 'preload';
+            link.href = file;
+            link.as = 'style'
+            link.onload = () => { link.onload = null; link.rel = 'stylesheet' };
+            document.body.appendChild(link);
+        });
+    }    
+</script>

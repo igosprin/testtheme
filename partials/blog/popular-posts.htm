@@ -1,6 +1,11 @@
-==
-{% set posts = popularBlogPosts.posts %}
 
+[popularPosts popularBlogPosts] 
+category = "{{ :category }}"
+postsLimit = 18
+noPostsMessage = "No posts found"
+postPage = "blog/post"
+==
+{% set posts = popularBlogPosts.posts  %}
 <section class="g-pt-60 g-pt-80--md g-pb-30 g-pb-50--md">
   <div class="container">
     <h2 class="g-font-size-18 g-font-size-25--sm g-font-size-30--md g-font-weight-700 g-line-height-1_3 g-color-black g-mb-30">
@@ -60,7 +65,7 @@
         </div>
       </div>
       <div class="col-12 col-lg-4">
-        {% for post in posts|slice(5, 9) %}
+        {% for post in posts|slice(6, 9)  %}
         <div class="d-flex flex-column g-mb-30" itemscope itemtype="https://schema.org/BlogPosting">
             <img
               class="g-hidden-xs-up"

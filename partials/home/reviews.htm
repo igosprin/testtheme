@@ -45,7 +45,7 @@ orderDirection = "desc"
     >
       {% for review in reviews %}
       <div class="js-slide g-mx-15">
-        <div class="d-flex flex-column justify-content-between g-bg-white g-rounded-10  g-height-280 g-py-20 g-px-20">
+        <div class="d-flex flex-column justify-content-between g-bg-white g-rounded-10 g-py-20 g-px-20">
           <div>
             <div class="d-flex g-mb-20">
               <img
@@ -81,20 +81,18 @@ orderDirection = "desc"
             </div>
             <div class="media-body g-mb-20">
               <blockquote class="lead g-font-size-16 g-line-height-1_4 g-color-black g-mb-0">
-                {% if (review.content|length < 90) %}
-                  {{ review.content | slice(0, 90) }}
+                {% if (review.content|length < 210) %}
+                  {{ review.content |tgwz|slice(0, 210)|raw }}
                 {% else %}
-                  {{ review.content | slice(0, 90) }}
+                  {{ review.content |tgwz|slice(0, 210)|raw }}
                   
                   <a
-                    href="{{ review.itemDirectory.getCanonicalUrl()  }}"
+                    href="{{ review.itemDirectory.getCanonicalUrl() }}#reviews"
                     class="g-font-size-14 g-color-gray-dark-v5"
                   >
                     Читать далее...
                   </a>
                 {% endif %}
-                
-                
               </blockquote>
             </div>
           </div>
