@@ -7,7 +7,7 @@
             link.rel = 'preload';
             link.href = file;
             link.as = 'style'
-            link.onload = () => { link.onload = null; link.rel = 'stylesheet';alert('of'); };
+            link.onload = () => { link.onload = null; link.rel = 'stylesheet';};
             document.body.appendChild(link);
         });
     }    

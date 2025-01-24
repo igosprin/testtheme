@@ -133,7 +133,7 @@ showMobile = 1
       // initialization of popups
       $.HSCore.components.HSPopup.init('.js-fancybox');
       $.HSCore.components.HSModalWindow.init('[data-modal-target]');
-      delayedLoadingStyle();
+      
 
       // initialization of go to
       $.HSCore.components.HSGoTo.init('.js-go-to');
@@ -176,7 +176,7 @@ showMobile = 1
         autonomous: true
       });
       
-      
+      delayedLoadingStyle();
 
       // initialization of masonry
       $('.masonry-grid').imagesLoaded().then(function () {
