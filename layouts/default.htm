@@ -101,6 +101,13 @@ showMobile = 1
     <link rel="stylesheet" href="{{ 'assets/src/vendor/icon-material/material-icons.css'|theme }}">
   </noscript>
 
+  <link rel="preload" href="{{ 'assets/build/css/styles.min.css'|theme }}" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="{{ 'assets/build/css/styles.min.css'|theme }}">
+  </noscript>
+
+  
   {% styles %}
 
   <script src="//code.jivosite.com/widget/tPo07ezp8W" async></script>
@@ -108,7 +115,7 @@ showMobile = 1
   <script src="{{ 'assets/src/vendor/masonry/dist/masonry.pkgd.min.js'|theme }}"></script>
 
   <!-- JS Plugins Init. -->
-  {% partial 'layouts/delayed-load-styles' %}
+  
   <script>
 
     $(document).ready(function () {
@@ -176,7 +183,7 @@ showMobile = 1
         autonomous: true
       });
       
-      delayedLoadingStyle();
+      //delayedLoadingStyle();
 
       // initialization of masonry
       $('.masonry-grid').imagesLoaded().then(function () {
