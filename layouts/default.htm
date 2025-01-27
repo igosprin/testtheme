@@ -28,7 +28,15 @@ showMobile = 1
   {% partial 'layouts/criticalcss' %}
   {% endif %}
 
-  
+  <!-- Google Tag Manager -->
+
+   <!-- Google Tag Manager -->
+  <script async>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NWS3FJX');</script>
+    <!-- End Google Tag Manager -->
   
 </head>
 
@@ -93,17 +101,19 @@ showMobile = 1
     <link rel="stylesheet" href="{{ 'assets/src/vendor/icon-material/material-icons.css'|theme }}">
   </noscript>
 
-  
-
-  
   {% styles %}
+
+  <link rel="preload" href="{{ 'assets/build/css/styles.min.css'|theme }}" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="{{ 'assets/build/css/styles.min.css'|theme }}">
+  </noscript>
 
   <script src="//code.jivosite.com/widget/tPo07ezp8W" async></script>
   <script src="{{ 'assets/build/js/script.min.js'|theme }}"></script>
   <script src="{{ 'assets/src/vendor/masonry/dist/masonry.pkgd.min.js'|theme }}"></script>
 
   <!-- JS Plugins Init. -->
-  {% partial 'layouts/delayed-load-styles' %}
   <script>
 
     $(document).ready(function () {
@@ -113,6 +123,7 @@ showMobile = 1
       // initialization of MegaMenu
       $('.js-mega-menu').HSMegaMenu();
 
+      // initialization of carousel
       $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
 
       // initialization of counters
@@ -128,7 +139,6 @@ showMobile = 1
       // initialization of popups
       $.HSCore.components.HSPopup.init('.js-fancybox');
       $.HSCore.components.HSModalWindow.init('[data-modal-target]');
-      
 
       // initialization of go to
       $.HSCore.components.HSGoTo.init('.js-go-to');
@@ -171,8 +181,6 @@ showMobile = 1
         autonomous: true
       });
       
-      delayedLoadingStyle();
-
       // initialization of masonry
       $('.masonry-grid').imagesLoaded().then(function () {
         $('.masonry-grid').masonry({
@@ -181,7 +189,8 @@ showMobile = 1
           percentPosition: true
         });
       });
-    });   
+    });
+
   </script>
 
 
